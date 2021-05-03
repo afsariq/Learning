@@ -3,6 +3,7 @@ import 'package:jitsi/Search/Search.dart';
 import 'package:jitsi/Subjects/AL.dart';
 import 'package:jitsi/Courses/Courses.dart';
 import 'package:jitsi/Courses/FreeClassesList.dart';
+import 'package:jitsi/Courses/FreeCourses.dart';
 import 'package:jitsi/Subjects/6-11.dart';
 import 'package:jitsi/Subjects/Ol.dart';
 
@@ -461,7 +462,7 @@ class HomeScreen extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => FreeClassesList()));
+                                      builder: (context) => FreeCourses()));
                             },
                             child: Text("Free courses"),
                             shape: StadiumBorder(),

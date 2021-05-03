@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jitsi/Courses/Details.dart';
-// import 'package:jitsi/Courses/details.dart';
 
-class FreeClassesList extends StatelessWidget {
+class FreeCourses extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,10 +68,10 @@ class FreeClassesList extends StatelessWidget {
                           horizontal: 10.0, vertical: 10.0),
                       child: FlatButton(
                         onPressed: () {
-                          // Navigator.push(
-                          //     context,
-                          //     MaterialPageRoute(
-                          //         builder: (context) => DetailsPage(index)));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => DetailsPage(index)));
                         },
                         color: Colors.red[200],
                         shape: RoundedRectangleBorder(
