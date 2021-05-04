@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:jitsi/Subjects/AdlevelStream/Commerce/Accounting.dart';
-import 'package:jitsi/Subjects/AdlevelStream/Commerce/BuisinessStudies.dart';
-import 'package:jitsi/Subjects/AdlevelStream/Commerce/BusinessStatics.dart';
-import 'package:jitsi/Subjects/AdlevelStream/Commerce/CommIT.dart';
-import 'package:jitsi/Subjects/AdlevelStream/Commerce/Economics.dart';
+import 'package:jitsist/Subjects/AdlevelStream/Commerce/Accounting.dart';
+import 'package:jitsist/Subjects/AdlevelStream/Commerce/BuisinessStudies.dart';
+import 'package:jitsist/Subjects/AdlevelStream/Commerce/BusinessStatics.dart';
+import 'package:jitsist/Subjects/AdlevelStream/Commerce/CommIT.dart';
+import 'package:jitsist/Subjects/AdlevelStream/Commerce/Economics.dart';
 
 class commStream extends StatelessWidget {
   @override

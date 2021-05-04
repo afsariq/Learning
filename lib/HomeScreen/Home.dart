@@ -1,22 +1,29 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:jitsi/Search/Search.dart';
-import 'package:jitsi/Subjects/AL.dart';
-import 'package:jitsi/Courses/Courses.dart';
-import 'package:jitsi/Courses/FreeClassesList.dart';
-import 'package:jitsi/Courses/FreeCourses.dart';
-import 'package:jitsi/Subjects/6-11.dart';
-import 'package:jitsi/Subjects/Ol.dart';
+import 'package:jitsist/Courses/FreeCourses.dart';
+import 'package:jitsist/LoginScreen/Login.dart';
+import 'package:jitsist/Search/Search.dart';
+import 'package:jitsist/Subjects/AL.dart';
+import 'package:jitsist/Courses/Courses.dart';
+import 'package:jitsist/Courses/FreeClassesList.dart';
+import 'package:jitsist/Subjects/6-11.dart';
+import 'package:jitsist/Subjects/Ol.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  // String data = "abcd";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           elevation: 0,
           backgroundColor: Color(0xff00007c),
-          actions: [
-            // IconButton(icon: Icon(Icons.chat_bubble), onPressed: () {})
-          ],
         ),
         drawer: Drawer(
           child: ListView(
@@ -41,7 +48,22 @@ class HomeScreen extends StatelessWidget {
                   "Profile",
                   style: TextStyle(fontSize: 18),
                 ),
-              )
+                onTap: () {},
+              ),
+              ListTile(
+                  title: Text(
+                    "LogOut",
+                    style: TextStyle(fontSize: 18),
+                  ),
+                  onTap: () async {
+                    SharedPreferences prefs =
+                        await SharedPreferences.getInstance();
+                    prefs.remove('email');
+                    FirebaseAuth.instance.signOut().then((_) {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => LoginPage()));
+                    });
+                  }),
             ],
           ),
         ),

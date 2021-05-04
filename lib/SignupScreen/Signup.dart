@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:jitsi/LoginScreen/Login.dart';
-import 'package:jitsi/OTPScreen/Otp.dart';
+import 'package:jitsist/HomeScreen/navBar.dart';
+import 'package:jitsist/LoginScreen/Login.dart';
+import 'package:jitsist/OTPScreen/Otp.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:form_field_validator/form_field_validator.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Signup extends StatelessWidget {
   final _key = GlobalKey<FormState>();
@@ -197,10 +199,13 @@ class Signup extends StatelessWidget {
         KEY_SHOPNAME: username.text,
         KEY_PHONE: phone.text,
         KEY_CITY: city.text,
+      }).then((value) async {
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        prefs.setString('email', email.text);
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => MyNavigationBar()));
       });
 
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => LoginPage()));
       // print("user created");
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {

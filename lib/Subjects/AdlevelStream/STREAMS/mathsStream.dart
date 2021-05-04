@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:jitsi/Subjects/AdlevelStream/Science,Maths/It.dart';
-import 'package:jitsi/Subjects/AdlevelStream/Science,Maths/chemistry.dart';
-import 'package:jitsi/Subjects/AdlevelStream/Science,Maths/maths.dart';
-import 'package:jitsi/Subjects/AdlevelStream/Science,Maths/physics.dart';
+import 'package:jitsist/Subjects/AdlevelStream/Science,Maths/It.dart';
+import 'package:jitsist/Subjects/AdlevelStream/Science,Maths/chemistry.dart';
+import 'package:jitsist/Subjects/AdlevelStream/Science,Maths/maths.dart';
+import 'package:jitsist/Subjects/AdlevelStream/Science,Maths/physics.dart';
 
 class mathsStream extends StatelessWidget {
   @override

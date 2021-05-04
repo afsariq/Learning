@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:jitsi/Payment&Booking/Booking.dart';
+import 'package:jitsist/Payment&Booking/Booking.dart';
 
 class TeacherPro extends StatelessWidget {
   String Tid;

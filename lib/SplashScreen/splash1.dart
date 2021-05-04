@@ -5,20 +5,20 @@ import 'package:jitsist/HomeScreen/navBar.dart';
 
 import '../LoginScreen/Login.dart';
 
-class SplashScreen extends StatefulWidget {
+class Splash extends StatefulWidget {
   @override
-  _SplashScreenState createState() => _SplashScreenState();
+  _SplashState createState() => _SplashState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _SplashState extends State<Splash> {
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     Timer(
         Duration(seconds: 5),
-        () => Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => MyNavigationBar())));
+        () => Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => LoginPage())));
   }
 
   @override

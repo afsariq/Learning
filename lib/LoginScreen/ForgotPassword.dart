@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:jitsi/LoginScreen/Login.dart';
+import 'package:jitsist/LoginScreen/Login.dart';
 
 class ForgotPassword extends StatelessWidget {
   String email = "";

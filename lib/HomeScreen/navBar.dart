@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:jitsi/CalendarScreen/Calendar.dart';
-import 'package:jitsi/HomeScreen/Home.dart';
-import 'package:jitsi/VideoCall/Video.dart';
+import 'package:jitsist/CalendarScreen/Calendar.dart';
+import 'package:jitsist/HomeScreen/Home.dart';
+import 'package:jitsist/VideoCall/Video.dart';
 
 class MyNavigationBar extends StatefulWidget {
   MyNavigationBar({Key key}) : super(key: key);

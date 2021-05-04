@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:jitsi/Payment&Booking/Booking.dart';
-import 'package:jitsi/TeacherProfile/Teaherpro.dart';
+import 'package:jitsist/Payment&Booking/Booking.dart';
+import 'package:jitsist/TeacherProfile/Teaherpro.dart';
 
 class ALmaths extends StatefulWidget {
   @override

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jitsi/Courses/Details.dart';
+import 'package:jitsist/Courses/Details.dart';
 
 class FreeCourses extends StatelessWidget {
   @override

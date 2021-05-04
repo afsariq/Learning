@@ -1,4 +1,4 @@
-name: jitsi
+name: jitsist
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -36,6 +36,7 @@ dependencies:
   firebase_core:
   table_calendar: ^3.0.0
   page_transition: "^1.1.7+6"
+  shared_preferences: ^2.0.5
 
 dev_dependencies:
   flutter_test:

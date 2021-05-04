@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:jitsi/Subjects/AdlevelStream/STREAMS/artStream.dart';
-import 'package:jitsi/Subjects/AdlevelStream/STREAMS/commStream.dart';
-import 'package:jitsi/Subjects/AdlevelStream/STREAMS/mathsStream.dart';
-import 'package:jitsi/Subjects/AdlevelStream/STREAMS/scienceStream.dart';
-import 'package:jitsi/Subjects/AdlevelStream/STREAMS/techStream.dart';
+import 'package:jitsist/Subjects/AdlevelStream/STREAMS/artStream.dart';
+import 'package:jitsist/Subjects/AdlevelStream/STREAMS/commStream.dart';
+import 'package:jitsist/Subjects/AdlevelStream/STREAMS/mathsStream.dart';
+import 'package:jitsist/Subjects/AdlevelStream/STREAMS/scienceStream.dart';
+import 'package:jitsist/Subjects/AdlevelStream/STREAMS/techStream.dart';
 
 class ALStreams extends StatelessWidget {
   @override

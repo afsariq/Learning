@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:jitsi/HomeScreen/Home.dart';
-import 'package:jitsi/HomeScreen/navBar.dart';
-import 'package:jitsi/LoginScreen/ForgotPassword.dart';
-import 'package:jitsi/SignupScreen/Signup.dart';
+import 'package:jitsist/HomeScreen/Home.dart';
+import 'package:jitsist/HomeScreen/navBar.dart';
+import 'package:jitsist/LoginScreen/ForgotPassword.dart';
+import 'package:jitsist/SignupScreen/Signup.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:form_field_validator/form_field_validator.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -14,6 +15,9 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final TextEditingController _email = TextEditingController();
   final TextEditingController _password = TextEditingController();
+
+  SharedPreferences logindata;
+  bool newuser;
 
   static final FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -79,29 +83,21 @@ class _LoginPageState extends State<LoginPage> {
                       Padding(
                         padding: const EdgeInsets.all(12),
                         child: TextFormField(
-                            controller: _password,
-                            obscureText: true,
-                            decoration: InputDecoration(
-                              enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Color(0xff00007c),
-                                ),
-                                borderRadius: BorderRadius.circular(10.0),
+                          controller: _password,
+                          obscureText: true,
+                          decoration: InputDecoration(
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0xff00007c),
                               ),
-                              hintText: "Password",
-                              prefixIcon: Icon(
-                                Icons.fingerprint,
-                              ),
+                              borderRadius: BorderRadius.circular(10.0),
                             ),
-                            validator: MultiValidator([
-                              RequiredValidator(errorText: "* Required"),
-                              MinLengthValidator(6,
-                                  errorText:
-                                      "Password should be atleast 6 characters"),
-                              MaxLengthValidator(15,
-                                  errorText:
-                                      "Password should not be greater than 15 characters")
-                            ])),
+                            hintText: "Password",
+                            prefixIcon: Icon(
+                              Icons.fingerprint,
+                            ),
+                          ),
+                        ),
                       ),
                       SizedBox(
                         height: 10,
@@ -235,7 +231,8 @@ class _LoginPageState extends State<LoginPage> {
         email: _email.text,
         password: _password.text,
       );
-
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      prefs.setString('email', _email.text);
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => MyNavigationBar()));
     } on FirebaseAuthException catch (e) {

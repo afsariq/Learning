@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:jitsi/Payment&Booking/Booking.dart';
+import 'package:jitsist/Payment&Booking/Booking.dart';
 
 class SearchTeacher extends StatefulWidget {
   @override
@@ -18,6 +18,8 @@ class _SearchTeacherState extends State<SearchTeacher> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        //   backgroundColor: Colors.blueGrey[50],
+
         appBar: AppBar(
           automaticallyImplyLeading: false,
           toolbarHeight: 100,
@@ -41,11 +43,12 @@ class _SearchTeacherState extends State<SearchTeacher> {
                         padding: const EdgeInsets.all(8.0),
                         child: DropdownButton<String>(
                             value: _chosenValue,
+                            hint: Text(" Grade"),
                             items: <String>[
                               '6-9',
                               'A/L',
                               'Scholorship',
-                              '10,11'
+                              '10-11'
                             ].map<DropdownMenuItem<String>>((String value) {
                               return DropdownMenuItem<String>(
                                 value: value,
@@ -76,11 +79,8 @@ class _SearchTeacherState extends State<SearchTeacher> {
                                 BorderRadius.all(Radius.circular(10))),
                         child: TextField(
                           decoration: InputDecoration(
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.grey),
-                              borderRadius: BorderRadius.circular(10.0),
-                            ),
-                            hintText: "Subject",
+                            border: InputBorder.none,
+                            hintText: "    Subject",
                             hintStyle: TextStyle(color: Colors.black),
                           ),
                           controller: searchContsub,
@@ -189,10 +189,6 @@ class _SearchTeacherState extends State<SearchTeacher> {
                                 )
                               ]),
                             ]),
-                            Divider(
-                              color: Colors.black,
-                              thickness: 1,
-                            )
                           ]),
                         ],
                       ),

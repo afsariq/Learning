@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import 'package:jitsi/HomeScreen/Home.dart';
+import 'package:jitsist/HomeScreen/Home.dart';
 
 class OTPScreen extends StatelessWidget {
   @override

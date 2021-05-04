@@ -1,5 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:jitsi/Subjects/6-11/maths.dart';
+import 'package:jitsist/Subjects/6-11/ICT.dart';
+import 'package:jitsist/Subjects/6-11/arts.dart';
+import 'package:jitsist/Subjects/6-11/civics.dart';
+import 'package:jitsist/Subjects/6-11/english.dart';
+import 'package:jitsist/Subjects/6-11/geography.dart';
+import 'package:jitsist/Subjects/6-11/health.dart';
+import 'package:jitsist/Subjects/6-11/history.dart';
+import 'package:jitsist/Subjects/6-11/maths.dart';
+import 'package:jitsist/Subjects/6-11/pts.dart';
+import 'package:jitsist/Subjects/6-11/science.dart';
+import 'package:jitsist/Subjects/6-11/sinhala.dart';
 
 class sixtoeleven extends StatelessWidget {
   @override
@@ -49,7 +59,12 @@ class sixtoeleven extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => sixScience()));
+                            },
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/phy.jpg"),
@@ -65,7 +80,12 @@ class sixtoeleven extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => sixEnglish()));
+                            },
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/eng.jpeg"),
@@ -88,7 +108,12 @@ class sixtoeleven extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => sixHistory()));
+                            },
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/hist.jpg"),
@@ -104,7 +129,12 @@ class sixtoeleven extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => sixHealth()));
+                            },
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/health.png"),
@@ -120,7 +150,12 @@ class sixtoeleven extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => sixGeo()));
+                            },
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/geo.png"),
@@ -143,7 +178,12 @@ class sixtoeleven extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => sixICT()));
+                            },
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/ict.png"),
@@ -159,7 +199,12 @@ class sixtoeleven extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => sixCivics()));
+                            },
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/civi.jpg"),
@@ -175,7 +220,12 @@ class sixtoeleven extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => sixArts()));
+                            },
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/art.jpg"),
@@ -198,7 +248,12 @@ class sixtoeleven extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => sixPTS()));
+                            },
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/pts.jpg"),
@@ -214,7 +269,12 @@ class sixtoeleven extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => sixSinhala()));
+                            },
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/sinhala.jpg"),

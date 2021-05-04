@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jitsi/Courses/Details.dart';
+import 'package:jitsist/Courses/Details.dart';
 // import 'package:jitsi/Courses/details.dart';
 
 class FreeClassesList extends StatelessWidget {

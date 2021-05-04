@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:intl/intl.dart';
 
-class sixmaths extends StatefulWidget {
+class sixCivics extends StatefulWidget {
   @override
-  _sixmathsState createState() => _sixmathsState();
+  _sixCivicsState createState() => _sixCivicsState();
 }
 
-class _sixmathsState extends State<sixmaths> {
+class _sixCivicsState extends State<sixCivics> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +20,7 @@ class _sixmathsState extends State<sixmaths> {
         body: StreamBuilder(
             stream: FirebaseFirestore.instance
                 .collection("Teacher")
-                .where('Subject', isEqualTo: 'Maths')
+                .where('Subject', isEqualTo: 'Social Studies')
                 .where('Class', isEqualTo: '6-9')
                 .snapshots(),
             builder:
