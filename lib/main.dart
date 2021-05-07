@@ -27,5 +27,6 @@ Future<void> main() async {
   var email = prefs.getString('email');
   runApp(MaterialApp(
     home: email == null ? Splash() : SplashScreen(),
+    debugShowCheckedModeBanner: false,
   ));
 }

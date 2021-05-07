@@ -268,7 +268,8 @@ class _BookingState extends State<Booking> {
                                           .doc(widget.Id)
                                           .collection('ClassTime')
                                           .doc(widget.Id)
-                                          .update({field: 'booked' + selected});
+                                          .update(
+                                              {field: 'booked  ' + selected});
                                     },
                                   )
                                 ],

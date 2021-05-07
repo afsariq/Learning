@@ -37,8 +37,8 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
               backgroundColor: Color(0xff00007c),
             ),
             BottomNavigationBarItem(
-                icon: Icon(Icons.schedule),
-                title: Text('Calendar'),
+                icon: Icon(Icons.video_call),
+                title: Text('Join Class'),
                 backgroundColor: Color(0xff00007c)),
           ],
           type: BottomNavigationBarType.shifting,
