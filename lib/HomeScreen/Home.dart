@@ -24,6 +24,9 @@ class _HomeScreenState extends State<HomeScreen> {
         appBar: AppBar(
           elevation: 0,
           backgroundColor: Color(0xff00007c),
+          actions: [
+            IconButton(icon: Icon(Icons.chat_bubble), onPressed: () {})
+          ],
         ),
         drawer: Drawer(
           child: ListView(
