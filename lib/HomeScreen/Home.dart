@@ -26,7 +26,10 @@ class _HomeScreenState extends State<HomeScreen> {
           elevation: 0,
           backgroundColor: Color(0xff00007c),
           actions: [
-            IconButton(icon: Icon(Icons.chat_bubble), onPressed: () {})
+            IconButton(icon: Icon(Icons.chat_bubble), onPressed: () {
+              Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => BookedClass()));
+            })
           ],
         ),
         drawer: Drawer(
