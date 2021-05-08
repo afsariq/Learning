@@ -10,6 +10,7 @@ class DetailsPage extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           // leading: Icon(Icons.arrow_back_ios),
+          backgroundColor: Color(0xff00007c),
           elevation: 0.0,
         ),
         body: Column(
@@ -19,7 +20,7 @@ class DetailsPage extends StatelessWidget {
                 Container(
                   height: MediaQuery.of(context).size.width * 0.45,
                   decoration: BoxDecoration(
-                    color: Colors.blue,
+                    color: Color(0xff00007c),
                     borderRadius:
                         BorderRadius.only(bottomLeft: Radius.circular(64)),
                     boxShadow: [
@@ -105,6 +106,7 @@ class DetailsPage extends StatelessWidget {
                       ),
                       Expanded(
                         child: ListView.builder(
+                          padding: EdgeInsets.only(top: 10.0, bottom: 15.0),
                           itemCount: 7, //widget.destination.activities.length
                           itemBuilder: (BuildContext context, int index) {
                             return Stack(
@@ -112,7 +114,7 @@ class DetailsPage extends StatelessWidget {
                                 Container(
                                   margin:
                                       EdgeInsets.fromLTRB(5.0, 5.0, 20.0, 5.0),
-                                  height: 200.0,
+                                  height: 80.0,
                                   width: double.infinity,
                                   decoration: BoxDecoration(
                                     color: Colors.white,
@@ -120,7 +122,7 @@ class DetailsPage extends StatelessWidget {
                                   ),
                                   child: Padding(
                                     padding: EdgeInsets.fromLTRB(
-                                        100.0, 20.0, 20.0, 20.0),
+                                        120.0, 20.0, 20.0, 20.0),
                                     child: Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
@@ -131,6 +133,8 @@ class DetailsPage extends StatelessWidget {
                                             fontSize: 14.0,
                                             fontWeight: FontWeight.w600,
                                           ),
+                                          overflow: TextOverflow.ellipsis,
+                                          maxLines: 2,
                                         ),
                                         SizedBox(
                                           height: 5.0,
@@ -142,6 +146,17 @@ class DetailsPage extends StatelessWidget {
                                           ),
                                         ),
                                       ],
+                                    ),
+                                  ),
+                                ),
+                                Positioned(
+                                  left: 5.0,
+                                  top: 15.0,
+                                  bottom: 15.0,
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(20.0),
+                                    child: Image(width: 110.0, image: AssetImage("Assets/Images/logo.png"),
+                                    fit: BoxFit.cover,
                                     ),
                                   ),
                                 )
