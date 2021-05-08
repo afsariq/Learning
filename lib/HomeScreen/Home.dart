@@ -9,6 +9,7 @@ import 'package:jitsist/Courses/FreeClassesList.dart';
 import 'package:jitsist/Subjects/6-11.dart';
 import 'package:jitsist/Subjects/Ol.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:jitsist/Payment&Booking/BookedClasses.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -52,6 +53,16 @@ class _HomeScreenState extends State<HomeScreen> {
                   style: TextStyle(fontSize: 18),
                 ),
                 onTap: () {},
+              ),
+              ListTile(
+                title: Text(
+                  "Booked Classes",
+                  style: TextStyle(fontSize: 18),
+                ),
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => BookedClass()));
+                },
               ),
               ListTile(
                   title: Text(

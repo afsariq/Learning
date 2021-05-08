@@ -17,7 +17,7 @@ String link = abcde + abc + abcd;
 
 class _VideoState extends State<Video> {
   final serverText = TextEditingController();
-  final roomText = TextEditingController(text: link);
+  final roomText = TextEditingController();
   final subjectText = TextEditingController(text: "Online Lecture");
   final nameText = TextEditingController(text: "Teacher");
   final emailText =
@@ -63,7 +63,7 @@ class _VideoState extends State<Video> {
                 ),
                 TextField(
                   controller: roomText,
-                  readOnly: true,
+                  //readOnly: true,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: "Room",

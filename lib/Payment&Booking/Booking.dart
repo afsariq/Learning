@@ -268,7 +268,20 @@ class _BookingState extends State<Booking> {
                                           .doc(widget.Id)
                                           .collection('ClassTime')
                                           .doc(widget.Id)
-                                          .update({field: 'booked' + selected});
+                                          .update(
+                                              {field: 'booked  ' + selected});
+
+                                      FirebaseFirestore.instance
+                                          .collection('Teacher')
+                                          .doc(widget.Id)
+                                          .collection('Booked Class')
+                                          .doc()
+                                          .set({
+                                        'Time': selected,
+                                        'User': FirebaseAuth
+                                            .instance.currentUser.uid,
+                                        'Link': ''
+                                      });
                                     },
                                   )
                                 ],
