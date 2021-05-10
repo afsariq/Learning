@@ -6,8 +6,8 @@ import 'package:jitsist/Search/Search.dart';
 import 'package:jitsist/Subjects/AL.dart';
 import 'package:jitsist/Courses/Courses.dart';
 import 'package:jitsist/Courses/FreeClassesList.dart';
-import 'package:jitsist/Subjects/6-11.dart';
-import 'package:jitsist/Subjects/Ol.dart';
+import 'package:jitsist/Subjects/6-9.dart';
+import 'package:jitsist/Subjects/10-11.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:jitsist/Payment&Booking/BookedClasses.dart';
 
@@ -26,10 +26,12 @@ class _HomeScreenState extends State<HomeScreen> {
           elevation: 0,
           backgroundColor: Color(0xff00007c),
           actions: [
-            IconButton(icon: Icon(Icons.chat_bubble), onPressed: () {
-              Navigator.push(context,
+            IconButton(
+                icon: Icon(Icons.chat_bubble),
+                onPressed: () {
+                  Navigator.push(context,
                       MaterialPageRoute(builder: (context) => BookedClass()));
-            })
+                })
           ],
         ),
         drawer: Drawer(

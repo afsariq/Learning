@@ -1,15 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jitsist/Subjects/6-11/ICT.dart';
-import 'package:jitsist/Subjects/6-11/arts.dart';
-import 'package:jitsist/Subjects/6-11/civics.dart';
-import 'package:jitsist/Subjects/6-11/english.dart';
-import 'package:jitsist/Subjects/6-11/geography.dart';
-import 'package:jitsist/Subjects/6-11/health.dart';
-import 'package:jitsist/Subjects/6-11/history.dart';
-import 'package:jitsist/Subjects/6-11/maths.dart';
-import 'package:jitsist/Subjects/6-11/pts.dart';
-import 'package:jitsist/Subjects/6-11/science.dart';
-import 'package:jitsist/Subjects/6-11/sinhala.dart';
+import 'package:jitsist/Subjects/Subjects.dart';
 
 class sixtoeleven extends StatelessWidget {
   @override
@@ -42,7 +32,10 @@ class sixtoeleven extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => sixmaths()));
+                                      builder: (context) => Subject(
+                                            cls: '6-9',
+                                            sub: 'Maths',
+                                          )));
                             },
                             child: CircleAvatar(
                               backgroundImage:
@@ -63,7 +56,10 @@ class sixtoeleven extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => sixScience()));
+                                      builder: (context) => Subject(
+                                            cls: '6-9',
+                                            sub: 'Science',
+                                          )));
                             },
                             child: CircleAvatar(
                               backgroundImage:
@@ -84,7 +80,10 @@ class sixtoeleven extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => sixEnglish()));
+                                      builder: (context) => Subject(
+                                            cls: '6-9',
+                                            sub: 'English',
+                                          )));
                             },
                             child: CircleAvatar(
                               backgroundImage:
@@ -112,7 +111,10 @@ class sixtoeleven extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => sixHistory()));
+                                      builder: (context) => Subject(
+                                            cls: '6-9',
+                                            sub: 'History',
+                                          )));
                             },
                             child: CircleAvatar(
                               backgroundImage:
@@ -133,7 +135,10 @@ class sixtoeleven extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => sixHealth()));
+                                      builder: (context) => Subject(
+                                            cls: '6-9',
+                                            sub: 'Health Science',
+                                          )));
                             },
                             child: CircleAvatar(
                               backgroundImage:
@@ -154,7 +159,10 @@ class sixtoeleven extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => sixGeo()));
+                                      builder: (context) => Subject(
+                                            cls: '6-9',
+                                            sub: 'Geography',
+                                          )));
                             },
                             child: CircleAvatar(
                               backgroundImage:
@@ -182,7 +190,10 @@ class sixtoeleven extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => sixICT()));
+                                      builder: (context) => Subject(
+                                            cls: '6-9',
+                                            sub: 'ICT',
+                                          )));
                             },
                             child: CircleAvatar(
                               backgroundImage:
@@ -203,7 +214,10 @@ class sixtoeleven extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => sixCivics()));
+                                      builder: (context) => Subject(
+                                            cls: '6-9',
+                                            sub: 'Civics',
+                                          )));
                             },
                             child: CircleAvatar(
                               backgroundImage:
@@ -224,7 +238,10 @@ class sixtoeleven extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => sixArts()));
+                                      builder: (context) => Subject(
+                                            cls: '6-9',
+                                            sub: 'Arts',
+                                          )));
                             },
                             child: CircleAvatar(
                               backgroundImage:
@@ -252,7 +269,10 @@ class sixtoeleven extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => sixPTS()));
+                                      builder: (context) => Subject(
+                                            cls: '6-9',
+                                            sub: 'PTS',
+                                          )));
                             },
                             child: CircleAvatar(
                               backgroundImage:
@@ -273,7 +293,10 @@ class sixtoeleven extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => sixSinhala()));
+                                      builder: (context) => Subject(
+                                            cls: '6-9',
+                                            sub: 'Sinhala',
+                                          )));
                             },
                             child: CircleAvatar(
                               backgroundImage:

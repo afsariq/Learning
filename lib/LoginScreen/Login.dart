@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jitsist/HomeScreen/Home.dart';
+
 import 'package:jitsist/HomeScreen/navBar.dart';
 import 'package:jitsist/LoginScreen/ForgotPassword.dart';
 import 'package:jitsist/SignupScreen/Signup.dart';

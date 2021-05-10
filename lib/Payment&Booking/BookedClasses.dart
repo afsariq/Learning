@@ -58,6 +58,7 @@ class _BookedClassState extends State<BookedClass> {
                           radius: 8,
                           child: GestureDetector(
                             child: Container(
+                              height: 60,
                               decoration: BoxDecoration(
                                   color: Colors.green,
                                   borderRadius:
@@ -68,8 +69,11 @@ class _BookedClassState extends State<BookedClass> {
                                     padding: const EdgeInsets.all(8.0),
                                     child: Row(
                                       children: [
-                                        Text("Time : "),
-                                        Text(docReference['Time']),
+                                        Expanded(
+                                            flex: 1, child: Text("Time : ")),
+                                        Expanded(
+                                            flex: 3,
+                                            child: Text(docReference['Time'])),
                                       ],
                                     ),
                                   ),
@@ -82,18 +86,8 @@ class _BookedClassState extends State<BookedClass> {
                                         Expanded(
                                             flex: 1, child: Text('Room Id : ')),
                                         Expanded(
-                                            flex: 2,
+                                            flex: 3,
                                             child: Text(docReference['Link'])),
-                                        Expanded(
-                                          flex: 1,
-                                          child: IconButton(
-                                              icon: Icon(Icons.copy),
-                                              onPressed: () {
-                                                Clipboard.setData(ClipboardData(
-                                                    text:
-                                                        docReference['Link']));
-                                              }),
-                                        )
                                       ],
                                     ),
                                   ),

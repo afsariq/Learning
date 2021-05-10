@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:jitsist/Payment&Booking/Booking.dart';
-import 'package:jitsist/TeacherProfile/Teaherpro.dart';
+import 'package:jitsist/Payment&Booking/Profile.dart';
 
-class ALmaths extends StatefulWidget {
+class Subject extends StatefulWidget {
+  String cls;
+  String sub;
+  Subject({
+    @required this.cls,
+    @required this.sub,
+  });
+
   @override
-  _ALmathsState createState() => _ALmathsState();
+  _SubjectState createState() => _SubjectState();
 }
 
-class _ALmathsState extends State<ALmaths> {
+class _SubjectState extends State<Subject> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,8 +28,8 @@ class _ALmathsState extends State<ALmaths> {
         body: StreamBuilder(
             stream: FirebaseFirestore.instance
                 .collection("Teacher")
-                .where('Class', isEqualTo: '6-9')
-                .where('Subject', isEqualTo: 'maths')
+                .where('Class', isEqualTo: widget.cls)
+                .where('Subject', isEqualTo: widget.sub)
                 .snapshots(),
             builder:
                 (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
@@ -40,15 +46,24 @@ class _ALmathsState extends State<ALmaths> {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
-                      child: Row(children: [
-                        Column(children: [
-                          Row(children: [
-                            Image.network(
-                              docReference['Image'],
-                              width: 150,
-                              height: 150,
+                      child: Column(children: [
+                        Row(children: [
+                          Expanded(
+                            flex: 1,
+                            child: SizedBox(
+                              //  width: 110,
+                              child: Image.network(
+                                docReference['Image'],
+                                width: 100,
+                                height: 100,
+                              ),
                             ),
-                            Column(
+                          ),
+                          Expanded(
+                            flex: 2,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Text(
                                   docReference['Name'],
@@ -69,8 +84,9 @@ class _ALmathsState extends State<ALmaths> {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => Booking(
-                                                  Id: id,
+                                            builder: (context) => profileScreen(
+                                                  PId: id,
+                                                  img: docReference['Image'],
                                                 )));
                                   },
                                   child: Text(
@@ -81,13 +97,9 @@ class _ALmathsState extends State<ALmaths> {
                                   color: Color(0xff00007c),
                                 ),
                               ],
-                            )
-                          ]),
+                            ),
+                          )
                         ]),
-                        Divider(
-                          color: Colors.black,
-                          thickness: 1,
-                        )
                       ]),
                     ),
                   ),

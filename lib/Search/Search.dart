@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:jitsist/Payment&Booking/Booking.dart';
+
+import 'package:jitsist/Payment&Booking/Profile.dart';
 
 class SearchTeacher extends StatefulWidget {
   @override
@@ -138,62 +139,61 @@ class _SearchTeacherState extends State<SearchTeacher> {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
-                      child: Column(
-                        children: [
-                          ///////////////////////////////////////////////
-                          Row(children: [
-                            Column(children: [
-                              Row(children: [
-                                SizedBox(
-                                  width: 110,
-                                  child: Image.network(
-                                    docReference['Image'],
-                                    width: 100,
-                                    height: 100,
-                                  ),
+                      child: Column(children: [
+                        Row(children: [
+                          Expanded(
+                            flex: 1,
+                            child: SizedBox(
+                              //  width: 110,
+                              child: Image.network(
+                                docReference['Image'],
+                                width: 100,
+                                height: 100,
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            flex: 2,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  docReference['Name'],
+                                  style: TextStyle(fontSize: 25),
                                 ),
-                                Column(
+                                Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    Text(
-                                      docReference['Name'],
-                                      style: TextStyle(fontSize: 25),
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text("5"),
-                                        Icon(
-                                          Icons.star,
-                                          color: Colors.amber,
-                                        )
-                                      ],
-                                    ),
-                                    RaisedButton(
-                                      onPressed: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) => Booking(
-                                                      Id: id,
-                                                    )));
-                                      },
-                                      child: Text(
-                                        "Select",
-                                        style: TextStyle(color: Colors.white),
-                                      ),
-                                      shape: StadiumBorder(),
-                                      color: Color(0xff00007c),
-                                    ),
+                                    Text("5"),
+                                    Icon(
+                                      Icons.star,
+                                      color: Colors.amber,
+                                    )
                                   ],
-                                )
-                              ]),
-                            ]),
-                          ]),
-                        ],
-                      ),
+                                ),
+                                RaisedButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => profileScreen(
+                                                  PId: id,
+                                                  img: docReference['Image'],
+                                                )));
+                                  },
+                                  child: Text(
+                                    "Select",
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                  shape: StadiumBorder(),
+                                  color: Color(0xff00007c),
+                                ),
+                              ],
+                            ),
+                          )
+                        ]),
+                      ]),
                     ),
                   ),
                 );

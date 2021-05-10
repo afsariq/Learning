@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:jitsist/CalendarScreen/Calendar.dart';
+
 import 'package:jitsist/HomeScreen/Home.dart';
-import 'package:jitsist/VideoCall/Video.dart';
+import 'package:jitsist/Payment&Booking/BookedClasses.dart';
 
 class MyNavigationBar extends StatefulWidget {
   MyNavigationBar({Key key}) : super(key: key);
@@ -12,10 +12,7 @@ class MyNavigationBar extends StatefulWidget {
 
 class _MyNavigationBarState extends State<MyNavigationBar> {
   int _selectedIndex = 0;
-  static List<Widget> _widgetOptions = <Widget>[
-    HomeScreen(),
-    //Video(),
-  ];
+  static List<Widget> _widgetOptions = <Widget>[HomeScreen(), BookedClass()];
 
   void _onItemTapped(int index) {
     setState(() {
@@ -37,8 +34,8 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
               backgroundColor: Color(0xff00007c),
             ),
             BottomNavigationBarItem(
-                icon: Icon(Icons.video_call),
-                title: Text('Join Class'),
+                icon: Icon(Icons.list),
+                title: Text('Shedule'),
                 backgroundColor: Color(0xff00007c)),
           ],
           type: BottomNavigationBarType.shifting,

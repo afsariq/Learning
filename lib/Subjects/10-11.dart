@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jitsist/Subjects/Subjects.dart';
 
 class OLsubjects extends StatelessWidget {
   @override
@@ -27,7 +28,15 @@ class OLsubjects extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Subject(
+                                            cls: '10-11',
+                                            sub: 'Maths',
+                                          )));
+                            },
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/math.png"),
@@ -43,7 +52,15 @@ class OLsubjects extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Subject(
+                                            cls: '10-11',
+                                            sub: 'Science',
+                                          )));
+                            },
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/phy.jpg"),
@@ -59,7 +76,15 @@ class OLsubjects extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Subject(
+                                            cls: '10-11',
+                                            sub: 'English',
+                                          )));
+                            },
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/eng.jpeg"),
@@ -82,7 +107,15 @@ class OLsubjects extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Subject(
+                                            cls: '10-11',
+                                            sub: 'History',
+                                          )));
+                            },
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/hist.jpg"),
@@ -98,7 +131,15 @@ class OLsubjects extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Subject(
+                                            cls: '10-11',
+                                            sub: 'HealthScience',
+                                          )));
+                            },
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/health.png"),
@@ -114,7 +155,15 @@ class OLsubjects extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Subject(
+                                            cls: '10-11',
+                                            sub: 'Geography',
+                                          )));
+                            },
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/geo.png"),
@@ -137,7 +186,15 @@ class OLsubjects extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Subject(
+                                            cls: '10-11',
+                                            sub: 'ICT',
+                                          )));
+                            },
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/ict.png"),
@@ -153,7 +210,15 @@ class OLsubjects extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Subject(
+                                            cls: '10-11',
+                                            sub: 'Civics',
+                                          )));
+                            },
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/civi.jpg"),
@@ -169,7 +234,15 @@ class OLsubjects extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Subject(
+                                            cls: '10-11',
+                                            sub: 'Arts',
+                                          )));
+                            },
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/art.jpg"),
@@ -192,7 +265,15 @@ class OLsubjects extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Subject(
+                                            cls: '10-11',
+                                            sub: 'PTS',
+                                          )));
+                            },
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/pts.jpg"),
@@ -208,7 +289,15 @@ class OLsubjects extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Subject(
+                                            cls: '10-11',
+                                            sub: 'Sinhala',
+                                          )));
+                            },
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/sinhala.jpg"),
@@ -224,7 +313,15 @@ class OLsubjects extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Subject(
+                                            cls: '10-11',
+                                            sub: 'Commerce',
+                                          )));
+                            },
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/comm.png"),
@@ -247,7 +344,15 @@ class OLsubjects extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Subject(
+                                            cls: '10-11',
+                                            sub: '2nd Language Sinhala',
+                                          )));
+                            },
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/sinhala.jpg"),
@@ -266,7 +371,15 @@ class OLsubjects extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Subject(
+                                            cls: '10-11',
+                                            sub: '2nd Language Tamil',
+                                          )));
+                            },
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/tam.png"),
@@ -286,7 +399,10 @@ class OLsubjects extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => OLsubjects()));
+                                      builder: (context) => Subject(
+                                            cls: '10-11',
+                                            sub: 'Sinhala Literery',
+                                          )));
                             },
                             child: CircleAvatar(
                               backgroundImage:
@@ -310,7 +426,15 @@ class OLsubjects extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Subject(
+                                            cls: '10-11',
+                                            sub: 'Buddhism',
+                                          )));
+                            },
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/buddhism.png"),
@@ -326,7 +450,15 @@ class OLsubjects extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Subject(
+                                            cls: '10-11',
+                                            sub: 'Sinhala Language',
+                                          )));
+                            },
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/sinhala.jpg"),
@@ -342,7 +474,15 @@ class OLsubjects extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Subject(
+                                            cls: '10-11',
+                                            sub: 'Music',
+                                          )));
+                            },
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/music.png"),

@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:jitsist/Subjects/AdlevelStream/Science,Maths/Bio.dart';
-import 'package:jitsist/Subjects/AdlevelStream/Science,Maths/agriculture.dart';
-import 'package:jitsist/Subjects/AdlevelStream/Science,Maths/chemistry.dart';
-import 'package:jitsist/Subjects/AdlevelStream/Science,Maths/physics.dart';
 
 class scienceStream extends StatelessWidget {
   @override
@@ -63,12 +59,7 @@ class scienceStream extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => ALbio()));
-                            },
+                            onTap: () {},
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/math.png"),
@@ -84,12 +75,7 @@ class scienceStream extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => ALphysics()));
-                            },
+                            onTap: () {},
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/phy.jpg"),
@@ -112,12 +98,7 @@ class scienceStream extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => ALchemistry()));
-                            },
+                            onTap: () {},
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/chem.jpg"),
@@ -133,12 +114,7 @@ class scienceStream extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => ALagriculture()));
-                            },
+                            onTap: () {},
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/ict.png"),

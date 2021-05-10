@@ -1,9 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:jitsist/Subjects/AdlevelStream/Commerce/Accounting.dart';
-import 'package:jitsist/Subjects/AdlevelStream/Commerce/BuisinessStudies.dart';
-import 'package:jitsist/Subjects/AdlevelStream/Commerce/BusinessStatics.dart';
-import 'package:jitsist/Subjects/AdlevelStream/Commerce/CommIT.dart';
-import 'package:jitsist/Subjects/AdlevelStream/Commerce/Economics.dart';
 
 class commStream extends StatelessWidget {
   @override
@@ -64,12 +59,7 @@ class commStream extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => ALCommAccounts()));
-                            },
+                            onTap: () {},
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/math.png"),
@@ -85,13 +75,7 @@ class commStream extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          ALCommBusinessStudies()));
-                            },
+                            onTap: () {},
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/phy.jpg"),
@@ -107,12 +91,7 @@ class commStream extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => ALCommEconomics()));
-                            },
+                            onTap: () {},
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/eng.jpeg"),
@@ -135,13 +114,7 @@ class commStream extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          ALCommBusinessStatics()));
-                            },
+                            onTap: () {},
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/phy.jpg"),
@@ -157,12 +130,7 @@ class commStream extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => ALCommIt()));
-                            },
+                            onTap: () {},
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/math.png"),
