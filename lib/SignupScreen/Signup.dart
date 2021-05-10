@@ -7,17 +7,29 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class Signup extends StatelessWidget {
-  final _key = GlobalKey<FormState>();
+class Signup extends StatefulWidget {
   static final FirebaseFirestore _fireStore = FirebaseFirestore.instance;
+
+  @override
+  _SignupState createState() => _SignupState();
+}
+
+class _SignupState extends State<Signup> {
+  final _key = GlobalKey<FormState>();
+
   FirebaseAuth auth = FirebaseAuth.instance;
+
+  String error = "";
 
   final TextEditingController email = TextEditingController(),
       password = TextEditingController();
+
   TextEditingController phone = TextEditingController();
+
   TextEditingController city = TextEditingController();
 
   TextEditingController username = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -143,7 +155,40 @@ class Signup extends StatelessWidget {
                       )),
                 ),
               ),
-              SizedBox(height: 30),
+              if (error.length > 3)
+                Padding(
+                  padding: const EdgeInsets.only(left: 12.0, right: 12),
+                  child: Container(
+                    width: double.infinity,
+                    height: 35,
+                    child: Center(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        //crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Center(
+                            child: IconButton(
+                                iconSize: 18,
+                                icon: Icon(
+                                  Icons.error_outline,
+                                  color: Colors.red,
+                                ),
+                                onPressed: () {}),
+                          ),
+                          Text(
+                            error,
+                            style: TextStyle(color: Colors.red),
+                          ),
+                        ],
+                      ),
+                    ),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      color: Colors.amberAccent,
+                    ),
+                  ),
+                ),
+              SizedBox(height: 20),
               Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(18),
@@ -195,7 +240,10 @@ class Signup extends StatelessWidget {
       UserCredential userCredential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(
               email: email.text, password: password.text);
-      await _fireStore.collection('Students').doc(userCredential.user.uid).set({
+      await Signup._fireStore
+          .collection('Students')
+          .doc(userCredential.user.uid)
+          .set({
         KEY_SHOPNAME: username.text,
         KEY_PHONE: phone.text,
         KEY_CITY: city.text,
@@ -210,8 +258,14 @@ class Signup extends StatelessWidget {
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         print('The password provided is too weak.');
+        setState(() {
+          error = "Password is too weak";
+        });
       } else if (e.code == 'email-already-in-use') {
         print('The account already exists for that email.');
+        setState(() {
+          error = "account already exists for that email";
+        });
       }
     } catch (e) {
       print(e);
