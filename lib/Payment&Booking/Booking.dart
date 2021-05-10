@@ -248,73 +248,76 @@ class _BookingState extends State<Booking> {
                             onPressed: () {
                               print(selected);
                               print(field);
-
-                              AlertDialog alert = AlertDialog(
-                                title: Text("You Selected     " + selected),
-                                actions: [
-                                  FlatButton(
-                                    child: Row(
-                                      children: [
-                                        Text("Back"),
-                                      ],
+                              if (selected != 'booked') {
+                                AlertDialog alert = AlertDialog(
+                                  title: Text("You Selected     " + selected),
+                                  actions: [
+                                    FlatButton(
+                                      child: Row(
+                                        children: [
+                                          Text("Back"),
+                                        ],
+                                      ),
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
                                     ),
-                                    onPressed: () {
-                                      Navigator.pop(context);
+                                    FlatButton(
+                                      child: Row(
+                                        children: [
+                                          Text("ok"),
+                                        ],
+                                      ),
+                                      onPressed: () {
+                                        FirebaseFirestore.instance
+                                            .collection('Teacher')
+                                            .doc(widget.Id)
+                                            .collection('ClassTime')
+                                            .doc(widget.Id)
+                                            .update({field: 'booked'});
+
+                                        FirebaseFirestore.instance
+                                            .collection('Teacher')
+                                            .doc(widget.Id)
+                                            .collection('Booked Class')
+                                            .doc()
+                                            .set({
+                                          'Time': selected,
+                                          'User': FirebaseAuth
+                                              .instance.currentUser.uid,
+                                          'Link': Room
+                                        });
+
+                                        FirebaseFirestore.instance
+                                            .collection('Students')
+                                            .doc(
+                                              FirebaseAuth
+                                                  .instance.currentUser.uid,
+                                            )
+                                            .collection('Booked Class')
+                                            .doc()
+                                            .set({
+                                          'Time': selected,
+                                          'Link': Room
+                                        });
+
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    BookedClass()));
+                                      },
+                                    )
+                                  ],
+                                );
+                                showDialog(
+                                    context: context,
+                                    builder: (BuildContext) {
+                                      return alert;
                                     },
-                                  ),
-                                  FlatButton(
-                                    child: Row(
-                                      children: [
-                                        Text("ok"),
-                                      ],
-                                    ),
-                                    onPressed: () {
-                                      FirebaseFirestore.instance
-                                          .collection('Teacher')
-                                          .doc(widget.Id)
-                                          .collection('ClassTime')
-                                          .doc(widget.Id)
-                                          .update(
-                                              {field: 'booked  ' + selected});
-
-                                      FirebaseFirestore.instance
-                                          .collection('Teacher')
-                                          .doc(widget.Id)
-                                          .collection('Booked Class')
-                                          .doc()
-                                          .set({
-                                        'Time': selected,
-                                        'User': FirebaseAuth
-                                            .instance.currentUser.uid,
-                                        'Link': Room
-                                      });
-
-                                      FirebaseFirestore.instance
-                                          .collection('Students')
-                                          .doc(
-                                            FirebaseAuth
-                                                .instance.currentUser.uid,
-                                          )
-                                          .collection('Booked Class')
-                                          .doc()
-                                          .set(
-                                              {'Time': selected, 'Link': Room});
-
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  BookedClass()));
-                                    },
-                                  )
-                                ],
-                              );
-                              showDialog(
-                                  context: context,
-                                  builder: (BuildContext) {
-                                    return alert;
-                                  },
-                                  barrierDismissible: true);
+                                    barrierDismissible: true);
+                              } else {}
+                              ;
                             },
                             child: Text(
                               'Confirm',
@@ -323,11 +326,6 @@ class _BookingState extends State<Booking> {
                             shape: StadiumBorder(),
                             color: Color(0xff00007c),
                           ),
-
-                          RaisedButton(onPressed: () {
-                            print(selected);
-                            print(field);
-                          }),
 
                           SizedBox(
                             height: 50,

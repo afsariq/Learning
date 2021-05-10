@@ -144,15 +144,17 @@ class _SearchTeacherState extends State<SearchTeacher> {
                           Row(children: [
                             Column(children: [
                               Row(children: [
-                                Image.network(
-                                  docReference['Image'],
-                                  width: 150,
-                                  height: 150,
-                                ),
                                 SizedBox(
-                                  width: 50,
+                                  width: 110,
+                                  child: Image.network(
+                                    docReference['Image'],
+                                    width: 100,
+                                    height: 100,
+                                  ),
                                 ),
                                 Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Text(
                                       docReference['Name'],
