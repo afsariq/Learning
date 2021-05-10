@@ -38,6 +38,7 @@ dependencies:
   page_transition: "^1.1.7+6"
   shared_preferences: ^2.0.5
   # stream_chat_flutter: ^1.0.0
+  clippy_flutter: ^1.1.1
 
 dev_dependencies:
   flutter_test:

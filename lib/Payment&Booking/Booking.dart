@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'dart:math';
+
+import 'package:jitsist/Payment&Booking/BookedClasses.dart';
 
 class Booking extends StatefulWidget {
   String Id;
@@ -22,6 +25,9 @@ class _BookingState extends State<Booking> {
   MaterialColor contColor4 = Colors.grey;
   String selected = null;
   String field;
+  var RoomLink = Random();
+
+  String Room = "Link" + FirebaseAuth.instance.currentUser.uid + "join";
 
   @override
   Widget build(BuildContext context) {
@@ -280,8 +286,25 @@ class _BookingState extends State<Booking> {
                                         'Time': selected,
                                         'User': FirebaseAuth
                                             .instance.currentUser.uid,
-                                        'Link': ''
+                                        'Link': Room
                                       });
+
+                                      FirebaseFirestore.instance
+                                          .collection('Students')
+                                          .doc(
+                                            FirebaseAuth
+                                                .instance.currentUser.uid,
+                                          )
+                                          .collection('Booked Class')
+                                          .doc()
+                                          .set(
+                                              {'Time': selected, 'Link': Room});
+
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  BookedClass()));
                                     },
                                   )
                                 ],
@@ -300,6 +323,11 @@ class _BookingState extends State<Booking> {
                             shape: StadiumBorder(),
                             color: Color(0xff00007c),
                           ),
+
+                          RaisedButton(onPressed: () {
+                            print(selected);
+                            print(field);
+                          }),
 
                           SizedBox(
                             height: 50,

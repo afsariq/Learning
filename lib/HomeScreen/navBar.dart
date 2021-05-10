@@ -14,7 +14,7 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
   int _selectedIndex = 0;
   static List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
-    Video(),
+    //Video(),
   ];
 
   void _onItemTapped(int index) {

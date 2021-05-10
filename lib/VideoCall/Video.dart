@@ -5,6 +5,11 @@ import 'package:jitsi_meet/jitsi_meet.dart';
 import 'dart:math';
 
 class Video extends StatefulWidget {
+  String Linkid;
+
+  Video({
+    @required this.Linkid,
+  });
   @override
   _VideoState createState() => _VideoState();
 }
@@ -14,6 +19,8 @@ String abc = no.toString();
 String abcd = '/learningApp.Join';
 String abcde = 'http//LearningApp/Olecture.link/';
 String link = abcde + abc + abcd;
+
+String li;
 
 class _VideoState extends State<Video> {
   final serverText = TextEditingController();
@@ -63,7 +70,7 @@ class _VideoState extends State<Video> {
                 ),
                 TextField(
                   controller: roomText,
-                  //readOnly: true,
+                  readOnly: true,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: "Room",
@@ -133,6 +140,9 @@ class _VideoState extends State<Video> {
                   width: 150,
                   child: RaisedButton(
                     onPressed: () {
+                      setState(() {
+                        li == widget.Linkid;
+                      });
                       _joinMeeting();
                     },
                     shape: StadiumBorder(),
@@ -178,7 +188,7 @@ class _VideoState extends State<Video> {
 
     try {
       var options = JitsiMeetingOptions()
-        ..room = roomText.text
+        ..room = widget.Linkid
         ..serverURL = serverUrl
         ..subject = subjectText.text
         ..userDisplayName = nameText.text

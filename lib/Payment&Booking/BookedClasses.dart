@@ -1,6 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:clippy_flutter/clippy_flutter.dart';
+import 'package:jitsist/HomeScreen/navBar.dart';
+import 'package:jitsist/Payment&Booking/Booking.dart';
+import 'package:jitsist/VideoCall/Video.dart';
 
 class BookedClass extends StatefulWidget {
   @override
@@ -17,6 +22,12 @@ class _BookedClassState extends State<BookedClass> {
           actions: [
             // IconButton(icon: Icon(Icons.chat_bubble), onPressed: () {})
           ],
+          leading: IconButton(
+              icon: Icon(Icons.arrow_back),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => MyNavigationBar()));
+              }),
         ),
         body: StreamBuilder(
             stream: FirebaseFirestore.instance
@@ -37,36 +48,66 @@ class _BookedClassState extends State<BookedClass> {
                 String id = docReference.id;
 
                 return Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          child: Column(
-                            children: [
-                              Container(
-                                  width: double.infinity,
-                                  height: 30,
-                                  decoration: BoxDecoration(
-                                      color: Colors.grey,
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(10))),
-                                  child: Padding(
+                        padding:
+                            const EdgeInsets.only(left: 8, right: 8, top: 8),
+                        child: Ticket(
+                          radius: 8,
+                          child: GestureDetector(
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.green,
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10))),
+                              child: Column(
+                                children: [
+                                  Padding(
                                     padding: const EdgeInsets.all(8.0),
-                                    child: Text(docReference['Time']),
-                                  )),
-                              SizedBox(height: 5),
-                              Container(
-                                  width: double.infinity,
-                                  height: 30,
-                                  decoration: BoxDecoration(
-                                      color: Colors.grey,
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(10))),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text(docReference['Link']),
-                                  )),
-                            ],
+                                    child: Row(
+                                      children: [
+                                        Text("Time : "),
+                                        Text(docReference['Time']),
+                                      ],
+                                    ),
+                                  ),
+                                  // SizedBox(height: 5),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 8, right: 8, bottom: 5),
+                                    child: Row(
+                                      children: [
+                                        Expanded(
+                                            flex: 1, child: Text('Room Id : ')),
+                                        Expanded(
+                                            flex: 2,
+                                            child: Text(docReference['Link'])),
+                                        Expanded(
+                                          flex: 1,
+                                          child: IconButton(
+                                              icon: Icon(Icons.copy),
+                                              onPressed: () {
+                                                Clipboard.setData(ClipboardData(
+                                                    text:
+                                                        docReference['Link']));
+                                              }),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Video(
+                                            Linkid: docReference['Link'],
+                                          )));
+                            },
                           ),
                         )),
                     Divider(
