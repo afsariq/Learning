@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:jitsist/Courses/FreeCourses.dart';
 import 'package:jitsist/LoginScreen/Login.dart';
+
 import 'package:jitsist/Search/Search.dart';
 import 'package:jitsist/Subjects/AL.dart';
 import 'package:jitsist/Courses/Courses.dart';
@@ -413,7 +414,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             child: Padding(
                               padding: const EdgeInsets.only(left: 38.0),
                               child: Text(
-                                "Play Quizz Challange",
+                                "Play Quiz Challange",
                                 style: TextStyle(
                                     fontSize: 20,
                                     color: Colors.white,
