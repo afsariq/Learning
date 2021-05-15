@@ -29,10 +29,9 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
       bottomNavigationBar: BottomNavigationBar(
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              title: Text('Home'),
-              backgroundColor: Color(0xff00007c),
-            ),
+                icon: Icon(Icons.home),
+                title: Text('Home'),
+                backgroundColor: Color(0xff00007c)),
             BottomNavigationBarItem(
                 icon: Icon(Icons.list),
                 title: Text('Shedule'),

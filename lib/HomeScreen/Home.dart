@@ -126,7 +126,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         onTap: () {},
                                         child: CircleAvatar(
                                           backgroundImage: AssetImage(
-                                              "Assets/Images/scho.jpg"),
+                                              "Assets/Images/scho.png"),
                                           radius: 30,
                                         ),
                                       ),
@@ -149,7 +149,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         onTap: () {},
                                         child: CircleAvatar(
                                           backgroundImage: AssetImage(
-                                              "Assets/Images/phy.jpg"),
+                                              "Assets/Images/1 (87).png"),
                                           radius: 30,
                                         ),
                                       ),
@@ -172,7 +172,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         onTap: () {},
                                         child: CircleAvatar(
                                           backgroundImage: AssetImage(
-                                              "Assets/Images/oth.png"),
+                                              "Assets/Images/1 (118).png"),
                                           radius: 30,
                                         ),
                                       ),
@@ -210,7 +210,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         },
                                         child: CircleAvatar(
                                           backgroundImage: AssetImage(
-                                              "Assets/Images/unnamed.png"),
+                                              "Assets/Images/1 (101).png"),
                                           radius: 30,
                                         ),
                                       ),
@@ -239,7 +239,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         },
                                         child: CircleAvatar(
                                           backgroundImage: AssetImage(
-                                              "Assets/Images/allogo.png"),
+                                              "Assets/Images/1 (21).png"),
                                           radius: 30,
                                         ),
                                       ),
@@ -268,7 +268,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         },
                                         child: CircleAvatar(
                                           backgroundImage: AssetImage(
-                                              "Assets/Images/gr9.png"),
+                                              "Assets/Images/1 (124).png"),
                                           radius: 30,
                                         ),
                                       ),
@@ -304,7 +304,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         },
                                         child: CircleAvatar(
                                           backgroundImage: AssetImage(
-                                              "Assets/Images/onc.jpg"),
+                                              "Assets/Images/1 (122).png"),
                                           radius: 30,
                                         ),
                                       ),
@@ -339,7 +339,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         },
                                         child: CircleAvatar(
                                           backgroundImage: AssetImage(
-                                              "Assets/Images/search.jpg"),
+                                              "Assets/Images/1 (9).png"),
                                           radius: 30,
                                         ),
                                       ),
@@ -362,7 +362,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         onTap: () {},
                                         child: CircleAvatar(
                                           backgroundImage: AssetImage(
-                                              "Assets/Images/pp.png"),
+                                              "Assets/Images/1 (110).png"),
                                           radius: 30,
                                         ),
                                       ),
