@@ -6,7 +6,7 @@ class FreeCourses extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Colors.blue[100],
+        color: Colors.white24,
         child: ListView.builder(
           itemCount: 10,
           shrinkWrap: true,
@@ -14,7 +14,7 @@ class FreeCourses extends StatelessWidget {
             width: MediaQuery.of(context).size.width,
             padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
             child: Card(
-              elevation: 5.0,
+              elevation: 3.0,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(0.0),
               ),
