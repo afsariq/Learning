@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jitsist/Courses/FreeCourseVideo.dart';
 
 class DetailsPage extends StatelessWidget {
   final int index;
@@ -111,43 +112,51 @@ class DetailsPage extends StatelessWidget {
                           itemBuilder: (BuildContext context, int index) {
                             return Stack(
                               children: <Widget>[
-                                Container(
-                                  margin:
-                                      EdgeInsets.fromLTRB(5.0, 5.0, 20.0, 5.0),
-                                  height: 80.0,
-                                  width: double.infinity,
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(20.0),
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsets.fromLTRB(
-                                        120.0, 20.0, 20.0, 20.0),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: <Widget>[
-                                        Text(
-                                          'Introduction',
-                                          style: TextStyle(
-                                            fontSize: 14.0,
-                                            fontWeight: FontWeight.w600,
+                                GestureDetector(
+                                  child: Container(
+                                    margin:
+                                        EdgeInsets.fromLTRB(5.0, 5.0, 20.0, 5.0),
+                                    height: 80.0,
+                                    width: double.infinity,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(20.0),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsets.fromLTRB(
+                                          120.0, 20.0, 20.0, 20.0),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: <Widget>[
+                                          Text(
+                                            'Introduction',
+                                            style: TextStyle(
+                                              fontSize: 14.0,
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                            overflow: TextOverflow.ellipsis,
+                                            maxLines: 2,
                                           ),
-                                          overflow: TextOverflow.ellipsis,
-                                          maxLines: 2,
-                                        ),
-                                        SizedBox(
-                                          height: 5.0,
-                                        ),
-                                        Text(
-                                          '30.10',
-                                          style: TextStyle(
-                                            color: Colors.grey,
+                                          SizedBox(
+                                            height: 5.0,
                                           ),
-                                        ),
-                                      ],
+                                          Text(
+                                            '30.10',
+                                            style: TextStyle(
+                                              color: Colors.grey,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ),
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => FreeCourseVideo()));
+                                  },
                                 ),
                                 Positioned(
                                   left: 5.0,
