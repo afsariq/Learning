@@ -84,10 +84,12 @@ class _BookedClassState extends State<BookedClass> {
                                     child: Row(
                                       children: [
                                         Expanded(
-                                            flex: 1, child: Text('Room Id : ')),
-                                        Expanded(
-                                            flex: 3,
-                                            child: Text(docReference['Link'])),
+                                            flex: 1,
+                                            child: Text(
+                                                'Tap here to attend class')),
+                                        //    Expanded(
+                                        //      flex: 3,
+                                        //    child: Text(docReference['Link'])),
                                       ],
                                     ),
                                   ),

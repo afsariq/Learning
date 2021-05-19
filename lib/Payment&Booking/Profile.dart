@@ -36,12 +36,6 @@ class _profileScreenState extends State<profileScreen> {
           ),
         ),
         body: Container(
-          decoration: BoxDecoration(
-              //  image: DecorationImage(
-              //image: NetworkImage(),
-              // fit: BoxFit.cover,
-              // ),
-              ),
           child: StreamBuilder(
               stream: FirebaseFirestore.instance
                   .collection("Teacher")
@@ -60,181 +54,79 @@ class _profileScreenState extends State<profileScreen> {
                   String id = docReference.id;
                   return Center(
                     child: Container(
+                        height: MediaQuery.of(context).size.height * 1,
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: NetworkImage(docReference['Image']),
+                                fit: BoxFit.none)),
                         child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        SizedBox(
-                          height: 15,
-                        ),
-                        Image.network(
-                          docReference['Image'],
-                          width: double.infinity,
-                          // width: 320,
-                          //height: 550,
-                        ),
-                        SizedBox(
-                          height: 30,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(5.0),
-                          child: Row(
-                            children: [
-                              SizedBox(
-                                width: 20,
-                              ),
-                              Expanded(
-                                flex: 2,
-                                child: Text(
-                                  docReference['Name'],
-                                  style: TextStyle(
-                                      fontSize: 30,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Divider(
-                          thickness: 1,
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(20.0)),
-                            color: Colors.grey[300],
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(
-                              children: [
-                                Expanded(
-                                  flex: 1,
-                                  child: Text(
-                                    'Rating : ',
-                                    style: TextStyle(fontSize: 18),
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                              height: 15,
+                            ),
+                            SizedBox(
+                              height: 30,
+                            ),
+                            Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: Opacity(
+                                  opacity: 0.7,
+                                  child: Container(
+                                    color: Colors.grey[300],
+                                    child: Row(
+                                      children: [
+                                        SizedBox(
+                                          width: 20,
+                                        ),
+                                        Expanded(
+                                          flex: 2,
+                                          child: Text(
+                                            docReference['Name'],
+                                            style: TextStyle(
+                                                fontSize: 30,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
+                                )),
+                            Divider(
+                              thickness: 1,
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            Opacity(
+                              opacity: 0.7,
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.grey[300],
                                 ),
-                                Expanded(
-                                  flex: 1,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
                                   child: Row(
-                                    // mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Text(
-                                        "5",
-                                        style: TextStyle(fontSize: 18),
-                                      ),
-                                      Icon(
-                                        Icons.star,
-                                        color: Colors.amber,
+                                      Expanded(
+                                        flex: 1,
+                                        child: Text(
+                                          docReference['About'],
+                                          style: TextStyle(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.bold),
+                                        ),
                                       )
                                     ],
                                   ),
                                 ),
-                              ],
+                              ),
                             ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(20.0)),
-                            color: Colors.grey[300],
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(
-                              children: [
-                                Expanded(
-                                  flex: 1,
-                                  child: Text(
-                                    'City : ',
-                                    style: TextStyle(fontSize: 18),
-                                  ),
-                                ),
-                                Expanded(
-                                  flex: 1,
-                                  child: Text(
-                                    docReference['City'],
-                                    style: TextStyle(fontSize: 18),
-                                  ),
-                                ),
-                              ],
+                            SizedBox(
+                              height: 20,
                             ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(20.0)),
-                            color: Colors.grey[300],
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(
-                              children: [
-                                Expanded(
-                                  flex: 1,
-                                  child: Text(
-                                    'Class : ',
-                                    style: TextStyle(fontSize: 18),
-                                  ),
-                                ),
-                                Expanded(
-                                  flex: 1,
-                                  child: Text(
-                                    docReference['Class'],
-                                    style: TextStyle(fontSize: 18),
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(20.0)),
-                            color: Colors.grey[300],
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(
-                              children: [
-                                Expanded(
-                                  flex: 1,
-                                  child: Text(
-                                    'Subject : ',
-                                    style: TextStyle(fontSize: 18),
-                                  ),
-                                ),
-                                Expanded(
-                                  flex: 1,
-                                  child: Text(
-                                    docReference['Subject'],
-                                    style: TextStyle(fontSize: 18),
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        /* Container(
+                            /* Container(
                           decoration: BoxDecoration(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(20.0)),
@@ -262,7 +154,7 @@ class _profileScreenState extends State<profileScreen> {
                             ),
                           ),
                         ),*/
-                        /*
+                            /*
                         Container(
                           decoration: BoxDecoration(
                             borderRadius:
@@ -291,29 +183,32 @@ class _profileScreenState extends State<profileScreen> {
                             ),
                           ),
                         ),*/
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(20.0)),
-                            color: Color(0xff00007c),
-                          ),
-                          child: FlatButton(
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Booking(
-                                            Id: widget.PId,
-                                          )));
-                            },
-                            child: Text(
-                              'Next',
-                              style: TextStyle(color: Colors.white),
+                            Container(
+                              decoration: BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(20.0)),
+                                color: Color(0xff00007c),
+                              ),
+                              child: FlatButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => Booking(
+                                                Id: widget.PId,
+                                              )));
+                                },
+                                child: Text(
+                                  'Next',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ),
                             ),
-                          ),
-                        )
-                      ],
-                    )),
+                            SizedBox(
+                              height: 30,
+                            ),
+                          ],
+                        )),
                   );
                 }).toList());
               }),

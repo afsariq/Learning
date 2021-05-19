@@ -23,6 +23,11 @@ class _BookingState extends State<Booking> {
   MaterialColor contColor2 = Colors.grey;
   MaterialColor contColor3 = Colors.grey;
   MaterialColor contColor4 = Colors.grey;
+  MaterialColor contColor5 = Colors.grey;
+  MaterialColor contColor6 = Colors.grey;
+  MaterialColor contColor7 = Colors.grey;
+  MaterialColor contColor8 = Colors.grey;
+  MaterialColor contColor9 = Colors.grey;
   String selected = null;
   String field;
   var RoomLink = Random();
@@ -98,6 +103,11 @@ class _BookingState extends State<Booking> {
                                   contColor1 = Colors.grey;
                                   contColor2 = Colors.grey;
                                   contColor3 = Colors.grey;
+                                  contColor5 = Colors.grey;
+                                  contColor6 = Colors.grey;
+                                  contColor7 = Colors.grey;
+                                  contColor8 = Colors.grey;
+                                  contColor9 = Colors.grey;
                                 });
                               },
                             ),
@@ -128,6 +138,11 @@ class _BookingState extends State<Booking> {
                                   contColor4 = Colors.grey;
                                   contColor2 = Colors.grey;
                                   contColor3 = Colors.grey;
+                                  contColor5 = Colors.grey;
+                                  contColor6 = Colors.grey;
+                                  contColor7 = Colors.grey;
+                                  contColor8 = Colors.grey;
+                                  contColor9 = Colors.grey;
                                 });
                               },
                             ),
@@ -158,6 +173,11 @@ class _BookingState extends State<Booking> {
                                   contColor1 = Colors.grey;
                                   contColor4 = Colors.grey;
                                   contColor3 = Colors.grey;
+                                  contColor5 = Colors.grey;
+                                  contColor6 = Colors.grey;
+                                  contColor7 = Colors.grey;
+                                  contColor8 = Colors.grey;
+                                  contColor9 = Colors.grey;
                                 });
                               },
                             ),
@@ -188,6 +208,11 @@ class _BookingState extends State<Booking> {
                                   contColor1 = Colors.grey;
                                   contColor2 = Colors.grey;
                                   contColor4 = Colors.grey;
+                                  contColor5 = Colors.grey;
+                                  contColor6 = Colors.grey;
+                                  contColor7 = Colors.grey;
+                                  contColor8 = Colors.grey;
+                                  contColor9 = Colors.grey;
                                 });
                               },
                             ),
@@ -218,12 +243,190 @@ class _BookingState extends State<Booking> {
                                   contColor1 = Colors.grey;
                                   contColor2 = Colors.grey;
                                   contColor3 = Colors.grey;
+                                  contColor5 = Colors.grey;
+                                  contColor6 = Colors.grey;
+                                  contColor7 = Colors.grey;
+                                  contColor8 = Colors.grey;
+                                  contColor9 = Colors.grey;
                                 });
                               },
                             ),
                           SizedBox(
                             height: 5,
                           ),
+                          if (docReference['Time5'] != 'Not set')
+                            GestureDetector(
+                              child: Container(
+                                width: 150,
+                                height: 30,
+                                decoration: BoxDecoration(
+                                    color: contColor5,
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10))),
+                                child: Center(
+                                  child: Text(
+                                    docReference['Time5'],
+                                  ),
+                                ),
+                              ),
+                              onTap: () {
+                                setState(() {
+                                  selected = docReference['Time5'];
+                                  field = 'Time5';
+                                  contColor4 = Colors.grey;
+                                  contColor = Colors.grey;
+                                  contColor1 = Colors.grey;
+                                  contColor2 = Colors.grey;
+                                  contColor3 = Colors.grey;
+                                  contColor5 = Colors.green;
+                                  contColor6 = Colors.grey;
+                                  contColor7 = Colors.grey;
+                                  contColor8 = Colors.grey;
+                                  contColor9 = Colors.grey;
+                                });
+                              },
+                            ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          if (docReference['Time6'] != 'Not set')
+                            GestureDetector(
+                              child: Container(
+                                width: 150,
+                                height: 30,
+                                decoration: BoxDecoration(
+                                    color: contColor6,
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10))),
+                                child: Center(
+                                  child: Text(
+                                    docReference['Time6'],
+                                  ),
+                                ),
+                              ),
+                              onTap: () {
+                                setState(() {
+                                  selected = docReference['Time6'];
+                                  field = 'Time6';
+                                  contColor4 = Colors.grey;
+                                  contColor = Colors.grey;
+                                  contColor1 = Colors.grey;
+                                  contColor2 = Colors.grey;
+                                  contColor3 = Colors.grey;
+                                  contColor5 = Colors.grey;
+                                  contColor6 = Colors.green;
+                                  contColor7 = Colors.grey;
+                                  contColor8 = Colors.grey;
+                                  contColor9 = Colors.grey;
+                                });
+                              },
+                            ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          if (docReference['Time7'] != 'Not set')
+                            GestureDetector(
+                              child: Container(
+                                width: 150,
+                                height: 30,
+                                decoration: BoxDecoration(
+                                    color: contColor7,
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10))),
+                                child: Center(
+                                  child: Text(
+                                    docReference['Time7'],
+                                  ),
+                                ),
+                              ),
+                              onTap: () {
+                                setState(() {
+                                  selected = docReference['Time7'];
+                                  field = 'Time7';
+                                  contColor1 = Colors.grey;
+                                  contColor = Colors.grey;
+                                  contColor4 = Colors.grey;
+                                  contColor2 = Colors.grey;
+                                  contColor3 = Colors.grey;
+                                  contColor5 = Colors.grey;
+                                  contColor6 = Colors.grey;
+                                  contColor7 = Colors.green;
+                                  contColor8 = Colors.grey;
+                                  contColor9 = Colors.grey;
+                                });
+                              },
+                            ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          if (docReference['Time8'] != 'Not set')
+                            GestureDetector(
+                              child: Container(
+                                width: 150,
+                                height: 30,
+                                decoration: BoxDecoration(
+                                    color: contColor8,
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10))),
+                                child: Center(
+                                  child: Text(
+                                    docReference['Time8'],
+                                  ),
+                                ),
+                              ),
+                              onTap: () {
+                                setState(() {
+                                  selected = docReference['Time8'];
+                                  field = 'Time8';
+                                  contColor1 = Colors.grey;
+                                  contColor = Colors.grey;
+                                  contColor4 = Colors.grey;
+                                  contColor2 = Colors.grey;
+                                  contColor3 = Colors.grey;
+                                  contColor5 = Colors.grey;
+                                  contColor6 = Colors.grey;
+                                  contColor7 = Colors.grey;
+                                  contColor8 = Colors.green;
+                                  contColor9 = Colors.grey;
+                                });
+                              },
+                            ),
+                          SizedBox(
+                            height: 5,
+                          ),
+
+                          if (docReference['Time9'] != 'Not set')
+                            GestureDetector(
+                              child: Container(
+                                width: 150,
+                                height: 30,
+                                decoration: BoxDecoration(
+                                    color: contColor9,
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10))),
+                                child: Center(
+                                  child: Text(
+                                    docReference['Time9'],
+                                  ),
+                                ),
+                              ),
+                              onTap: () {
+                                setState(() {
+                                  selected = docReference['Time9'];
+                                  field = 'Time9';
+                                  contColor1 = Colors.grey;
+                                  contColor = Colors.grey;
+                                  contColor4 = Colors.grey;
+                                  contColor2 = Colors.grey;
+                                  contColor3 = Colors.grey;
+                                  contColor5 = Colors.grey;
+                                  contColor6 = Colors.grey;
+                                  contColor7 = Colors.grey;
+                                  contColor8 = Colors.grey;
+                                  contColor9 = Colors.green;
+                                });
+                              },
+                            ),
 
                           //   Row(
                           //   children: [
