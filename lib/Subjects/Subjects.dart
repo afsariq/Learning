@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:jitsist/Payment&Booking/Profile.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class Subject extends StatefulWidget {
   String cls;
@@ -35,8 +36,9 @@ class _SubjectState extends State<Subject> {
                 (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
               if (!snapshot.hasData) {
                 return Center(
-                  child: Text("No data"),
-                );
+                    child: SpinKitRing(
+                  color: Colors.blue,
+                ));
                 //  Center(child: LoadingFilling.square());
               }
               return ListView(

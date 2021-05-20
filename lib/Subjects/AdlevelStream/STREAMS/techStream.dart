@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../Subjects.dart';
+
 class techStream extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -59,7 +61,16 @@ class techStream extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Subject(
+                                          cls: 'A/L',
+                                          sub: 'Maths Tech',
+                                        )),
+                              );
+                            },
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/math.png"),
@@ -75,7 +86,16 @@ class techStream extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Subject(
+                                          cls: 'A/L',
+                                          sub: 'Science Tech',
+                                        )),
+                              );
+                            },
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/phy.jpg"),
@@ -91,7 +111,16 @@ class techStream extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Subject(
+                                          cls: 'A/L',
+                                          sub: 'Arts',
+                                        )),
+                              );
+                            },
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/eng.jpeg"),

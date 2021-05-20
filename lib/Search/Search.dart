@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:jitsist/Payment&Booking/Profile.dart';
 
 class SearchTeacher extends StatefulWidget {
@@ -128,8 +128,9 @@ class _SearchTeacherState extends State<SearchTeacher> {
                 (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
               if (!snapshot.hasData) {
                 return Center(
-                  child: Text("No data"),
-                );
+                    child: SpinKitRing(
+                  color: Colors.blue,
+                ));
                 //  Center(child: LoadingFilling.square());
               }
               return ListView(

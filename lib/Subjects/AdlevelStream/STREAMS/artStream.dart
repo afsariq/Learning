@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jitsist/Subjects/Subjects.dart';
 
 class artStream extends StatelessWidget {
   @override
@@ -59,7 +60,16 @@ class artStream extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Subject(
+                                          cls: 'A/L',
+                                          sub: 'Economics',
+                                        )),
+                              );
+                            },
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/math.png"),
@@ -75,7 +85,16 @@ class artStream extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Subject(
+                                          cls: 'A/L',
+                                          sub: 'Geography',
+                                        )),
+                              );
+                            },
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/phy.jpg"),
@@ -91,7 +110,16 @@ class artStream extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Subject(
+                                          cls: 'A/L',
+                                          sub: 'History',
+                                        )),
+                              );
+                            },
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/eng.jpeg"),
@@ -114,14 +142,23 @@ class artStream extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Subject(
+                                          cls: 'A/L',
+                                          sub: 'Home Economics',
+                                        )),
+                              );
+                            },
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/math.png"),
                               radius: 30,
                             ),
                           ),
-                          Text("Home economics")
+                          Text("Home Economics")
                         ],
                       ),
                     ),
@@ -130,7 +167,16 @@ class artStream extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Subject(
+                                          cls: 'A/L',
+                                          sub: 'Political Science',
+                                        )),
+                              );
+                            },
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/phy.jpg"),
@@ -146,7 +192,16 @@ class artStream extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Subject(
+                                          cls: 'A/L',
+                                          sub: 'Logic',
+                                        )),
+                              );
+                            },
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/eng.jpeg"),
@@ -185,7 +240,16 @@ class artStream extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Subject(
+                                          cls: 'A/L',
+                                          sub: 'Accounting',
+                                        )),
+                              );
+                            },
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/phy.jpg"),
@@ -201,7 +265,16 @@ class artStream extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Subject(
+                                          cls: 'A/L',
+                                          sub: 'Business Statistics',
+                                        )),
+                              );
+                            },
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/eng.jpeg"),
@@ -224,7 +297,16 @@ class artStream extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Subject(
+                                          cls: 'A/L',
+                                          sub: 'Business Studies',
+                                        )),
+                              );
+                            },
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/math.png"),
@@ -240,7 +322,16 @@ class artStream extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Subject(
+                                          cls: 'A/L',
+                                          sub: 'Technology Studies',
+                                        )),
+                              );
+                            },
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/phy.jpg"),
@@ -256,7 +347,16 @@ class artStream extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Subject(
+                                          cls: 'A/L',
+                                          sub: 'Communication',
+                                        )),
+                              );
+                            },
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/eng.jpeg"),
@@ -279,14 +379,23 @@ class artStream extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Subject(
+                                          cls: 'A/L',
+                                          sub: 'Mass Media',
+                                        )),
+                              );
+                            },
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/math.png"),
                               radius: 30,
                             ),
                           ),
-                          Text("Mass media")
+                          Text("Mass Media")
                         ],
                       ),
                     ),
@@ -295,7 +404,16 @@ class artStream extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Subject(
+                                          cls: 'A/L',
+                                          sub: 'Information',
+                                        )),
+                              );
+                            },
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/phy.jpg"),
@@ -311,7 +429,16 @@ class artStream extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Subject(
+                                          cls: 'A/L',
+                                          sub: 'Communication Technology',
+                                        )),
+                              );
+                            },
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/eng.jpeg"),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../Subjects.dart';
+
 class mathsStream extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -59,7 +61,16 @@ class mathsStream extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Subject(
+                                          cls: 'A/L',
+                                          sub: 'Maths',
+                                        )),
+                              );
+                            },
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/math.png"),
@@ -75,7 +86,16 @@ class mathsStream extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Subject(
+                                          cls: 'A/L',
+                                          sub: 'Physics',
+                                        )),
+                              );
+                            },
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/phy.jpg"),
@@ -98,7 +118,16 @@ class mathsStream extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Subject(
+                                          cls: 'A/L',
+                                          sub: 'Chemistry',
+                                        )),
+                              );
+                            },
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/chem.jpg"),
@@ -114,7 +143,16 @@ class mathsStream extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Subject(
+                                          cls: 'A/L',
+                                          sub: 'ICT',
+                                        )),
+                              );
+                            },
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/ict.png"),

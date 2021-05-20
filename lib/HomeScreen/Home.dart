@@ -9,6 +9,7 @@ import 'package:jitsist/Courses/Courses.dart';
 import 'package:jitsist/Courses/FreeClassesList.dart';
 import 'package:jitsist/Subjects/6-9.dart';
 import 'package:jitsist/Subjects/10-11.dart';
+import 'package:jitsist/Subjects/Subjects.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:jitsist/Payment&Booking/BookedClasses.dart';
 
@@ -123,7 +124,15 @@ class _HomeScreenState extends State<HomeScreen> {
                                   child: Column(
                                     children: [
                                       GestureDetector(
-                                        onTap: () {},
+                                        onTap: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) => Subject(
+                                                        cls: 'Scholorship',
+                                                        sub: '-',
+                                                      )));
+                                        },
                                         child: CircleAvatar(
                                           backgroundImage: AssetImage(
                                               "Assets/Images/scho.png"),

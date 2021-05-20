@@ -313,7 +313,15 @@ class sixtoeleven extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Subject(
+                                            cls: '6-9',
+                                            sub: 'Commerce',
+                                          )));
+                            },
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/comm.png"),
@@ -336,7 +344,15 @@ class sixtoeleven extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Subject(
+                                            cls: '6-9',
+                                            sub: '2nd Language Sinhala',
+                                          )));
+                            },
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/sinhala.jpg"),
@@ -355,7 +371,15 @@ class sixtoeleven extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Subject(
+                                            cls: '6-9',
+                                            sub: '2nd Language Tamil',
+                                          )));
+                            },
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/tam.png"),
@@ -371,7 +395,15 @@ class sixtoeleven extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Subject(
+                                            cls: '6-9',
+                                            sub: 'Sinhala Literary',
+                                          )));
+                            },
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/sinhala.jpg"),
@@ -394,7 +426,15 @@ class sixtoeleven extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Subject(
+                                            cls: '6-9',
+                                            sub: 'Buddhism',
+                                          )));
+                            },
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/buddhism.png"),
@@ -410,7 +450,15 @@ class sixtoeleven extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Subject(
+                                            cls: '6-9',
+                                            sub: 'Sinhala Language',
+                                          )));
+                            },
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/sinhala.jpg"),
