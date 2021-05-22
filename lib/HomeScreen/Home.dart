@@ -130,7 +130,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                               MaterialPageRoute(
                                                   builder: (context) => Subject(
                                                         cls: 'Scholorship',
-                                                        sub: '-',
+                                                        sub: 'Scholorship',
                                                       )));
                                         },
                                         child: CircleAvatar(
