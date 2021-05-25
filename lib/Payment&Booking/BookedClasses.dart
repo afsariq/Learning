@@ -58,7 +58,7 @@ class _BookedClassState extends State<BookedClass> {
                           radius: 8,
                           child: GestureDetector(
                             child: Container(
-                              height: 60,
+                              height: 100,
                               decoration: BoxDecoration(
                                   color: Colors.green,
                                   borderRadius:
@@ -78,6 +78,19 @@ class _BookedClassState extends State<BookedClass> {
                                     ),
                                   ),
                                   // SizedBox(height: 5),
+
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Row(
+                                      children: [
+                                        Expanded(
+                                            flex: 1, child: Text("Link : ")),
+                                        Expanded(
+                                            flex: 3,
+                                            child: Text(docReference['Link'])),
+                                      ],
+                                    ),
+                                  ),
                                   Padding(
                                     padding: const EdgeInsets.only(
                                         left: 8, right: 8, bottom: 5),
@@ -87,9 +100,6 @@ class _BookedClassState extends State<BookedClass> {
                                             flex: 1,
                                             child: Text(
                                                 'Tap here to attend class')),
-                                        //    Expanded(
-                                        //      flex: 3,
-                                        //    child: Text(docReference['Link'])),
                                       ],
                                     ),
                                   ),

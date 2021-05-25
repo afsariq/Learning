@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'dart:math';
-
+import 'package:random_string/random_string.dart';
 import 'package:jitsist/Payment&Booking/BookedClasses.dart';
 
 class Booking extends StatefulWidget {
@@ -30,9 +30,10 @@ class _BookingState extends State<Booking> {
   MaterialColor contColor9 = Colors.grey;
   String selected = null;
   String field;
-  var RoomLink = Random();
+  Random RoomLink = Random();
 
-  String Room = "Link" + FirebaseAuth.instance.currentUser.uid + "join";
+  // String Room = "Link" + FirebaseAuth.instance.currentUser.uid + "join";
+  String Room = randomString(10);
 
   @override
   Widget build(BuildContext context) {
@@ -447,6 +448,9 @@ class _BookingState extends State<Booking> {
                           SizedBox(
                             height: 50,
                           ),
+                          RaisedButton(onPressed: () {
+                            print(Room);
+                          }),
                           RaisedButton(
                             onPressed: () {
                               print(selected);
@@ -456,9 +460,13 @@ class _BookingState extends State<Booking> {
                                   title: Text("You Selected     " + selected),
                                   actions: [
                                     FlatButton(
-                                      child: Row(
+                                      child: Column(
                                         children: [
-                                          Text("Back"),
+                                          Row(
+                                            children: [
+                                              Text("Back"),
+                                            ],
+                                          ),
                                         ],
                                       ),
                                       onPressed: () {
@@ -472,6 +480,7 @@ class _BookingState extends State<Booking> {
                                         ],
                                       ),
                                       onPressed: () {
+                                        //////////////////////////////
                                         FirebaseFirestore.instance
                                             .collection('Teacher')
                                             .doc(widget.Id)
