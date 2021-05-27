@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:jitsist/Courses/FreeCourses.dart';
 import 'package:jitsist/LoginScreen/Login.dart';
+import 'package:jitsist/Quizz/home.dart';
 
 import 'package:jitsist/Search/Search.dart';
 import 'package:jitsist/Subjects/AL.dart';
@@ -438,7 +439,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                     Icons.keyboard_arrow_right,
                                     color: Colors.white,
                                   ),
-                                  onPressed: () {}))
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => homepage()));
+                                  }))
                         ],
                       ),
                     ),
