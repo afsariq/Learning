@@ -202,6 +202,9 @@ class _SearchTeacherState extends State<SearchTeacher> {
                                                   profileScreen(
                                                     PId: id,
                                                     img: docReference['Image'],
+                                                    tname: docReference['Name'],
+                                                    sub:
+                                                        docReference['Subject'],
                                                   )));
                                     },
                                     child: Text(

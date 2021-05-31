@@ -7,9 +7,13 @@ import 'package:jitsist/Payment&Booking/Booking.dart';
 class profileScreen extends StatefulWidget {
   String PId;
   String img;
+  String tname;
+  String sub;
   profileScreen({
     @required this.PId,
     @required this.img,
+    @required this.tname,
+    @required this.sub,
   });
   @override
   _profileScreenState createState() => _profileScreenState();
@@ -196,6 +200,8 @@ class _profileScreenState extends State<profileScreen> {
                                       MaterialPageRoute(
                                           builder: (context) => Booking(
                                                 Id: widget.PId,
+                                                bookSub: widget.sub,
+                                                techname: widget.tname,
                                               )));
                                 },
                                 child: Text(

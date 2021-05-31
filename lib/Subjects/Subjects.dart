@@ -15,7 +15,7 @@ class Subject extends StatefulWidget {
   _SubjectState createState() => _SubjectState();
 }
 
-class _SubjectState extends State<Subject> {
+class _SubjectState extends State<Subject> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,12 +83,15 @@ class _SubjectState extends State<Subject> {
                                 ),
                                 RaisedButton(
                                   onPressed: () {
+                                    // _animationController.forward();
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) => profileScreen(
                                                   PId: id,
                                                   img: docReference['Image'],
+                                                  tname: docReference['Name'],
+                                                  sub: docReference['Subject'],
                                                 )));
                                   },
                                   child: Text(

@@ -7,9 +7,13 @@ import 'package:jitsist/Payment&Booking/BookedClasses.dart';
 
 class Booking extends StatefulWidget {
   String Id;
+  String techname;
+  String bookSub;
 
   Booking({
     @required this.Id,
+    @required this.techname,
+    @required this.bookSub,
   });
 
   @override
@@ -252,9 +256,7 @@ class _BookingState extends State<Booking> {
                                 });
                               },
                             ),
-                          SizedBox(
-                            height: 5,
-                          ),
+
                           if (docReference['Time5'] != 'Not set')
                             GestureDetector(
                               child: Container(
@@ -448,9 +450,7 @@ class _BookingState extends State<Booking> {
                           SizedBox(
                             height: 50,
                           ),
-                          RaisedButton(onPressed: () {
-                            print(Room);
-                          }),
+
                           RaisedButton(
                             onPressed: () {
                               print(selected);
@@ -497,7 +497,11 @@ class _BookingState extends State<Booking> {
                                           'Time': selected,
                                           'User': FirebaseAuth
                                               .instance.currentUser.uid,
-                                          'Link': Room
+                                          'Link': 'join' +
+                                              FirebaseAuth
+                                                  .instance.currentUser.uid,
+
+                                          //'Link': Room
                                         });
 
                                         FirebaseFirestore.instance
@@ -510,7 +514,11 @@ class _BookingState extends State<Booking> {
                                             .doc()
                                             .set({
                                           'Time': selected,
-                                          'Link': Room
+                                          'Link': 'join' +
+                                              FirebaseAuth
+                                                  .instance.currentUser.uid,
+                                          'Teacher': widget.techname,
+                                          'subject': widget.bookSub
                                         });
 
                                         Navigator.push(
