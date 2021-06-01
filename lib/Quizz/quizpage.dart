@@ -18,7 +18,7 @@ class getjson extends StatelessWidget {
   // sets the asset to a particular JSON file
   // and opens the JSON
   setasset() {
-    if (langname == "Python") {
+    if (langname == "Maths") {
       assettoload = "Assets/Qns/python.json";
     } else if (langname == "Java") {
       assettoload = "Assets/Qns/java.json";

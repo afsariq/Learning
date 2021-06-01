@@ -237,6 +237,7 @@ class _SignupState extends State<Signup> {
 
       const KEY_PHONE = "Phone";
       const KEY_CITY = "City";
+      const KEY_ID = "Id";
       UserCredential userCredential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(
               email: email.text, password: password.text);
@@ -247,6 +248,7 @@ class _SignupState extends State<Signup> {
         KEY_SHOPNAME: username.text,
         KEY_PHONE: phone.text,
         KEY_CITY: city.text,
+        KEY_ID: userCredential.user.uid,
       }).then((value) async {
         SharedPreferences prefs = await SharedPreferences.getInstance();
         prefs.setString('email', email.text);

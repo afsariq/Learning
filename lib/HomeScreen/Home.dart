@@ -4,6 +4,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:jitsist/Courses/FreeCourses.dart';
 import 'package:jitsist/LoginScreen/Login.dart';
+import 'package:jitsist/Payment&Booking/Profile.dart';
+import 'package:jitsist/Profile/ProfileScreen.dart';
 import 'package:jitsist/Quizz/home.dart';
 
 import 'package:jitsist/Search/Search.dart';
@@ -66,16 +68,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     "Profile",
                     style: TextStyle(fontSize: 18),
                   ),
-                  onTap: () {},
-                ),
-                ListTile(
-                  title: Text(
-                    "Booked Classes",
-                    style: TextStyle(fontSize: 18),
-                  ),
                   onTap: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => BookedClass()));
+                        MaterialPageRoute(builder: (context) => profile()));
                   },
                 ),
                 ListTile(

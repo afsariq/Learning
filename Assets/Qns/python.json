@@ -3,10 +3,10 @@
         "0": "Find the sum of 111 + 222 + 333",
         "1": "Subtract 457 from 832",
         "2": "50 times 5 is equal to ",
-        "3": "Which of the following keyword is used to define a function in Python ?",
-        "4": "Which of the following is a print Function in Python ?",
-        "5": "Which function finds out the Variable type in Python ?",
-        "6": "Which of the following keyword is used to define a function in Python ?",
+        "3": "What is the sum of 130+125+191?",
+        "4": "20+(90÷2) is equal to:",
+        "5": "The square of 8 is equal to: ?",
+        "6": "A square has all its angles equal to:",
         "7": "Which function finds out the Variable type in Python ?",
         "8": "Which of the following keyword is used to define a function in Python ?",
         "9": "Which function finds out the Variable type in Python ?",
@@ -33,28 +33,28 @@
             "d": "250"
         },
         "3": {
-            "a": "func",
-            "b": "def",
-            "c": "void",
-            "d": "function"
+            "a": "335",
+            "b": "456",
+            "c": "446",
+            "d": "426"
         },
         "4": {
-            "a": "cout",
-            "b": "print",
-            "c": "println",
-            "d": "stderr"
+            "a": "50",
+            "b": "55",
+            "c": "65",
+            "d": "60"
         },
         "5": {
-            "a": "typedef",
-            "b": "typeof",
-            "c": "type",
-            "d": "find"
+            "a": "64",
+            "b": "88",
+            "c": "80",
+            "d": "56"
         },
         "6": {
-            "a": "func",
-            "b": "def",
-            "c": "void",
-            "d": "function"
+            "a": "90",
+            "b": "180",
+            "c": "45",
+            "d": "360"
         },
         "7": {
             "a": "typedef",
@@ -85,10 +85,10 @@
         "0": "666",
         "1": "375",
         "2": "250",
-        "3": "def",
-        "4": "print",
-        "5": "type",
-        "6": "def",
+        "3": "446",
+        "4": "65",
+        "5": "64",
+        "6": "90",
         "7": "type",
         "8": "def",
         "9": "type",
