@@ -34,7 +34,7 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
                 backgroundColor: Color(0xff00007c)),
             BottomNavigationBarItem(
                 icon: Icon(Icons.list),
-                title: Text('Shedule'),
+                title: Text('Booked Classes'),
                 backgroundColor: Color(0xff00007c)),
           ],
           type: BottomNavigationBarType.shifting,

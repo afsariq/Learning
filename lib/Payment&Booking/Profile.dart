@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import 'package:jitsist/Payment&Booking/Booking.dart';
+import 'package:jitsist/Payment&Booking/BookingNew.dart';
 
 class profileScreen extends StatefulWidget {
   String PId;
@@ -198,7 +199,7 @@ class _profileScreenState extends State<profileScreen> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => Booking(
+                                          builder: (context) => BookClass(
                                                 Id: widget.PId,
                                                 bookSub: widget.sub,
                                                 techname: widget.tname,

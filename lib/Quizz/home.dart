@@ -11,7 +11,7 @@ class homepage extends StatefulWidget {
 class _homepageState extends State<homepage> {
   List<String> images = [
     "images/quizz1.png",
-    "images/java.png",
+    "images/gk.jpg",
     "images/js.png",
     "images/cpp.png",
     "images/linux.png",
@@ -128,7 +128,7 @@ class _homepageState extends State<homepage> {
         body: ListView(
           children: <Widget>[
             customcard("Maths", images[0], des[0]),
-            customcard("Java", images[1], des[1]),
+            customcard("GeneralKnowledge", images[1], des[1]),
             customcard("Javascript", images[2], des[2]),
             customcard("C++", images[3], des[3]),
             // customcard("Linux", images[4], des[4]),

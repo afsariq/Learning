@@ -40,7 +40,7 @@ class _BookedClassState extends State<BookedClass> {
               stream: FirebaseFirestore.instance
                   .collection("Students")
                   .doc(FirebaseAuth.instance.currentUser.uid)
-                  .collection('Booked Class')
+                  .collection('Booked Classes')
                   .snapshots(),
               builder: (BuildContext context,
                   AsyncSnapshot<QuerySnapshot> snapshot) {
