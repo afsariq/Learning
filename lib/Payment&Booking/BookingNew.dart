@@ -24,6 +24,11 @@ class BookClass extends StatefulWidget {
 
 class _BookClassState extends State<BookClass> {
   String day;
+  MaterialColor conttColor = Colors.grey;
+  MaterialColor conttColor1 = Colors.grey;
+  MaterialColor conttColor2 = Colors.grey;
+  MaterialColor conttColor3 = Colors.grey;
+  MaterialColor conttColor4 = Colors.grey;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,6 +40,7 @@ class _BookClassState extends State<BookClass> {
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
+                SizedBox(height: 30),
                 GestureDetector(
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -54,6 +60,13 @@ class _BookClassState extends State<BookClass> {
                   onTap: () {
                     setState(() {
                       day = 'Monday';
+                      conttColor = Colors.grey;
+                      conttColor1 = Colors.grey;
+                      conttColor2 = Colors.grey;
+                      conttColor3 = Colors.grey;
+                      conttColor4 = Colors.grey;
+
+                      Selected = 'Booked';
                     });
                   },
                 ),
@@ -77,6 +90,12 @@ class _BookClassState extends State<BookClass> {
                   onTap: () {
                     setState(() {
                       day = 'Tuesday';
+                      conttColor = Colors.grey;
+                      conttColor1 = Colors.grey;
+                      conttColor2 = Colors.grey;
+                      conttColor3 = Colors.grey;
+                      conttColor4 = Colors.grey;
+                      Selected = 'Booked';
                     });
                   },
                 ),
@@ -100,6 +119,12 @@ class _BookClassState extends State<BookClass> {
                   onTap: () {
                     setState(() {
                       day = 'Wednesday';
+                      conttColor = Colors.grey;
+                      conttColor1 = Colors.grey;
+                      conttColor2 = Colors.grey;
+                      conttColor3 = Colors.grey;
+                      conttColor4 = Colors.grey;
+                      Selected = 'Booked';
                     });
                   },
                 ),
@@ -123,6 +148,12 @@ class _BookClassState extends State<BookClass> {
                   onTap: () {
                     setState(() {
                       day = 'Thursday';
+                      conttColor = Colors.grey;
+                      conttColor1 = Colors.grey;
+                      conttColor2 = Colors.grey;
+                      conttColor3 = Colors.grey;
+                      conttColor4 = Colors.grey;
+                      Selected = 'Booked';
                     });
                   },
                 ),
@@ -146,6 +177,12 @@ class _BookClassState extends State<BookClass> {
                   onTap: () {
                     setState(() {
                       day = 'Friday';
+                      conttColor = Colors.grey;
+                      conttColor1 = Colors.grey;
+                      conttColor2 = Colors.grey;
+                      conttColor3 = Colors.grey;
+                      conttColor4 = Colors.grey;
+                      Selected = 'Booked';
                     });
                   },
                 ),
@@ -169,6 +206,12 @@ class _BookClassState extends State<BookClass> {
                   onTap: () {
                     setState(() {
                       day = 'Saturday';
+                      conttColor = Colors.grey;
+                      conttColor1 = Colors.grey;
+                      conttColor2 = Colors.grey;
+                      conttColor3 = Colors.grey;
+                      conttColor4 = Colors.grey;
+                      Selected = 'Booked';
                     });
                   },
                 ),
@@ -192,6 +235,12 @@ class _BookClassState extends State<BookClass> {
                   onTap: () {
                     setState(() {
                       day = 'Sunday';
+                      conttColor = Colors.grey;
+                      conttColor1 = Colors.grey;
+                      conttColor2 = Colors.grey;
+                      conttColor3 = Colors.grey;
+                      conttColor4 = Colors.grey;
+                      Selected = 'Booked';
                     });
                   },
                 ),
@@ -231,111 +280,136 @@ class _BookClassState extends State<BookClass> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       if (docReference['Time'] != 'Not set')
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              Field = 'Time';
-                              Selected = docReference['Time'];
-                            });
-                            print(Selected);
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                Field = 'Time';
+                                Selected = docReference['Time'];
+                                conttColor = Colors.green;
+                                conttColor1 = Colors.grey;
+                                conttColor2 = Colors.grey;
+                                conttColor3 = Colors.grey;
+                                conttColor4 = Colors.grey;
+                              });
+                              print(Selected);
+                            },
                             child: Container(
                               width: 200,
                               height: 35,
                               child: Center(child: Text(docReference['Time'])),
                               decoration: BoxDecoration(
-                                  color: Colors.grey,
+                                  color: conttColor,
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10))),
                             ),
                           ),
                         ),
                       if (docReference['Time1'] != 'Not set')
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              Field = 'Time1';
-                              Selected = docReference['Time1'];
-                            });
-                            print(Field);
-                            print(Selected);
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                Field = 'Time1';
+                                Selected = docReference['Time1'];
+                                conttColor = Colors.grey;
+                                conttColor1 = Colors.green;
+                                conttColor2 = Colors.grey;
+                                conttColor3 = Colors.grey;
+                                conttColor4 = Colors.grey;
+                              });
+                              print(Field);
+                              print(Selected);
+                            },
                             child: Container(
                               width: 200,
                               height: 35,
                               child: Center(child: Text(docReference['Time1'])),
                               decoration: BoxDecoration(
-                                  color: Colors.grey,
+                                  color: conttColor1,
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10))),
                             ),
                           ),
                         ),
                       if (docReference['Time2'] != 'Not set')
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              Field = 'Time2';
-                              Selected = docReference['Time2'];
-                            });
-                            print(Selected);
-                          },
-                          child: Padding(
+                        Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              width: 200,
-                              height: 35,
-                              child: Center(child: Text(docReference['Time2'])),
-                              decoration: BoxDecoration(
-                                  color: Colors.grey,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                            ),
-                          ),
-                        ),
+                            child: GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  Field = 'Time2';
+                                  Selected = docReference['Time2'];
+                                  conttColor = Colors.grey;
+                                  conttColor1 = Colors.grey;
+                                  conttColor2 = Colors.green;
+                                  conttColor3 = Colors.grey;
+                                  conttColor4 = Colors.grey;
+                                });
+                                print(Selected);
+                              },
+                              child: Container(
+                                width: 200,
+                                height: 35,
+                                child:
+                                    Center(child: Text(docReference['Time2'])),
+                                decoration: BoxDecoration(
+                                    color: conttColor2,
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10))),
+                              ),
+                            )),
                       if (docReference['Time3'] != 'Not set')
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              Field = 'Time3';
-                              Selected = docReference['Time3'];
-                            });
-                            print(Selected);
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                Field = 'Time3';
+                                Selected = docReference['Time3'];
+                                conttColor = Colors.grey;
+                                conttColor1 = Colors.grey;
+                                conttColor2 = Colors.grey;
+                                conttColor3 = Colors.green;
+                                conttColor4 = Colors.grey;
+                              });
+                              print(Selected);
+                            },
                             child: Container(
                               width: 200,
                               height: 35,
                               child: Center(child: Text(docReference['Time3'])),
                               decoration: BoxDecoration(
-                                  color: Colors.grey,
+                                  color: conttColor3,
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10))),
                             ),
                           ),
                         ),
                       if (docReference['Time4'] != 'Not set')
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              Field = 'Time4';
-                              Selected = docReference['Time4'];
-                            });
-                            print(Selected);
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                Field = 'Time4';
+                                Selected = docReference['Time4'];
+                                conttColor = Colors.grey;
+                                conttColor1 = Colors.grey;
+                                conttColor2 = Colors.grey;
+                                conttColor3 = Colors.grey;
+                                conttColor4 = Colors.green;
+                              });
+                              print(Selected);
+                            },
                             child: Container(
                               width: 200,
                               height: 35,
                               child: Center(child: Text(docReference['Time4'])),
                               decoration: BoxDecoration(
-                                  color: Colors.grey,
+                                  color: conttColor4,
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10))),
                             ),
@@ -410,6 +484,8 @@ class _BookClassState extends State<BookClass> {
                                       'Teacher': widget.techname,
                                       'subject': widget.bookSub
                                     });
+
+                                    Navigator.pop(context);
                                   },
                                 )
                               ],
@@ -473,6 +549,11 @@ class _BookClassState extends State<BookClass> {
                             setState(() {
                               Field = 'Time';
                               Selected = docReference['Time'];
+                              conttColor = Colors.green;
+                              conttColor1 = Colors.grey;
+                              conttColor2 = Colors.grey;
+                              conttColor3 = Colors.grey;
+                              conttColor4 = Colors.grey;
                             });
                             print(Selected);
                           },
@@ -483,7 +564,7 @@ class _BookClassState extends State<BookClass> {
                               height: 35,
                               child: Center(child: Text(docReference['Time'])),
                               decoration: BoxDecoration(
-                                  color: Colors.grey,
+                                  color: conttColor,
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10))),
                             ),
@@ -495,6 +576,11 @@ class _BookClassState extends State<BookClass> {
                             setState(() {
                               Field = 'Time1';
                               Selected = docReference['Time1'];
+                              conttColor = Colors.grey;
+                              conttColor1 = Colors.green;
+                              conttColor2 = Colors.grey;
+                              conttColor3 = Colors.grey;
+                              conttColor4 = Colors.grey;
                             });
                             print(Selected);
                           },
@@ -505,7 +591,7 @@ class _BookClassState extends State<BookClass> {
                               height: 35,
                               child: Center(child: Text(docReference['Time1'])),
                               decoration: BoxDecoration(
-                                  color: Colors.grey,
+                                  color: conttColor1,
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10))),
                             ),
@@ -517,6 +603,11 @@ class _BookClassState extends State<BookClass> {
                             setState(() {
                               Field = 'Time2';
                               Selected = docReference['Time2'];
+                              conttColor = Colors.grey;
+                              conttColor1 = Colors.grey;
+                              conttColor2 = Colors.green;
+                              conttColor3 = Colors.grey;
+                              conttColor4 = Colors.grey;
                             });
                             print(Selected);
                           },
@@ -527,7 +618,7 @@ class _BookClassState extends State<BookClass> {
                               height: 35,
                               child: Center(child: Text(docReference['Time2'])),
                               decoration: BoxDecoration(
-                                  color: Colors.grey,
+                                  color: conttColor2,
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10))),
                             ),
@@ -539,6 +630,11 @@ class _BookClassState extends State<BookClass> {
                             setState(() {
                               Field = 'Time3';
                               Selected = docReference['Time3'];
+                              conttColor = Colors.grey;
+                              conttColor1 = Colors.grey;
+                              conttColor2 = Colors.grey;
+                              conttColor3 = Colors.green;
+                              conttColor4 = Colors.grey;
                             });
                             print(Selected);
                           },
@@ -549,7 +645,7 @@ class _BookClassState extends State<BookClass> {
                               height: 35,
                               child: Center(child: Text(docReference['Time3'])),
                               decoration: BoxDecoration(
-                                  color: Colors.grey,
+                                  color: conttColor3,
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10))),
                             ),
@@ -561,6 +657,11 @@ class _BookClassState extends State<BookClass> {
                             setState(() {
                               Field = 'Time4';
                               Selected = docReference['Time4'];
+                              conttColor = Colors.grey;
+                              conttColor1 = Colors.grey;
+                              conttColor2 = Colors.grey;
+                              conttColor3 = Colors.grey;
+                              conttColor4 = Colors.green;
                             });
                             print(Selected);
                           },
@@ -571,7 +672,7 @@ class _BookClassState extends State<BookClass> {
                               height: 35,
                               child: Center(child: Text(docReference['Time4'])),
                               decoration: BoxDecoration(
-                                  color: Colors.grey,
+                                  color: conttColor4,
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10))),
                             ),
@@ -646,6 +747,7 @@ class _BookClassState extends State<BookClass> {
                                       'Teacher': widget.techname,
                                       'subject': widget.bookSub
                                     });
+                                    Navigator.pop(context);
                                   },
                                 )
                               ],
@@ -709,6 +811,11 @@ class _BookClassState extends State<BookClass> {
                             setState(() {
                               Field = 'Time';
                               Selected = docReference['Time'];
+                              conttColor = Colors.green;
+                              conttColor1 = Colors.grey;
+                              conttColor2 = Colors.grey;
+                              conttColor3 = Colors.grey;
+                              conttColor4 = Colors.grey;
                             });
                             print(Selected);
                           },
@@ -719,7 +826,7 @@ class _BookClassState extends State<BookClass> {
                               height: 35,
                               child: Center(child: Text(docReference['Time'])),
                               decoration: BoxDecoration(
-                                  color: Colors.grey,
+                                  color: conttColor,
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10))),
                             ),
@@ -731,6 +838,11 @@ class _BookClassState extends State<BookClass> {
                             setState(() {
                               Field = 'Time1';
                               Selected = docReference['Time1'];
+                              conttColor = Colors.grey;
+                              conttColor1 = Colors.green;
+                              conttColor2 = Colors.grey;
+                              conttColor3 = Colors.grey;
+                              conttColor4 = Colors.grey;
                             });
                             print(Selected);
                           },
@@ -741,7 +853,7 @@ class _BookClassState extends State<BookClass> {
                               height: 35,
                               child: Center(child: Text(docReference['Time1'])),
                               decoration: BoxDecoration(
-                                  color: Colors.grey,
+                                  color: conttColor1,
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10))),
                             ),
@@ -753,6 +865,11 @@ class _BookClassState extends State<BookClass> {
                             setState(() {
                               Field = 'Time2';
                               Selected = docReference['Time2'];
+                              conttColor = Colors.grey;
+                              conttColor1 = Colors.grey;
+                              conttColor2 = Colors.green;
+                              conttColor3 = Colors.grey;
+                              conttColor4 = Colors.grey;
                             });
                             print(Selected);
                           },
@@ -763,7 +880,7 @@ class _BookClassState extends State<BookClass> {
                               height: 35,
                               child: Center(child: Text(docReference['Time2'])),
                               decoration: BoxDecoration(
-                                  color: Colors.grey,
+                                  color: conttColor2,
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10))),
                             ),
@@ -775,6 +892,11 @@ class _BookClassState extends State<BookClass> {
                             setState(() {
                               Field = 'Time3';
                               Selected = docReference['Time3'];
+                              conttColor = Colors.grey;
+                              conttColor1 = Colors.grey;
+                              conttColor2 = Colors.grey;
+                              conttColor3 = Colors.green;
+                              conttColor4 = Colors.grey;
                             });
                             print(Selected);
                           },
@@ -785,7 +907,7 @@ class _BookClassState extends State<BookClass> {
                               height: 35,
                               child: Center(child: Text(docReference['Time3'])),
                               decoration: BoxDecoration(
-                                  color: Colors.grey,
+                                  color: conttColor3,
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10))),
                             ),
@@ -797,6 +919,11 @@ class _BookClassState extends State<BookClass> {
                             setState(() {
                               Field = 'Time4';
                               Selected = docReference['Time4'];
+                              conttColor = Colors.grey;
+                              conttColor1 = Colors.grey;
+                              conttColor2 = Colors.grey;
+                              conttColor3 = Colors.grey;
+                              conttColor4 = Colors.green;
                             });
                             print(Selected);
                           },
@@ -807,7 +934,7 @@ class _BookClassState extends State<BookClass> {
                               height: 35,
                               child: Center(child: Text(docReference['Time4'])),
                               decoration: BoxDecoration(
-                                  color: Colors.grey,
+                                  color: conttColor4,
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10))),
                             ),
@@ -883,6 +1010,7 @@ class _BookClassState extends State<BookClass> {
                                       'Teacher': widget.techname,
                                       'subject': widget.bookSub
                                     });
+                                    Navigator.pop(context);
                                   },
                                 )
                               ],
@@ -946,6 +1074,11 @@ class _BookClassState extends State<BookClass> {
                             setState(() {
                               Field = 'Time';
                               Selected = docReference['Time'];
+                              conttColor = Colors.green;
+                              conttColor1 = Colors.grey;
+                              conttColor2 = Colors.grey;
+                              conttColor3 = Colors.grey;
+                              conttColor4 = Colors.grey;
                             });
                             print(Selected);
                           },
@@ -956,7 +1089,7 @@ class _BookClassState extends State<BookClass> {
                               height: 35,
                               child: Center(child: Text(docReference['Time'])),
                               decoration: BoxDecoration(
-                                  color: Colors.grey,
+                                  color: conttColor,
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10))),
                             ),
@@ -968,6 +1101,11 @@ class _BookClassState extends State<BookClass> {
                             setState(() {
                               Field = 'Time1';
                               Selected = docReference['Time1'];
+                              conttColor = Colors.grey;
+                              conttColor1 = Colors.green;
+                              conttColor2 = Colors.grey;
+                              conttColor3 = Colors.grey;
+                              conttColor4 = Colors.grey;
                             });
                             print(Selected);
                           },
@@ -978,7 +1116,7 @@ class _BookClassState extends State<BookClass> {
                               height: 35,
                               child: Center(child: Text(docReference['Time1'])),
                               decoration: BoxDecoration(
-                                  color: Colors.grey,
+                                  color: conttColor1,
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10))),
                             ),
@@ -990,6 +1128,11 @@ class _BookClassState extends State<BookClass> {
                             setState(() {
                               Selected = docReference['Time2'];
                               Field = 'Time2';
+                              conttColor = Colors.grey;
+                              conttColor1 = Colors.grey;
+                              conttColor2 = Colors.green;
+                              conttColor3 = Colors.grey;
+                              conttColor4 = Colors.grey;
                             });
                             print(Selected);
                           },
@@ -1000,7 +1143,7 @@ class _BookClassState extends State<BookClass> {
                               height: 35,
                               child: Center(child: Text(docReference['Time2'])),
                               decoration: BoxDecoration(
-                                  color: Colors.grey,
+                                  color: conttColor2,
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10))),
                             ),
@@ -1012,6 +1155,11 @@ class _BookClassState extends State<BookClass> {
                             setState(() {
                               Field = 'Time3';
                               Selected = docReference['Time3'];
+                              conttColor = Colors.grey;
+                              conttColor1 = Colors.grey;
+                              conttColor2 = Colors.green;
+                              conttColor3 = Colors.grey;
+                              conttColor4 = Colors.grey;
                             });
                             print(Selected);
                           },
@@ -1022,7 +1170,7 @@ class _BookClassState extends State<BookClass> {
                               height: 35,
                               child: Center(child: Text(docReference['Time3'])),
                               decoration: BoxDecoration(
-                                  color: Colors.grey,
+                                  color: conttColor3,
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10))),
                             ),
@@ -1034,6 +1182,11 @@ class _BookClassState extends State<BookClass> {
                             setState(() {
                               Field = 'Time4';
                               Selected = docReference['Time4'];
+                              conttColor = Colors.grey;
+                              conttColor1 = Colors.grey;
+                              conttColor2 = Colors.grey;
+                              conttColor3 = Colors.grey;
+                              conttColor4 = Colors.green;
                             });
                             print(Selected);
                           },
@@ -1044,7 +1197,7 @@ class _BookClassState extends State<BookClass> {
                               height: 35,
                               child: Center(child: Text(docReference['Time4'])),
                               decoration: BoxDecoration(
-                                  color: Colors.grey,
+                                  color: conttColor4,
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10))),
                             ),
@@ -1120,6 +1273,7 @@ class _BookClassState extends State<BookClass> {
                                       'Teacher': widget.techname,
                                       'subject': widget.bookSub
                                     });
+                                    Navigator.pop(context);
                                   },
                                 )
                               ],
@@ -1183,6 +1337,11 @@ class _BookClassState extends State<BookClass> {
                             setState(() {
                               Field = 'Time';
                               Selected = docReference['Time'];
+                              conttColor = Colors.green;
+                              conttColor1 = Colors.grey;
+                              conttColor2 = Colors.grey;
+                              conttColor3 = Colors.grey;
+                              conttColor4 = Colors.grey;
                             });
                             print(Selected);
                           },
@@ -1193,7 +1352,7 @@ class _BookClassState extends State<BookClass> {
                               height: 35,
                               child: Center(child: Text(docReference['Time'])),
                               decoration: BoxDecoration(
-                                  color: Colors.grey,
+                                  color: conttColor,
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10))),
                             ),
@@ -1205,6 +1364,11 @@ class _BookClassState extends State<BookClass> {
                             setState(() {
                               Field = 'Time1';
                               Selected = docReference['Time1'];
+                              conttColor = Colors.grey;
+                              conttColor1 = Colors.green;
+                              conttColor2 = Colors.grey;
+                              conttColor3 = Colors.grey;
+                              conttColor4 = Colors.grey;
                             });
                             print(Selected);
                           },
@@ -1215,7 +1379,7 @@ class _BookClassState extends State<BookClass> {
                               height: 35,
                               child: Center(child: Text(docReference['Time1'])),
                               decoration: BoxDecoration(
-                                  color: Colors.grey,
+                                  color: conttColor1,
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10))),
                             ),
@@ -1227,6 +1391,11 @@ class _BookClassState extends State<BookClass> {
                             setState(() {
                               Field = 'Time2';
                               Selected = docReference['Time2'];
+                              conttColor = Colors.grey;
+                              conttColor1 = Colors.grey;
+                              conttColor2 = Colors.green;
+                              conttColor3 = Colors.grey;
+                              conttColor4 = Colors.grey;
                             });
                             print(Selected);
                           },
@@ -1237,7 +1406,7 @@ class _BookClassState extends State<BookClass> {
                               height: 35,
                               child: Center(child: Text(docReference['Time2'])),
                               decoration: BoxDecoration(
-                                  color: Colors.grey,
+                                  color: conttColor2,
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10))),
                             ),
@@ -1249,6 +1418,11 @@ class _BookClassState extends State<BookClass> {
                             setState(() {
                               Field = 'Time3';
                               Selected = docReference['Time3'];
+                              conttColor = Colors.grey;
+                              conttColor1 = Colors.grey;
+                              conttColor2 = Colors.grey;
+                              conttColor3 = Colors.green;
+                              conttColor4 = Colors.grey;
                             });
                             print(Selected);
                           },
@@ -1259,7 +1433,7 @@ class _BookClassState extends State<BookClass> {
                               height: 35,
                               child: Center(child: Text(docReference['Time3'])),
                               decoration: BoxDecoration(
-                                  color: Colors.grey,
+                                  color: conttColor3,
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10))),
                             ),
@@ -1271,6 +1445,11 @@ class _BookClassState extends State<BookClass> {
                             setState(() {
                               Selected = docReference['Time4'];
                               Field = 'Time4';
+                              conttColor = Colors.grey;
+                              conttColor1 = Colors.grey;
+                              conttColor2 = Colors.grey;
+                              conttColor3 = Colors.grey;
+                              conttColor4 = Colors.green;
                             });
                             print(Selected);
                           },
@@ -1281,7 +1460,7 @@ class _BookClassState extends State<BookClass> {
                               height: 35,
                               child: Center(child: Text(docReference['Time4'])),
                               decoration: BoxDecoration(
-                                  color: Colors.grey,
+                                  color: conttColor4,
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10))),
                             ),
@@ -1356,6 +1535,7 @@ class _BookClassState extends State<BookClass> {
                                       'Teacher': widget.techname,
                                       'subject': widget.bookSub
                                     });
+                                    Navigator.pop(context);
                                   },
                                 )
                               ],
@@ -1417,6 +1597,11 @@ class _BookClassState extends State<BookClass> {
                         GestureDetector(
                           onTap: () {
                             setState(() {
+                              conttColor = Colors.green;
+                              conttColor1 = Colors.grey;
+                              conttColor2 = Colors.grey;
+                              conttColor3 = Colors.grey;
+                              conttColor4 = Colors.grey;
                               Field = 'Time';
                               Selected = docReference['Time'];
                             });
@@ -1429,7 +1614,7 @@ class _BookClassState extends State<BookClass> {
                               height: 35,
                               child: Center(child: Text(docReference['Time'])),
                               decoration: BoxDecoration(
-                                  color: Colors.grey,
+                                  color: conttColor,
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10))),
                             ),
@@ -1441,6 +1626,11 @@ class _BookClassState extends State<BookClass> {
                             setState(() {
                               Field = 'Time1';
                               Selected = docReference['Time1'];
+                              conttColor = Colors.grey;
+                              conttColor1 = Colors.green;
+                              conttColor2 = Colors.grey;
+                              conttColor3 = Colors.grey;
+                              conttColor4 = Colors.grey;
                             });
                             print(Selected);
                           },
@@ -1451,7 +1641,7 @@ class _BookClassState extends State<BookClass> {
                               height: 35,
                               child: Center(child: Text(docReference['Time1'])),
                               decoration: BoxDecoration(
-                                  color: Colors.grey,
+                                  color: conttColor1,
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10))),
                             ),
@@ -1463,6 +1653,11 @@ class _BookClassState extends State<BookClass> {
                             setState(() {
                               Field = 'Time2';
                               Selected = docReference['Time2'];
+                              conttColor = Colors.grey;
+                              conttColor1 = Colors.grey;
+                              conttColor2 = Colors.green;
+                              conttColor3 = Colors.grey;
+                              conttColor4 = Colors.grey;
                             });
                             print(Selected);
                           },
@@ -1473,7 +1668,7 @@ class _BookClassState extends State<BookClass> {
                               height: 35,
                               child: Center(child: Text(docReference['Time2'])),
                               decoration: BoxDecoration(
-                                  color: Colors.grey,
+                                  color: conttColor2,
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10))),
                             ),
@@ -1485,6 +1680,11 @@ class _BookClassState extends State<BookClass> {
                             setState(() {
                               Selected = docReference['Time3'];
                               Field = 'Time3';
+                              conttColor = Colors.grey;
+                              conttColor1 = Colors.grey;
+                              conttColor2 = Colors.grey;
+                              conttColor3 = Colors.green;
+                              conttColor4 = Colors.grey;
                             });
                             print(Selected);
                           },
@@ -1495,7 +1695,7 @@ class _BookClassState extends State<BookClass> {
                               height: 35,
                               child: Center(child: Text(docReference['Time3'])),
                               decoration: BoxDecoration(
-                                  color: Colors.grey,
+                                  color: conttColor3,
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10))),
                             ),
@@ -1507,6 +1707,11 @@ class _BookClassState extends State<BookClass> {
                             setState(() {
                               Selected = docReference['Time4'];
                               Field = 'Time4';
+                              conttColor = Colors.grey;
+                              conttColor1 = Colors.grey;
+                              conttColor2 = Colors.grey;
+                              conttColor3 = Colors.grey;
+                              conttColor4 = Colors.green;
                             });
                             print(Selected);
                           },
@@ -1517,7 +1722,7 @@ class _BookClassState extends State<BookClass> {
                               height: 35,
                               child: Center(child: Text(docReference['Time4'])),
                               decoration: BoxDecoration(
-                                  color: Colors.grey,
+                                  color: conttColor4,
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10))),
                             ),
@@ -1593,6 +1798,7 @@ class _BookClassState extends State<BookClass> {
                                       'Teacher': widget.techname,
                                       'subject': widget.bookSub
                                     });
+                                    Navigator.pop(context);
                                   },
                                 )
                               ],
@@ -1656,6 +1862,11 @@ class _BookClassState extends State<BookClass> {
                             setState(() {
                               Field = 'Time';
                               Selected = docReference['Time'];
+                              conttColor = Colors.green;
+                              conttColor1 = Colors.grey;
+                              conttColor2 = Colors.grey;
+                              conttColor3 = Colors.grey;
+                              conttColor4 = Colors.grey;
                             });
                             print(Selected);
                           },
@@ -1666,7 +1877,7 @@ class _BookClassState extends State<BookClass> {
                               height: 35,
                               child: Center(child: Text(docReference['Time'])),
                               decoration: BoxDecoration(
-                                  color: Colors.grey,
+                                  color: conttColor,
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10))),
                             ),
@@ -1678,6 +1889,11 @@ class _BookClassState extends State<BookClass> {
                             setState(() {
                               Field = 'Time1';
                               Selected = docReference['Time1'];
+                              conttColor = Colors.grey;
+                              conttColor1 = Colors.green;
+                              conttColor2 = Colors.grey;
+                              conttColor3 = Colors.grey;
+                              conttColor4 = Colors.grey;
                             });
                             print(Selected);
                           },
@@ -1688,7 +1904,7 @@ class _BookClassState extends State<BookClass> {
                               height: 35,
                               child: Center(child: Text(docReference['Time1'])),
                               decoration: BoxDecoration(
-                                  color: Colors.grey,
+                                  color: conttColor1,
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10))),
                             ),
@@ -1700,6 +1916,11 @@ class _BookClassState extends State<BookClass> {
                             setState(() {
                               Selected = docReference['Time2'];
                               Field = 'Time2';
+                              conttColor = Colors.grey;
+                              conttColor1 = Colors.grey;
+                              conttColor2 = Colors.green;
+                              conttColor3 = Colors.grey;
+                              conttColor4 = Colors.grey;
                             });
                             print(Selected);
                           },
@@ -1710,7 +1931,7 @@ class _BookClassState extends State<BookClass> {
                               height: 35,
                               child: Center(child: Text(docReference['Time2'])),
                               decoration: BoxDecoration(
-                                  color: Colors.grey,
+                                  color: conttColor2,
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10))),
                             ),
@@ -1722,6 +1943,11 @@ class _BookClassState extends State<BookClass> {
                             setState(() {
                               Field = 'Time3';
                               Selected = docReference['Time3'];
+                              conttColor = Colors.grey;
+                              conttColor1 = Colors.grey;
+                              conttColor2 = Colors.grey;
+                              conttColor3 = Colors.green;
+                              conttColor4 = Colors.grey;
                             });
                             print(Selected);
                           },
@@ -1732,7 +1958,7 @@ class _BookClassState extends State<BookClass> {
                               height: 35,
                               child: Center(child: Text(docReference['Time3'])),
                               decoration: BoxDecoration(
-                                  color: Colors.grey,
+                                  color: conttColor3,
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10))),
                             ),
@@ -1744,6 +1970,11 @@ class _BookClassState extends State<BookClass> {
                             setState(() {
                               Selected = docReference['Time4'];
                               Field = 'Time4';
+                              conttColor = Colors.grey;
+                              conttColor1 = Colors.grey;
+                              conttColor2 = Colors.grey;
+                              conttColor3 = Colors.grey;
+                              conttColor4 = Colors.green;
                             });
                             print(Selected);
                           },
@@ -1754,7 +1985,7 @@ class _BookClassState extends State<BookClass> {
                               height: 35,
                               child: Center(child: Text(docReference['Time4'])),
                               decoration: BoxDecoration(
-                                  color: Colors.grey,
+                                  color: conttColor4,
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10))),
                             ),
@@ -1829,6 +2060,7 @@ class _BookClassState extends State<BookClass> {
                                       'Teacher': widget.techname,
                                       'subject': widget.bookSub
                                     });
+                                    Navigator.pop(context);
                                   },
                                 )
                               ],
