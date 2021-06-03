@@ -1,10 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:jitsist/Courses/Details.dart';
+import 'FavoritesPage.dart';
 
 class FreeCourses extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor:  Color(0xff00007c),
+        actions: <Widget>[
+        TextButton.icon(
+          style: TextButton.styleFrom(primary: Colors.white),
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => FavoritesPage()));
+          },
+          icon: Icon(Icons.favorite_border),
+          label: Text('Favorites'),
+        )
+      ]),
       body: Container(
         color: Colors.white24,
         child: ListView.builder(

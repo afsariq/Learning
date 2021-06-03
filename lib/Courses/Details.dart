@@ -38,14 +38,26 @@ class DetailsPage extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text(
-                        'Course Name',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 35.0,
-                          fontWeight: FontWeight.w600,
-                          letterSpacing: 1.2,
-                        ),
+                      Row(
+                        children: <Widget>[
+                          Text(
+                            'Course Name',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 35.0,
+                              fontWeight: FontWeight.w600,
+                              letterSpacing: 1.2,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 60.0,
+                          ),
+                          Icon(
+                            Icons.favorite_border,
+                            color: Colors.white,
+                            size: 42.0,
+                          )
+                        ],
                       ),
                       SizedBox(
                         height: 10.0,
@@ -114,8 +126,8 @@ class DetailsPage extends StatelessWidget {
                               children: <Widget>[
                                 GestureDetector(
                                   child: Container(
-                                    margin:
-                                        EdgeInsets.fromLTRB(5.0, 5.0, 20.0, 5.0),
+                                    margin: EdgeInsets.fromLTRB(
+                                        5.0, 5.0, 20.0, 5.0),
                                     height: 80.0,
                                     width: double.infinity,
                                     decoration: BoxDecoration(
@@ -155,7 +167,8 @@ class DetailsPage extends StatelessWidget {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => FreeCourseVideo()));
+                                            builder: (context) =>
+                                                FreeCourseVideo()));
                                   },
                                 ),
                                 Positioned(
@@ -164,8 +177,11 @@ class DetailsPage extends StatelessWidget {
                                   bottom: 15.0,
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(20.0),
-                                    child: Image(width: 110.0, image: AssetImage("Assets/Images/logo.png"),
-                                    fit: BoxFit.cover,
+                                    child: Image(
+                                      width: 110.0,
+                                      image:
+                                          AssetImage("Assets/Images/logo.png"),
+                                      fit: BoxFit.cover,
                                     ),
                                   ),
                                 )
