@@ -26,7 +26,7 @@ class _VideoState extends State<Video> {
   final serverText = TextEditingController();
   final roomText = TextEditingController();
   final subjectText = TextEditingController(text: "Online Lecture");
-  final nameText = TextEditingController(text: "Teacher");
+  final nameText = TextEditingController(text: "Student");
   final emailText =
       TextEditingController(text: FirebaseAuth.instance.currentUser.email);
   var isAudioOnly = true;
