@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:jitsist/Payment&Booking/Booking.dart';
 import 'package:jitsist/Payment&Booking/BookingNew.dart';
+import 'package:jitsist/Payment&Booking/VdoByT.dart';
 
 class profileScreen extends StatefulWidget {
   String PId;
@@ -188,28 +189,61 @@ class _profileScreenState extends State<profileScreen> {
                             ),
                           ),
                         ),*/
-                            Container(
-                              decoration: BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20.0)),
-                                color: Color(0xff00007c),
-                              ),
-                              child: FlatButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => BookClass(
-                                                Id: widget.PId,
-                                                bookSub: widget.sub,
-                                                techname: widget.tname,
-                                              )));
-                                },
-                                child: Text(
-                                  'Next',
-                                  style: TextStyle(color: Colors.white),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(20.0)),
+                                      color: Color(0xff00007c),
+                                    ),
+                                    child: FlatButton(
+                                      onPressed: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) => BookClass(
+                                                      Id: widget.PId,
+                                                      bookSub: widget.sub,
+                                                      techname: widget.tname,
+                                                    )));
+                                      },
+                                      child: Text(
+                                        'Next',
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+                                    ),
+                                  ),
                                 ),
-                              ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(20.0)),
+                                      color: Color(0xff00007c),
+                                    ),
+                                    child: FlatButton(
+                                      onPressed: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    FreeClassesByt(
+                                                      TechId: widget.PId,
+                                                    )));
+                                      },
+                                      child: Text(
+                                        'Videos',
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
                             SizedBox(
                               height: 30,

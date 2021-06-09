@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:jitsist/Courses/FreeClasses.dart';
 import 'package:jitsist/Courses/FreeCourses.dart';
 import 'package:jitsist/LoginScreen/Login.dart';
 import 'package:jitsist/Payment&Booking/Profile.dart';
@@ -479,8 +480,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) =>
-                                            FreeClassesList()));
+                                        builder: (context) => FreeClasses()));
                               },
                               child: Text("Try free classes"),
                               shape: StadiumBorder(),
