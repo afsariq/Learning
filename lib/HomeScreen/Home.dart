@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:jitsist/Courses/FreeClasses.dart';
 import 'package:jitsist/Courses/FreeCourses.dart';
 import 'package:jitsist/LoginScreen/Login.dart';
+
 import 'package:jitsist/Payment&Booking/Profile.dart';
 import 'package:jitsist/Profile/ProfileScreen.dart';
 import 'package:jitsist/Quizz/home.dart';
@@ -367,7 +368,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                     child: Column(
                                       children: [
                                         GestureDetector(
-                                          onTap: () {},
+                                          onTap: () {
+                                            // Navigator.push(
+                                            //   context,
+                                            // MaterialPageRoute(
+                                            //   builder: (context) =>
+                                            //     PastPapers()));
+                                          },
                                           child: CircleAvatar(
                                             backgroundImage: AssetImage(
                                                 "Assets/Images/1 (110).png"),
@@ -482,7 +489,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     MaterialPageRoute(
                                         builder: (context) => FreeClasses()));
                               },
-                              child: Text("Try free classes"),
+                              child: Text("Free classes"),
                               shape: StadiumBorder(),
                               color: Colors.white,
                             )

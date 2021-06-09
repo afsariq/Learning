@@ -55,25 +55,6 @@ class _FreeClassesBytState extends State<FreeClassesByt> {
                                 children: [
                                   Padding(
                                     padding: const EdgeInsets.all(4.0),
-                                    child: Row(
-                                      children: [
-                                        Expanded(
-                                          child: Text(
-                                            'Teacher Name :',
-                                            style: TextStyle(fontSize: 15),
-                                          ),
-                                        ),
-                                        Expanded(
-                                          child: Text(
-                                            docReference['Name'],
-                                            style: TextStyle(fontSize: 15),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(4.0),
                                     child: Row(children: [
                                       Expanded(
                                         child: Text(

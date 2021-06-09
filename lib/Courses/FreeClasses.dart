@@ -11,16 +11,112 @@ class FreeClasses extends StatefulWidget {
 }
 
 class _FreeClassesState extends State<FreeClasses> {
+  String _chosenValue;
+  final TextEditingController searchCont = TextEditingController();
+  final TextEditingController searchContsub = TextEditingController();
+  String grade;
+  String subject;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          // title: Text("Video Demo"),
+          automaticallyImplyLeading: false,
+          toolbarHeight: 100,
+          elevation: 0,
           backgroundColor: Color(0xff00007c),
+          title: Column(
+            children: [
+              SizedBox(
+                height: 30,
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    flex: 3,
+                    child: Container(
+                      height: 40,
+                      decoration: BoxDecoration(
+                          color: Colors.white70,
+                          borderRadius: BorderRadius.all(Radius.circular(10))),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: DropdownButton<String>(
+                            value: _chosenValue,
+                            hint: Text(" Grade"),
+                            items: <String>['6-9', 'A/L', 'Scholorship', '10']
+                                .map<DropdownMenuItem<String>>((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                            onChanged: (String value) {
+                              setState(() {
+                                _chosenValue = value;
+
+                                // grade = _chosenValue;
+                              });
+                            }),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Expanded(
+                    flex: 3,
+                    child: SizedBox(
+                      height: 40,
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: Colors.white70,
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(10))),
+                        child: TextField(
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            hintText: "    Subject",
+                            hintStyle: TextStyle(color: Colors.black),
+                          ),
+                          controller: searchContsub,
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: Container(
+                      height: 40,
+                      decoration: BoxDecoration(
+                          color: Colors.white70,
+                          borderRadius: BorderRadius.all(Radius.circular(35))),
+                      child: IconButton(
+                          icon: Icon(
+                            Icons.search_sharp,
+                            color: Colors.white70,
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              grade = _chosenValue;
+                              subject = searchContsub.text;
+                            });
+                          }),
+                    ),
+                  )
+                ],
+              ),
+            ],
+          ),
+          centerTitle: true,
         ),
         body: StreamBuilder(
             stream: FirebaseFirestore.instance
                 .collection("FreeSessions")
+                .where('Grade', isEqualTo: grade)
+                .where('Subject', isEqualTo: subject)
                 .snapshots(),
             builder:
                 (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {

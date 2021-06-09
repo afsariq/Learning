@@ -143,7 +143,8 @@ class _SearchTeacherState extends State<SearchTeacher> {
                       child: Column(children: [
                         Container(
                           decoration: BoxDecoration(
-                              border: Border.all(color: Colors.blueAccent)),
+                              // border: Border.all(color: Colors.blueAccent)
+                              ),
                           child: Row(children: [
                             Expanded(
                               flex: 1,
@@ -218,6 +219,12 @@ class _SearchTeacherState extends State<SearchTeacher> {
                               ),
                             )
                           ]),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Divider(
+                            thickness: 1,
+                          ),
                         ),
                       ]),
                     ),
