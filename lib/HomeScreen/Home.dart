@@ -374,10 +374,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                             // MaterialPageRoute(
                                             //   builder: (context) =>
                                             //     PastPapers()));
+
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        FreeClasses()));
                                           },
                                           child: CircleAvatar(
                                             backgroundImage: AssetImage(
-                                                "Assets/Images/1 (110).png"),
+                                                "Assets/Images/freecl.png"),
                                             radius: 30,
                                           ),
                                         ),
@@ -385,7 +391,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           height: 5,
                                         ),
                                         Text(
-                                          "Past Papers",
+                                          "Free Classes",
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold),
                                         )
@@ -456,7 +462,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                     ),
-                    Padding(
+                    /*Padding(
                       padding: const EdgeInsets.all(18.0),
                       child: Container(
                         height: 200,
@@ -496,45 +502,56 @@ class _HomeScreenState extends State<HomeScreen> {
                           ],
                         ),
                       ),
-                    ),
+                    ),*/
                     Padding(
                       padding: const EdgeInsets.all(18.0),
-                      child: Container(
-                        height: 200,
-                        decoration: BoxDecoration(
-                            gradient: new LinearGradient(
-                                colors: [
-                                  const Color(0xff00007c),
-                                  const Color(0xFF00CCFF),
-                                ],
-                                begin: const FractionalOffset(0.0, 0.0),
-                                end: const FractionalOffset(1.0, 0.0),
-                                stops: [0.0, 1.0],
-                                tileMode: TileMode.clamp),
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(20))),
-                        // color: Colors.amberAccent,
-                        child: Row(
-                          children: [
-                            Padding(
-                                padding: const EdgeInsets.all(18.0),
-                                child: Image.asset(
-                                  "Assets/Images/phy.jpg",
-                                  width: 150,
-                                  height: 180,
-                                )),
-                            RaisedButton(
-                              onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => FreeCourses()));
-                              },
-                              child: Text("Free courses"),
-                              shape: StadiumBorder(),
-                              color: Colors.white,
-                            )
-                          ],
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => FreeCourses()));
+                        },
+                        child: Container(
+                          height: 150,
+                          decoration: BoxDecoration(
+                              gradient: new LinearGradient(
+                                  colors: [
+                                    const Color(0xff00007c),
+                                    const Color(0xffb74093),
+                                  ],
+                                  begin: const FractionalOffset(0.0, 0.0),
+                                  end: const FractionalOffset(1.0, 0.0),
+                                  stops: [0.0, 1.0],
+                                  tileMode: TileMode.clamp),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20))),
+                          // color: Colors.amberAccent,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Padding(
+                                  padding: const EdgeInsets.all(18.0),
+                                  child: Center(
+                                    child: Image.asset(
+                                      "Assets/Images/onlinecourses.png",
+                                      width: 150,
+                                      height: 180,
+                                    ),
+                                  )),
+                              /* RaisedButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => FreeCourses()));
+                                },
+                                child: Text("Online courses"),
+                                shape: StadiumBorder(),
+                                color: Colors.white,
+                              )*/
+                            ],
+                          ),
                         ),
                       ),
                     ),

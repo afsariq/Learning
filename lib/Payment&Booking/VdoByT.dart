@@ -114,6 +114,7 @@ class _FreeClassesBytState extends State<FreeClassesByt> {
                                     MaterialPageRoute(
                                         builder: (context) => FreeClassVideo(
                                               vdoLink: docReference['Url'],
+                                              title: docReference['Details'],
                                             )));
                               },
                               color: Color(0xff00007c),

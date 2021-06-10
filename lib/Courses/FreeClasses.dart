@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:jitsist/Courses/FreeClassVdo.dart';
+import 'package:jitsist/VideoCall/Video.dart';
+import 'package:video_player/video_player.dart';
 
 class FreeClasses extends StatefulWidget {
   const FreeClasses({Key key}) : super(key: key);
@@ -16,6 +18,7 @@ class _FreeClassesState extends State<FreeClasses> {
   final TextEditingController searchContsub = TextEditingController();
   String grade;
   String subject;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -140,7 +143,7 @@ class _FreeClassesState extends State<FreeClasses> {
                               border: Border.all(color: Colors.blueAccent)),
                           child: Row(children: [
                             Expanded(
-                              //flex: 2,
+                              flex: 2,
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -225,6 +228,7 @@ class _FreeClassesState extends State<FreeClasses> {
                                     MaterialPageRoute(
                                         builder: (context) => FreeClassVideo(
                                               vdoLink: docReference['Url'],
+                                              title: docReference['Details'],
                                             )));
                               },
                               color: Color(0xff00007c),

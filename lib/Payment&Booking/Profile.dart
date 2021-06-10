@@ -60,13 +60,13 @@ class _profileScreenState extends State<profileScreen> {
                   String id = docReference.id;
                   return Center(
                     child: Container(
-                        height: MediaQuery.of(context).size.height * 1,
+                        height: MediaQuery.of(context).size.height / 1,
                         decoration: BoxDecoration(
                             image: DecorationImage(
                                 image: NetworkImage(docReference['Image']),
-                                fit: BoxFit.none)),
+                                fit: BoxFit.cover)),
                         child: Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             SizedBox(
