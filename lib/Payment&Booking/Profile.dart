@@ -31,7 +31,7 @@ class _profileScreenState extends State<profileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
+        /*   appBar: AppBar(
           title: Text("Teacher Profile"),
           backgroundColor: Color(0xff00007c),
           leading: IconButton(
@@ -40,219 +40,181 @@ class _profileScreenState extends State<profileScreen> {
               Navigator.pop(context);
             },
           ),
-        ),
+        ),*/
         body: Container(
-          child: StreamBuilder(
-              stream: FirebaseFirestore.instance
-                  .collection("Teacher")
-                  .where('id', isEqualTo: widget.PId)
-                  .snapshots(),
-              builder: (BuildContext context,
-                  AsyncSnapshot<QuerySnapshot> snapshot) {
-                if (!snapshot.hasData) {
-                  return Center(
-                    child: Text("You havent updated your profile yet"),
-                  );
-                  //  Center(child: LoadingFilling.square());
-                }
-                return ListView(
-                    children: snapshot.data.docs.map((docReference) {
-                  String id = docReference.id;
-                  return Center(
-                    child: Container(
-                        height: MediaQuery.of(context).size.height / 1,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: NetworkImage(docReference['Image']),
-                                fit: BoxFit.cover)),
-                        child: Column(
+      child: StreamBuilder(
+          stream: FirebaseFirestore.instance
+              .collection("Teacher")
+              .where('id', isEqualTo: widget.PId)
+              .snapshots(),
+          builder:
+              (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+            if (!snapshot.hasData) {
+              return Center(
+                child: Text("You havent updated your profile yet"),
+              );
+              //  Center(child: LoadingFilling.square());
+            }
+            return ListView(
+                children: snapshot.data.docs.map((docReference) {
+              String id = docReference.id;
+              return Center(
+                  child: Column(
+                children: [
+                  Container(
+                      height: 230,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage('Assets/Images/bg11.png'),
+                            fit: BoxFit.cover),
+                        color: Color(0xff00007c),
+                        borderRadius: BorderRadius.only(
+                          bottomRight: Radius.circular(50),
+                          bottomLeft: Radius.circular(50),
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Color(0xAA6EB1E6),
+                            offset: Offset(1, 8),
+                            blurRadius: 6,
+                          ),
+                        ],
+                      ),
+                      // alignment: Alignment.center,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.white24,
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10))),
+                              child: IconButton(
+                                  icon: Icon(Icons.arrow_back,
+                                      color: Colors.white),
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  }),
+                            ),
+                          ),
+                          Center(
+                            child: CircleAvatar(
+                              radius: 70,
+                              backgroundImage:
+                                  NetworkImage(docReference['Image']),
+                            ),
+                          )
+                        ],
+                      )),
+                  Column(
+                    children: [
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Text(docReference['Name'],
+                          style: TextStyle(
+                            fontSize: 37,
+                          )),
+                      Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            SizedBox(
-                              height: 15,
-                            ),
-                            SizedBox(
-                              height: 30,
-                            ),
-                            Padding(
-                                padding: const EdgeInsets.all(5.0),
-                                child: Opacity(
-                                  opacity: 0.7,
-                                  child: Container(
-                                    color: Colors.grey[300],
-                                    child: Row(
-                                      children: [
-                                        SizedBox(
-                                          width: 20,
-                                        ),
-                                        Expanded(
-                                          flex: 2,
-                                          child: Text(
-                                            docReference['Name'],
-                                            style: TextStyle(
-                                                fontSize: 30,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
+                            Text(docReference['Medium'],
+                                style: TextStyle(
+                                  color: Colors.blue,
+                                  fontSize: 18,
                                 )),
-                            Divider(
-                              thickness: 1,
-                            ),
-                            SizedBox(
-                              height: 20,
-                            ),
-                            Opacity(
-                              opacity: 0.7,
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.grey[300],
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Row(
-                                    children: [
-                                      Expanded(
-                                        flex: 1,
-                                        child: Text(
-                                          docReference['About'],
-                                          style: TextStyle(
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ),
+                            Text(' Medium',
+                                style: TextStyle(
+                                  color: Colors.blue,
+                                  fontSize: 18,
+                                )),
+                          ]),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text('5',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                )),
+                            Icon(
+                              Icons.star,
+                              color: Colors.amber,
+                            )
+                          ]),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Icon(
+                                Icons.person,
+                                color: Colors.blue,
                               ),
-                            ),
-                            SizedBox(
-                              height: 20,
-                            ),
-                            /* Container(
-                          decoration: BoxDecoration(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(20.0)),
-                            color: Colors.grey[300],
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
+                              SizedBox(
+                                width: 15,
+                              ),
+                              Text(
+                                'About Me',
+                                textAlign: TextAlign.left,
+                                style: TextStyle(fontSize: 25),
+                              ),
+                            ]),
+                      ),
+                      Divider(),
+                      Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: Text(docReference['About'])),
+
+                      SizedBox(
+                        height: 30,
+                      ),
+                      // ignore: deprecated_member_use
+                      Container(
+                        width: 150,
+                        decoration: BoxDecoration(
+                          color: Color(0xff00007c),
+                          borderRadius: BorderRadius.all(Radius.circular(20)),
+                        ),
+                        child: FlatButton(
                             child: Row(
                               children: [
-                                Expanded(
-                                  flex: 1,
-                                  child: Text(
-                                    'Phone No : ',
-                                    style: TextStyle(fontSize: 18),
-                                  ),
+                                Icon(
+                                  Icons.calendar_today,
+                                  color: Colors.white,
                                 ),
-                                Expanded(
-                                  flex: 1,
-                                  child: Text(
-                                    docReference['Phone'],
-                                    style: TextStyle(fontSize: 18),
-                                  ),
+                                SizedBox(
+                                  width: 15,
+                                ),
+                                Text(
+                                  ' Shedule',
+                                  style: TextStyle(color: Colors.white),
                                 )
                               ],
                             ),
-                          ),
-                        ),*/
-                            /*
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(20.0)),
-                            color: Colors.grey[300],
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(
-                              children: [
-                                Expanded(
-                                  flex: 1,
-                                  child: Text(
-                                    'Email : ',
-                                    style: TextStyle(fontSize: 18),
-                                  ),
-                                ),
-                                Expanded(
-                                  flex: 1,
-                                  child: Text(
-                                    FirebaseAuth.instance.currentUser.email,
-                                    style: TextStyle(fontSize: 15),
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),*/
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(20.0)),
-                                      color: Color(0xff00007c),
-                                    ),
-                                    child: FlatButton(
-                                      onPressed: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) => BookClass(
-                                                      Id: widget.PId,
-                                                      bookSub: widget.sub,
-                                                      techname: widget.tname,
-                                                    )));
-                                      },
-                                      child: Text(
-                                        'Next',
-                                        style: TextStyle(color: Colors.white),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(20.0)),
-                                      color: Color(0xff00007c),
-                                    ),
-                                    child: FlatButton(
-                                      onPressed: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    FreeClassesByt(
-                                                      TechId: widget.PId,
-                                                    )));
-                                      },
-                                      child: Text(
-                                        'Videos',
-                                        style: TextStyle(color: Colors.white),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 30,
-                            ),
-                          ],
-                        )),
-                  );
-                }).toList());
-              }),
-        ));
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => BookClass(
+                                            Id: widget.PId,
+                                            bookSub: widget.sub,
+                                            techname: widget.tname,
+                                          )));
+                            }),
+                      )
+                    ],
+                  )
+                ],
+              ));
+            }).toList());
+          }),
+    ));
   }
 }

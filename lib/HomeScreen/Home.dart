@@ -2,10 +2,11 @@ import 'dart:io';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:jitsist/Courses/CourseList.dart';
 import 'package:jitsist/Courses/FreeClasses.dart';
 import 'package:jitsist/Courses/FreeCourses.dart';
 import 'package:jitsist/LoginScreen/Login.dart';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:jitsist/Payment&Booking/Profile.dart';
 import 'package:jitsist/Profile/ProfileScreen.dart';
 import 'package:jitsist/Quizz/home.dart';
@@ -28,6 +29,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   // String data = "abcd";
 
+  String name;
+  GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -35,11 +38,12 @@ class _HomeScreenState extends State<HomeScreen> {
         exit(0);
       },
       child: Scaffold(
-          appBar: AppBar(
+          /*appBar: AppBar(
             elevation: 0,
             backgroundColor: Color(0xff00007c),
             actions: [],
-          ),
+          ),*/
+          key: _globalKey,
           drawer: Drawer(
             child: ListView(
               padding: EdgeInsets.zero,
@@ -94,18 +98,55 @@ class _HomeScreenState extends State<HomeScreen> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Center(
-                      child: Image.asset(
-                        "Assets/Images/index.jpg",
-                        width: double.infinity,
-                        height: 100,
+                    Container(
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      color: Colors.white24,
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(10))),
+                                  child: IconButton(
+                                      icon: Icon(
+                                        Icons.menu,
+                                        color: Colors.white,
+                                      ),
+                                      onPressed: () {
+                                        _globalKey.currentState.openDrawer();
+                                        // drawer();
+                                      }),
+                                ),
+                              ),
+                            ],
+                          ),
+                          if (FirebaseAuth.instance.currentUser != null) Name()
+                        ],
                       ),
-                    ),
-                    SizedBox(
-                      height: 15,
+                      height: MediaQuery.of(context).size.height * 0.25,
+                      // width: double.infinity,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage('Assets/Images/Header.png'),
+                            fit: BoxFit.cover),
+                        color: Color(0xff00007c),
+                        borderRadius: BorderRadius.only(
+                          bottomRight: Radius.circular(50),
+                          bottomLeft: Radius.circular(50),
+                        ),
+                        /*  boxShadow: [
+                          BoxShadow(
+                            color: Color(0xAA6EB1E6),
+                            offset: Offset(9, 9),
+                            blurRadius: 6,
+                          ),
+                        ],*/
+                      ),
+                      alignment: Alignment.center,
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 18.0, right: 18),
@@ -114,6 +155,9 @@ class _HomeScreenState extends State<HomeScreen> {
                               borderRadius:
                                   BorderRadius.all(Radius.circular(20))),
                           child: Column(children: [
+                            SizedBox(
+                              height: 10,
+                            ),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Row(
@@ -135,7 +179,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           },
                                           child: CircleAvatar(
                                             backgroundImage: AssetImage(
-                                                "Assets/Images/scho.png"),
+                                                "Assets/Images/Schol.png"),
                                             radius: 30,
                                           ),
                                         ),
@@ -158,7 +202,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           onTap: () {},
                                           child: CircleAvatar(
                                             backgroundImage: AssetImage(
-                                                "Assets/Images/1 (87).png"),
+                                                "Assets/Images/LondonAl.png"),
                                             radius: 30,
                                           ),
                                         ),
@@ -181,7 +225,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           onTap: () {},
                                           child: CircleAvatar(
                                             backgroundImage: AssetImage(
-                                                "Assets/Images/1 (118).png"),
+                                                "Assets/Images/LondonOl.png"),
                                             radius: 30,
                                           ),
                                         ),
@@ -219,7 +263,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           },
                                           child: CircleAvatar(
                                             backgroundImage: AssetImage(
-                                                "Assets/Images/1 (101).png"),
+                                                "Assets/Images/1011.png"),
                                             radius: 30,
                                           ),
                                         ),
@@ -248,7 +292,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           },
                                           child: CircleAvatar(
                                             backgroundImage: AssetImage(
-                                                "Assets/Images/1 (21).png"),
+                                                "Assets/Images/Advanced.png"),
                                             radius: 30,
                                           ),
                                         ),
@@ -277,7 +321,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           },
                                           child: CircleAvatar(
                                             backgroundImage: AssetImage(
-                                                "Assets/Images/1 (124).png"),
+                                                "Assets/Images/0609.png"),
                                             radius: 30,
                                           ),
                                         ),
@@ -313,7 +357,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           },
                                           child: CircleAvatar(
                                             backgroundImage: AssetImage(
-                                                "Assets/Images/1 (122).png"),
+                                                "Assets/Images/Pastp.png"),
                                             radius: 30,
                                           ),
                                         ),
@@ -321,7 +365,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           height: 5,
                                         ),
                                         Text(
-                                          "Online Courses",
+                                          "Past Papers",
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold),
                                         )
@@ -348,7 +392,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           },
                                           child: CircleAvatar(
                                             backgroundImage: AssetImage(
-                                                "Assets/Images/1 (9).png"),
+                                                "Assets/Images/searchAll.png"),
                                             radius: 30,
                                           ),
                                         ),
@@ -383,7 +427,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           },
                                           child: CircleAvatar(
                                             backgroundImage: AssetImage(
-                                                "Assets/Images/freecl.png"),
+                                                "Assets/Images/FreeClass.png"),
                                             radius: 30,
                                           ),
                                         ),
@@ -404,7 +448,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ])),
                     ),
                     SizedBox(
-                      height: 30,
+                      height: 10,
                     ),
                     Padding(
                       padding: const EdgeInsets.all(18.0),
@@ -504,13 +548,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),*/
                     Padding(
-                      padding: const EdgeInsets.all(18.0),
+                      padding: const EdgeInsets.only(
+                          left: 18.0, right: 18.0, top: 5),
                       child: GestureDetector(
                         onTap: () {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => FreeCourses()));
+                                  builder: (context) => courseList()));
                         },
                         child: Container(
                           height: 150,
@@ -559,5 +604,45 @@ class _HomeScreenState extends State<HomeScreen> {
             ]))
           ])),
     );
+  }
+
+  Widget Name() {
+    return StreamBuilder(
+        stream: FirebaseFirestore.instance
+            .collection("Students")
+            .where('Id', isEqualTo: FirebaseAuth.instance.currentUser.uid)
+            .snapshots(),
+        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          if (!snapshot.hasData) {
+            return Center(
+              child: Text("No Data"),
+            );
+            //  Center(child: LoadingFilling.square());
+          }
+          return SizedBox(
+            height: 100,
+            child: ListView(
+              children: snapshot.data.docs.map((docReference) {
+                String id = docReference.id;
+                return Center(
+                    child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("Welcome Back ",
+                        style: TextStyle(
+                          fontSize: 40,
+                          color: Colors.white,
+                        )),
+                    Text(
+                      docReference['UserName'],
+                      style: TextStyle(fontSize: 40, color: Colors.white),
+                    )
+                  ],
+                ));
+              }).toList(),
+            ),
+          );
+        });
   }
 }

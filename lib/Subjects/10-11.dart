@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:jitsist/Subjects/Subjects.dart';
+import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:jitsist/Payment&Booking/Profile.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class OLsubjects extends StatelessWidget {
   @override
