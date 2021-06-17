@@ -27,7 +27,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  // String data = "abcd";
+  String data = "abcd";
 
   String name;
   GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
@@ -50,13 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
               children: <Widget>[
                 DrawerHeader(
                   child: ListView(
-                    children: [
-                      Image.asset(
-                        "Assets/Images/logo.png",
-                        width: 100,
-                        height: 100,
-                      ),
-                    ],
+                    children: [Text("saffsggs")],
                   ),
                   decoration: BoxDecoration(
                     color: Color(0xff00007c),
@@ -471,10 +465,11 @@ class _HomeScreenState extends State<HomeScreen> {
                           children: [
                             Expanded(
                                 flex: 1,
-                                child: Image.asset(
-                                  "Assets/Images/quizz1.png",
-                                  height: 60,
-                                )),
+                                child: CircleAvatar(
+                                    radius: 30,
+                                    backgroundImage: AssetImage(
+                                      "Assets/Images/quizz1.png",
+                                    ))),
                             Expanded(
                               flex: 2,
                               child: Padding(
@@ -578,12 +573,11 @@ class _HomeScreenState extends State<HomeScreen> {
                               Padding(
                                   padding: const EdgeInsets.all(18.0),
                                   child: Center(
-                                    child: Image.asset(
-                                      "Assets/Images/onlinecourses.png",
-                                      width: 150,
-                                      height: 180,
-                                    ),
-                                  )),
+                                      child: CircleAvatar(
+                                          radius: 60,
+                                          backgroundImage: AssetImage(
+                                            "Assets/Images/onlinecourses.png",
+                                          )))),
                               /* RaisedButton(
                                 onPressed: () {
                                   Navigator.push(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:jitsist/Courses/FreeClassVdo.dart';
+import 'package:jitsist/HomeScreen/ClipPath.dart';
 import 'package:jitsist/VideoCall/Video.dart';
 import 'package:video_player/video_player.dart';
 
@@ -22,98 +23,127 @@ class _FreeClassesState extends State<FreeClasses> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          toolbarHeight: 100,
-          elevation: 0,
-          backgroundColor: Color(0xff00007c),
-          title: Column(
-            children: [
-              SizedBox(
-                height: 30,
-              ),
-              Row(
-                children: [
-                  Expanded(
-                    flex: 3,
-                    child: Container(
-                      height: 40,
-                      decoration: BoxDecoration(
-                          color: Colors.white70,
-                          borderRadius: BorderRadius.all(Radius.circular(10))),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: DropdownButton<String>(
-                            value: _chosenValue,
-                            hint: Text(" Grade"),
-                            items: <String>['6-9', 'A/L', 'Scholorship', '10']
-                                .map<DropdownMenuItem<String>>((String value) {
-                              return DropdownMenuItem<String>(
-                                value: value,
-                                child: Text(value),
-                              );
-                            }).toList(),
-                            onChanged: (String value) {
-                              setState(() {
-                                _chosenValue = value;
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(kToolbarHeight + 150),
+          child: ClipPath(
+            clipper: CustomClipPath(),
+            child: Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage('Assets/Images/bg11.png'),
+                    fit: BoxFit.cover),
+                color: Color(0xff00007c),
 
-                                // grade = _chosenValue;
-                              });
-                            }),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Expanded(
-                    flex: 3,
-                    child: SizedBox(
-                      height: 40,
-                      child: Container(
-                        decoration: BoxDecoration(
-                            color: Colors.white70,
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(10))),
-                        child: TextField(
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            hintText: "    Subject",
-                            hintStyle: TextStyle(color: Colors.black),
+                /*  boxShadow: [
+                          BoxShadow(
+                            color: Color(0xAA6EB1E6),
+                            offset: Offset(9, 9),
+                            blurRadius: 6,
                           ),
-                          controller: searchContsub,
+                        ],*/
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Text('Search Videos',
+                        style: TextStyle(
+                            fontSize: 35,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold)),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Expanded(
+                        flex: 3,
+                        child: Container(
+                          height: 40,
+                          decoration: BoxDecoration(
+                              color: Colors.white70,
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10))),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: DropdownButton<String>(
+                                value: _chosenValue,
+                                hint: Text(" Grade"),
+                                items: <String>[
+                                  '6-9',
+                                  'A/L',
+                                  'Scholorship',
+                                  '10'
+                                ].map<DropdownMenuItem<String>>((String value) {
+                                  return DropdownMenuItem<String>(
+                                    value: value,
+                                    child: Text(value),
+                                  );
+                                }).toList(),
+                                onChanged: (String value) {
+                                  setState(() {
+                                    _chosenValue = value;
+
+                                    // grade = _chosenValue;
+                                  });
+                                }),
+                          ),
                         ),
                       ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: Container(
-                      height: 40,
-                      decoration: BoxDecoration(
-                          color: Colors.white70,
-                          borderRadius: BorderRadius.all(Radius.circular(35))),
-                      child: IconButton(
-                          icon: Icon(
-                            Icons.search_sharp,
-                            color: Colors.white70,
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Expanded(
+                        flex: 3,
+                        child: SizedBox(
+                          height: 40,
+                          child: Container(
+                            decoration: BoxDecoration(
+                                color: Colors.white70,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10))),
+                            child: TextField(
+                              decoration: InputDecoration(
+                                border: InputBorder.none,
+                                hintText: "    Subject",
+                                hintStyle: TextStyle(color: Colors.black),
+                              ),
+                              controller: searchContsub,
+                            ),
                           ),
-                          onPressed: () {
-                            setState(() {
-                              grade = _chosenValue;
-                              subject = searchContsub.text;
-                            });
-                          }),
-                    ),
-                  )
+                        ),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Expanded(
+                        flex: 1,
+                        child: Container(
+                          height: 40,
+                          decoration: BoxDecoration(
+                              color: Colors.white70,
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(35))),
+                          child: IconButton(
+                              icon: Icon(
+                                Icons.search_sharp,
+                                color: Colors.white70,
+                              ),
+                              onPressed: () {
+                                setState(() {
+                                  grade = _chosenValue;
+                                  subject = searchContsub.text;
+                                });
+                              }),
+                        ),
+                      )
+                    ],
+                  ),
                 ],
               ),
-            ],
+            ),
           ),
-          centerTitle: true,
         ),
         body: StreamBuilder(
             stream: FirebaseFirestore.instance
@@ -221,7 +251,8 @@ class _FreeClassesState extends State<FreeClasses> {
                               ),
                             ),
                             IconButton(
-                              icon: Icon(Icons.arrow_forward),
+                              icon: Icon(Icons.personal_video_sharp,
+                                  color: Colors.green),
                               onPressed: () {
                                 Navigator.push(
                                     context,
