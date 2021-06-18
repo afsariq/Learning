@@ -170,7 +170,9 @@ class _FreeClassesState extends State<FreeClasses> {
                       child: Column(children: [
                         Container(
                           decoration: BoxDecoration(
-                              border: Border.all(color: Colors.blueAccent)),
+                              color: Colors.blue,
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10))),
                           child: Row(children: [
                             Expanded(
                               flex: 2,
@@ -250,19 +252,35 @@ class _FreeClassesState extends State<FreeClasses> {
                                 ],
                               ),
                             ),
-                            IconButton(
-                              icon: Icon(Icons.personal_video_sharp,
-                                  color: Colors.green),
-                              onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => FreeClassVideo(
-                                              vdoLink: docReference['Url'],
-                                              title: docReference['Details'],
-                                            )));
-                              },
-                              color: Color(0xff00007c),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(20))),
+                                child: Row(
+                                  children: [
+                                    IconButton(
+                                      icon: Icon(Icons.videocam,
+                                          color: Colors.blue),
+                                      onPressed: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    FreeClassVideo(
+                                                      vdoLink:
+                                                          docReference['Url'],
+                                                      title: docReference[
+                                                          'Details'],
+                                                    )));
+                                      },
+                                      color: Color(0xff00007c),
+                                    ),
+                                  ],
+                                ),
+                              ),
                             ),
                           ]),
                         ),

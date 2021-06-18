@@ -452,7 +452,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             gradient: new LinearGradient(
                                 colors: [
                                   const Color(0xff00007c),
-                                  const Color(0xffb74093),
+                                  const Color(0xFF039BE5),
                                 ],
                                 begin: const FractionalOffset(0.0, 0.0),
                                 end: const FractionalOffset(1.0, 0.0),
@@ -558,7 +558,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               gradient: new LinearGradient(
                                   colors: [
                                     const Color(0xff00007c),
-                                    const Color(0xffb74093),
+                                    const Color(0xFF039BE5),
                                   ],
                                   begin: const FractionalOffset(0.0, 0.0),
                                   end: const FractionalOffset(1.0, 0.0),
@@ -578,6 +578,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           backgroundImage: AssetImage(
                                             "Assets/Images/ocf.png",
                                           )))),
+
                               /* RaisedButton(
                                 onPressed: () {
                                   Navigator.push(
@@ -595,7 +596,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                   ])
-            ]))
+            ])),
           ])),
     );
   }
