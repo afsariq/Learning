@@ -69,7 +69,7 @@ class commStream extends StatelessWidget {
         children: <Widget>[
           Column(
             children: [
-              Padding(
+              /*Padding(
                 padding: const EdgeInsets.all(18.0),
                 child: Container(
                   height: 200,
@@ -103,7 +103,8 @@ class commStream extends StatelessWidget {
                     ],
                   ),
                 ),
-              ),
+              ),*/
+              SizedBox(height: 80),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
@@ -116,7 +117,7 @@ class commStream extends StatelessWidget {
                             onTap: () {},
                             child: CircleAvatar(
                               backgroundImage:
-                                  AssetImage("Assets/Images/math.png"),
+                                  AssetImage("Assets/Images/mathsf.png"),
                               radius: 30,
                             ),
                           ),
@@ -198,7 +199,7 @@ class commStream extends StatelessWidget {
                             },
                             child: CircleAvatar(
                               backgroundImage:
-                                  AssetImage("Assets/Images/phy.jpg"),
+                                  AssetImage("Assets/Images/ictf.png"),
                               radius: 30,
                             ),
                           ),

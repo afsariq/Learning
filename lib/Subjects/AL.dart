@@ -116,7 +116,7 @@ class ALStreams extends StatelessWidget {
                             },
                             child: CircleAvatar(
                               backgroundImage:
-                                  AssetImage("Assets/Images/math.png"),
+                                  AssetImage("Assets/Images/phyf.png"),
                               radius: 30,
                             ),
                           ),
@@ -137,7 +137,7 @@ class ALStreams extends StatelessWidget {
                             },
                             child: CircleAvatar(
                               backgroundImage:
-                                  AssetImage("Assets/Images/phy.jpg"),
+                                  AssetImage("Assets/Images/healthf.png"),
                               radius: 30,
                             ),
                           ),
@@ -158,7 +158,7 @@ class ALStreams extends StatelessWidget {
                             },
                             child: CircleAvatar(
                               backgroundImage:
-                                  AssetImage("Assets/Images/art.jpg"),
+                                  AssetImage("Assets/Images/artf.png"),
                               radius: 30,
                             ),
                           ),
@@ -186,7 +186,7 @@ class ALStreams extends StatelessWidget {
                             },
                             child: CircleAvatar(
                               backgroundImage:
-                                  AssetImage("Assets/Images/comm.png"),
+                                  AssetImage("Assets/Images/commf.png"),
                               radius: 30,
                             ),
                           ),
@@ -207,7 +207,7 @@ class ALStreams extends StatelessWidget {
                             },
                             child: CircleAvatar(
                               backgroundImage:
-                                  AssetImage("Assets/Images/ict.png"),
+                                  AssetImage("Assets/Images/techf.png"),
                               radius: 30,
                             ),
                           ),

@@ -69,7 +69,7 @@ class scienceStream extends StatelessWidget {
         children: <Widget>[
           Column(
             children: [
-              Padding(
+              /*   Padding(
                 padding: const EdgeInsets.all(18.0),
                 child: Container(
                   height: 200,
@@ -103,7 +103,8 @@ class scienceStream extends StatelessWidget {
                     ],
                   ),
                 ),
-              ),
+              ),*/
+              SizedBox(height: 80),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
@@ -125,7 +126,7 @@ class scienceStream extends StatelessWidget {
                             },
                             child: CircleAvatar(
                               backgroundImage:
-                                  AssetImage("Assets/Images/math.png"),
+                                  AssetImage("Assets/Images/healthf.png"),
                               radius: 30,
                             ),
                           ),
@@ -150,7 +151,7 @@ class scienceStream extends StatelessWidget {
                             },
                             child: CircleAvatar(
                               backgroundImage:
-                                  AssetImage("Assets/Images/phy.jpg"),
+                                  AssetImage("Assets/Images/phyf.png"),
                               radius: 30,
                             ),
                           ),

@@ -33,6 +33,52 @@ class _LoginPageState extends State<LoginPage> {
         exit(0);
       },
       child: Scaffold(
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(kToolbarHeight + 90),
+          child: ClipPath(
+            clipper: CustomClipPath1(),
+            child: Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage('Assets/Images/bg11.png'),
+                    fit: BoxFit.cover),
+                color: Color(0xff00007c),
+
+                /*  boxShadow: [
+                          BoxShadow(
+                            color: Color(0xAA6EB1E6),
+                            offset: Offset(9, 9),
+                            blurRadius: 6,
+                          ),
+                        ],*/
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(height: 30),
+                  Column(
+                    // mainAxisAlignment: MainAxisAlignment.center,
+                    //crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Center(
+                          child: Text("Login",
+                              style: TextStyle(
+                                  fontSize: 35,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold)),
+                        ),
+                      ),
+                      SizedBox(height: 15),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
         resizeToAvoidBottomInset: false,
         backgroundColor: Colors.white,
         body: Form(
@@ -260,4 +306,23 @@ class _LoginPageState extends State<LoginPage> {
       }
     }
   }
+}
+
+class CustomClipPath1 extends CustomClipper<Path> {
+  var radius = 10.0;
+  @override
+  Path getClip(Size size) {
+    Path path = Path();
+    path.lineTo(0, size.height);
+    path.quadraticBezierTo(
+        size.width / 4, size.height - 40, size.width / 2, size.height - 20);
+    path.quadraticBezierTo(
+        3 / 4 * size.width, size.height, size.width, size.height - 30);
+    path.lineTo(size.width, 0);
+
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
 }

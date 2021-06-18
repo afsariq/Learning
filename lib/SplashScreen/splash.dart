@@ -47,7 +47,7 @@ class _SplashScreenState extends State<SplashScreen> {
                         padding: EdgeInsets.only(top: 10.0),
                       ),
                       Text(
-                        "Learning App",
+                        "e-විදුහල",
                         style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,

@@ -91,7 +91,7 @@ class sixtoeleven extends StatelessWidget {
                             },
                             child: CircleAvatar(
                               backgroundImage:
-                                  AssetImage("Assets/Images/math.png"),
+                                  AssetImage("Assets/Images/mathsf.png"),
                               radius: 30,
                             ),
                           ),
@@ -115,7 +115,7 @@ class sixtoeleven extends StatelessWidget {
                             },
                             child: CircleAvatar(
                               backgroundImage:
-                                  AssetImage("Assets/Images/phy.jpg"),
+                                  AssetImage("Assets/Images/Advanced.png"),
                               radius: 30,
                             ),
                           ),
@@ -139,7 +139,7 @@ class sixtoeleven extends StatelessWidget {
                             },
                             child: CircleAvatar(
                               backgroundImage:
-                                  AssetImage("Assets/Images/eng.jpeg"),
+                                  AssetImage("Assets/Images/englishf.png"),
                               radius: 30,
                             ),
                           ),
@@ -170,7 +170,7 @@ class sixtoeleven extends StatelessWidget {
                             },
                             child: CircleAvatar(
                               backgroundImage:
-                                  AssetImage("Assets/Images/hist.jpg"),
+                                  AssetImage("Assets/Images/historyf.png"),
                               radius: 30,
                             ),
                           ),
@@ -194,7 +194,7 @@ class sixtoeleven extends StatelessWidget {
                             },
                             child: CircleAvatar(
                               backgroundImage:
-                                  AssetImage("Assets/Images/health.png"),
+                                  AssetImage("Assets/Images/healthf.png"),
                               radius: 30,
                             ),
                           ),
@@ -218,7 +218,7 @@ class sixtoeleven extends StatelessWidget {
                             },
                             child: CircleAvatar(
                               backgroundImage:
-                                  AssetImage("Assets/Images/geo.png"),
+                                  AssetImage("Assets/Images/geof.png"),
                               radius: 30,
                             ),
                           ),
@@ -249,7 +249,7 @@ class sixtoeleven extends StatelessWidget {
                             },
                             child: CircleAvatar(
                               backgroundImage:
-                                  AssetImage("Assets/Images/ict.png"),
+                                  AssetImage("Assets/Images/ictf.png"),
                               radius: 30,
                             ),
                           ),
@@ -273,7 +273,7 @@ class sixtoeleven extends StatelessWidget {
                             },
                             child: CircleAvatar(
                               backgroundImage:
-                                  AssetImage("Assets/Images/civi.jpg"),
+                                  AssetImage("Assets/Images/FreeClass.png"),
                               radius: 30,
                             ),
                           ),
@@ -297,7 +297,7 @@ class sixtoeleven extends StatelessWidget {
                             },
                             child: CircleAvatar(
                               backgroundImage:
-                                  AssetImage("Assets/Images/art.jpg"),
+                                  AssetImage("Assets/Images/artf.png"),
                               radius: 30,
                             ),
                           ),
@@ -328,7 +328,7 @@ class sixtoeleven extends StatelessWidget {
                             },
                             child: CircleAvatar(
                               backgroundImage:
-                                  AssetImage("Assets/Images/pts.jpg"),
+                                  AssetImage("Assets/Images/phyf.png"),
                               radius: 30,
                             ),
                           ),
@@ -352,7 +352,7 @@ class sixtoeleven extends StatelessWidget {
                             },
                             child: CircleAvatar(
                               backgroundImage:
-                                  AssetImage("Assets/Images/sinhala.jpg"),
+                                  AssetImage("Assets/Images/sinhalaf.png"),
                               radius: 30,
                             ),
                           ),
@@ -376,7 +376,7 @@ class sixtoeleven extends StatelessWidget {
                             },
                             child: CircleAvatar(
                               backgroundImage:
-                                  AssetImage("Assets/Images/comm.png"),
+                                  AssetImage("Assets/Images/commf.png"),
                               radius: 30,
                             ),
                           ),
@@ -407,7 +407,7 @@ class sixtoeleven extends StatelessWidget {
                             },
                             child: CircleAvatar(
                               backgroundImage:
-                                  AssetImage("Assets/Images/sinhala.jpg"),
+                                  AssetImage("Assets/Images/Schol.png"),
                               radius: 30,
                             ),
                           ),
@@ -458,7 +458,7 @@ class sixtoeleven extends StatelessWidget {
                             },
                             child: CircleAvatar(
                               backgroundImage:
-                                  AssetImage("Assets/Images/sinhala.jpg"),
+                                  AssetImage("Assets/Images/Schol.png"),
                               radius: 30,
                             ),
                           ),
@@ -497,7 +497,7 @@ class sixtoeleven extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Expanded(
+                    /* Expanded(
                       flex: 1,
                       child: Column(
                         children: [
@@ -520,7 +520,7 @@ class sixtoeleven extends StatelessWidget {
                           Text("Sinhala Language")
                         ],
                       ),
-                    ),
+                    ),*/
                     Expanded(
                       flex: 1,
                       child: Column(

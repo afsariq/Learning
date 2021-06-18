@@ -72,8 +72,8 @@ class mathsStream extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(18.0),
                 child: Container(
-                  height: 200,
-                  decoration: BoxDecoration(
+                  height: 120,
+                  /*decoration: BoxDecoration(
                       gradient: new LinearGradient(
                           colors: [
                             const Color(0xff00007c),
@@ -84,8 +84,8 @@ class mathsStream extends StatelessWidget {
                           stops: [0.0, 1.0],
                           tileMode: TileMode.clamp),
                       borderRadius: BorderRadius.all(Radius.circular(20))),
-                  // color: Colors.amberAccent,
-                  child: Row(
+                  // color: Colors.amberAccent,*/
+                  /*child: Row(
                     children: [
                       Padding(
                           padding: const EdgeInsets.all(18.0),
@@ -101,7 +101,7 @@ class mathsStream extends StatelessWidget {
                         color: Colors.white,
                       )
                     ],
-                  ),
+                  ),*/
                 ),
               ),
               Padding(
@@ -125,7 +125,7 @@ class mathsStream extends StatelessWidget {
                             },
                             child: CircleAvatar(
                               backgroundImage:
-                                  AssetImage("Assets/Images/math.png"),
+                                  AssetImage("Assets/Images/mathsf.png"),
                               radius: 30,
                             ),
                           ),
@@ -150,7 +150,7 @@ class mathsStream extends StatelessWidget {
                             },
                             child: CircleAvatar(
                               backgroundImage:
-                                  AssetImage("Assets/Images/phy.jpg"),
+                                  AssetImage("Assets/Images/phyf.png"),
                               radius: 30,
                             ),
                           ),
@@ -207,7 +207,7 @@ class mathsStream extends StatelessWidget {
                             },
                             child: CircleAvatar(
                               backgroundImage:
-                                  AssetImage("Assets/Images/ict.png"),
+                                  AssetImage("Assets/Images/ictf.png"),
                               radius: 30,
                             ),
                           ),

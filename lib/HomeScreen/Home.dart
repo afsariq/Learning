@@ -421,7 +421,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           },
                                           child: CircleAvatar(
                                             backgroundImage: AssetImage(
-                                                "Assets/Images/FreeClass.png"),
+                                                "Assets/Images/sciencef.png"),
                                             radius: 30,
                                           ),
                                         ),
@@ -468,7 +468,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: CircleAvatar(
                                     radius: 30,
                                     backgroundImage: AssetImage(
-                                      "Assets/Images/quizz1.png",
+                                      "Assets/Images/Quizzz.png",
                                     ))),
                             Expanded(
                               flex: 2,
@@ -576,7 +576,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       child: CircleAvatar(
                                           radius: 60,
                                           backgroundImage: AssetImage(
-                                            "Assets/Images/onlinecourses.png",
+                                            "Assets/Images/ocf.png",
                                           )))),
                               /* RaisedButton(
                                 onPressed: () {

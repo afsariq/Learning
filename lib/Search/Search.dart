@@ -184,7 +184,7 @@ class _SearchTeacherState extends State<SearchTeacher> {
                                 backgroundImage: NetworkImage(
                                   docReference['Image'],
                                 ),
-                                radius: 60,
+                                radius: 50,
                                 /*child: Image.network(
                                       docReference['Image'],
                                       width: 100,
@@ -269,6 +269,9 @@ class _SearchTeacherState extends State<SearchTeacher> {
                                                     builder: (context) =>
                                                         FreeClassesByt(
                                                           TechId: id,
+                                                          Techname:
+                                                              docReference[
+                                                                  'Name'],
                                                         )));
                                           },
                                           child: Text(

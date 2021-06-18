@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:jitsist/HomeScreen/ClipPath.dart';
 import 'package:jitsist/Payment&Booking/Profile.dart';
 
 String Field;
@@ -33,8 +34,63 @@ class _BookClassState extends State<BookClass> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Color(0xff00007c),
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(kToolbarHeight + 90),
+          child: ClipPath(
+            clipper: CustomClipPath(),
+            child: Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage('Assets/Images/bg11.png'),
+                    fit: BoxFit.cover),
+                color: Color(0xff00007c),
+
+                /*  boxShadow: [
+                          BoxShadow(
+                            color: Color(0xAA6EB1E6),
+                            offset: Offset(9, 9),
+                            blurRadius: 6,
+                          ),
+                        ],*/
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(height: 30),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Colors.white24,
+                          borderRadius: BorderRadius.all(Radius.circular(10))),
+                      child: IconButton(
+                          icon: Icon(Icons.arrow_back, color: Colors.white),
+                          onPressed: () {
+                            Navigator.pop(context);
+                          }),
+                    ),
+                  ),
+                  Column(
+                    // mainAxisAlignment: MainAxisAlignment.center,
+                    //crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Center(
+                          child: Text(widget.techname + "'s Shedule",
+                              style: TextStyle(
+                                  fontSize: 25,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold)),
+                        ),
+                      ),
+                      SizedBox(height: 15),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
         ),
         body: ListView(
           children: <Widget>[
@@ -50,13 +106,14 @@ class _BookClassState extends State<BookClass> {
                       height: 50,
                       width: 300,
                       decoration: BoxDecoration(
-                          color: Colors.blueAccent,
+                          color: Color(0xff00007c),
                           borderRadius: BorderRadius.all(Radius.circular(20))),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Expanded(
                               child: CircleAvatar(
+                            backgroundColor: Colors.white,
                             child: Text(
                               'M',
                               style: TextStyle(
@@ -67,13 +124,27 @@ class _BookClassState extends State<BookClass> {
 
                             ///backgroundColor: Colors.lightBlue,
                           )),
-                          Expanded(child: Center(child: Text('Monday'))),
+                          Expanded(
+                              child: Center(
+                                  child: Text(
+                            'Monday',
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ))),
                           if (day == "")
-                            Expanded(child: Icon(Icons.arrow_drop_down)),
+                            Expanded(
+                                child: Icon(
+                              Icons.arrow_drop_down,
+                              color: Colors.white,
+                            )),
                           if (day == "Monday")
                             Expanded(
                               child: IconButton(
-                                  icon: Icon(Icons.arrow_drop_up),
+                                  icon: Icon(
+                                    Icons.arrow_drop_up,
+                                    color: Colors.white,
+                                  ),
                                   onPressed: () {
                                     setState(() {
                                       day = "";
@@ -107,13 +178,14 @@ class _BookClassState extends State<BookClass> {
                       height: 50,
                       width: 300,
                       decoration: BoxDecoration(
-                          color: Colors.blueAccent,
+                          color: Color(0xff00007c),
                           borderRadius: BorderRadius.all(Radius.circular(20))),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Expanded(
                               child: CircleAvatar(
+                            backgroundColor: Colors.white,
                             child: Text(
                               'T',
                               style: TextStyle(
@@ -123,13 +195,23 @@ class _BookClassState extends State<BookClass> {
                             ),
                             ////backgroundColor: Colors.lightBlue,
                           )),
-                          Expanded(child: Center(child: Text('Tuesday'))),
+                          Expanded(
+                              child: Center(
+                                  child: Text(
+                            'Tuesday',
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ))),
                           if (day == "")
-                            Expanded(child: Icon(Icons.arrow_drop_down)),
+                            Expanded(
+                                child: Icon(Icons.arrow_drop_down,
+                                    color: Colors.white)),
                           if (day == "Tuesday")
                             Expanded(
                               child: IconButton(
-                                  icon: Icon(Icons.arrow_drop_up),
+                                  icon: Icon(Icons.arrow_drop_up,
+                                      color: Colors.white),
                                   onPressed: () {
                                     setState(() {
                                       day = "";
@@ -162,13 +244,14 @@ class _BookClassState extends State<BookClass> {
                       height: 50,
                       width: 300,
                       decoration: BoxDecoration(
-                          color: Colors.blueAccent,
+                          color: Color(0xff00007c),
                           borderRadius: BorderRadius.all(Radius.circular(20))),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Expanded(
                               child: CircleAvatar(
+                            backgroundColor: Colors.white,
                             child: Text(
                               'W',
                               style: TextStyle(
@@ -179,13 +262,23 @@ class _BookClassState extends State<BookClass> {
 
                             /// backgroundColor: Colors.lightBlue,
                           )),
-                          Expanded(child: Center(child: Text('Wednesday'))),
+                          Expanded(
+                              child: Center(
+                                  child: Text(
+                            'Wednesday',
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ))),
                           if (day == "")
-                            Expanded(child: Icon(Icons.arrow_drop_down)),
+                            Expanded(
+                                child: Icon(Icons.arrow_drop_down,
+                                    color: Colors.white)),
                           if (day == "Wednesday")
                             Expanded(
                               child: IconButton(
-                                  icon: Icon(Icons.arrow_drop_up),
+                                  icon: Icon(Icons.arrow_drop_up,
+                                      color: Colors.white),
                                   onPressed: () {
                                     setState(() {
                                       day = "";
@@ -216,7 +309,7 @@ class _BookClassState extends State<BookClass> {
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
                       decoration: BoxDecoration(
-                          color: Colors.blueAccent,
+                          color: Color(0xff00007c),
                           borderRadius: BorderRadius.all(Radius.circular(20))),
                       height: 50,
                       width: 300,
@@ -225,6 +318,7 @@ class _BookClassState extends State<BookClass> {
                         children: [
                           Expanded(
                               child: CircleAvatar(
+                            backgroundColor: Colors.white,
                             child: Text(
                               'T',
                               style: TextStyle(
@@ -234,13 +328,23 @@ class _BookClassState extends State<BookClass> {
                             ),
                             //backgroundColor: Colors.lightBlue,
                           )),
-                          Expanded(child: Center(child: Text('Thursday'))),
+                          Expanded(
+                              child: Center(
+                                  child: Text(
+                            'Thursday',
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ))),
                           if (day == "")
-                            Expanded(child: Icon(Icons.arrow_drop_down)),
+                            Expanded(
+                                child: Icon(Icons.arrow_drop_down,
+                                    color: Colors.white)),
                           if (day == "Thursday")
                             Expanded(
                               child: IconButton(
-                                  icon: Icon(Icons.arrow_drop_up),
+                                  icon: Icon(Icons.arrow_drop_up,
+                                      color: Colors.white),
                                   onPressed: () {
                                     setState(() {
                                       day = "";
@@ -271,7 +375,7 @@ class _BookClassState extends State<BookClass> {
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
                       decoration: BoxDecoration(
-                          color: Colors.blueAccent,
+                          color: Color(0xff00007c),
                           borderRadius: BorderRadius.all(Radius.circular(20))),
                       height: 50,
                       width: 300,
@@ -280,6 +384,7 @@ class _BookClassState extends State<BookClass> {
                         children: [
                           Expanded(
                               child: CircleAvatar(
+                            backgroundColor: Colors.white,
                             child: Text(
                               'F',
                               style: TextStyle(
@@ -289,13 +394,23 @@ class _BookClassState extends State<BookClass> {
                             ),
                             //backgroundColor: Colors.lightBlue,
                           )),
-                          Expanded(child: Center(child: Text('Friday'))),
+                          Expanded(
+                              child: Center(
+                                  child: Text(
+                            'Friday',
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ))),
                           if (day == "")
-                            Expanded(child: Icon(Icons.arrow_drop_down)),
+                            Expanded(
+                                child: Icon(Icons.arrow_drop_down,
+                                    color: Colors.white)),
                           if (day == "Friday")
                             Expanded(
                               child: IconButton(
-                                  icon: Icon(Icons.arrow_drop_up),
+                                  icon: Icon(Icons.arrow_drop_up,
+                                      color: Colors.white),
                                   onPressed: () {
                                     setState(() {
                                       day = "";
@@ -326,7 +441,7 @@ class _BookClassState extends State<BookClass> {
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
                       decoration: BoxDecoration(
-                          color: Colors.blueAccent,
+                          color: Color(0xff00007c),
                           borderRadius: BorderRadius.all(Radius.circular(20))),
                       height: 50,
                       width: 300,
@@ -335,6 +450,7 @@ class _BookClassState extends State<BookClass> {
                         children: [
                           Expanded(
                               child: CircleAvatar(
+                            backgroundColor: Colors.white,
                             child: Text(
                               'S',
                               style: TextStyle(
@@ -344,13 +460,23 @@ class _BookClassState extends State<BookClass> {
                             ),
                             //backgroundColor: Colors.lightBlue,
                           )),
-                          Expanded(child: Center(child: Text('Saturday'))),
+                          Expanded(
+                              child: Center(
+                                  child: Text(
+                            'Saturday',
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ))),
                           if (day == "")
-                            Expanded(child: Icon(Icons.arrow_drop_down)),
+                            Expanded(
+                                child: Icon(Icons.arrow_drop_down,
+                                    color: Colors.white)),
                           if (day == "Saturday")
                             Expanded(
                               child: IconButton(
-                                  icon: Icon(Icons.arrow_drop_up),
+                                  icon: Icon(Icons.arrow_drop_up,
+                                      color: Colors.white),
                                   onPressed: () {
                                     setState(() {
                                       day = "";
@@ -381,7 +507,7 @@ class _BookClassState extends State<BookClass> {
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
                       decoration: BoxDecoration(
-                          color: Colors.blueAccent,
+                          color: Color(0xff00007c),
                           borderRadius: BorderRadius.all(Radius.circular(20))),
                       height: 50,
                       width: 300,
@@ -390,6 +516,7 @@ class _BookClassState extends State<BookClass> {
                         children: [
                           Expanded(
                               child: CircleAvatar(
+                            backgroundColor: Colors.white,
                             child: Text(
                               'S',
                               style: TextStyle(
@@ -399,13 +526,23 @@ class _BookClassState extends State<BookClass> {
                             ),
                             // backgroundColor: Colors.lightBlue,
                           )),
-                          Expanded(child: Center(child: Text('Sunday'))),
+                          Expanded(
+                              child: Center(
+                                  child: Text(
+                            'Sunday',
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ))),
                           if (day == "")
-                            Expanded(child: Icon(Icons.arrow_drop_down)),
+                            Expanded(
+                                child: Icon(Icons.arrow_drop_down,
+                                    color: Colors.white)),
                           if (day == "Sunday")
                             Expanded(
                               child: IconButton(
-                                  icon: Icon(Icons.arrow_drop_up),
+                                  icon: Icon(Icons.arrow_drop_up,
+                                      color: Colors.white),
                                   onPressed: () {
                                     setState(() {
                                       day = "";

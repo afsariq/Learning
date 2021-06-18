@@ -214,6 +214,9 @@ class _SubjectState extends State<Subject> with SingleTickerProviderStateMixin {
                                                       builder: (context) =>
                                                           FreeClassesByt(
                                                             TechId: id,
+                                                            Techname:
+                                                                docReference[
+                                                                    'Name'],
                                                           )));
                                             },
                                             child: Text(

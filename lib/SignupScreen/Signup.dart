@@ -34,201 +34,257 @@ class _SignupState extends State<Signup> {
   Widget build(BuildContext context) {
     return Scaffold(
         //backgroundColor: Colors.blue,
-        body: Form(
-      key: _key,
-      child: ListView(
-        children: [
-          Column(
-            children: <Widget>[
-              SizedBox(
-                height: 40,
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(kToolbarHeight + 90),
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(
+                bottomRight: Radius.circular(50),
+                bottomLeft: Radius.circular(50),
               ),
-              CircleAvatar(
-                radius: 70,
-                backgroundColor: Colors.amber,
-                backgroundImage: AssetImage("Assets/Images/logo.png"),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8),
-                child: TextFormField(
-                  validator: RequiredValidator(errorText: "* Required"),
-                  controller: username,
-                  decoration: InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Color(0xff00007c),
-                      ),
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                    hintText: "User name",
-                    prefixIcon: Icon(
-                      Icons.person,
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8),
-                child: TextFormField(
-                  validator: (value) {
-                    String patttern = r'(^[0-9]*$)';
-                    RegExp regExp = new RegExp(patttern);
-                    if (value.length == 0) {
-                      return "Mobile is Required";
-                    } else if (value.length != 10) {
-                      return "Mobile number must 10 digits";
-                    } else if (!regExp.hasMatch(value)) {
-                      return "Mobile Number must be digits";
-                    } else {
-                      return null;
-                    }
-                  },
-                  controller: phone,
-                  keyboardType: TextInputType.number,
-                  decoration: InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Color(0xff00007c),
-                      ),
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                    hintText: "Phone Number",
-                    prefixIcon: Icon(Icons.phone),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8),
-                child: TextFormField(
-                  validator: RequiredValidator(errorText: "* Required"),
-                  controller: city,
-                  decoration: InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Color(0xff00007c),
-                      ),
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                    hintText: "City",
-                    prefixIcon: Icon(Icons.location_city),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8),
-                child: TextFormField(
-                  validator: MultiValidator([
-                    RequiredValidator(errorText: "* Required"),
-                    EmailValidator(errorText: "Enter valid email id"),
-                  ]),
-                  controller: email,
-                  decoration: InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Color(0xff00007c),
-                      ),
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                    hintText: "Email",
-                    prefixIcon: Icon(Icons.email),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8),
-                child: TextFormField(
-                  validator: RequiredValidator(errorText: "* Required"),
-                  controller: password,
-                  decoration: InputDecoration(
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Color(0xff00007c),
+              image: DecorationImage(
+                  image: AssetImage('Assets/Images/bg11.png'),
+                  fit: BoxFit.cover),
+              color: Color(0xff00007c),
+
+              /*  boxShadow: [
+                        BoxShadow(
+                          color: Color(0xAA6EB1E6),
+                          offset: Offset(9, 9),
+                          blurRadius: 6,
                         ),
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      hintText: "Password",
-                      prefixIcon: Icon(
-                        Icons.fingerprint,
-                      )),
-                ),
-              ),
-              if (error.length > 3)
+                      ],*/
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: 30),
                 Padding(
-                  padding: const EdgeInsets.only(left: 12.0, right: 12),
+                  padding: const EdgeInsets.all(8.0),
                   child: Container(
-                    width: double.infinity,
-                    height: 35,
-                    child: Center(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        //crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Center(
-                            child: IconButton(
-                                iconSize: 18,
-                                icon: Icon(
-                                  Icons.error_outline,
-                                  color: Colors.red,
-                                ),
-                                onPressed: () {}),
-                          ),
-                          Text(
-                            error,
-                            style: TextStyle(color: Colors.red),
-                          ),
-                        ],
-                      ),
-                    ),
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
-                      color: Colors.amberAccent,
-                    ),
+                        color: Colors.white24,
+                        borderRadius: BorderRadius.all(Radius.circular(10))),
+                    child: IconButton(
+                        icon: Icon(Icons.arrow_back, color: Colors.white),
+                        onPressed: () {
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => LoginPage()));
+                        }),
                   ),
                 ),
-              SizedBox(height: 20),
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(18),
-                  color: Color(0xff00007c),
-                ),
-                child: FlatButton(
-                    onPressed: () {
-                      if (_key.currentState.validate()) {
-                        createuser(context);
-                      } else {
-                        print("error");
-                      }
-                    },
-                    child: Text("Continue",
-                        style: TextStyle(color: Colors.white, fontSize: 17))),
-              ),
-              SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text("Already have an account?  "),
-                  GestureDetector(
-                      child: Text(
-                        "Signin",
-                        style: TextStyle(color: Colors.blue[600]),
+                Column(
+                  // mainAxisAlignment: MainAxisAlignment.center,
+                  //crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Center(
+                        child: Text("Signup Here",
+                            style: TextStyle(
+                                fontSize: 35,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold)),
                       ),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => LoginPage()),
-                        );
-                      }),
+                    ),
+                    SizedBox(height: 15),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+        body: Form(
+          key: _key,
+          child: ListView(
+            children: [
+              Column(
+                children: <Widget>[
+                  SizedBox(
+                    height: 40,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: TextFormField(
+                      validator: RequiredValidator(errorText: "* Required"),
+                      controller: username,
+                      decoration: InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0xff00007c),
+                          ),
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        hintText: "User name",
+                        prefixIcon: Icon(
+                          Icons.person,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: TextFormField(
+                      validator: (value) {
+                        String patttern = r'(^[0-9]*$)';
+                        RegExp regExp = new RegExp(patttern);
+                        if (value.length == 0) {
+                          return "Mobile is Required";
+                        } else if (value.length != 10) {
+                          return "Mobile number must 10 digits";
+                        } else if (!regExp.hasMatch(value)) {
+                          return "Mobile Number must be digits";
+                        } else {
+                          return null;
+                        }
+                      },
+                      controller: phone,
+                      keyboardType: TextInputType.number,
+                      decoration: InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0xff00007c),
+                          ),
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        hintText: "Phone Number",
+                        prefixIcon: Icon(Icons.phone),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: TextFormField(
+                      validator: RequiredValidator(errorText: "* Required"),
+                      controller: city,
+                      decoration: InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0xff00007c),
+                          ),
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        hintText: "City",
+                        prefixIcon: Icon(Icons.location_city),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: TextFormField(
+                      validator: MultiValidator([
+                        RequiredValidator(errorText: "* Required"),
+                        EmailValidator(errorText: "Enter valid email id"),
+                      ]),
+                      controller: email,
+                      decoration: InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0xff00007c),
+                          ),
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        hintText: "Email",
+                        prefixIcon: Icon(Icons.email),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: TextFormField(
+                      validator: RequiredValidator(errorText: "* Required"),
+                      controller: password,
+                      decoration: InputDecoration(
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0xff00007c),
+                            ),
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          hintText: "Password",
+                          prefixIcon: Icon(
+                            Icons.fingerprint,
+                          )),
+                    ),
+                  ),
+                  if (error.length > 3)
+                    Padding(
+                      padding: const EdgeInsets.only(left: 12.0, right: 12),
+                      child: Container(
+                        width: double.infinity,
+                        height: 35,
+                        child: Center(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            //crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Center(
+                                child: IconButton(
+                                    iconSize: 18,
+                                    icon: Icon(
+                                      Icons.error_outline,
+                                      color: Colors.red,
+                                    ),
+                                    onPressed: () {}),
+                              ),
+                              Text(
+                                error,
+                                style: TextStyle(color: Colors.red),
+                              ),
+                            ],
+                          ),
+                        ),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                          color: Colors.amberAccent,
+                        ),
+                      ),
+                    ),
                   SizedBox(height: 20),
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(18),
+                      color: Color(0xff00007c),
+                    ),
+                    child: FlatButton(
+                        onPressed: () {
+                          if (_key.currentState.validate()) {
+                            createuser(context);
+                          } else {
+                            print("error");
+                          }
+                        },
+                        child: Text("Continue",
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 17))),
+                  ),
+                  SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text("Already have an account?  "),
+                      GestureDetector(
+                          child: Text(
+                            "Signin",
+                            style: TextStyle(color: Colors.blue[600]),
+                          ),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => LoginPage()),
+                            );
+                          }),
+                      SizedBox(height: 20),
+                    ],
+                  ),
                 ],
               ),
             ],
           ),
-        ],
-      ),
-    ));
+        ));
   }
 
   Future<void> createuser(BuildContext context) async {
