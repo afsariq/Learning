@@ -142,7 +142,7 @@ class commStream extends StatelessWidget {
                             },
                             child: CircleAvatar(
                               backgroundImage:
-                                  AssetImage("Assets/Images/phy.jpg"),
+                                  AssetImage("Assets/Images/FreeClass.png"),
                               radius: 30,
                             ),
                           ),
@@ -167,7 +167,7 @@ class commStream extends StatelessWidget {
                             },
                             child: CircleAvatar(
                               backgroundImage:
-                                  AssetImage("Assets/Images/eng.jpeg"),
+                                  AssetImage("Assets/Images/ecof.png"),
                               radius: 30,
                             ),
                           ),
@@ -199,7 +199,7 @@ class commStream extends StatelessWidget {
                             },
                             child: CircleAvatar(
                               backgroundImage:
-                                  AssetImage("Assets/Images/ictf.png"),
+                                  AssetImage("Assets/Images/bstatf.png"),
                               radius: 30,
                             ),
                           ),
@@ -224,7 +224,7 @@ class commStream extends StatelessWidget {
                             },
                             child: CircleAvatar(
                               backgroundImage:
-                                  AssetImage("Assets/Images/math.png"),
+                                  AssetImage("Assets/Images/ictf.png"),
                               radius: 30,
                             ),
                           ),

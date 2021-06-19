@@ -151,7 +151,7 @@ class techStream extends StatelessWidget {
                             },
                             child: CircleAvatar(
                               backgroundImage:
-                                  AssetImage("Assets/Images/sciencef.png"),
+                                  AssetImage("Assets/Images/chemf.png"),
                               radius: 30,
                             ),
                           ),

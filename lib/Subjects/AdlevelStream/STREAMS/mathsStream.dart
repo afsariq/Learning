@@ -182,7 +182,7 @@ class mathsStream extends StatelessWidget {
                             },
                             child: CircleAvatar(
                               backgroundImage:
-                                  AssetImage("Assets/Images/chem.jpg"),
+                                  AssetImage("Assets/Images/chemf.png"),
                               radius: 30,
                             ),
                           ),

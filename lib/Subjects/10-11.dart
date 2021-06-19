@@ -411,7 +411,7 @@ class OLsubjects extends StatelessWidget {
                             },
                             child: CircleAvatar(
                               backgroundImage:
-                                  AssetImage("Assets/Images/Schol.png"),
+                                  AssetImage("Assets/Images/2ndf.png"),
                               radius: 30,
                             ),
                           ),
@@ -438,7 +438,7 @@ class OLsubjects extends StatelessWidget {
                             },
                             child: CircleAvatar(
                               backgroundImage:
-                                  AssetImage("Assets/Images/tam.png"),
+                                  AssetImage("Assets/Images/tamilf.png"),
                               radius: 30,
                             ),
                           ),
@@ -493,7 +493,7 @@ class OLsubjects extends StatelessWidget {
                             },
                             child: CircleAvatar(
                               backgroundImage:
-                                  AssetImage("Assets/Images/buddhism.png"),
+                                  AssetImage("Assets/Images/budhf.png"),
                               radius: 30,
                             ),
                           ),
@@ -542,7 +542,7 @@ class OLsubjects extends StatelessWidget {
                             },
                             child: CircleAvatar(
                               backgroundImage:
-                                  AssetImage("Assets/Images/music.png"),
+                                  AssetImage("Assets/Images/musicf.png"),
                               radius: 30,
                             ),
                           ),

@@ -124,7 +124,7 @@ class artStream extends StatelessWidget {
                             },
                             child: CircleAvatar(
                               backgroundImage:
-                                  AssetImage("Assets/Images/commf.png"),
+                                  AssetImage("Assets/Images/ecof.png"),
                               radius: 30,
                             ),
                           ),
@@ -206,7 +206,7 @@ class artStream extends StatelessWidget {
                             },
                             child: CircleAvatar(
                               backgroundImage:
-                                  AssetImage("Assets/Images/math.png"),
+                                  AssetImage("Assets/Images/hecof.png"),
                               radius: 30,
                             ),
                           ),
@@ -231,7 +231,7 @@ class artStream extends StatelessWidget {
                             },
                             child: CircleAvatar(
                               backgroundImage:
-                                  AssetImage("Assets/Images/scho.png"),
+                                  AssetImage("Assets/Images/polif.png"),
                               radius: 30,
                             ),
                           ),
@@ -279,7 +279,7 @@ class artStream extends StatelessWidget {
                             onTap: () {},
                             child: CircleAvatar(
                               backgroundImage:
-                                  AssetImage("Assets/Images/FreeClass.png"),
+                                  AssetImage("Assets/Images/tsmf.png"),
                               radius: 30,
                             ),
                           ),
@@ -329,7 +329,7 @@ class artStream extends StatelessWidget {
                             },
                             child: CircleAvatar(
                               backgroundImage:
-                                  AssetImage("Assets/Images/eng.jpeg"),
+                                  AssetImage("Assets/Images/bstatf.png"),
                               radius: 30,
                             ),
                           ),
@@ -361,7 +361,7 @@ class artStream extends StatelessWidget {
                             },
                             child: CircleAvatar(
                               backgroundImage:
-                                  AssetImage("Assets/Images/math.png"),
+                                  AssetImage("Assets/Images/FreeClass.png"),
                               radius: 30,
                             ),
                           ),
@@ -411,7 +411,7 @@ class artStream extends StatelessWidget {
                             },
                             child: CircleAvatar(
                               backgroundImage:
-                                  AssetImage("Assets/Images/commf.png"),
+                                  AssetImage("Assets/Images/commuf.png"),
                               radius: 30,
                             ),
                           ),
@@ -443,7 +443,7 @@ class artStream extends StatelessWidget {
                             },
                             child: CircleAvatar(
                               backgroundImage:
-                                  AssetImage("Assets/Images/math.png"),
+                                  AssetImage("Assets/Images/mediaf.png"),
                               radius: 30,
                             ),
                           ),
@@ -468,7 +468,7 @@ class artStream extends StatelessWidget {
                             },
                             child: CircleAvatar(
                               backgroundImage:
-                                  AssetImage("Assets/Images/phy.jpg"),
+                                  AssetImage("Assets/Images/Pastp.png"),
                               radius: 30,
                             ),
                           ),
@@ -493,7 +493,7 @@ class artStream extends StatelessWidget {
                             },
                             child: CircleAvatar(
                               backgroundImage:
-                                  AssetImage("Assets/Images/eng.jpeg"),
+                                  AssetImage("Assets/Images/sciencef.png"),
                               radius: 30,
                             ),
                           ),

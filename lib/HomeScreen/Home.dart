@@ -7,6 +7,7 @@ import 'package:jitsist/Courses/FreeClasses.dart';
 import 'package:jitsist/Courses/FreeCourses.dart';
 import 'package:jitsist/LoginScreen/Login.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:jitsist/PastPapers/PastPapers.dart';
 import 'package:jitsist/Payment&Booking/Profile.dart';
 import 'package:jitsist/Profile/ProfileScreen.dart';
 import 'package:jitsist/Quizz/home.dart';
@@ -347,7 +348,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 context,
                                                 MaterialPageRoute(
                                                     builder: (context) =>
-                                                        CourseScreen()));
+                                                        MyApp()));
                                           },
                                           child: CircleAvatar(
                                             backgroundImage: AssetImage(

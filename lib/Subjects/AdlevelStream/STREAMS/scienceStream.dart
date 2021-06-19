@@ -183,7 +183,7 @@ class scienceStream extends StatelessWidget {
                             },
                             child: CircleAvatar(
                               backgroundImage:
-                                  AssetImage("Assets/Images/chem.jpg"),
+                                  AssetImage("Assets/Images/chemf.png"),
                               radius: 30,
                             ),
                           ),
@@ -208,7 +208,7 @@ class scienceStream extends StatelessWidget {
                             },
                             child: CircleAvatar(
                               backgroundImage:
-                                  AssetImage("Assets/Images/ict.png"),
+                                  AssetImage("Assets/Images/geof.png"),
                               radius: 30,
                             ),
                           ),
