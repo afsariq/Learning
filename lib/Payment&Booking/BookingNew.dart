@@ -5,9 +5,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:jitsist/HomeScreen/ClipPath.dart';
 import 'package:jitsist/Payment&Booking/Profile.dart';
+import 'package:intl/intl.dart';
 
 String Field;
 String Selected;
+var date = DateTime.now();
+var dat = DateFormat('EEEE, d MMM, yyyy').format(date);
 
 class BookClass extends StatefulWidget {
   String Id;
@@ -74,6 +77,13 @@ class _BookClassState extends State<BookClass> {
                     // mainAxisAlignment: MainAxisAlignment.center,
                     //crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text(DateFormat('EEEE, d MMM, yyyy').format(date),
+                              textAlign: TextAlign.right),
+                        ],
+                      ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Center(
@@ -84,7 +94,7 @@ class _BookClassState extends State<BookClass> {
                                   fontWeight: FontWeight.bold)),
                         ),
                       ),
-                      SizedBox(height: 15),
+                      //SizedBox(height: 15),
                     ],
                   ),
                 ],
@@ -789,7 +799,7 @@ class _BookClassState extends State<BookClass> {
                                           FirebaseAuth.instance.currentUser.uid,
                                       'Link': 'join' +
                                           FirebaseAuth.instance.currentUser.uid,
-
+                                      'Date': dat,
                                       //'Link': Room
                                     });
 
@@ -1052,7 +1062,7 @@ class _BookClassState extends State<BookClass> {
                                           FirebaseAuth.instance.currentUser.uid,
                                       'Link': 'join' +
                                           FirebaseAuth.instance.currentUser.uid,
-
+                                      'Date': dat,
                                       //'Link': Room
                                     });
 
@@ -1315,6 +1325,7 @@ class _BookClassState extends State<BookClass> {
                                           FirebaseAuth.instance.currentUser.uid,
                                       'Link': 'join' +
                                           FirebaseAuth.instance.currentUser.uid,
+                                      'Date': dat,
 
                                       //'Link': Room
                                     });
@@ -1578,7 +1589,7 @@ class _BookClassState extends State<BookClass> {
                                           FirebaseAuth.instance.currentUser.uid,
                                       'Link': 'join' +
                                           FirebaseAuth.instance.currentUser.uid,
-
+                                      'Date': dat,
                                       //'Link': Room
                                     });
 
@@ -1840,6 +1851,7 @@ class _BookClassState extends State<BookClass> {
                                           FirebaseAuth.instance.currentUser.uid,
                                       'Link': 'join' +
                                           FirebaseAuth.instance.currentUser.uid,
+                                      'Date': dat,
 
                                       //'Link': Room
                                     });
@@ -2103,7 +2115,7 @@ class _BookClassState extends State<BookClass> {
                                           FirebaseAuth.instance.currentUser.uid,
                                       'Link': 'join' +
                                           FirebaseAuth.instance.currentUser.uid,
-
+                                      'Date': dat,
                                       //'Link': Room
                                     });
 
@@ -2365,6 +2377,7 @@ class _BookClassState extends State<BookClass> {
                                           FirebaseAuth.instance.currentUser.uid,
                                       'Link': 'join' +
                                           FirebaseAuth.instance.currentUser.uid,
+                                      'Date': dat,
 
                                       //'Link': Room
                                     });
