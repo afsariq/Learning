@@ -831,7 +831,7 @@ class _BookClassState extends State<BookClass> {
                                           FirebaseAuth.instance.currentUser.uid,
                                       'Link': 'join' +
                                           FirebaseAuth.instance.currentUser.uid,
-                                      'Date': dat,
+                                      'Date': docReference['Date'],
                                       //'Link': Room
                                     });
 
@@ -847,7 +847,8 @@ class _BookClassState extends State<BookClass> {
                                       'Link': 'join' +
                                           FirebaseAuth.instance.currentUser.uid,
                                       'Teacher': widget.techname,
-                                      'subject': widget.bookSub
+                                      'subject': widget.bookSub,
+                                      'Date': docReference['Date'],
                                     });
 
                                     Navigator.pop(context);
@@ -1105,7 +1106,7 @@ class _BookClassState extends State<BookClass> {
                                           FirebaseAuth.instance.currentUser.uid,
                                       'Link': 'join' +
                                           FirebaseAuth.instance.currentUser.uid,
-                                      'Date': dat,
+                                      'Date': docReference['Date'],
                                       //'Link': Room
                                     });
 
@@ -1117,11 +1118,12 @@ class _BookClassState extends State<BookClass> {
                                         .collection('Booked Classes')
                                         .doc()
                                         .set({
-                                      'Time': 'Tuesday' + Selected,
+                                      'Time': 'Tuesday ' + Selected,
                                       'Link': 'join' +
                                           FirebaseAuth.instance.currentUser.uid,
                                       'Teacher': widget.techname,
-                                      'subject': widget.bookSub
+                                      'subject': widget.bookSub,
+                                      'Date': docReference['Date'],
                                     });
                                     Navigator.pop(context);
                                   },
@@ -1374,12 +1376,12 @@ class _BookClassState extends State<BookClass> {
                                         .collection('Booked Classes')
                                         .doc()
                                         .set({
-                                      'Time': 'Wednesday' + Selected,
+                                      'Time': 'Wednesday ' + Selected,
                                       'User':
                                           FirebaseAuth.instance.currentUser.uid,
                                       'Link': 'join' +
                                           FirebaseAuth.instance.currentUser.uid,
-                                      'Date': dat,
+                                      'Date': docReference['Date'],
 
                                       //'Link': Room
                                     });
@@ -1392,11 +1394,12 @@ class _BookClassState extends State<BookClass> {
                                         .collection('Booked Classes')
                                         .doc()
                                         .set({
-                                      'Time': 'Wednesday' + Selected,
+                                      'Time': 'Wednesday ' + Selected,
                                       'Link': 'join' +
                                           FirebaseAuth.instance.currentUser.uid,
                                       'Teacher': widget.techname,
-                                      'subject': widget.bookSub
+                                      'subject': widget.bookSub,
+                                      'Date': docReference['Date'],
                                     });
                                     Navigator.pop(context);
                                   },
@@ -1649,12 +1652,12 @@ class _BookClassState extends State<BookClass> {
                                         .collection('Booked Classes')
                                         .doc()
                                         .set({
-                                      'Time': 'Thursday' + Selected,
+                                      'Time': 'Thursday ' + Selected,
                                       'User':
                                           FirebaseAuth.instance.currentUser.uid,
                                       'Link': 'join' +
                                           FirebaseAuth.instance.currentUser.uid,
-                                      'Date': dat,
+                                      'Date': docReference['Date'],
                                       //'Link': Room
                                     });
 
@@ -1666,11 +1669,12 @@ class _BookClassState extends State<BookClass> {
                                         .collection('Booked Classes')
                                         .doc()
                                         .set({
-                                      'Time': 'Thursday' + Selected,
+                                      'Time': 'Thursday ' + Selected,
                                       'Link': 'join' +
                                           FirebaseAuth.instance.currentUser.uid,
                                       'Teacher': widget.techname,
-                                      'subject': widget.bookSub
+                                      'subject': widget.bookSub,
+                                      'Date': docReference['Date'],
                                     });
                                     Navigator.pop(context);
                                   },
@@ -1922,12 +1926,12 @@ class _BookClassState extends State<BookClass> {
                                         .collection('Booked Classes')
                                         .doc()
                                         .set({
-                                      'Time': 'Friday' + Selected,
+                                      'Time': 'Friday ' + Selected,
                                       'User':
                                           FirebaseAuth.instance.currentUser.uid,
                                       'Link': 'join' +
                                           FirebaseAuth.instance.currentUser.uid,
-                                      'Date': dat,
+                                      'Date': docReference['Date'],
 
                                       //'Link': Room
                                     });
@@ -1940,11 +1944,12 @@ class _BookClassState extends State<BookClass> {
                                         .collection('Booked Classes')
                                         .doc()
                                         .set({
-                                      'Time': 'Friday' + Selected,
+                                      'Time': 'Friday ' + Selected,
                                       'Link': 'join' +
                                           FirebaseAuth.instance.currentUser.uid,
                                       'Teacher': widget.techname,
-                                      'subject': widget.bookSub
+                                      'subject': widget.bookSub,
+                                      'Date': docReference['Date'],
                                     });
                                     Navigator.pop(context);
                                   },
@@ -2197,12 +2202,12 @@ class _BookClassState extends State<BookClass> {
                                         .collection('Booked Classes')
                                         .doc()
                                         .set({
-                                      'Time': 'Saturday' + Selected,
+                                      'Time': 'Saturday ' + Selected,
                                       'User':
                                           FirebaseAuth.instance.currentUser.uid,
                                       'Link': 'join' +
                                           FirebaseAuth.instance.currentUser.uid,
-                                      'Date': dat,
+                                      'Date': docReference['Date'],
                                       //'Link': Room
                                     });
 
@@ -2214,11 +2219,12 @@ class _BookClassState extends State<BookClass> {
                                         .collection('Booked Classes')
                                         .doc()
                                         .set({
-                                      'Time': 'Saturday' + Selected,
+                                      'Time': 'Saturday ' + Selected,
                                       'Link': 'join' +
                                           FirebaseAuth.instance.currentUser.uid,
                                       'Teacher': widget.techname,
-                                      'subject': widget.bookSub
+                                      'subject': widget.bookSub,
+                                      'Date': docReference['Date'],
                                     });
                                     Navigator.pop(context);
                                   },
@@ -2470,12 +2476,12 @@ class _BookClassState extends State<BookClass> {
                                         .collection('Booked Classes')
                                         .doc()
                                         .set({
-                                      'Time': 'Sunday' + Selected,
+                                      'Time': 'Sunday ' + Selected,
                                       'User':
                                           FirebaseAuth.instance.currentUser.uid,
                                       'Link': 'join' +
                                           FirebaseAuth.instance.currentUser.uid,
-                                      'Date': dat,
+                                      'Date': docReference['Date'],
 
                                       //'Link': Room
                                     });
@@ -2488,11 +2494,12 @@ class _BookClassState extends State<BookClass> {
                                         .collection('Booked Classes')
                                         .doc()
                                         .set({
-                                      'Time': 'Sunday' + Selected,
+                                      'Time': 'Sunday ' + Selected,
                                       'Link': 'join' +
                                           FirebaseAuth.instance.currentUser.uid,
                                       'Teacher': widget.techname,
-                                      'subject': widget.bookSub
+                                      'subject': widget.bookSub,
+                                      'Date': docReference['Date'],
                                     });
                                     Navigator.pop(context);
                                   },

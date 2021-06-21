@@ -1,40 +1,74 @@
 import 'package:flutter/material.dart';
+import 'package:jitsist/HomeScreen/ClipPath.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:intl/intl.dart';
+import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
-class MyApp extends StatelessWidget {
-  var date = DateTime.now();
+class MyApp extends StatefulWidget {
+  String pdfLink;
+  MyApp({
+    @required this.pdfLink,
+  });
   @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  var date = DateTime.now();
+  final GlobalKey<SfPdfViewerState> _pdfViewerKey = GlobalKey();
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   Widget build(BuildContext context) {
-    return MaterialApp(
-        title: 'Welcome to Flutter',
-        home: Scaffold(
-          appBar: AppBar(
-            title: Text('Welcome to Flutter'),
+    return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(kToolbarHeight + 50),
+        child: ClipPath(
+          clipper: CustomClipPath(),
+          child: Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage('Assets/Images/bg11.png'),
+                  fit: BoxFit.cover),
+              color: Color(0xff00007c),
+
+              /*  boxShadow: [
+                          BoxShadow(
+                            color: Color(0xAA6EB1E6),
+                            offset: Offset(9, 9),
+                            blurRadius: 6,
+                          ),
+                        ],*/
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: 30),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: Colors.white24,
+                        borderRadius: BorderRadius.all(Radius.circular(10))),
+                    child: IconButton(
+                        icon: Icon(Icons.arrow_back, color: Colors.white),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        }),
+                  ),
+                ),
+              ],
+            ),
           ),
-          /* body: const WebView(
-            initialUrl: 'http://africau.edu/images/default/sample.pdf',
-            javascriptMode: JavascriptMode.unrestricted,
-          ),*/
-
-          body: RaisedButton(onPressed: () {
-            print(date
-                .toString()); // prints something like 2019-12-10 10:02:22.287949
-            print(DateFormat('EEEE').format(date)); // prints Tuesday
-            print(DateFormat('EEEE, d MMM, yyyy')
-                .format(date)); // prints Tuesday, 10 Dec, 2019
-            print(DateFormat('h:mm a').format(date));
-
-            var now = new DateTime.now();
-            var berlinWallFellDate = new DateTime.utc(2021, 06, 19);
-// 0 denotes being equal positive value greater and negative value being less
-
-            if (berlinWallFellDate.isAfter(now)) {
-              print("done");
-            } else {
-              print("not done");
-            }
-          }),
-        ));
+        ),
+      ),
+      body: SfPdfViewer.network(
+        widget.pdfLink,
+        key: _pdfViewerKey,
+      ),
+    );
   }
 }

@@ -7,6 +7,7 @@ import 'package:jitsist/Courses/FreeClasses.dart';
 import 'package:jitsist/Courses/FreeCourses.dart';
 import 'package:jitsist/LoginScreen/Login.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:jitsist/PastPapers/PastPaperList.dart';
 import 'package:jitsist/PastPapers/PastPapers.dart';
 import 'package:jitsist/Payment&Booking/Profile.dart';
 import 'package:jitsist/Profile/ProfileScreen.dart';
@@ -348,7 +349,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 context,
                                                 MaterialPageRoute(
                                                     builder: (context) =>
-                                                        MyApp()));
+                                                        PaperList()));
                                           },
                                           child: CircleAvatar(
                                             backgroundImage: AssetImage(
@@ -596,6 +597,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                     ),
+                    SizedBox(height: 20)
                   ])
             ])),
           ])),

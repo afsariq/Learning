@@ -44,6 +44,7 @@ dependencies:
   random_string: ^2.1.0
   webview_flutter: 
   intl:
+  syncfusion_flutter_pdfviewer:
 dev_dependencies:
   flutter_test:
     sdk: flutter
