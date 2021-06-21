@@ -111,13 +111,16 @@ class _BookClassState extends State<BookClass> {
                 SizedBox(height: 30),
                 GestureDetector(
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding:
+                        const EdgeInsets.only(top: 8.0, left: 8.0, right: 8.0),
                     child: Container(
                       height: 50,
                       width: 300,
                       decoration: BoxDecoration(
                           color: Color(0xff00007c),
-                          borderRadius: BorderRadius.all(Radius.circular(20))),
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(20),
+                              topRight: Radius.circular(20))),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -183,13 +186,16 @@ class _BookClassState extends State<BookClass> {
                 if (day == 'Monday') Monday(),
                 GestureDetector(
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding:
+                        const EdgeInsets.only(top: 8.0, left: 8.0, right: 8.0),
                     child: Container(
                       height: 50,
                       width: 300,
                       decoration: BoxDecoration(
                           color: Color(0xff00007c),
-                          borderRadius: BorderRadius.all(Radius.circular(20))),
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(20),
+                              topRight: Radius.circular(20))),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -249,13 +255,16 @@ class _BookClassState extends State<BookClass> {
                 if (day == 'Tuesday') Tuesday(),
                 GestureDetector(
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding:
+                        const EdgeInsets.only(top: 8.0, left: 8.0, right: 8.0),
                     child: Container(
                       height: 50,
                       width: 300,
                       decoration: BoxDecoration(
                           color: Color(0xff00007c),
-                          borderRadius: BorderRadius.all(Radius.circular(20))),
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(20),
+                              topRight: Radius.circular(20))),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -316,11 +325,14 @@ class _BookClassState extends State<BookClass> {
                 if (day == 'Wednesday') Wednesday(),
                 GestureDetector(
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding:
+                        const EdgeInsets.only(top: 8.0, left: 8.0, right: 8.0),
                     child: Container(
                       decoration: BoxDecoration(
                           color: Color(0xff00007c),
-                          borderRadius: BorderRadius.all(Radius.circular(20))),
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(20),
+                              topRight: Radius.circular(20))),
                       height: 50,
                       width: 300,
                       child: Row(
@@ -382,11 +394,14 @@ class _BookClassState extends State<BookClass> {
                 if (day == 'Thursday') Thursday(),
                 GestureDetector(
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding:
+                        const EdgeInsets.only(top: 8.0, left: 8.0, right: 8.0),
                     child: Container(
                       decoration: BoxDecoration(
                           color: Color(0xff00007c),
-                          borderRadius: BorderRadius.all(Radius.circular(20))),
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(20),
+                              topRight: Radius.circular(20))),
                       height: 50,
                       width: 300,
                       child: Row(
@@ -448,11 +463,14 @@ class _BookClassState extends State<BookClass> {
                 if (day == 'Friday') Friday(),
                 GestureDetector(
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding:
+                        const EdgeInsets.only(top: 8.0, left: 8.0, right: 8.0),
                     child: Container(
                       decoration: BoxDecoration(
                           color: Color(0xff00007c),
-                          borderRadius: BorderRadius.all(Radius.circular(20))),
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(20),
+                              topRight: Radius.circular(20))),
                       height: 50,
                       width: 300,
                       child: Row(
@@ -514,11 +532,14 @@ class _BookClassState extends State<BookClass> {
                 if (day == 'Saturday') Saturday(),
                 GestureDetector(
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding:
+                        const EdgeInsets.only(top: 8.0, left: 8.0, right: 8.0),
                     child: Container(
                       decoration: BoxDecoration(
                           color: Color(0xff00007c),
-                          borderRadius: BorderRadius.all(Radius.circular(20))),
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(20),
+                              topRight: Radius.circular(20))),
                       height: 50,
                       width: 300,
                       child: Row(
@@ -606,12 +627,23 @@ class _BookClassState extends State<BookClass> {
               String id = docReference.id;
               return Center(
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.only(left: 8.0, right: 8.0),
                   child: Container(
                       child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
+                      Container(
+                          height: 20,
+                          width: 300,
+                          decoration: BoxDecoration(
+                              color: Color(0xff00007c),
+                              borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(20),
+                                  bottomRight: Radius.circular(20))),
+                          child: Center(
+                              child: Text(docReference['Date'],
+                                  style: TextStyle(color: Colors.white)))),
                       if (docReference['Time'] != 'Not set')
                         Padding(
                           padding: const EdgeInsets.all(8.0),
@@ -870,12 +902,23 @@ class _BookClassState extends State<BookClass> {
               String id = docReference.id;
               return Center(
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.only(left: 8.0, right: 8.0),
                   child: Container(
                       child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
+                      Container(
+                          height: 20,
+                          width: 300,
+                          decoration: BoxDecoration(
+                              color: Color(0xff00007c),
+                              borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(20),
+                                  bottomRight: Radius.circular(20))),
+                          child: Center(
+                              child: Text(docReference['Date'],
+                                  style: TextStyle(color: Colors.white)))),
                       if (docReference['Time'] != 'Not set')
                         GestureDetector(
                           onTap: () {
@@ -1132,12 +1175,23 @@ class _BookClassState extends State<BookClass> {
               String id = docReference.id;
               return Center(
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.only(left: 8.0, right: 8.0),
                   child: Container(
                       child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
+                      Container(
+                          height: 20,
+                          width: 300,
+                          decoration: BoxDecoration(
+                              color: Color(0xff00007c),
+                              borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(20),
+                                  bottomRight: Radius.circular(20))),
+                          child: Center(
+                              child: Text(docReference['Date'],
+                                  style: TextStyle(color: Colors.white)))),
                       if (docReference['Time'] != 'Not set')
                         GestureDetector(
                           onTap: () {
@@ -1396,12 +1450,23 @@ class _BookClassState extends State<BookClass> {
               String id = docReference.id;
               return Center(
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.only(left: 8.0, right: 8.0),
                   child: Container(
                       child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
+                      Container(
+                          height: 20,
+                          width: 300,
+                          decoration: BoxDecoration(
+                              color: Color(0xff00007c),
+                              borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(20),
+                                  bottomRight: Radius.circular(20))),
+                          child: Center(
+                              child: Text(docReference['Date'],
+                                  style: TextStyle(color: Colors.white)))),
                       if (docReference['Time'] != 'Not set')
                         GestureDetector(
                           onTap: () {
@@ -1659,12 +1724,23 @@ class _BookClassState extends State<BookClass> {
               String id = docReference.id;
               return Center(
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.only(left: 8.0, right: 8.0),
                   child: Container(
                       child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
+                      Container(
+                          height: 20,
+                          width: 300,
+                          decoration: BoxDecoration(
+                              color: Color(0xff00007c),
+                              borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(20),
+                                  bottomRight: Radius.circular(20))),
+                          child: Center(
+                              child: Text(docReference['Date'],
+                                  style: TextStyle(color: Colors.white)))),
                       if (docReference['Time'] != 'Not set')
                         GestureDetector(
                           onTap: () {
@@ -1922,12 +1998,23 @@ class _BookClassState extends State<BookClass> {
               String id = docReference.id;
               return Center(
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.only(left: 8.0, right: 8.0),
                   child: Container(
                       child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
+                      Container(
+                          height: 20,
+                          width: 300,
+                          decoration: BoxDecoration(
+                              color: Color(0xff00007c),
+                              borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(20),
+                                  bottomRight: Radius.circular(20))),
+                          child: Center(
+                              child: Text(docReference['Date'],
+                                  style: TextStyle(color: Colors.white)))),
                       if (docReference['Time'] != 'Not set')
                         GestureDetector(
                           onTap: () {
@@ -2185,12 +2272,23 @@ class _BookClassState extends State<BookClass> {
               String id = docReference.id;
               return Center(
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.only(left: 8.0, right: 8.0),
                   child: Container(
                       child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
+                      Container(
+                          height: 20,
+                          width: 300,
+                          decoration: BoxDecoration(
+                              color: Color(0xff00007c),
+                              borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(20),
+                                  bottomRight: Radius.circular(20))),
+                          child: Center(
+                              child: Text(docReference['Date'],
+                                  style: TextStyle(color: Colors.white)))),
                       if (docReference['Time'] != 'Not set')
                         GestureDetector(
                           onTap: () {
