@@ -120,7 +120,7 @@ class techStream extends StatelessWidget {
                                 MaterialPageRoute(
                                     builder: (context) => Subject(
                                           cls: 'A/L',
-                                          sub: 'Maths Tech',
+                                          sub: 'Tech Maths',
                                         )),
                               );
                             },
@@ -145,7 +145,7 @@ class techStream extends StatelessWidget {
                                 MaterialPageRoute(
                                     builder: (context) => Subject(
                                           cls: 'A/L',
-                                          sub: 'Science Tech',
+                                          sub: 'Tech Science',
                                         )),
                               );
                             },
@@ -170,7 +170,7 @@ class techStream extends StatelessWidget {
                                 MaterialPageRoute(
                                     builder: (context) => Subject(
                                           cls: 'A/L',
-                                          sub: 'Arts',
+                                          sub: 'Tech Arts',
                                         )),
                               );
                             },
