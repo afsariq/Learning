@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:jitsist/Courses/CourseVideo.dart';
 import 'package:jitsist/Courses/FreeClassVdo.dart';
 import 'package:jitsist/HomeScreen/ClipPath.dart';
 import 'package:jitsist/VideoCall/Video.dart';
@@ -91,7 +92,112 @@ class _courseListState extends State<courseList> {
                   children: snapshot.data.docs.map((docReference) {
                 String id = docReference.id;
                 return Center(
-                  child: Padding(
+                    child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                          color: Colors.blueAccent,
+                          //   border: Border.all(color: Colors.blueAccent)
+                          borderRadius: BorderRadius.all(Radius.circular(20))),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              CircleAvatar(
+                                radius: 50,
+                                backgroundImage:
+                                    NetworkImage(docReference['imageUrl']),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Expanded(
+                                      child: Text(
+                                        'Course Name :',
+                                        style: TextStyle(fontSize: 15),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Text(
+                                        docReference['CourseName'],
+                                        style: TextStyle(fontSize: 15),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(4.0),
+                                child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                          'Course Fee :',
+                                          style: TextStyle(fontSize: 15),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Text(
+                                          docReference['CourseFee'],
+                                          style: TextStyle(fontSize: 15),
+                                        ),
+                                      )
+                                    ]),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: GestureDetector(
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  FreeClassVideo(
+                                                    vdoLink: docReference[
+                                                        'videoUrl'],
+                                                    title: 'Intro',
+                                                  )));
+                                    },
+                                    child: Text('Watch intro video',
+                                        style: TextStyle(
+                                            color: Colors.blue[900]))),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(4.0),
+                                // ignore: deprecated_member_use
+                                child: Container(
+                                    height: 30,
+                                    decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        //   border: Border.all(color: Colors.blueAccent)
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(20))),
+                                    child: FlatButton(
+                                      onPressed: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    CourseVideo(
+                                                        cid: docReference.id,
+                                                        cname: docReference[
+                                                            'CourseName'])));
+
+                                        print(docReference.id);
+                                      },
+                                      child: Text('Enroll'),
+                                    )),
+                              )
+                            ]),
+                      )),
+                )
+                    /*  child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
                       child: Column(children: [
@@ -189,8 +295,8 @@ class _courseListState extends State<courseList> {
                         ),
                       ]),
                     ),
-                  ),
-                );
+                  ),*/
+                    );
               }).toList());
             }));
   }

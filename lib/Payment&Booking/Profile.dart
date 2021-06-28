@@ -62,7 +62,7 @@ class _profileScreenState extends State<profileScreen> {
                   child: Column(
                 children: [
                   Container(
-                      height: 230,
+                      height: 300,
                       width: double.infinity,
                       decoration: BoxDecoration(
                         image: DecorationImage(
@@ -101,13 +101,34 @@ class _profileScreenState extends State<profileScreen> {
                                   }),
                             ),
                           ),
-                          Center(
+                          /* Center(
                             child: CircleAvatar(
                               radius: 70,
                               backgroundImage:
                                   NetworkImage(docReference['Image']),
                             ),
-                          )
+                          )*/
+                          Center(
+                              child: Container(
+                            width: 200,
+                            height: 200,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image: NetworkImage(docReference['Image']),
+                                  fit: BoxFit.fill),
+                              color: Color(0xff00007c),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(20),
+                              ),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Color(0xAA6EB1E6),
+                                  offset: Offset(1, 8),
+                                  blurRadius: 6,
+                                ),
+                              ],
+                            ),
+                          ))
                         ],
                       )),
                   Column(
@@ -146,7 +167,7 @@ class _profileScreenState extends State<profileScreen> {
                             )
                           ]),
                       SizedBox(
-                        height: 15,
+                        height: 25,
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),

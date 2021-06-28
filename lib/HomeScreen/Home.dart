@@ -52,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
               children: <Widget>[
                 DrawerHeader(
                   child: ListView(
-                    children: [Text("saffsggs")],
+                    children: [],
                   ),
                   decoration: BoxDecoration(
                     color: Color(0xff00007c),
