@@ -5,15 +5,18 @@ import 'package:flutter/material.dart';
 import 'package:jitsist/Courses/CourseList.dart';
 import 'package:jitsist/Courses/FreeClasses.dart';
 import 'package:jitsist/Courses/FreeCourses.dart';
+import 'package:jitsist/HomeScreen/test.dart';
 import 'package:jitsist/LoginScreen/Login.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:jitsist/PastPapers/PastPaperList.dart';
 import 'package:jitsist/PastPapers/PastPapers.dart';
+import 'package:jitsist/Special/BookedSpClasses.dart';
 import 'package:jitsist/Payment&Booking/Profile.dart';
 import 'package:jitsist/Profile/ProfileScreen.dart';
 import 'package:jitsist/Quizz/home.dart';
 
 import 'package:jitsist/Search/Search.dart';
+import 'package:jitsist/Special/Special.dart';
 import 'package:jitsist/Subjects/AL.dart';
 import 'package:jitsist/Courses/Courses.dart';
 import 'package:jitsist/Courses/FreeClassesList.dart';
@@ -51,8 +54,22 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: EdgeInsets.zero,
               children: <Widget>[
                 DrawerHeader(
-                  child: ListView(
-                    children: [],
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      CircleAvatar(
+                          backgroundColor: Colors.transparent,
+                          backgroundImage:
+                              AssetImage('Assets/Images/vidhu.png'),
+                          radius: 40),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text("e-විදුහල",
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 22)),
+                      )
+                    ],
                   ),
                   decoration: BoxDecoration(
                     color: Color(0xff00007c),
@@ -66,6 +83,18 @@ class _HomeScreenState extends State<HomeScreen> {
                   onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => profile()));
+                  },
+                ),
+                ListTile(
+                  title: Text(
+                    "Booked Special Classes",
+                    style: TextStyle(fontSize: 18),
+                  ),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => BookedSpClass()));
                   },
                 ),
                 ListTile(
@@ -195,7 +224,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                     child: Column(
                                       children: [
                                         GestureDetector(
-                                          onTap: () {},
+                                          onTap: () {
+                                            /* Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        Test()));*/
+                                          },
                                           child: CircleAvatar(
                                             backgroundImage: AssetImage(
                                                 "Assets/Images/LondonAl.png"),
@@ -503,50 +538,54 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                     ),
-                    /*Padding(
-                      padding: const EdgeInsets.all(18.0),
-                      child: Container(
-                        height: 200,
-                        decoration: BoxDecoration(
-                            gradient: new LinearGradient(
-                                colors: [
-                                  const Color(0xFF880E4F),
-                                  const Color(0xFFF48FB1),
-                                ],
-                                begin: const FractionalOffset(0.0, 0.0),
-                                end: const FractionalOffset(1.0, 0.0),
-                                stops: [0.0, 1.0],
-                                tileMode: TileMode.clamp),
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(20))),
-                        // color: Colors.amberAccent,
-                        child: Row(
-                          children: [
-                            Padding(
-                                padding: const EdgeInsets.all(18.0),
-                                child: Image.asset(
-                                  "Assets/Images/logo.png",
-                                  width: 150,
-                                  height: 180,
-                                )),
-                            RaisedButton(
-                              onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => FreeClasses()));
-                              },
-                              child: Text("Free classes"),
-                              shape: StadiumBorder(),
-                              color: Colors.white,
-                            )
-                          ],
+                    Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Special()));
+                        },
+                        child: Container(
+                          height: 200,
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                              gradient: new LinearGradient(
+                                  colors: [
+                                    const Color(0xff00007c),
+                                    const Color(0xFF039BE5),
+                                  ],
+                                  begin: const FractionalOffset(0.0, 0.0),
+                                  end: const FractionalOffset(1.0, 0.0),
+                                  stops: [0.0, 1.0],
+                                  tileMode: TileMode.clamp),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20))),
+                          // color: Colors.amberAccent,
+                          child: Column(
+                            children: [
+                              Padding(
+                                  padding: const EdgeInsets.all(18.0),
+                                  child: CircleAvatar(
+                                      backgroundColor: Colors.transparent,
+                                      radius: 60,
+                                      backgroundImage: AssetImage(
+                                        "Assets/Images/spCls.png",
+                                      ))),
+                              Text("Special Classes",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 25,
+                                      fontWeight: FontWeight.bold))
+                            ],
+                          ),
                         ),
                       ),
-                    ),*/
+                    ),
                     Padding(
                       padding: const EdgeInsets.only(
-                          left: 18.0, right: 18.0, top: 5),
+                          left: 18.0, right: 18.0, top: 12),
                       child: GestureDetector(
                         onTap: () {
                           Navigator.push(

@@ -62,7 +62,7 @@ class _profileScreenState extends State<profileScreen> {
                   child: Column(
                 children: [
                   Container(
-                      height: 300,
+                      height: 285,
                       width: double.infinity,
                       decoration: BoxDecoration(
                         image: DecorationImage(
@@ -110,8 +110,8 @@ class _profileScreenState extends State<profileScreen> {
                           )*/
                           Center(
                               child: Container(
-                            width: 200,
-                            height: 200,
+                            width: 180,
+                            height: 180,
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                   image: NetworkImage(docReference['Image']),
