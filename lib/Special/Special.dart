@@ -118,7 +118,7 @@ class _SpecialState extends State<Special> with SingleTickerProviderStateMixin {
                                 ),
                                 onPressed: () {
                                   setState(() {
-                                    searchCont.text = clsno;
+                                    clsno = searchCont.text;
                                   });
                                 }),
                           ),

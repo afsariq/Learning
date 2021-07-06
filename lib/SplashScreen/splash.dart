@@ -28,34 +28,22 @@ class _SplashScreenState extends State<SplashScreen> {
         fit: StackFit.expand,
         children: <Widget>[
           Container(
-            decoration: BoxDecoration(color: Color(0xff00007c)),
+            decoration: BoxDecoration(
+              color: Color(0xff00007c),
+              image: DecorationImage(
+                  image: AssetImage('Assets/Images/spbg.png'),
+                  fit: BoxFit.cover),
+            ),
           ),
           Column(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              SizedBox(height: 200),
               Expanded(
-                flex: 2,
-                child: Container(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: <Widget>[],
-                  ),
-                ),
-              ),
-              Expanded(
-                flex: 1,
+                // flex: 2,
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    SpinKitFadingFour(
-                      itemBuilder: (BuildContext context, int index) {
-                        return DecoratedBox(
-                          decoration: BoxDecoration(
-                            color: index.isEven ? Colors.red : Colors.blue[900],
-                          ),
-                        );
-                      },
-                    ),
                     Padding(
                       padding: EdgeInsets.all(20.0),
                     ),
@@ -67,7 +55,7 @@ class _SplashScreenState extends State<SplashScreen> {
                       padding: EdgeInsets.only(top: 10.0),
                     ),
                     Text(
-                      "e-විදුහල",
+                      "E - VIDHUHALA",
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
@@ -81,6 +69,24 @@ class _SplashScreenState extends State<SplashScreen> {
                           fontWeight: FontWeight.bold,
                           fontSize: 14.0,
                           color: Colors.white),
+                    ),
+                    Expanded(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          SpinKitFadingFour(
+                            itemBuilder: (BuildContext context, int index) {
+                              return DecoratedBox(
+                                decoration: BoxDecoration(
+                                  color: index.isEven
+                                      ? Colors.red
+                                      : Colors.blue[900],
+                                ),
+                              );
+                            },
+                          ),
+                        ],
+                      ),
                     ),
                     SizedBox(height: 20),
                   ],

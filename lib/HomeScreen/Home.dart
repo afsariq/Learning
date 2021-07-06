@@ -14,7 +14,8 @@ import 'package:jitsist/Special/BookedSpClasses.dart';
 import 'package:jitsist/Payment&Booking/Profile.dart';
 import 'package:jitsist/Profile/ProfileScreen.dart';
 import 'package:jitsist/Quizz/home.dart';
-
+import 'package:jitsist/Subjects/LondonAl.dart';
+import 'package:jitsist/Subjects/LondonOl.dart';
 import 'package:jitsist/Search/Search.dart';
 import 'package:jitsist/Special/Special.dart';
 import 'package:jitsist/Subjects/AL.dart';
@@ -230,6 +231,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 MaterialPageRoute(
                                                     builder: (context) =>
                                                         Test()));*/
+                                                         Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        LondonAl()));
                                           },
                                           child: CircleAvatar(
                                             backgroundImage: AssetImage(
@@ -253,7 +259,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                     child: Column(
                                       children: [
                                         GestureDetector(
-                                          onTap: () {},
+                                          onTap: () {  Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        LondonOl()));},
                                           child: CircleAvatar(
                                             backgroundImage: AssetImage(
                                                 "Assets/Images/LondonOl.png"),
