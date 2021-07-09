@@ -129,7 +129,7 @@ class mathsStream extends StatelessWidget {
                               radius: 30,
                             ),
                           ),
-                          Text("Combined Mathematics")
+                          Text("Maths")
                         ],
                       ),
                     ),

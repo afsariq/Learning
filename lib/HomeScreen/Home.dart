@@ -26,6 +26,7 @@ import 'package:jitsist/Subjects/10-11.dart';
 import 'package:jitsist/Subjects/Subjects.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:jitsist/Payment&Booking/BookedClasses.dart';
+import 'package:flutter/services.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -33,10 +34,18 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
+    // TODO: implement initState
+    super.initState();
+  }
+
   String data = "abcd";
 
   String name;
   GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -44,6 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
         exit(0);
       },
       child: Scaffold(
+          backgroundColor: Colors.white12,
           /*appBar: AppBar(
             elevation: 0,
             backgroundColor: Color(0xff00007c),
@@ -88,7 +98,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 ListTile(
                   title: Text(
-                    "Booked Special Classes",
+                    "Booked Sheduled Classes",
                     style: TextStyle(fontSize: 18),
                   ),
                   onTap: () {
@@ -231,7 +241,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 MaterialPageRoute(
                                                     builder: (context) =>
                                                         Test()));*/
-                                                         Navigator.push(
+                                            Navigator.push(
                                                 context,
                                                 MaterialPageRoute(
                                                     builder: (context) =>
@@ -259,11 +269,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                     child: Column(
                                       children: [
                                         GestureDetector(
-                                          onTap: () {  Navigator.push(
+                                          onTap: () {
+                                            Navigator.push(
                                                 context,
                                                 MaterialPageRoute(
                                                     builder: (context) =>
-                                                        LondonOl()));},
+                                                        LondonOl()));
+                                          },
                                           child: CircleAvatar(
                                             backgroundImage: AssetImage(
                                                 "Assets/Images/LondonOl.png"),
@@ -491,8 +503,121 @@ class _HomeScreenState extends State<HomeScreen> {
                     SizedBox(
                       height: 10,
                     ),
+                    /**/
+                    Row(children: [
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Special()));
+                            },
+                            child: Container(
+                              height: 160,
+                              //width: double.infinity,
+                              decoration: BoxDecoration(
+                                  gradient: new LinearGradient(
+                                      colors: [
+                                        const Color(0xff00007c),
+                                        const Color(0xFF039BE5),
+                                      ],
+                                      begin: const FractionalOffset(0.0, 0.0),
+                                      end: const FractionalOffset(1.0, 0.0),
+                                      stops: [0.0, 1.0],
+                                      tileMode: TileMode.clamp),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20))),
+                              // color: Colors.amberAccent,
+                              child: Column(
+                                children: [
+                                  Padding(
+                                      padding: const EdgeInsets.all(18.0),
+                                      child: CircleAvatar(
+                                          backgroundColor: Colors.transparent,
+                                          radius: 30,
+                                          backgroundImage: AssetImage(
+                                            "Assets/Images/spCls.png",
+                                          ))),
+                                  Text("Sheduled Classes",
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold))
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.all(12),
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => courseList()));
+                            },
+                            child: Container(
+                              height: 160,
+                              decoration: BoxDecoration(
+                                  gradient: new LinearGradient(
+                                      colors: [
+                                        const Color(0xff00007c),
+                                        const Color(0xFF039BE5),
+                                      ],
+                                      begin: const FractionalOffset(0.0, 0.0),
+                                      end: const FractionalOffset(1.0, 0.0),
+                                      stops: [0.0, 1.0],
+                                      tileMode: TileMode.clamp),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20))),
+                              // color: Colors.amberAccent,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Column(
+                                    children: [
+                                      Padding(
+                                          padding: const EdgeInsets.all(18.0),
+                                          child: Center(
+                                              child: CircleAvatar(
+                                                  radius: 30,
+                                                  backgroundImage: AssetImage(
+                                                    "Assets/Images/ocf.png",
+                                                  )))),
+                                      Text("Online Courses",
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.bold))
+                                    ],
+                                  ),
+
+                                  /* RaisedButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => FreeCourses()));
+                                  },
+                                  child: Text("Online courses"),
+                                  shape: StadiumBorder(),
+                                  color: Colors.white,
+                                )*/
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ]),
                     Padding(
-                      padding: const EdgeInsets.all(18.0),
+                      padding: const EdgeInsets.only(left: 12.0, right: 12.0),
                       child: Container(
                         height: 80,
                         decoration: BoxDecoration(
@@ -548,105 +673,14 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Special()));
-                        },
-                        child: Container(
-                          height: 200,
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                              gradient: new LinearGradient(
-                                  colors: [
-                                    const Color(0xff00007c),
-                                    const Color(0xFF039BE5),
-                                  ],
-                                  begin: const FractionalOffset(0.0, 0.0),
-                                  end: const FractionalOffset(1.0, 0.0),
-                                  stops: [0.0, 1.0],
-                                  tileMode: TileMode.clamp),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20))),
-                          // color: Colors.amberAccent,
-                          child: Column(
-                            children: [
-                              Padding(
-                                  padding: const EdgeInsets.all(18.0),
-                                  child: CircleAvatar(
-                                      backgroundColor: Colors.transparent,
-                                      radius: 60,
-                                      backgroundImage: AssetImage(
-                                        "Assets/Images/spCls.png",
-                                      ))),
-                              Text("Special Classes",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 25,
-                                      fontWeight: FontWeight.bold))
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          left: 18.0, right: 18.0, top: 12),
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => courseList()));
-                        },
-                        child: Container(
-                          height: 150,
-                          decoration: BoxDecoration(
-                              gradient: new LinearGradient(
-                                  colors: [
-                                    const Color(0xff00007c),
-                                    const Color(0xFF039BE5),
-                                  ],
-                                  begin: const FractionalOffset(0.0, 0.0),
-                                  end: const FractionalOffset(1.0, 0.0),
-                                  stops: [0.0, 1.0],
-                                  tileMode: TileMode.clamp),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20))),
-                          // color: Colors.amberAccent,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Padding(
-                                  padding: const EdgeInsets.all(18.0),
-                                  child: Center(
-                                      child: CircleAvatar(
-                                          radius: 60,
-                                          backgroundImage: AssetImage(
-                                            "Assets/Images/ocf.png",
-                                          )))),
-
-                              /* RaisedButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => FreeCourses()));
-                                },
-                                child: Text("Online courses"),
-                                shape: StadiumBorder(),
-                                color: Colors.white,
-                              )*/
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 20)
+                    SizedBox(height: 20),
+                    RaisedButton(onPressed:(){
+                       Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  Test()));
+                    })
                   ])
             ])),
           ])),

@@ -17,7 +17,7 @@ class _LondonOlState extends State<LondonOl> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(kToolbarHeight + 130),
+        preferredSize: Size.fromHeight(kToolbarHeight + 140),
         child: ClipPath(
           clipper: CustomClipPath(),
           child: Container(

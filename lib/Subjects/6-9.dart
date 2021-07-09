@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jitsist/HomeScreen/ClipPath.dart';
 import 'package:jitsist/Subjects/Subjects.dart';
+import 'package:jitsist/Subjects/SubjectsNew.dart';
 
 class sixtoeleven extends StatelessWidget {
   @override
@@ -84,7 +85,7 @@ class sixtoeleven extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => Subject(
+                                      builder: (context) => SubjectNew(
                                             cls: '6-9',
                                             sub: 'Maths',
                                           )));
@@ -108,7 +109,7 @@ class sixtoeleven extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => Subject(
+                                      builder: (context) => SubjectNew(
                                             cls: '6-9',
                                             sub: 'Science',
                                           )));
@@ -132,7 +133,7 @@ class sixtoeleven extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => Subject(
+                                      builder: (context) => SubjectNew(
                                             cls: '6-9',
                                             sub: 'English',
                                           )));
@@ -163,7 +164,7 @@ class sixtoeleven extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => Subject(
+                                      builder: (context) => SubjectNew(
                                             cls: '6-9',
                                             sub: 'History',
                                           )));
@@ -187,7 +188,7 @@ class sixtoeleven extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => Subject(
+                                      builder: (context) => SubjectNew(
                                             cls: '6-9',
                                             sub: 'Health Science',
                                           )));
@@ -211,7 +212,7 @@ class sixtoeleven extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => Subject(
+                                      builder: (context) => SubjectNew(
                                             cls: '6-9',
                                             sub: 'Geography',
                                           )));
@@ -242,7 +243,7 @@ class sixtoeleven extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => Subject(
+                                      builder: (context) => SubjectNew(
                                             cls: '6-9',
                                             sub: 'ICT',
                                           )));
@@ -266,7 +267,7 @@ class sixtoeleven extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => Subject(
+                                      builder: (context) => SubjectNew(
                                             cls: '6-9',
                                             sub: 'Civics',
                                           )));
@@ -290,7 +291,7 @@ class sixtoeleven extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => Subject(
+                                      builder: (context) => SubjectNew(
                                             cls: '6-9',
                                             sub: 'Arts',
                                           )));
@@ -321,7 +322,7 @@ class sixtoeleven extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => Subject(
+                                      builder: (context) => SubjectNew(
                                             cls: '6-9',
                                             sub: 'PTS',
                                           )));
@@ -345,7 +346,7 @@ class sixtoeleven extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => Subject(
+                                      builder: (context) => SubjectNew(
                                             cls: '6-9',
                                             sub: 'Sinhala',
                                           )));
@@ -369,7 +370,7 @@ class sixtoeleven extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => Subject(
+                                      builder: (context) => SubjectNew(
                                             cls: '6-9',
                                             sub: 'Commerce',
                                           )));
@@ -394,13 +395,14 @@ class sixtoeleven extends StatelessWidget {
                     Expanded(
                       flex: 1,
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           GestureDetector(
                             onTap: () {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => Subject(
+                                      builder: (context) => SubjectNew(
                                             cls: '6-9',
                                             sub: '2nd Language Sinhala',
                                           )));
@@ -413,7 +415,7 @@ class sixtoeleven extends StatelessWidget {
                           ),
                           Padding(
                             padding: const EdgeInsets.only(left: 25.0),
-                            child: Text("2nd Language Sinhala"),
+                            child: Text("Sinhala 2        "),
                           )
                         ],
                       ),
@@ -427,7 +429,7 @@ class sixtoeleven extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => Subject(
+                                      builder: (context) => SubjectNew(
                                             cls: '6-9',
                                             sub: '2nd Language Tamil',
                                           )));
@@ -438,7 +440,7 @@ class sixtoeleven extends StatelessWidget {
                               radius: 30,
                             ),
                           ),
-                          Text("2nd Language Tamil")
+                          Text("Tamil 2")
                         ],
                       ),
                     ),
@@ -451,7 +453,7 @@ class sixtoeleven extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => Subject(
+                                      builder: (context) => SubjectNew(
                                             cls: '6-9',
                                             sub: 'Sinhala Literary',
                                           )));
@@ -482,7 +484,7 @@ class sixtoeleven extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => Subject(
+                                      builder: (context) => SubjectNew(
                                             cls: '6-9',
                                             sub: 'Buddhism',
                                           )));
@@ -526,7 +528,15 @@ class sixtoeleven extends StatelessWidget {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => SubjectNew(
+                                            cls: '6-9',
+                                            sub: 'Music',
+                                          )));
+                            },
                             child: CircleAvatar(
                               backgroundImage:
                                   AssetImage("Assets/Images/musicf.png"),

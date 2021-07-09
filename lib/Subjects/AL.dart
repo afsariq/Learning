@@ -120,7 +120,7 @@ class ALStreams extends StatelessWidget {
                               radius: 30,
                             ),
                           ),
-                          Text("Physical Science")
+                          Text("Maths")
                         ],
                       ),
                     ),
@@ -141,7 +141,7 @@ class ALStreams extends StatelessWidget {
                               radius: 30,
                             ),
                           ),
-                          Text("Biological Science")
+                          Text("Bio")
                         ],
                       ),
                     ),

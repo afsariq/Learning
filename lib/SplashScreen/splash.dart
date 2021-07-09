@@ -49,20 +49,23 @@ class _SplashScreenState extends State<SplashScreen> {
                     ),
                     CircleAvatar(
                         backgroundColor: Colors.transparent,
-                        radius: 45.0,
+                        radius: 60.0,
                         child: Image.asset("Assets/Images/vidhu.png")),
                     Padding(
                       padding: EdgeInsets.only(top: 10.0),
                     ),
-                    Text(
-                      "E - VIDHUHALA",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 25.0),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        "E - VIDHUHALA",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 32.0),
+                      ),
                     ),
                     Text(
-                      "A new kind of school",
+                      "New Possibilities",
                       softWrap: true,
                       textAlign: TextAlign.center,
                       style: TextStyle(

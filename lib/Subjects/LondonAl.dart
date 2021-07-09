@@ -17,7 +17,7 @@ class _LondonAlState extends State<LondonAl> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(kToolbarHeight + 130),
+        preferredSize: Size.fromHeight(kToolbarHeight + 140),
         child: ClipPath(
           clipper: CustomClipPath(),
           child: Container(
@@ -110,7 +110,7 @@ class _LondonAlState extends State<LondonAl> {
                                 ),
                                 onPressed: () {
                                   setState(() {
-                                   clsno =  searchCont.text ;
+                                    clsno = searchCont.text;
                                   });
                                 }),
                           ),
