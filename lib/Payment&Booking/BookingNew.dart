@@ -16,11 +16,12 @@ class BookClass extends StatefulWidget {
   String Id;
   String techname;
   String bookSub;
-
+  String bookgrd;
   BookClass({
     @required this.Id,
     @required this.techname,
     @required this.bookSub,
+    @required this.bookgrd,
   });
   @override
   _BookClassState createState() => _BookClassState();
@@ -832,6 +833,8 @@ class _BookClassState extends State<BookClass> {
                                       'Link': 'join' +
                                           FirebaseAuth.instance.currentUser.uid,
                                       'Date': docReference['Date'],
+                                      'Subject': widget.bookSub,
+                                      'Grade': widget.bookgrd
                                       //'Link': Room
                                     });
 
@@ -1382,7 +1385,8 @@ class _BookClassState extends State<BookClass> {
                                       'Link': 'join' +
                                           FirebaseAuth.instance.currentUser.uid,
                                       'Date': docReference['Date'],
-
+                                      'Subject': widget.bookSub,
+                                      'Grade': widget.bookgrd
                                       //'Link': Room
                                     });
 
@@ -1658,6 +1662,8 @@ class _BookClassState extends State<BookClass> {
                                       'Link': 'join' +
                                           FirebaseAuth.instance.currentUser.uid,
                                       'Date': docReference['Date'],
+                                      'Subject': widget.bookSub,
+                                      'Grade': widget.bookgrd
                                       //'Link': Room
                                     });
 
@@ -1932,7 +1938,8 @@ class _BookClassState extends State<BookClass> {
                                       'Link': 'join' +
                                           FirebaseAuth.instance.currentUser.uid,
                                       'Date': docReference['Date'],
-
+                                      'Subject': widget.bookSub,
+                                      'Grade': widget.bookgrd
                                       //'Link': Room
                                     });
 
@@ -2208,6 +2215,8 @@ class _BookClassState extends State<BookClass> {
                                       'Link': 'join' +
                                           FirebaseAuth.instance.currentUser.uid,
                                       'Date': docReference['Date'],
+                                      'Subject': widget.bookSub,
+                                      'Grade': widget.bookgrd
                                       //'Link': Room
                                     });
 
@@ -2482,7 +2491,8 @@ class _BookClassState extends State<BookClass> {
                                       'Link': 'join' +
                                           FirebaseAuth.instance.currentUser.uid,
                                       'Date': docReference['Date'],
-
+                                      'Subject': widget.bookSub,
+                                      'Grade': widget.bookgrd
                                       //'Link': Room
                                     });
 

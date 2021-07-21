@@ -15,7 +15,7 @@ class profileScreen extends StatefulWidget {
     @required this.PId,
     @required this.img,
     @required this.tname,
-    @required this.sub,
+    // @required this.sub,
   });
   @override
   _profileScreenState createState() => _profileScreenState();
@@ -25,7 +25,7 @@ class _profileScreenState extends State<profileScreen> {
   String uName;
   String city;
   String grade;
-  String sub;
+  String subject;
   String phone;
 
   @override
@@ -58,6 +58,12 @@ class _profileScreenState extends State<profileScreen> {
             return ListView(
                 children: snapshot.data.docs.map((docReference) {
               String id = docReference.id;
+
+              List<String> GradeList = List.from(docReference['Grade']);
+              int GradeCount = GradeList.length;
+
+              List<String> SubjectList = List.from(docReference['Subject']);
+              int subCount = SubjectList.length;
               return Center(
                   child: Column(
                 children: [
@@ -193,6 +199,77 @@ class _profileScreenState extends State<profileScreen> {
                           padding: const EdgeInsets.all(20.0),
                           child: Text(docReference['About'])),
 
+                      ///////////////////////////////////////////////////////////////////////////////////////////////////
+                      //////////////////////////
+                      //////////////////////////////////////////
+                      ///
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: DropdownButton<String>(
+                              value: grade,
+                              hint: Text(" Grade"),
+                              icon: Icon(Icons.arrow_drop_down),
+                              iconSize: 16,
+                              elevation: 16,
+                              style: TextStyle(color: Color(0xff00007c)),
+                              underline: Container(
+                                height: 2,
+                                color: Color(0xff00007c),
+                              ),
+                              onChanged: (String newValue) {
+                                setState(() {
+                                  grade = newValue;
+                                });
+                              },
+                              items: GradeList.map<DropdownMenuItem<String>>(
+                                  (String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(value),
+                                );
+                              }).toList(),
+                            ),
+                          ),
+                          //////////////////
+
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: DropdownButton<String>(
+                              value: subject,
+                              hint: Text(" Subject"),
+                              icon: Icon(Icons.arrow_drop_down),
+                              iconSize: 16,
+                              elevation: 16,
+                              style: TextStyle(color: Color(0xff00007c)),
+                              underline: Container(
+                                height: 2,
+                                color: Color(0xff00007c),
+                              ),
+                              onChanged: (String newValue) {
+                                setState(() {
+                                  subject = newValue;
+                                });
+                              },
+                              items: SubjectList.map<DropdownMenuItem<String>>(
+                                  (String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(value),
+                                );
+                              }).toList(),
+                            ),
+                          ),
+                        ],
+                      ),
+                      /////////////////////////////////////////
+                      ///
+                      /*  RaisedButton(onPressed: () {
+                        print(subject);
+                        print(grade);
+                      }),*/
                       SizedBox(
                         height: 30,
                       ),
@@ -214,20 +291,50 @@ class _profileScreenState extends State<profileScreen> {
                                   width: 15,
                                 ),
                                 Text(
-                                  ' Shedule',
+                                  ' Next',
                                   style: TextStyle(color: Colors.white),
                                 )
                               ],
                             ),
                             onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => BookClass(
-                                            Id: widget.PId,
-                                            bookSub: widget.sub,
-                                            techname: widget.tname,
-                                          )));
+                              if (subject != null && grade != null) {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => BookClass(
+                                              Id: widget.PId,
+                                              bookSub: subject,
+                                              techname: widget.tname,
+                                              bookgrd: grade,
+                                            )));
+                              } else {
+                                AlertDialog alert = AlertDialog(
+                                  title:
+                                      Text("Please Select Subject and Grade  "),
+                                  actions: [
+                                    FlatButton(
+                                      child: Column(
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Text("Ok"),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                    ),
+                                  ],
+                                );
+                                showDialog(
+                                    context: context,
+                                    builder: (BuildContext) {
+                                      return alert;
+                                    },
+                                    barrierDismissible: true);
+                              }
                             }),
                       )
                     ],

@@ -302,7 +302,8 @@ class _TukDataWidget extends StatelessWidget {
                               child: Text("Book",
                                   style: TextStyle(color: Colors.white)),
                               onPressed: () {
-                                if (document['NoOfStudents'] != '75') {
+                                if (document['JoinedStudents'] !=
+                                    document['MaxStudents']) {
                                   int no = int.parse(document['NoOfStudents']);
                                   int num = (no + 1);
                                   String numf = num.toString();
@@ -351,7 +352,7 @@ class _TukDataWidget extends StatelessWidget {
       color: Colors.blueAccent,
       child: SizedBox(
           width: 150,
-          height: 150,
+          height: 185,
           child: Scaffold(
               body: StreamBuilder(
                   stream: FirebaseFirestore.instance
@@ -367,27 +368,27 @@ class _TukDataWidget extends StatelessWidget {
                     return ListView(
                         children: snapshot.data.docs.map((docReference) {
                       String id = docReference.id;
-                      return Center(
-                          child: Container(
-                        width: 150,
-                        height: 150,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                              image: NetworkImage(docReference['Image']),
-                              fit: BoxFit.fill),
-                          color: Color(0xff00007c),
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(20),
-                          ),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Color(0xAA6EB1E6),
-                              offset: Offset(1, 8),
-                              blurRadius: 6,
+                      return Column(
+                        children: [
+                          Container(
+                            width: 160,
+                            height: 160,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image: NetworkImage(docReference['Image']),
+                                  fit: BoxFit.fill),
+                              color: Color(0xff00007c),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(20),
+                              ),
                             ),
-                          ],
-                        ),
-                      ));
+                          ),
+                          Text(
+                            docReference['Name'],
+                            style: TextStyle(fontSize: 25),
+                          ),
+                        ],
+                      );
                     }).toList());
                   }))),
     );

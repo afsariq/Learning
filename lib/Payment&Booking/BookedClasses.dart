@@ -6,6 +6,7 @@ import 'package:clippy_flutter/clippy_flutter.dart';
 import 'package:jitsist/HomeScreen/ClipPath.dart';
 import 'package:jitsist/HomeScreen/navBar.dart';
 import 'package:jitsist/Payment&Booking/Booking.dart';
+import 'package:jitsist/Special/BookedSpClasses.dart';
 import 'package:jitsist/VideoCall/Video.dart';
 
 class BookedClass extends StatefulWidget {
@@ -19,6 +20,19 @@ class _BookedClassState extends State<BookedClass> {
     return WillPopScope(
       onWillPop: () {},
       child: Scaffold(
+          floatingActionButton: new FloatingActionButton(
+              backgroundColor: Color(0xff00007c),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => BookedSpClass()));
+              },
+              child: Text(
+                'Booked Special Classes',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 10,
+                ),
+              )),
           appBar: PreferredSize(
             preferredSize: Size.fromHeight(kToolbarHeight + 65),
             child: ClipPath(
@@ -169,6 +183,7 @@ class _BookedClassState extends State<BookedClass> {
                                         ],
                                       ),
                                     ),
+
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Row(

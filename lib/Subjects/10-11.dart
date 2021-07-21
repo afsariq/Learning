@@ -92,7 +92,7 @@ class OLsubjects extends StatelessWidget {
                                   MaterialPageRoute(
                                       builder: (context) => SubjectNew(
                                             cls: '10-11',
-                                            sub: 'Maths',
+                                            sub: "Maths",
                                           )));
                             },
                             child: CircleAvatar(

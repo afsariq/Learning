@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:jitsist/Courses/CourseList.dart';
 import 'package:jitsist/Courses/FreeClasses.dart';
 import 'package:jitsist/Courses/FreeCourses.dart';
-import 'package:jitsist/HomeScreen/test.dart';
+
 import 'package:jitsist/LoginScreen/Login.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:jitsist/PastPapers/PastPaperList.dart';
@@ -108,6 +108,12 @@ class _HomeScreenState extends State<HomeScreen> {
                             builder: (context) => BookedSpClass()));
                   },
                 ),
+                ListTile(
+                    title: Text(
+                      "Complaints & Feedback",
+                      style: TextStyle(fontSize: 18),
+                    ),
+                    onTap: () {}),
                 ListTile(
                     title: Text(
                       "LogOut",
@@ -674,13 +680,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                     SizedBox(height: 20),
-                    RaisedButton(onPressed:(){
-                       Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  Test()));
-                    })
                   ])
             ])),
           ])),

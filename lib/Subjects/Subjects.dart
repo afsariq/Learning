@@ -83,8 +83,7 @@ class _SubjectState extends State<Subject> with SingleTickerProviderStateMixin {
             stream: FirebaseFirestore.instance
                 .collection("Teacher")
                 .where('Class', isEqualTo: widget.cls)
-                .where('Subject', isEqualTo: widget.sub)
-                .snapshots(),
+                .where('Subject', arrayContainsAny: [widget.sub]).snapshots(),
             builder:
                 (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
               if (!snapshot.hasData) {
@@ -97,6 +96,7 @@ class _SubjectState extends State<Subject> with SingleTickerProviderStateMixin {
               return ListView(
                   children: snapshot.data.docs.map((docReference) {
                 String id = docReference.id;
+
                 return Center(
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -109,7 +109,6 @@ class _SubjectState extends State<Subject> with SingleTickerProviderStateMixin {
                                       PId: id,
                                       img: docReference['Image'],
                                       tname: docReference['Name'],
-                                      sub: docReference['Subject'],
                                     )));
                       },
                       child: Container(
@@ -170,10 +169,10 @@ class _SubjectState extends State<Subject> with SingleTickerProviderStateMixin {
                                         ),
                                       ],
                                     ),
-                                    Text(
+                                    /* Text(
                                       docReference['Subject'],
                                       style: TextStyle(fontSize: 15),
-                                    ),
+                                    ),*/
                                     Row(
                                       children: [
                                         Expanded(
@@ -189,8 +188,6 @@ class _SubjectState extends State<Subject> with SingleTickerProviderStateMixin {
                                                                 'Image'],
                                                             tname: docReference[
                                                                 'Name'],
-                                                            sub: docReference[
-                                                                'Subject'],
                                                           )));
                                             },
                                             child: Text(

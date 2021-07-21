@@ -13,8 +13,8 @@ class SearchTeacher extends StatefulWidget {
 class _SearchTeacherState extends State<SearchTeacher> {
   @override
   String test = 'test';
-  String grade;
-  String subject;
+  String grade = '6-9';
+  String subject = 'Maths';
   String _chosenValue;
   final TextEditingController searchCont = TextEditingController();
   final TextEditingController searchContsub = TextEditingController();
@@ -148,8 +148,7 @@ class _SearchTeacherState extends State<SearchTeacher> {
           stream: FirebaseFirestore.instance
               .collection("Teacher")
               .where('Class', isEqualTo: grade)
-              .where('Subject', isEqualTo: subject)
-              .snapshots(),
+              .where('Subject', arrayContainsAny: [subject]).snapshots(),
           builder:
               (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
             if (!snapshot.hasData) {
@@ -164,6 +163,11 @@ class _SearchTeacherState extends State<SearchTeacher> {
             return ListView(
                 children: snapshot.data.docs.map((docReference) {
               String id = docReference.id;
+              List<String> Grade = List.from(docReference['Grade']);
+              int GradeCount = Grade.length;
+
+              List<String> Subject = List.from(docReference['Subject']);
+              int SubjectCount = Grade.length;
               return Center(
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -225,10 +229,52 @@ class _SearchTeacherState extends State<SearchTeacher> {
                                       ),
                                     ],
                                   ),
-                                  Text(
-                                    docReference['Subject'],
-                                    style: TextStyle(fontSize: 15),
+                                  ListView.builder(
+                                    //scrollDirection: Axis.horizontal,
+
+                                    shrinkWrap: true,
+                                    itemCount: GradeCount,
+                                    itemBuilder: (context, index) {
+                                      return Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text('Grade : '),
+                                          Text(Grade[index]),
+                                        ],
+                                      );
+                                    },
                                   ),
+                                  ListView.builder(
+                                    //scrollDirection: Axis.horizontal,
+
+                                    shrinkWrap: true,
+                                    itemCount: SubjectCount,
+                                    itemBuilder: (context, index) {
+                                      return Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text('Subject : '),
+                                          Text(Subject[index]),
+                                        ],
+                                      );
+                                    },
+                                  ),
+                                  /*   Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        docReference['Subject'],
+                                        style: TextStyle(fontSize: 15),
+                                      ),
+                                      Text(" , "),
+                                      Text(
+                                        docReference['Subject2'],
+                                        style: TextStyle(fontSize: 15),
+                                      ),
+                                    ],
+                                  ),*/
                                   Row(
                                     children: [
                                       Expanded(
@@ -244,8 +290,8 @@ class _SearchTeacherState extends State<SearchTeacher> {
                                                               'Image'],
                                                           tname: docReference[
                                                               'Name'],
-                                                          sub: docReference[
-                                                              'Subject'],
+                                                          /* sub: docReference[
+                                                              'Subject'],*/
                                                         )));
                                           },
                                           child: Text(

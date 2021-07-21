@@ -225,8 +225,6 @@ class _LondonAlState extends State<LondonAl> {
                                                               'Image'],
                                                           tname: docReference[
                                                               'Name'],
-                                                          sub: docReference[
-                                                              'Subject'],
                                                         )));
                                           },
                                           child: Text(

@@ -110,7 +110,7 @@ class _LondonOlState extends State<LondonOl> {
                                 ),
                                 onPressed: () {
                                   setState(() {
-                                    clsno =  searchCont.text ;
+                                    clsno = searchCont.text;
                                     print(clsno);
                                   });
                                 }),
@@ -226,8 +226,6 @@ class _LondonOlState extends State<LondonOl> {
                                                               'Image'],
                                                           tname: docReference[
                                                               'Name'],
-                                                          sub: docReference[
-                                                              'Subject'],
                                                         )));
                                           },
                                           child: Text(

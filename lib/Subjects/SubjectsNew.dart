@@ -84,8 +84,7 @@ class _SubjectNewState extends State<SubjectNew>
             stream: FirebaseFirestore.instance
                 .collection("Teacher")
                 .where('Class', isEqualTo: widget.cls)
-                .where('Subject', isEqualTo: widget.sub)
-                .snapshots(),
+                .where('Subject', arrayContainsAny: [widget.sub]).snapshots(),
             builder:
                 (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
               if (!snapshot.hasData) {
@@ -98,6 +97,8 @@ class _SubjectNewState extends State<SubjectNew>
               return ListView(
                   children: snapshot.data.docs.map((docReference) {
                 String id = docReference.id;
+                List<String> Grade = List.from(docReference['Grade']);
+                int GradeCount = Grade.length;
                 return Center(
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -110,7 +111,6 @@ class _SubjectNewState extends State<SubjectNew>
                                       PId: id,
                                       img: docReference['Image'],
                                       tname: docReference['Name'],
-                                      sub: docReference['Subject'],
                                     )));
                       },
                       child: Container(
@@ -171,7 +171,27 @@ class _SubjectNewState extends State<SubjectNew>
                                         ),
                                       ],
                                     ),
-                                    Row(
+                                    ListView.builder(
+                                      //scrollDirection: Axis.horizontal,
+
+                                      shrinkWrap: true,
+                                      itemCount: GradeCount,
+                                      itemBuilder: (context, index) {
+                                        return Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            //Text('Grade : '),
+                                            Row(
+                                              children: [
+                                                Text(Grade[index]),
+                                              ],
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    ),
+                                    /*  Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
@@ -184,11 +204,11 @@ class _SubjectNewState extends State<SubjectNew>
                                           style: TextStyle(fontSize: 15),
                                         ),
                                       ],
-                                    ),
-                                    Text(
+                                    ),*/
+                                    /* Text(
                                       docReference['Subject'],
                                       style: TextStyle(fontSize: 15),
-                                    ),
+                                    ),*/
                                     Row(
                                       children: [
                                         Expanded(
@@ -204,8 +224,6 @@ class _SubjectNewState extends State<SubjectNew>
                                                                 'Image'],
                                                             tname: docReference[
                                                                 'Name'],
-                                                            sub: docReference[
-                                                                'Subject'],
                                                           )));
                                             },
                                             child: Text(
