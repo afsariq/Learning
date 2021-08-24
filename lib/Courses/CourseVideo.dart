@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:jitsist/Courses/FreeClassVdo.dart';
 import 'package:jitsist/HomeScreen/ClipPath.dart';
-import 'package:jitsist/VideoCall/Video.dart';
+import 'package:jitsist/VideoCall/Video.dart' hide ClipPath;
 import 'package:video_player/video_player.dart';
 
 class CourseVideo extends StatefulWidget {

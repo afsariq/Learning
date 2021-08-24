@@ -7,7 +7,7 @@ import 'package:jitsist/HomeScreen/ClipPath.dart';
 import 'package:jitsist/HomeScreen/navBar.dart';
 import 'package:jitsist/Payment&Booking/Booking.dart';
 import 'package:jitsist/Special/BookedSpClasses.dart';
-import 'package:jitsist/VideoCall/Video.dart';
+import 'package:jitsist/VideoCall/Video.dart' hide ClipPath;
 
 class BookedClass extends StatefulWidget {
   @override

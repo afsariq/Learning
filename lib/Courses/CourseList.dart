@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:jitsist/Courses/CourseVideo.dart';
 import 'package:jitsist/Courses/FreeClassVdo.dart';
-import 'package:jitsist/HomeScreen/ClipPath.dart';
-import 'package:jitsist/VideoCall/Video.dart';
-import 'package:video_player/video_player.dart';
+import 'package:jitsist/HomeScreen/ClipPath.dart' as cp;
+import 'package:jitsist/VideoCall/Video.dart' hide ClipPath;
 
 class courseList extends StatefulWidget {
   const courseList({Key key}) : super(key: key);
@@ -22,7 +20,7 @@ class _courseListState extends State<courseList> {
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(kToolbarHeight + 90),
           child: ClipPath(
-            clipper: CustomClipPath(),
+            clipper: cp.CustomClipPath(),
             child: Container(
               decoration: BoxDecoration(
                 image: DecorationImage(

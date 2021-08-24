@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:jitsi_meet/jitsi_meet.dart';
 import 'dart:math';
-
 import 'package:jitsist/HomeScreen/ClipPath.dart';
 
 class Video extends StatefulWidget {

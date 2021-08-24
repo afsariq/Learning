@@ -98,7 +98,7 @@ class _FreeClassVideoState extends State<FreeClassVideo> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                _controller.value.initialized
+                _controller.value.isInitialized
                     ? AspectRatio(
                         aspectRatio: 1 / 1.6,
                         child: VideoPlayer(_controller),
