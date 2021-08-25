@@ -12,9 +12,9 @@ class SearchTeacher extends StatefulWidget {
 
 class _SearchTeacherState extends State<SearchTeacher> {
   @override
-  String test = 'test';
-  String grade = '6-9';
-  String subject = 'Maths';
+  // String test = 'test';
+  // String grade = '6-9';
+  // String subject = 'History';
   String _chosenValue;
   final TextEditingController searchCont = TextEditingController();
   final TextEditingController searchContsub = TextEditingController();
@@ -53,92 +53,92 @@ class _SearchTeacherState extends State<SearchTeacher> {
                           color: Colors.white,
                           fontWeight: FontWeight.bold)),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Expanded(
-                      flex: 3,
-                      child: Container(
-                        height: 40,
-                        decoration: BoxDecoration(
-                            color: Colors.white70,
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(10))),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: DropdownButton<String>(
-                              value: _chosenValue,
-                              hint: Text(" Grade"),
-                              items: <String>[
-                                '6-9',
-                                'A/L',
-                                'Scholorship',
-                                '10'
-                              ].map<DropdownMenuItem<String>>((String value) {
-                                return DropdownMenuItem<String>(
-                                  value: value,
-                                  child: Text(value),
-                                );
-                              }).toList(),
-                              onChanged: (String value) {
-                                setState(() {
-                                  _chosenValue = value;
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.center,
+                //   children: [
+                //     Expanded(
+                //       flex: 3,
+                //       child: Container(
+                //         height: 40,
+                //         decoration: BoxDecoration(
+                //             color: Colors.white70,
+                //             borderRadius:
+                //                 BorderRadius.all(Radius.circular(10))),
+                //         child: Padding(
+                //           padding: const EdgeInsets.all(8.0),
+                //           child: DropdownButton<String>(
+                //               value: _chosenValue,
+                //               hint: Text(" Grade"),
+                //               items: <String>[
+                //                 '6-9',
+                //                 'A/L',
+                //                 'Scholorship',
+                //                 '10'
+                //               ].map<DropdownMenuItem<String>>((String value) {
+                //                 return DropdownMenuItem<String>(
+                //                   value: value,
+                //                   child: Text(value),
+                //                 );
+                //               }).toList(),
+                //               onChanged: (String value) {
+                //                 setState(() {
+                //                   _chosenValue = value;
 
-                                  // grade = _chosenValue;
-                                });
-                              }),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Expanded(
-                      flex: 3,
-                      child: SizedBox(
-                        height: 40,
-                        child: Container(
-                          decoration: BoxDecoration(
-                              color: Colors.white70,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10))),
-                          child: TextField(
-                            decoration: InputDecoration(
-                              border: InputBorder.none,
-                              hintText: "    Subject",
-                              hintStyle: TextStyle(color: Colors.black),
-                            ),
-                            controller: searchContsub,
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: Container(
-                        height: 40,
-                        decoration: BoxDecoration(
-                            color: Colors.white70,
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(35))),
-                        child: IconButton(
-                            icon: Icon(
-                              Icons.search_sharp,
-                              color: Colors.white70,
-                            ),
-                            onPressed: () {
-                              setState(() {
-                                grade = _chosenValue;
-                                subject = searchContsub.text;
-                              });
-                            }),
-                      ),
-                    )
-                  ],
-                ),
+                //                   // grade = _chosenValue;
+                //                 });
+                //               }),
+                //         ),
+                //       ),
+                //     ),
+                //     SizedBox(
+                //       width: 10,
+                //     ),
+                //     Expanded(
+                //       flex: 3,
+                //       child: SizedBox(
+                //         height: 40,
+                //         child: Container(
+                //           decoration: BoxDecoration(
+                //               color: Colors.white70,
+                //               borderRadius:
+                //                   BorderRadius.all(Radius.circular(10))),
+                //           child: TextField(
+                //             decoration: InputDecoration(
+                //               border: InputBorder.none,
+                //               hintText: "    Subject",
+                //               hintStyle: TextStyle(color: Colors.black),
+                //             ),
+                //             controller: searchContsub,
+                //           ),
+                //         ),
+                //       ),
+                //     ),
+                //     SizedBox(
+                //       width: 10,
+                //     ),
+                //     Expanded(
+                //       flex: 1,
+                //       child: Container(
+                //         height: 40,
+                //         decoration: BoxDecoration(
+                //             color: Colors.white70,
+                //             borderRadius:
+                //                 BorderRadius.all(Radius.circular(35))),
+                //         child: IconButton(
+                //             icon: Icon(
+                //               Icons.search_sharp,
+                //               color: Colors.white70,
+                //             ),
+                //             onPressed: () {
+                //               setState(() {
+                //                 grade = _chosenValue;
+                //                 subject = searchContsub.text;
+                //               });
+                //             }),
+                //       ),
+                //     )
+                //   ],
+                // ),//,m,m,m,
               ],
             ),
           ),
@@ -146,9 +146,11 @@ class _SearchTeacherState extends State<SearchTeacher> {
       ),
       body: StreamBuilder(
           stream: FirebaseFirestore.instance
+              // .collection("Teacher")
+              // .where('Class', isEqualTo: grade)
+              // .where('Subject', arrayContainsAny: [subject]).snapshots(),
               .collection("Teacher")
-              .where('Class', isEqualTo: grade)
-              .where('Subject', arrayContainsAny: [subject]).snapshots(),
+              .snapshots(),
           builder:
               (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
             if (!snapshot.hasData) {
@@ -167,7 +169,8 @@ class _SearchTeacherState extends State<SearchTeacher> {
               int GradeCount = Grade.length;
 
               List<String> Subject = List.from(docReference['Subject']);
-              int SubjectCount = Grade.length;
+              print('subject  ' + Subject.first + "   " + Subject.last);
+              int SubjectCount = Subject.length;
               return Center(
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -183,155 +186,164 @@ class _SearchTeacherState extends State<SearchTeacher> {
                           child: Row(children: [
                             Expanded(
                               flex: 1,
-                              child: CircleAvatar(
-                                //  width: 110,
-                                backgroundImage: NetworkImage(
-                                  docReference['Image'],
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: CircleAvatar(
+                                  //  width: 110,
+                                  backgroundImage: NetworkImage(
+                                    docReference['Image'],
+                                  ),
+                                  radius: 40,
+                                  /*child: Image.network(
+                                        docReference['Image'],
+                                        width: 100,
+                                        height: 100,
+                                      ),*/
                                 ),
-                                radius: 50,
-                                /*child: Image.network(
-                                      docReference['Image'],
-                                      width: 100,
-                                      height: 100,
-                                    ),*/
                               ),
                             ),
                             Expanded(
                               flex: 2,
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    docReference['Name'],
-                                    style: TextStyle(fontSize: 20),
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text("5"),
-                                      Icon(
-                                        Icons.star,
-                                        color: Colors.amber,
-                                      )
-                                    ],
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        docReference['Medium'],
-                                        style: TextStyle(fontSize: 15),
-                                      ),
-                                      Text(
-                                        ' Medium',
-                                        style: TextStyle(fontSize: 15),
-                                      ),
-                                    ],
-                                  ),
-                                  ListView.builder(
-                                    //scrollDirection: Axis.horizontal,
-
-                                    shrinkWrap: true,
-                                    itemCount: GradeCount,
-                                    itemBuilder: (context, index) {
-                                      return Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Text('Grade : '),
-                                          Text(Grade[index]),
-                                        ],
-                                      );
-                                    },
-                                  ),
-                                  ListView.builder(
-                                    //scrollDirection: Axis.horizontal,
-
-                                    shrinkWrap: true,
-                                    itemCount: SubjectCount,
-                                    itemBuilder: (context, index) {
-                                      return Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Text('Subject : '),
-                                          Text(Subject[index]),
-                                        ],
-                                      );
-                                    },
-                                  ),
-                                  /*   Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        docReference['Subject'],
-                                        style: TextStyle(fontSize: 15),
-                                      ),
-                                      Text(" , "),
-                                      Text(
-                                        docReference['Subject2'],
-                                        style: TextStyle(fontSize: 15),
-                                      ),
-                                    ],
-                                  ),*/
-                                  Row(
-                                    children: [
-                                      Expanded(
-                                        child: RaisedButton(
-                                          onPressed: () {
-                                            Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        profileScreen(
-                                                          PId: id,
-                                                          img: docReference[
-                                                              'Image'],
-                                                          tname: docReference[
-                                                              'Name'],
-                                                          /* sub: docReference[
-                                                              'Subject'],*/
-                                                        )));
-                                          },
-                                          child: Text(
-                                            "Select",
-                                            style:
-                                                TextStyle(color: Colors.white),
-                                          ),
-                                          shape: StadiumBorder(),
-                                          color: Color(0xff00007c),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      docReference['Name'],
+                                      style: TextStyle(fontSize: 20),
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text("5"),
+                                        Icon(
+                                          Icons.star,
+                                          color: Colors.amber,
+                                        )
+                                      ],
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          docReference['Medium'],
+                                          style: TextStyle(fontSize: 15),
                                         ),
-                                      ),
-                                      SizedBox(
-                                        width: 10,
-                                      ),
-                                      Expanded(
-                                        child: RaisedButton(
-                                          onPressed: () {
-                                            Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        FreeClassesByt(
-                                                          TechId: id,
-                                                          Techname:
-                                                              docReference[
-                                                                  'Name'],
-                                                        )));
-                                          },
-                                          child: Text(
-                                            "Video",
-                                            style:
-                                                TextStyle(color: Colors.white),
-                                          ),
-                                          shape: StadiumBorder(),
-                                          color: Color(0xff00007c),
+                                        Text(
+                                          ' Medium',
+                                          style: TextStyle(fontSize: 15),
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
+                                      ],
+                                    ),
+
+                                    ListView.builder(
+                                      scrollDirection: Axis.vertical,
+                                      shrinkWrap: true,
+                                      itemCount: GradeCount,
+                                      itemBuilder: (context, index) {
+                                        return Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text('Grade : '),
+                                            Text(Grade[index]),
+                                          ],
+                                        );
+                                      },
+                                    ),
+                                    ListView.builder(
+                                      scrollDirection: Axis.vertical,
+                                      shrinkWrap: true,
+                                      itemCount: SubjectCount,
+                                      itemBuilder: (context, index) {
+                                        return Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text('Subject : '),
+                                            Text(Subject[index]),
+                                          ],
+                                        );
+                                      },
+                                    ),
+                                    // //here stop
+
+                                    /*   Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          docReference['Subject'],
+                                          style: TextStyle(fontSize: 15),
+                                        ),
+                                        Text(" , "),
+                                        Text(
+                                          docReference['Subject2'],
+                                          style: TextStyle(fontSize: 15),
+                                        ),
+                                      ],
+                                    ),*/
+                                    Row(
+                                      children: [
+                                        Expanded(
+                                          child: RaisedButton(
+                                            onPressed: () {
+                                              Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          profileScreen(
+                                                            PId: id,
+                                                            img: docReference[
+                                                                'Image'],
+                                                            tname: docReference[
+                                                                'Name'],
+                                                            /* sub: docReference[
+                                                                'Subject'],*/
+                                                          )));
+                                            },
+                                            child: Text(
+                                              "Select",
+                                              style: TextStyle(
+                                                  color: Colors.white),
+                                            ),
+                                            shape: StadiumBorder(),
+                                            color: Color(0xff00007c),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Expanded(
+                                          child: RaisedButton(
+                                            onPressed: () {
+                                              Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          FreeClassesByt(
+                                                            TechId: id,
+                                                            Techname:
+                                                                docReference[
+                                                                    'Name'],
+                                                          )));
+                                            },
+                                            child: Text(
+                                              "Video",
+                                              style: TextStyle(
+                                                  color: Colors.white),
+                                            ),
+                                            shape: StadiumBorder(),
+                                            color: Color(0xff00007c),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ),
                             )
                           ]),
