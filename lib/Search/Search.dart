@@ -4,6 +4,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:jitsist/HomeScreen/ClipPath.dart';
 import 'package:jitsist/Payment&Booking/Profile.dart';
 import 'package:jitsist/Payment&Booking/VdoByT.dart';
+import 'package:jitsist/Subjects/Subjects.dart';
 
 class SearchTeacher extends StatefulWidget {
   @override
@@ -11,14 +12,36 @@ class SearchTeacher extends StatefulWidget {
 }
 
 class _SearchTeacherState extends State<SearchTeacher> {
-  @override
-  // String test = 'test';
-  // String grade = '6-9';
-  // String subject = 'History';
+  String grade = '6-9';
+  String subject = 'History';
   String _chosenValue;
   final TextEditingController searchCont = TextEditingController();
-  final TextEditingController searchContsub = TextEditingController();
-  final _controller = ScrollController();
+  TextEditingController _searchSubjectController = TextEditingController();
+  // final _controller = ScrollController();
+  Stream stream;
+
+  @override
+  void initState() {
+    super.initState();
+    stream = FirebaseFirestore.instance.collection("Teacher").snapshots();
+    _searchSubjectController.addListener(_onSubjectChanged);
+  }
+
+  @override
+  void dispose() {
+    _searchSubjectController.removeListener(_onSubjectChanged);
+    _searchSubjectController.dispose();
+    super.dispose();
+  }
+
+  _onSubjectChanged() {
+    print("----------------   " + _searchSubjectController.text);
+    // stream = FirebaseFirestore.instance
+    //     .collection("Teacher")
+    //     .where('Class', isEqualTo: grade)
+    //     .where('Subject', arrayContainsAny: [subject]).snapshots();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,92 +76,99 @@ class _SearchTeacherState extends State<SearchTeacher> {
                           color: Colors.white,
                           fontWeight: FontWeight.bold)),
                 ),
-                // Row(
-                //   mainAxisAlignment: MainAxisAlignment.center,
-                //   children: [
-                //     Expanded(
-                //       flex: 3,
-                //       child: Container(
-                //         height: 40,
-                //         decoration: BoxDecoration(
-                //             color: Colors.white70,
-                //             borderRadius:
-                //                 BorderRadius.all(Radius.circular(10))),
-                //         child: Padding(
-                //           padding: const EdgeInsets.all(8.0),
-                //           child: DropdownButton<String>(
-                //               value: _chosenValue,
-                //               hint: Text(" Grade"),
-                //               items: <String>[
-                //                 '6-9',
-                //                 'A/L',
-                //                 'Scholorship',
-                //                 '10'
-                //               ].map<DropdownMenuItem<String>>((String value) {
-                //                 return DropdownMenuItem<String>(
-                //                   value: value,
-                //                   child: Text(value),
-                //                 );
-                //               }).toList(),
-                //               onChanged: (String value) {
-                //                 setState(() {
-                //                   _chosenValue = value;
-
-                //                   // grade = _chosenValue;
-                //                 });
-                //               }),
-                //         ),
-                //       ),
-                //     ),
-                //     SizedBox(
-                //       width: 10,
-                //     ),
-                //     Expanded(
-                //       flex: 3,
-                //       child: SizedBox(
-                //         height: 40,
-                //         child: Container(
-                //           decoration: BoxDecoration(
-                //               color: Colors.white70,
-                //               borderRadius:
-                //                   BorderRadius.all(Radius.circular(10))),
-                //           child: TextField(
-                //             decoration: InputDecoration(
-                //               border: InputBorder.none,
-                //               hintText: "    Subject",
-                //               hintStyle: TextStyle(color: Colors.black),
-                //             ),
-                //             controller: searchContsub,
-                //           ),
-                //         ),
-                //       ),
-                //     ),
-                //     SizedBox(
-                //       width: 10,
-                //     ),
-                //     Expanded(
-                //       flex: 1,
-                //       child: Container(
-                //         height: 40,
-                //         decoration: BoxDecoration(
-                //             color: Colors.white70,
-                //             borderRadius:
-                //                 BorderRadius.all(Radius.circular(35))),
-                //         child: IconButton(
-                //             icon: Icon(
-                //               Icons.search_sharp,
-                //               color: Colors.white70,
-                //             ),
-                //             onPressed: () {
-                //               setState(() {
-                //                 grade = _chosenValue;
-                //                 subject = searchContsub.text;
-                //               });
-                //             }),
-                //       ),
-                //     )
-                //   ],
-                // ),//,m,m,m,
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Expanded(
+                        flex: 3,
+                        child: Container(
+                          height: 40,
+                          decoration: BoxDecoration(
+                              color: Colors.white70,
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10))),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: DropdownButton<String>(
+                                value: _chosenValue,
+                                hint: Text(" Grade"),
+                                items: <String>[
+                                  '6-9',
+                                  'A/L',
+                                  'Scholorship',
+                                  '10'
+                                ].map<DropdownMenuItem<String>>((String value) {
+                                  return DropdownMenuItem<String>(
+                                    value: value,
+                                    child: Text(value),
+                                  );
+                                }).toList(),
+                                onChanged: (String value) {
+                                  setState(() {
+                                    _chosenValue = value;
+                                    grade = _chosenValue;
+                                  });
+                                }),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Expanded(
+                        flex: 3,
+                        child: SizedBox(
+                          height: 40,
+                          child: Container(
+                            decoration: BoxDecoration(
+                                color: Colors.white70,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10))),
+                            child: TextField(
+                              decoration: InputDecoration(
+                                border: InputBorder.none,
+                                hintText: "    Subject",
+                                hintStyle: TextStyle(color: Colors.black),
+                              ),
+                              controller: _searchSubjectController,
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Expanded(
+                        flex: 1,
+                        child: Container(
+                          height: 40,
+                          decoration: BoxDecoration(
+                              color: Colors.white70,
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(35))),
+                          child: IconButton(
+                              icon: Icon(
+                                Icons.search_sharp,
+                                color: Colors.white70,
+                              ),
+                              onPressed: () {
+                                setState(() {
+                                  grade = _chosenValue;
+                                  subject = _searchSubjectController.text;
+                                  print('grade: ' +
+                                      grade +
+                                      "    subject: " +
+                                      subject);
+                                  // search(grade, subject);
+                                });
+                              }),
+                        ),
+                      )
+                    ],
+                  ),
+                ), //,m,m,m,
               ],
             ),
           ),
@@ -166,11 +196,11 @@ class _SearchTeacherState extends State<SearchTeacher> {
                 children: snapshot.data.docs.map((docReference) {
               String id = docReference.id;
               List<String> Grade = List.from(docReference['Grade']);
-              int GradeCount = Grade.length;
+              int gradeCount = Grade.length;
 
               List<String> Subject = List.from(docReference['Subject']);
               print('subject  ' + Subject.first + "   " + Subject.last);
-              int SubjectCount = Subject.length;
+              int subjectCount = Subject.length;
               return Center(
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -239,11 +269,10 @@ class _SearchTeacherState extends State<SearchTeacher> {
                                         ),
                                       ],
                                     ),
-
                                     ListView.builder(
                                       scrollDirection: Axis.vertical,
                                       shrinkWrap: true,
-                                      itemCount: GradeCount,
+                                      itemCount: gradeCount,
                                       itemBuilder: (context, index) {
                                         return Row(
                                           mainAxisAlignment:
@@ -258,7 +287,7 @@ class _SearchTeacherState extends State<SearchTeacher> {
                                     ListView.builder(
                                       scrollDirection: Axis.vertical,
                                       shrinkWrap: true,
-                                      itemCount: SubjectCount,
+                                      itemCount: subjectCount,
                                       itemBuilder: (context, index) {
                                         return Row(
                                           mainAxisAlignment:
@@ -447,7 +476,7 @@ class _SearchTeacherState extends State<SearchTeacher> {
                               hintText: "    Subject",
                               hintStyle: TextStyle(color: Colors.black),
                             ),
-                            controller: searchContsub,
+                            controller: _searchSubjectController,
                           ),
                         ),
                       ),
@@ -471,7 +500,7 @@ class _SearchTeacherState extends State<SearchTeacher> {
                             onPressed: () {
                               setState(() {
                                 grade = _chosenValue;
-                                subject = searchContsub.text;
+                                subject = _searchSubjectController.text;
                               });
                             }),
                       ),
@@ -486,165 +515,162 @@ class _SearchTeacherState extends State<SearchTeacher> {
             if (test == 'test') GestureDetector(child: search())
           ]),
         ));
-  }
+  } */
 
-  Widget search() {
-    return SizedBox(
-      height: 2500,
-      child: Scaffold(
-        body: StreamBuilder(
-            stream: FirebaseFirestore.instance
-                .collection("Teacher")
-                .where('Class', isEqualTo: grade)
-                .where('Subject', isEqualTo: subject)
-                .snapshots(),
-            builder:
-                (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-              if (!snapshot.hasData) {
-                return SizedBox(
-                  child: Center(
-                      child: SpinKitRing(
-                    color: Colors.blue,
-                  )),
-                );
-                //  Center(child: LoadingFilling.square());
-              }
-              return ListView(
-                  children: snapshot.data.docs.map((docReference) {
-                String id = docReference.id;
-                return Center(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: GestureDetector(
-                      onTap: () {},
-                      child: Container(
-                        child: Column(children: [
-                          Container(
-                            decoration: BoxDecoration(
-                                color: Colors.blue[200],
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20))),
-                            child: Row(children: [
-                              Expanded(
-                                flex: 1,
-                                child: CircleAvatar(
-                                  //  width: 110,
-                                  backgroundImage: NetworkImage(
-                                    docReference['Image'],
-                                  ),
-                                  radius: 60,
-                                  /*child: Image.network(
-                                      docReference['Image'],
-                                      width: 100,
-                                      height: 100,
-                                    ),*/
-                                ),
-                              ),
-                              Expanded(
-                                flex: 2,
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      docReference['Name'],
-                                      style: TextStyle(fontSize: 20),
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text("5"),
-                                        Icon(
-                                          Icons.star,
-                                          color: Colors.amber,
-                                        )
-                                      ],
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          docReference['Medium'],
-                                          style: TextStyle(fontSize: 15),
-                                        ),
-                                        Text(
-                                          ' Medium',
-                                          style: TextStyle(fontSize: 15),
-                                        ),
-                                      ],
-                                    ),
-                                    Text(
-                                      docReference['Subject'],
-                                      style: TextStyle(fontSize: 15),
-                                    ),
-                                    Row(
-                                      children: [
-                                        Expanded(
-                                          child: RaisedButton(
-                                            onPressed: () {
-                                              Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          profileScreen(
-                                                            PId: id,
-                                                            img: docReference[
-                                                                'Image'],
-                                                            tname: docReference[
-                                                                'Name'],
-                                                            sub: docReference[
-                                                                'Subject'],
-                                                          )));
-                                            },
-                                            child: Text(
-                                              "Select",
-                                              style: TextStyle(
-                                                  color: Colors.white),
-                                            ),
-                                            shape: StadiumBorder(),
-                                            color: Color(0xff00007c),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: 10,
-                                        ),
-                                        Expanded(
-                                          child: RaisedButton(
-                                            onPressed: () {
-                                              Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          FreeClassesByt(
-                                                            TechId: id,
-                                                          )));
-                                            },
-                                            child: Text(
-                                              "Video",
-                                              style: TextStyle(
-                                                  color: Colors.white),
-                                            ),
-                                            shape: StadiumBorder(),
-                                            color: Color(0xff00007c),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              )
-                            ]),
-                          ),
-                        ]),
-                      ),
-                    ),
-                  ),
-                );
-              }).toList());
-            }),
-      ),
-    );
-  }
-}*/
+// Widget search(String grade, String subject) {
+//   return SizedBox(
+//     height: 2500,
+//     child: Scaffold(
+//       body: StreamBuilder(
+//           stream: FirebaseFirestore.instance
+//               .collection("Teacher")
+//               .where('Class', isEqualTo: grade)
+//               .where('Subject', isEqualTo: subject)
+//               .snapshots(),
+//           builder:
+//               (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+//             if (!snapshot.hasData) {
+//               return SizedBox(
+//                 child: Center(
+//                     child: SpinKitRing(
+//                   color: Colors.blue,
+//                 )),
+//               );
+//               //  Center(child: LoadingFilling.square());
+//             }
+//             return ListView(
+//                 children: snapshot.data.docs.map((docReference) {
+//               String id = docReference.id;
+//               return Center(
+//                 child: Padding(
+//                   padding: const EdgeInsets.all(8.0),
+//                   child: GestureDetector(
+//                     onTap: () {},
+//                     child: Container(
+//                       child: Column(children: [
+//                         Container(
+//                           decoration: BoxDecoration(
+//                               color: Colors.blue[200],
+//                               borderRadius:
+//                                   BorderRadius.all(Radius.circular(20))),
+//                           child: Row(children: [
+//                             Expanded(
+//                               flex: 1,
+//                               child: CircleAvatar(
+//                                 //  width: 110,
+//                                 backgroundImage: NetworkImage(
+//                                   docReference['Image'],
+//                                 ),
+//                                 radius: 60,
+//                                 /*child: Image.network(
+//                                       docReference['Image'],
+//                                       width: 100,
+//                                       height: 100,
+//                                     ),*/
+//                               ),
+//                             ),
+//                             Expanded(
+//                               flex: 2,
+//                               child: Column(
+//                                 mainAxisAlignment: MainAxisAlignment.center,
+//                                 crossAxisAlignment: CrossAxisAlignment.center,
+//                                 children: [
+//                                   Text(
+//                                     docReference['Name'],
+//                                     style: TextStyle(fontSize: 20),
+//                                   ),
+//                                   Row(
+//                                     mainAxisAlignment: MainAxisAlignment.center,
+//                                     children: [
+//                                       Text("5"),
+//                                       Icon(
+//                                         Icons.star,
+//                                         color: Colors.amber,
+//                                       )
+//                                     ],
+//                                   ),
+//                                   Row(
+//                                     mainAxisAlignment: MainAxisAlignment.center,
+//                                     children: [
+//                                       Text(
+//                                         docReference['Medium'],
+//                                         style: TextStyle(fontSize: 15),
+//                                       ),
+//                                       Text(
+//                                         ' Medium',
+//                                         style: TextStyle(fontSize: 15),
+//                                       ),
+//                                     ],
+//                                   ),
+//                                   Text(
+//                                     docReference['Subject'],
+//                                     style: TextStyle(fontSize: 15),
+//                                   ),
+//                                   Row(
+//                                     children: [
+//                                       Expanded(
+//                                         child: RaisedButton(
+//                                           onPressed: () {
+//                                             Navigator.push(
+//                                                 context,
+//                                                 MaterialPageRoute(
+//                                                     builder: (context) =>
+//                                                         profileScreen(
+//                                                           PId: id,
+//                                                           img: docReference[
+//                                                               'Image'],
+//                                                           tname: docReference[
+//                                                               'Name'],
+//                                                           // Subject: docReference[
+//                                                           //     'Subject'],
+//                                                         )));
+//                                           },
+//                                           child: Text(
+//                                             "Select",
+//                                             style:
+//                                                 TextStyle(color: Colors.white),
+//                                           ),
+//                                           shape: StadiumBorder(),
+//                                           color: Color(0xff00007c),
+//                                         ),
+//                                       ),
+//                                       SizedBox(
+//                                         width: 10,
+//                                       ),
+//                                       Expanded(
+//                                         child: RaisedButton(
+//                                           onPressed: () {
+//                                             // Navigator.push(
+//                                             //     context,
+//                                             //     MaterialPageRoute(
+//                                             //         builder: (context) =>
+//                                             //             FreeClassesByt(
+//                                             //               TechId: id,
+//                                             //             )));
+//                                           },
+//                                           child: Text(
+//                                             "Video",
+//                                             style:
+//                                                 TextStyle(color: Colors.white),
+//                                           ),
+//                                           shape: StadiumBorder(),
+//                                           color: Color(0xff00007c),
+//                                         ),
+//                                       ),
+//                                     ],
+//                                   ),
+//                                 ],
+//                               ),
+//                             )
+//                           ]),
+//                         ),
+//                       ]),
+//                     ),
+//                   ),
+//                 ),
+//               );
+//             }).toList());
+//           }),
+//     ),
+//   );
+// }

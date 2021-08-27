@@ -1,7 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-
 import 'package:flutter/material.dart';
-
 import 'package:jitsist/Payment&Booking/Booking.dart';
 import 'package:jitsist/Payment&Booking/BookingNew.dart';
 import 'package:jitsist/Payment&Booking/VdoByT.dart';

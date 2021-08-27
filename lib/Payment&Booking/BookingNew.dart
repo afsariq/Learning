@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:jitsist/HomeScreen/ClipPath.dart';
+import 'package:jitsist/Payment&Booking/Checkout.dart';
 import 'package:jitsist/Payment&Booking/Profile.dart';
 import 'package:intl/intl.dart';
 
@@ -854,7 +855,14 @@ class _BookClassState extends State<BookClass> {
                                       'Date': docReference['Date'],
                                     });
 
-                                    Navigator.pop(context);
+                                    print('on booking page');
+
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => Checkout()));
+
+                                    // Navigator.pop(context);
                                   },
                                 )
                               ],
@@ -1128,7 +1136,13 @@ class _BookClassState extends State<BookClass> {
                                       'subject': widget.bookSub,
                                       'Date': docReference['Date'],
                                     });
-                                    Navigator.pop(context);
+
+                                    print('on booking page');
+
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => Checkout()));
                                   },
                                 )
                               ],
@@ -1405,7 +1419,13 @@ class _BookClassState extends State<BookClass> {
                                       'subject': widget.bookSub,
                                       'Date': docReference['Date'],
                                     });
-                                    Navigator.pop(context);
+
+                                    print('on booking page');
+
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => Checkout()));
                                   },
                                 )
                               ],
@@ -1682,7 +1702,13 @@ class _BookClassState extends State<BookClass> {
                                       'subject': widget.bookSub,
                                       'Date': docReference['Date'],
                                     });
-                                    Navigator.pop(context);
+
+                                    print('on booking page');
+
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => Checkout()));
                                   },
                                 )
                               ],
@@ -1958,7 +1984,13 @@ class _BookClassState extends State<BookClass> {
                                       'subject': widget.bookSub,
                                       'Date': docReference['Date'],
                                     });
-                                    Navigator.pop(context);
+
+                                    print('on booking page');
+
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => Checkout()));
                                   },
                                 )
                               ],
@@ -2235,7 +2267,13 @@ class _BookClassState extends State<BookClass> {
                                       'subject': widget.bookSub,
                                       'Date': docReference['Date'],
                                     });
-                                    Navigator.pop(context);
+
+                                    print('on booking page');
+
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => Checkout()));
                                   },
                                 )
                               ],
@@ -2511,7 +2549,13 @@ class _BookClassState extends State<BookClass> {
                                       'subject': widget.bookSub,
                                       'Date': docReference['Date'],
                                     });
-                                    Navigator.pop(context);
+
+                                    print('on booking page');
+
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => Checkout()));
                                   },
                                 )
                               ],
