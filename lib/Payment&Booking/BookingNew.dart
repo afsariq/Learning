@@ -810,57 +810,24 @@ class _BookClassState extends State<BookClass> {
                                     ],
                                   ),
                                   onPressed: () {
-                                    FirebaseFirestore.instance
-                                        .collection('Teacher')
-                                        .doc(widget.Id)
-                                        .collection('ClassTimes')
-                                        .doc('Monday')
-                                        .update({Field: 'Booked'});
                                     //////////////////////////////
                                     //  FirebaseFirestore.instance
                                     //    .collection('Teacher')
                                     //  .doc(widget.Id)
                                     //.collection('ClassTimes').doc().update(data).w
 
-                                    FirebaseFirestore.instance
-                                        .collection('Teacher')
-                                        .doc(widget.Id)
-                                        .collection('Booked Classes')
-                                        .doc()
-                                        .set({
-                                      'Time': 'Monday' + Selected,
-                                      'User':
-                                          FirebaseAuth.instance.currentUser.uid,
-                                      'Link': 'join' +
-                                          FirebaseAuth.instance.currentUser.uid,
-                                      'Date': docReference['Date'],
-                                      'Subject': widget.bookSub,
-                                      'Grade': widget.bookgrd
-                                      //'Link': Room
-                                    });
-
-                                    FirebaseFirestore.instance
-                                        .collection('Students')
-                                        .doc(
-                                          FirebaseAuth.instance.currentUser.uid,
-                                        )
-                                        .collection('Booked Classes')
-                                        .doc()
-                                        .set({
-                                      'Time': 'Monday' + Selected,
-                                      'Link': 'join' +
-                                          FirebaseAuth.instance.currentUser.uid,
-                                      'Teacher': widget.techname,
-                                      'subject': widget.bookSub,
-                                      'Date': docReference['Date'],
-                                    });
-
                                     print('on booking page');
 
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => Checkout()));
+                                            builder: (context) => Checkout(
+                                                id: widget.Id,
+                                                bookSub: widget.bookSub,
+                                                bookgrd: widget.bookgrd,
+                                                techname: widget.techname,
+                                                date: docReference['Date'],
+                                                day: 'Monday')));
 
                                     // Navigator.pop(context);
                                   },
@@ -1094,55 +1061,24 @@ class _BookClassState extends State<BookClass> {
                                     ],
                                   ),
                                   onPressed: () {
-                                    FirebaseFirestore.instance
-                                        .collection('Teacher')
-                                        .doc(widget.Id)
-                                        .collection('ClassTimes')
-                                        .doc('Tuesday')
-                                        .update({Field: 'Booked'});
                                     //////////////////////////////
                                     //  FirebaseFirestore.instance
                                     //    .collection('Teacher')
                                     //  .doc(widget.Id)
                                     //.collection('ClassTimes').doc().update(data).w
 
-                                    FirebaseFirestore.instance
-                                        .collection('Teacher')
-                                        .doc(widget.Id)
-                                        .collection('Booked Classes')
-                                        .doc()
-                                        .set({
-                                      'Time': 'Tuesday' + Selected,
-                                      'User':
-                                          FirebaseAuth.instance.currentUser.uid,
-                                      'Link': 'join' +
-                                          FirebaseAuth.instance.currentUser.uid,
-                                      'Date': docReference['Date'],
-                                      //'Link': Room
-                                    });
-
-                                    FirebaseFirestore.instance
-                                        .collection('Students')
-                                        .doc(
-                                          FirebaseAuth.instance.currentUser.uid,
-                                        )
-                                        .collection('Booked Classes')
-                                        .doc()
-                                        .set({
-                                      'Time': 'Tuesday ' + Selected,
-                                      'Link': 'join' +
-                                          FirebaseAuth.instance.currentUser.uid,
-                                      'Teacher': widget.techname,
-                                      'subject': widget.bookSub,
-                                      'Date': docReference['Date'],
-                                    });
-
                                     print('on booking page');
 
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => Checkout()));
+                                            builder: (context) => Checkout(
+                                                id: widget.Id,
+                                                bookSub: widget.bookSub,
+                                                bookgrd: widget.bookgrd,
+                                                techname: widget.techname,
+                                                date: docReference['Date'],
+                                                day: 'Tuesday')));
                                   },
                                 )
                               ],
@@ -1375,57 +1311,24 @@ class _BookClassState extends State<BookClass> {
                                     ],
                                   ),
                                   onPressed: () {
-                                    FirebaseFirestore.instance
-                                        .collection('Teacher')
-                                        .doc(widget.Id)
-                                        .collection('ClassTimes')
-                                        .doc('Wednesday')
-                                        .update({Field: 'Booked'});
                                     //////////////////////////////
                                     //  FirebaseFirestore.instance
                                     //    .collection('Teacher')
                                     //  .doc(widget.Id)
                                     //.collection('ClassTimes').doc().update(data).w
 
-                                    FirebaseFirestore.instance
-                                        .collection('Teacher')
-                                        .doc(widget.Id)
-                                        .collection('Booked Classes')
-                                        .doc()
-                                        .set({
-                                      'Time': 'Wednesday ' + Selected,
-                                      'User':
-                                          FirebaseAuth.instance.currentUser.uid,
-                                      'Link': 'join' +
-                                          FirebaseAuth.instance.currentUser.uid,
-                                      'Date': docReference['Date'],
-                                      'Subject': widget.bookSub,
-                                      'Grade': widget.bookgrd
-                                      //'Link': Room
-                                    });
-
-                                    FirebaseFirestore.instance
-                                        .collection('Students')
-                                        .doc(
-                                          FirebaseAuth.instance.currentUser.uid,
-                                        )
-                                        .collection('Booked Classes')
-                                        .doc()
-                                        .set({
-                                      'Time': 'Wednesday ' + Selected,
-                                      'Link': 'join' +
-                                          FirebaseAuth.instance.currentUser.uid,
-                                      'Teacher': widget.techname,
-                                      'subject': widget.bookSub,
-                                      'Date': docReference['Date'],
-                                    });
-
                                     print('on booking page');
 
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => Checkout()));
+                                            builder: (context) => Checkout(
+                                                id: widget.Id,
+                                                bookSub: widget.bookSub,
+                                                bookgrd: widget.bookgrd,
+                                                techname: widget.techname,
+                                                date: docReference['Date'],
+                                                day: 'Wednesday')));
                                   },
                                 )
                               ],
@@ -1658,57 +1561,24 @@ class _BookClassState extends State<BookClass> {
                                     ],
                                   ),
                                   onPressed: () {
-                                    FirebaseFirestore.instance
-                                        .collection('Teacher')
-                                        .doc(widget.Id)
-                                        .collection('ClassTimes')
-                                        .doc('Thursday')
-                                        .update({Field: 'Booked'});
                                     //////////////////////////////
                                     //  FirebaseFirestore.instance
                                     //    .collection('Teacher')
                                     //  .doc(widget.Id)
                                     //.collection('ClassTimes').doc().update(data).w
 
-                                    FirebaseFirestore.instance
-                                        .collection('Teacher')
-                                        .doc(widget.Id)
-                                        .collection('Booked Classes')
-                                        .doc()
-                                        .set({
-                                      'Time': 'Thursday ' + Selected,
-                                      'User':
-                                          FirebaseAuth.instance.currentUser.uid,
-                                      'Link': 'join' +
-                                          FirebaseAuth.instance.currentUser.uid,
-                                      'Date': docReference['Date'],
-                                      'Subject': widget.bookSub,
-                                      'Grade': widget.bookgrd
-                                      //'Link': Room
-                                    });
-
-                                    FirebaseFirestore.instance
-                                        .collection('Students')
-                                        .doc(
-                                          FirebaseAuth.instance.currentUser.uid,
-                                        )
-                                        .collection('Booked Classes')
-                                        .doc()
-                                        .set({
-                                      'Time': 'Thursday ' + Selected,
-                                      'Link': 'join' +
-                                          FirebaseAuth.instance.currentUser.uid,
-                                      'Teacher': widget.techname,
-                                      'subject': widget.bookSub,
-                                      'Date': docReference['Date'],
-                                    });
-
                                     print('on booking page');
 
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => Checkout()));
+                                            builder: (context) => Checkout(
+                                                id: widget.Id,
+                                                bookSub: widget.bookSub,
+                                                bookgrd: widget.bookgrd,
+                                                techname: widget.techname,
+                                                date: docReference['Date'],
+                                                day: 'Thursday')));
                                   },
                                 )
                               ],
@@ -1940,57 +1810,24 @@ class _BookClassState extends State<BookClass> {
                                     ],
                                   ),
                                   onPressed: () {
-                                    FirebaseFirestore.instance
-                                        .collection('Teacher')
-                                        .doc(widget.Id)
-                                        .collection('ClassTimes')
-                                        .doc('Friday')
-                                        .update({Field: 'Booked'});
                                     //////////////////////////////
                                     //  FirebaseFirestore.instance
                                     //    .collection('Teacher')
                                     //  .doc(widget.Id)
                                     //.collection('ClassTimes').doc().update(data).w
 
-                                    FirebaseFirestore.instance
-                                        .collection('Teacher')
-                                        .doc(widget.Id)
-                                        .collection('Booked Classes')
-                                        .doc()
-                                        .set({
-                                      'Time': 'Friday ' + Selected,
-                                      'User':
-                                          FirebaseAuth.instance.currentUser.uid,
-                                      'Link': 'join' +
-                                          FirebaseAuth.instance.currentUser.uid,
-                                      'Date': docReference['Date'],
-                                      'Subject': widget.bookSub,
-                                      'Grade': widget.bookgrd
-                                      //'Link': Room
-                                    });
-
-                                    FirebaseFirestore.instance
-                                        .collection('Students')
-                                        .doc(
-                                          FirebaseAuth.instance.currentUser.uid,
-                                        )
-                                        .collection('Booked Classes')
-                                        .doc()
-                                        .set({
-                                      'Time': 'Friday ' + Selected,
-                                      'Link': 'join' +
-                                          FirebaseAuth.instance.currentUser.uid,
-                                      'Teacher': widget.techname,
-                                      'subject': widget.bookSub,
-                                      'Date': docReference['Date'],
-                                    });
-
                                     print('on booking page');
 
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => Checkout()));
+                                            builder: (context) => Checkout(
+                                                id: widget.Id,
+                                                bookSub: widget.bookSub,
+                                                bookgrd: widget.bookgrd,
+                                                techname: widget.techname,
+                                                date: docReference['Date'],
+                                                day: 'Friday')));
                                   },
                                 )
                               ],
@@ -2223,57 +2060,24 @@ class _BookClassState extends State<BookClass> {
                                     ],
                                   ),
                                   onPressed: () {
-                                    FirebaseFirestore.instance
-                                        .collection('Teacher')
-                                        .doc(widget.Id)
-                                        .collection('ClassTimes')
-                                        .doc('Saturday')
-                                        .update({Field: 'Booked'});
                                     //////////////////////////////
                                     //  FirebaseFirestore.instance
                                     //    .collection('Teacher')
                                     //  .doc(widget.Id)
                                     //.collection('ClassTimes').doc().update(data).w
 
-                                    FirebaseFirestore.instance
-                                        .collection('Teacher')
-                                        .doc(widget.Id)
-                                        .collection('Booked Classes')
-                                        .doc()
-                                        .set({
-                                      'Time': 'Saturday ' + Selected,
-                                      'User':
-                                          FirebaseAuth.instance.currentUser.uid,
-                                      'Link': 'join' +
-                                          FirebaseAuth.instance.currentUser.uid,
-                                      'Date': docReference['Date'],
-                                      'Subject': widget.bookSub,
-                                      'Grade': widget.bookgrd
-                                      //'Link': Room
-                                    });
-
-                                    FirebaseFirestore.instance
-                                        .collection('Students')
-                                        .doc(
-                                          FirebaseAuth.instance.currentUser.uid,
-                                        )
-                                        .collection('Booked Classes')
-                                        .doc()
-                                        .set({
-                                      'Time': 'Saturday ' + Selected,
-                                      'Link': 'join' +
-                                          FirebaseAuth.instance.currentUser.uid,
-                                      'Teacher': widget.techname,
-                                      'subject': widget.bookSub,
-                                      'Date': docReference['Date'],
-                                    });
-
                                     print('on booking page');
 
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => Checkout()));
+                                            builder: (context) => Checkout(
+                                                id: widget.Id,
+                                                bookSub: widget.bookSub,
+                                                bookgrd: widget.bookgrd,
+                                                techname: widget.techname,
+                                                date: docReference['Date'],
+                                                day: 'Saturday')));
                                   },
                                 )
                               ],
@@ -2505,57 +2309,24 @@ class _BookClassState extends State<BookClass> {
                                     ],
                                   ),
                                   onPressed: () {
-                                    FirebaseFirestore.instance
-                                        .collection('Teacher')
-                                        .doc(widget.Id)
-                                        .collection('ClassTimes')
-                                        .doc('Sunday')
-                                        .update({Field: 'Booked'});
                                     //////////////////////////////
                                     //  FirebaseFirestore.instance
                                     //    .collection('Teacher')
                                     //  .doc(widget.Id)
                                     //.collection('ClassTimes').doc().update(data).w
 
-                                    FirebaseFirestore.instance
-                                        .collection('Teacher')
-                                        .doc(widget.Id)
-                                        .collection('Booked Classes')
-                                        .doc()
-                                        .set({
-                                      'Time': 'Sunday ' + Selected,
-                                      'User':
-                                          FirebaseAuth.instance.currentUser.uid,
-                                      'Link': 'join' +
-                                          FirebaseAuth.instance.currentUser.uid,
-                                      'Date': docReference['Date'],
-                                      'Subject': widget.bookSub,
-                                      'Grade': widget.bookgrd
-                                      //'Link': Room
-                                    });
-
-                                    FirebaseFirestore.instance
-                                        .collection('Students')
-                                        .doc(
-                                          FirebaseAuth.instance.currentUser.uid,
-                                        )
-                                        .collection('Booked Classes')
-                                        .doc()
-                                        .set({
-                                      'Time': 'Sunday ' + Selected,
-                                      'Link': 'join' +
-                                          FirebaseAuth.instance.currentUser.uid,
-                                      'Teacher': widget.techname,
-                                      'subject': widget.bookSub,
-                                      'Date': docReference['Date'],
-                                    });
-
                                     print('on booking page');
 
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => Checkout()));
+                                            builder: (context) => Checkout(
+                                                id: widget.Id,
+                                                bookSub: widget.bookSub,
+                                                bookgrd: widget.bookgrd,
+                                                techname: widget.techname,
+                                                date: docReference['Date'],
+                                                day: 'Sunday')));
                                   },
                                 )
                               ],
