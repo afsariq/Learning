@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:jitsist/HomeScreen/Home.dart';
 import 'package:payhere_mobilesdk_flutter/payhere_mobilesdk_flutter.dart';
+import 'package:random_string/random_string.dart';
 
 import 'BookingNew.dart';
 
@@ -14,6 +15,8 @@ class Checkout extends StatefulWidget {
   String techname;
   String date;
   String day; // eg: Monday, Tuesday
+
+  var docId;
 
   Checkout({
     @required this.id,
@@ -29,6 +32,13 @@ class Checkout extends StatefulWidget {
 }
 
 class _CheckoutState extends State<Checkout> {
+  var teacherDocument;
+
+  var student = FirebaseFirestore.instance
+      .collection('Student')
+      .doc(FirebaseAuth.instance.currentUser.uid)
+      .snapshots();
+
   @override
   void initState() {
     super.initState();
@@ -39,9 +49,7 @@ class _CheckoutState extends State<Checkout> {
     Widget okButton = TextButton(
       child: Text("OK"),
       onPressed: () {
-        Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(builder: (context) => HomeScreen()),
-            (Route<dynamic> route) => false);
+        Navigator.of(context).popUntil((route) => route.isFirst);
       },
     );
 
@@ -100,24 +108,37 @@ class _CheckoutState extends State<Checkout> {
       'subject': widget.bookSub,
       'Date': widget.date,
     });
+
     print('---------data uploaded in firestore-----------');
   }
 
   void startOneTimePayment(BuildContext context) async {
+    var username;
+    var phone;
+    var collection = FirebaseFirestore.instance.collection('Students');
+    var docSnapshot =
+        await collection.doc(FirebaseAuth.instance.currentUser.uid).get();
+    if (docSnapshot.exists) {
+      Map<String, dynamic> studentDocument = docSnapshot.data();
+      username = studentDocument['UserName'];
+      phone = studentDocument['Phone'];
+    } else
+      print('------- student document NOT existing');
+
     Map paymentObject = {
       "sandbox": true, // true if using Sandbox Merchant ID
       "merchant_id": "1218302", // Replace your Merchant ID
       "merchant_secret": "8VyoXGh6g8D8glsS0OzeCP8m4OJEs9epb8MSNX6vn9jY",
       "notify_url": "https://ent13zfovoz7d.x.pipedream.net/",
-      "order_id": "ItemNo12345",
-      "items": "Hello from Flutter!",
-      "amount": "50.00",
+      "order_id": randomString(15),
+      "items": widget.bookSub + ", " + widget.bookgrd,
+      "amount": teacherDocument['ClassFee'],
       "currency": "LKR",
-      "first_name": "Saman",
+      "first_name": username,
       "last_name": "Perera",
-      "email": "samanp@gmail.com",
-      "phone": "0771234567",
-      "address": "No.1, Galle Road",
+      "email": FirebaseAuth.instance.currentUser.email,
+      "phone": phone,
+      "address": "",
       "city": "",
       "country": "Sri Lanka",
       "delivery_address": "",
@@ -227,7 +248,7 @@ class _CheckoutState extends State<Checkout> {
             return new Text("Loading");
           }
 
-          var userDocument = snapshot.data;
+          teacherDocument = snapshot.data;
 
           return Scaffold(
             appBar: AppBar(
@@ -267,7 +288,7 @@ class _CheckoutState extends State<Checkout> {
                                 width: 10,
                               ),
                               Text(
-                                userDocument["Name"],
+                                teacherDocument["Name"],
                                 style: TextStyle(
                                     color: Colors.black54, fontSize: 16),
                               )
@@ -360,7 +381,7 @@ class _CheckoutState extends State<Checkout> {
                                 width: 10,
                               ),
                               Text(
-                                'LKR 1500.00',
+                                teacherDocument['ClassFee'],
                                 style: TextStyle(
                                     color: Colors.black,
                                     fontSize: 26,
