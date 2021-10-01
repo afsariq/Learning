@@ -67,7 +67,7 @@ class _SpecialState extends State<Special> with SingleTickerProviderStateMixin {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Center(
-                        child: Text('Special Classes',
+                        child: Text('Group Classes',
                             style: TextStyle(
                                 fontSize: 35,
                                 color: Colors.white,

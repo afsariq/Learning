@@ -490,7 +490,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 context,
                                                 MaterialPageRoute(
                                                     builder: (context) =>
-                                                        FreeClasses()));
+                                                        ComingSoon()));
                                           },
                                           child: CircleAvatar(
                                             backgroundImage: AssetImage(
@@ -555,7 +555,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           backgroundImage: AssetImage(
                                             "Assets/Images/spCls.png",
                                           ))),
-                                  Text("Sheduled Classes",
+                                  Text("Group Classes",
                                       style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 15,
