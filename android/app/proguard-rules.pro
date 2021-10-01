@@ -107,3 +107,6 @@
 # Hermes
 -keep class com.facebook.hermes.unicode.** { *; }
 
+#the required rule
+-keep class lk.payhere.** { *; }
+
