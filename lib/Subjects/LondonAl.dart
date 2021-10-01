@@ -129,7 +129,7 @@ class _LondonAlState extends State<LondonAl> {
           stream: FirebaseFirestore.instance
               .collection("Teacher")
               .where('Class', isEqualTo: 'London A/L')
-              .where('Subject', isEqualTo: clsno)
+              .where('Subject', arrayContains: clsno)
               .snapshots(),
           builder:
               (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
@@ -145,6 +145,10 @@ class _LondonAlState extends State<LondonAl> {
             return ListView(
                 children: snapshot.data.docs.map((docReference) {
               String id = docReference.id;
+
+              List<String> Subject = List.from(docReference['Subject']);
+              int subjectCount = Subject.length;
+
               return Center(
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -206,9 +210,20 @@ class _LondonAlState extends State<LondonAl> {
                                       ),
                                     ],
                                   ),
-                                  Text(
-                                    docReference['Subject'],
-                                    style: TextStyle(fontSize: 15),
+                                  ListView.builder(
+                                    scrollDirection: Axis.vertical,
+                                    shrinkWrap: true,
+                                    itemCount: subjectCount,
+                                    itemBuilder: (context, index) {
+                                      return Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text('Subject : '),
+                                          Text(Subject[index]),
+                                        ],
+                                      );
+                                    },
                                   ),
                                   Row(
                                     children: [

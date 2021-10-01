@@ -33,6 +33,8 @@ class Checkout extends StatefulWidget {
 
 class _CheckoutState extends State<Checkout> {
   var teacherDocument;
+  double classFee;
+  String docId;
 
   var student = FirebaseFirestore.instance
       .collection('Student')
@@ -85,7 +87,7 @@ class _CheckoutState extends State<Checkout> {
         .collection('Booked Classes')
         .doc()
         .set({
-      'Time': widget.day + Selected,
+      'Time': widget.day + selectedTime,
       'User': FirebaseAuth.instance.currentUser.uid,
       'Link': 'join' + FirebaseAuth.instance.currentUser.uid,
       'Date': widget.date,
@@ -100,9 +102,9 @@ class _CheckoutState extends State<Checkout> {
           FirebaseAuth.instance.currentUser.uid,
         )
         .collection('Booked Classes')
-        .doc()
+        .doc(docId)
         .set({
-      'Time': 'Monday' + Selected,
+      'Time': 'Monday' + selectedTime,
       'Link': 'join' + FirebaseAuth.instance.currentUser.uid,
       'Teacher': widget.techname,
       'subject': widget.bookSub,
@@ -115,6 +117,7 @@ class _CheckoutState extends State<Checkout> {
   void startOneTimePayment(BuildContext context) async {
     var username;
     var phone;
+    docId = randomString(20);
     var collection = FirebaseFirestore.instance.collection('Students');
     var docSnapshot =
         await collection.doc(FirebaseAuth.instance.currentUser.uid).get();
@@ -131,11 +134,11 @@ class _CheckoutState extends State<Checkout> {
       "merchant_secret": "8VyoXGh6g8D8glsS0OzeCP8m4OJEs9epb8MSNX6vn9jY",
       "notify_url": "https://ent13zfovoz7d.x.pipedream.net/",
       "order_id": randomString(15),
-      "items": widget.bookSub + ", " + widget.bookgrd,
-      "amount": teacherDocument['ClassFee'],
+      "items": docId, // doc id of booked class in students collection
+      "amount": classFee,
       "currency": "LKR",
       "first_name": username,
-      "last_name": "Perera",
+      "last_name": " ",
       "email": FirebaseAuth.instance.currentUser.email,
       "phone": phone,
       "address": "",
@@ -305,7 +308,7 @@ class _CheckoutState extends State<Checkout> {
                                 width: 10,
                               ),
                               Text(
-                                widget.day,
+                                widget.day + '  ' + widget.date,
                                 style: TextStyle(
                                     color: Colors.black54, fontSize: 16),
                               )
@@ -322,7 +325,7 @@ class _CheckoutState extends State<Checkout> {
                                 width: 10,
                               ),
                               Text(
-                                Selected,
+                                selectedTime,
                                 style: TextStyle(
                                     color: Colors.black54, fontSize: 16),
                               )
@@ -381,7 +384,7 @@ class _CheckoutState extends State<Checkout> {
                                 width: 10,
                               ),
                               Text(
-                                teacherDocument['ClassFee'],
+                                calculateClassFee(),
                                 style: TextStyle(
                                     color: Colors.black,
                                     fontSize: 26,
@@ -418,5 +421,31 @@ class _CheckoutState extends State<Checkout> {
             ),
           );
         });
+  }
+
+  String calculateClassFee() {
+    String feePerHour = teacherDocument['ClassFee'];
+    double duration;
+
+    switch (selectedDuration) {
+      case '1 hr':
+        duration = 1;
+        break;
+      case '1 hr 30 min':
+        duration = 1.5;
+        break;
+      case '2 hr':
+        duration = 2;
+        break;
+      case '2 hr 30 min':
+        duration = 2.5;
+        break;
+      case '3 hr':
+        duration = 3;
+        break;
+    }
+
+    classFee = duration * double.parse(feePerHour);
+    return classFee.toString();
   }
 }

@@ -5,13 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:jitsist/Courses/CourseList.dart';
 import 'package:jitsist/Courses/FreeClasses.dart';
 import 'package:jitsist/Courses/FreeCourses.dart';
+import 'package:jitsist/HomeScreen/ComingSoon.dart';
 
 import 'package:jitsist/LoginScreen/Login.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:jitsist/PastPapers/PastPaperList.dart';
 import 'package:jitsist/PastPapers/PastPapers.dart';
 import 'package:jitsist/Special/BookedSpClasses.dart';
-import 'package:jitsist/Payment&Booking/Profile.dart';
+import 'package:jitsist/Feedback/Feedback.dart' as f;
 import 'package:jitsist/Profile/ProfileScreen.dart';
 import 'package:jitsist/Quizz/home.dart';
 import 'package:jitsist/Subjects/LondonAl.dart';
@@ -37,7 +38,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
-    // TODO: implement initState
     super.initState();
   }
 
@@ -113,10 +113,15 @@ class _HomeScreenState extends State<HomeScreen> {
                       "Complaints & Feedback",
                       style: TextStyle(fontSize: 18),
                     ),
-                    onTap: () {}),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => f.Feedback()));
+                    }),
                 ListTile(
                     title: Text(
-                      "LogOut",
+                      "Logout",
                       style: TextStyle(fontSize: 18),
                     ),
                     onTap: () async {
@@ -133,6 +138,17 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
           ),
+          appBar: AppBar(
+            backgroundColor: Color(0xff00007c),
+            leading: IconButton(
+                icon: Icon(
+                  Icons.menu,
+                  color: Colors.white,
+                ),
+                onPressed: () {
+                  _globalKey.currentState.openDrawer();
+                }),
+          ),
           body: ListView(children: [
             SingleChildScrollView(
                 child: Column(children: [
@@ -143,36 +159,28 @@ class _HomeScreenState extends State<HomeScreen> {
                     Container(
                       child: Column(
                         children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                      color: Colors.white24,
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(10))),
-                                  child: IconButton(
-                                      icon: Icon(
-                                        Icons.menu,
-                                        color: Colors.white,
-                                      ),
-                                      onPressed: () {
-                                        _globalKey.currentState.openDrawer();
-                                        // drawer();
-                                      }),
-                                ),
-                              ),
-                            ],
-                          ),
+                          // Row(
+                          //   mainAxisAlignment: MainAxisAlignment.start,
+                          //   children: [
+                          //     Padding(
+                          //       padding: const EdgeInsets.all(8.0),
+                          //       child: Container(
+                          //         decoration: BoxDecoration(
+                          //             color: Colors.white24,
+                          //             borderRadius: BorderRadius.all(
+                          //                 Radius.circular(10))),
+                          //       ),
+                          //     ),
+                          //   ],
+                          // ),
                           if (FirebaseAuth.instance.currentUser != null) Name()
                         ],
                       ),
-                      height: MediaQuery.of(context).size.height * 0.25,
+                      height: MediaQuery.of(context).size.height * 0.15,
                       // width: double.infinity,
                       decoration: BoxDecoration(
                         image: DecorationImage(
+                          alignment: Alignment.topCenter,
                             image: AssetImage('Assets/Images/Header.png'),
                             fit: BoxFit.cover),
                         color: Color(0xff00007c),
@@ -522,7 +530,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       builder: (context) => Special()));
                             },
                             child: Container(
-                              height: 160,
+                              height: 140,
                               //width: double.infinity,
                               decoration: BoxDecoration(
                                   gradient: new LinearGradient(
@@ -562,14 +570,20 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Padding(
                           padding: const EdgeInsets.all(12),
                           child: GestureDetector(
+                            // onTap: () {
+                            //   Navigator.push(
+                            //       context,
+                            //       MaterialPageRoute(
+                            //           builder: (context) => courseList()));
+                            // },
                             onTap: () {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => courseList()));
+                                      builder: (context) => ComingSoon()));
                             },
                             child: Container(
-                              height: 160,
+                              height: 140,
                               decoration: BoxDecoration(
                                   gradient: new LinearGradient(
                                       colors: [

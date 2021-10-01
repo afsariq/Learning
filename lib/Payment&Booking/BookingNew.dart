@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:jitsist/HomeScreen/ClipPath.dart';
 import 'package:jitsist/Payment&Booking/Checkout.dart';
 import 'package:jitsist/Payment&Booking/Profile.dart';
@@ -10,6 +11,7 @@ import 'package:intl/intl.dart';
 
 String Field;
 String Selected;
+String selectedTime, selectedDuration;
 var date = DateTime.now();
 var dat = DateFormat('EEEE, d MMM, yyyy').format(date);
 
@@ -30,7 +32,9 @@ class BookClass extends StatefulWidget {
 
 class _BookClassState extends State<BookClass> {
   String day = "";
-
+  String tappedSlot;
+  bool slotBooked;
+  MaterialColor slotColor = Colors.grey;
   MaterialColor conttColor = Colors.grey;
   MaterialColor conttColor1 = Colors.grey;
   MaterialColor conttColor2 = Colors.grey;
@@ -110,11 +114,19 @@ class _BookClassState extends State<BookClass> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                SizedBox(height: 30),
+                SizedBox(height: 20),
+                Text(
+                  'Select a Slot and Confirm to book',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                ),
+                SizedBox(height: 20),
                 GestureDetector(
                   child: Padding(
-                    padding:
-                        const EdgeInsets.only(top: 8.0, left: 8.0, right: 8.0),
+                    padding: const EdgeInsets.only(
+                      top: 8.0,
+                      left: 8.0,
+                      right: 8.0,
+                    ),
                     child: Container(
                       height: 50,
                       width: 300,
@@ -608,1751 +620,1344 @@ class _BookClassState extends State<BookClass> {
   }
 
   Widget Monday() {
-    return StreamBuilder(
-        stream: FirebaseFirestore.instance
-            .collection("Teacher")
-            .doc(widget.Id)
-            .collection("ClassTimes")
-            .where('id', isEqualTo: 'Monday')
-            .snapshots(),
-        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-          if (!snapshot.hasData) {
-            return Center(
-              child: Text("No Data"),
-            );
-            //  Center(child: LoadingFilling.square());
-          }
-          return SizedBox(
-            height: 320,
-            child: ListView(
-                children: snapshot.data.docs.map((docReference) {
-              String id = docReference.id;
-              return Center(
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-                  child: Container(
-                      child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                          height: 20,
-                          width: 300,
-                          decoration: BoxDecoration(
-                              color: Color(0xff00007c),
-                              borderRadius: BorderRadius.only(
-                                  bottomLeft: Radius.circular(20),
-                                  bottomRight: Radius.circular(20))),
-                          child: Center(
-                              child: Text(docReference['Date'],
-                                  style: TextStyle(color: Colors.white)))),
-                      if (docReference['Time'] != 'Not set')
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                Field = 'Time';
-                                Selected = docReference['Time'];
-                                conttColor = Colors.green;
-                                conttColor1 = Colors.grey;
-                                conttColor2 = Colors.grey;
-                                conttColor3 = Colors.grey;
-                                conttColor4 = Colors.grey;
-                              });
-                              print(Selected);
-                            },
-                            child: Container(
-                              width: 200,
-                              height: 35,
-                              child: Center(child: Text(docReference['Time'])),
-                              decoration: BoxDecoration(
-                                  color: conttColor,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                            ),
-                          ),
-                        ),
-                      if (docReference['Time1'] != 'Not set')
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                Field = 'Time1';
-                                Selected = docReference['Time1'];
-                                conttColor = Colors.grey;
-                                conttColor1 = Colors.green;
-                                conttColor2 = Colors.grey;
-                                conttColor3 = Colors.grey;
-                                conttColor4 = Colors.grey;
-                              });
-                              print(Field);
-                              print(Selected);
-                            },
-                            child: Container(
-                              width: 200,
-                              height: 35,
-                              child: Center(child: Text(docReference['Time1'])),
-                              decoration: BoxDecoration(
-                                  color: conttColor1,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                            ),
-                          ),
-                        ),
-                      if (docReference['Time2'] != 'Not set')
-                        Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  Field = 'Time2';
-                                  Selected = docReference['Time2'];
-                                  conttColor = Colors.grey;
-                                  conttColor1 = Colors.grey;
-                                  conttColor2 = Colors.green;
-                                  conttColor3 = Colors.grey;
-                                  conttColor4 = Colors.grey;
-                                });
-                                print(Selected);
-                              },
-                              child: Container(
-                                width: 200,
-                                height: 35,
-                                child:
-                                    Center(child: Text(docReference['Time2'])),
-                                decoration: BoxDecoration(
-                                    color: conttColor2,
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10))),
-                              ),
-                            )),
-                      if (docReference['Time3'] != 'Not set')
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                Field = 'Time3';
-                                Selected = docReference['Time3'];
-                                conttColor = Colors.grey;
-                                conttColor1 = Colors.grey;
-                                conttColor2 = Colors.grey;
-                                conttColor3 = Colors.green;
-                                conttColor4 = Colors.grey;
-                              });
-                              print(Selected);
-                            },
-                            child: Container(
-                              width: 200,
-                              height: 35,
-                              child: Center(child: Text(docReference['Time3'])),
-                              decoration: BoxDecoration(
-                                  color: conttColor3,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                            ),
-                          ),
-                        ),
-                      if (docReference['Time4'] != 'Not set')
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                Field = 'Time4';
-                                Selected = docReference['Time4'];
-                                conttColor = Colors.grey;
-                                conttColor1 = Colors.grey;
-                                conttColor2 = Colors.grey;
-                                conttColor3 = Colors.grey;
-                                conttColor4 = Colors.green;
-                              });
-                              print(Selected);
-                            },
-                            child: Container(
-                              width: 200,
-                              height: 35,
-                              child: Center(child: Text(docReference['Time4'])),
-                              decoration: BoxDecoration(
-                                  color: conttColor4,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                            ),
-                          ),
-                        ),
-                      RaisedButton(
-                        onPressed: () {
-                          if (Selected != 'Booked') {
-                            AlertDialog alert = AlertDialog(
-                              title: Text(
-                                  "You Selected     " + "Monday  " + Selected),
-                              actions: [
-                                FlatButton(
-                                  child: Column(
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Text("Back"),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                ),
-                                FlatButton(
-                                  child: Row(
-                                    children: [
-                                      Text("ok"),
-                                    ],
-                                  ),
-                                  onPressed: () {
-                                    //////////////////////////////
-                                    //  FirebaseFirestore.instance
-                                    //    .collection('Teacher')
-                                    //  .doc(widget.Id)
-                                    //.collection('ClassTimes').doc().update(data).w
+    DateTime date = DateTime.now();
 
-                                    print('on booking page');
+    var lastMonday = date
+        .subtract(Duration(days: date.weekday - DateTime.monday))
+        .toString()
+        .substring(0, 10);
+    int lengthOfSlots;
 
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => Checkout(
-                                                id: widget.Id,
-                                                bookSub: widget.bookSub,
-                                                bookgrd: widget.bookgrd,
-                                                techname: widget.techname,
-                                                date: docReference['Date'],
-                                                day: 'Monday')));
+    return Column(
+      children: [
+        Text(lastMonday),
 
-                                    // Navigator.pop(context);
-                                  },
-                                )
-                              ],
-                            );
-                            showDialog(
-                                context: context,
-                                builder: (BuildContext) {
-                                  return alert;
-                                },
-                                barrierDismissible: true);
-                          } else {}
-                          ;
-                        },
-                        child: Text(
-                          'Confirm',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        shape: StadiumBorder(),
-                        color: Color(0xff00007c),
-                      ),
-                    ],
+        StreamBuilder(
+            stream: FirebaseFirestore.instance
+                .collection('Teacher')
+                .doc(widget.Id)
+                .collection('ClassTimes')
+                .doc('Monday')
+                .collection('Time Slot')
+                .snapshots(),
+            builder:
+                (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+              if (!snapshot.hasData) {
+                return SizedBox(
+                  child: Center(
+                      child: SpinKitRing(
+                    color: Colors.blue,
                   )),
-                ),
-              );
-            }).toList()),
-          );
-        });
+                );
+                //  Center(child: LoadingFilling.square());
+              }
+
+              lengthOfSlots = snapshot.data.docs.length ?? 0;
+              print('------in Mondays  -slots ' + lengthOfSlots.toString());
+
+              return ListView(
+                  scrollDirection: Axis.vertical,
+                  shrinkWrap: true,
+                  physics: ScrollPhysics(),
+                  children: snapshot.data.docs.map((docReference) {
+                    return Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              if (docReference['Booked'] == true) {
+                                slotBooked = true;
+                              }
+                              tappedSlot = docReference['Time'] +
+                                  docReference['Duration'];
+                              selectedTime = docReference['Time'];
+                              selectedDuration = docReference['Duration'];
+                              print(docReference['Time'] +
+                                  '     ' +
+                                  docReference['Duration']);
+                            });
+                          },
+                          child: Container(
+                            margin: EdgeInsets.symmetric(horizontal: 70),
+                            width: 200,
+                            height: 35,
+                            child: Center(
+                                child: Text(docReference['Time'] +
+                                    " (" +
+                                    docReference['Duration'] +
+                                    ")")),
+                            decoration: BoxDecoration(
+                                color: findSlotColor(
+                                    docReference['Time'] +
+                                        docReference['Duration'],
+                                    docReference['Booked']),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10))),
+                          ),
+                        ),
+                      ),
+                    );
+                  }).toList());
+
+              // } else
+              //   return Padding(
+              //     padding: const EdgeInsets.all(8.0),
+              //     child: Text('No Time Slots'),
+              //   );
+            }),
+
+        SizedBox(
+          height: 5.0,
+        ),
+
+        //confirm button
+        Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: Color(0xff00007c),
+            ),
+            child: FlatButton(
+              child: Text(
+                'Confirm',
+                style: TextStyle(color: Colors.white),
+              ),
+              onPressed: () {
+                print('---on press');
+                print(slotBooked.toString());
+
+                //if slot is booked
+                if (slotBooked == true) {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text(
+                          "Slot Booked",
+                          style: TextStyle(color: Colors.red),
+                        ),
+                        content: Text(
+                            "Slot is already Booked. Please select another slot"),
+                        actions: [
+                          TextButton(
+                            child: Text("OK"),
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                } else {
+                  AlertDialog alert = AlertDialog(
+                    title:
+                        Text("You Selected     " + "Monday - " + selectedTime),
+                    actions: [
+                      FlatButton(
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Text("Back"),
+                              ],
+                            ),
+                          ],
+                        ),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                      ),
+                      FlatButton(
+                        child: Row(
+                          children: [
+                            Text("ok"),
+                          ],
+                        ),
+                        onPressed: () {
+                          print('on booking page');
+
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Checkout(
+                                      id: widget.Id,
+                                      bookSub: widget.bookSub,
+                                      bookgrd: widget.bookgrd,
+                                      techname: widget.techname,
+                                      date: lastMonday,
+                                      day: 'Monday')));
+
+                          // Navigator.pop(context);
+                        },
+                      )
+                    ],
+                  );
+
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext) {
+                        return alert;
+                      },
+                      barrierDismissible: true);
+                }
+                // displayNotificationwed();
+              },
+            )),
+      ],
+    );
   }
 
   Widget Tuesday() {
-    return StreamBuilder(
-        stream: FirebaseFirestore.instance
-            .collection("Teacher")
-            .doc(widget.Id)
-            .collection("ClassTimes")
-            .where('id', isEqualTo: 'Tuesday')
-            .snapshots(),
-        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-          if (!snapshot.hasData) {
-            return Center(
-              child: Text("No Data"),
-            );
-            //  Center(child: LoadingFilling.square());
-          }
-          return SizedBox(
-            height: 320,
-            child: ListView(
-                children: snapshot.data.docs.map((docReference) {
-              String id = docReference.id;
-              return Center(
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-                  child: Container(
-                      child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                          height: 20,
-                          width: 300,
-                          decoration: BoxDecoration(
-                              color: Color(0xff00007c),
-                              borderRadius: BorderRadius.only(
-                                  bottomLeft: Radius.circular(20),
-                                  bottomRight: Radius.circular(20))),
-                          child: Center(
-                              child: Text(docReference['Date'],
-                                  style: TextStyle(color: Colors.white)))),
-                      if (docReference['Time'] != 'Not set')
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              Field = 'Time';
-                              Selected = docReference['Time'];
-                              conttColor = Colors.green;
-                              conttColor1 = Colors.grey;
-                              conttColor2 = Colors.grey;
-                              conttColor3 = Colors.grey;
-                              conttColor4 = Colors.grey;
-                            });
-                            print(Selected);
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              width: 200,
-                              height: 35,
-                              child: Center(child: Text(docReference['Time'])),
-                              decoration: BoxDecoration(
-                                  color: conttColor,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                            ),
-                          ),
-                        ),
-                      if (docReference['Time1'] != 'Not set')
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              Field = 'Time1';
-                              Selected = docReference['Time1'];
-                              conttColor = Colors.grey;
-                              conttColor1 = Colors.green;
-                              conttColor2 = Colors.grey;
-                              conttColor3 = Colors.grey;
-                              conttColor4 = Colors.grey;
-                            });
-                            print(Selected);
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              width: 200,
-                              height: 35,
-                              child: Center(child: Text(docReference['Time1'])),
-                              decoration: BoxDecoration(
-                                  color: conttColor1,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                            ),
-                          ),
-                        ),
-                      if (docReference['Time2'] != 'Not set')
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              Field = 'Time2';
-                              Selected = docReference['Time2'];
-                              conttColor = Colors.grey;
-                              conttColor1 = Colors.grey;
-                              conttColor2 = Colors.green;
-                              conttColor3 = Colors.grey;
-                              conttColor4 = Colors.grey;
-                            });
-                            print(Selected);
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              width: 200,
-                              height: 35,
-                              child: Center(child: Text(docReference['Time2'])),
-                              decoration: BoxDecoration(
-                                  color: conttColor2,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                            ),
-                          ),
-                        ),
-                      if (docReference['Time3'] != 'Not set')
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              Field = 'Time3';
-                              Selected = docReference['Time3'];
-                              conttColor = Colors.grey;
-                              conttColor1 = Colors.grey;
-                              conttColor2 = Colors.grey;
-                              conttColor3 = Colors.green;
-                              conttColor4 = Colors.grey;
-                            });
-                            print(Selected);
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              width: 200,
-                              height: 35,
-                              child: Center(child: Text(docReference['Time3'])),
-                              decoration: BoxDecoration(
-                                  color: conttColor3,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                            ),
-                          ),
-                        ),
-                      if (docReference['Time4'] != 'Not set')
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              Field = 'Time4';
-                              Selected = docReference['Time4'];
-                              conttColor = Colors.grey;
-                              conttColor1 = Colors.grey;
-                              conttColor2 = Colors.grey;
-                              conttColor3 = Colors.grey;
-                              conttColor4 = Colors.green;
-                            });
-                            print(Selected);
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              width: 200,
-                              height: 35,
-                              child: Center(child: Text(docReference['Time4'])),
-                              decoration: BoxDecoration(
-                                  color: conttColor4,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                            ),
-                          ),
-                        ),
-                      RaisedButton(
-                        onPressed: () {
-                          if (Selected != 'Booked') {
-                            AlertDialog alert = AlertDialog(
-                              title: Text(
-                                  "You Selected     " + "Tuesday  " + Selected),
-                              actions: [
-                                FlatButton(
-                                  child: Column(
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Text("Back"),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                ),
-                                FlatButton(
-                                  child: Row(
-                                    children: [
-                                      Text("ok"),
-                                    ],
-                                  ),
-                                  onPressed: () {
-                                    //////////////////////////////
-                                    //  FirebaseFirestore.instance
-                                    //    .collection('Teacher')
-                                    //  .doc(widget.Id)
-                                    //.collection('ClassTimes').doc().update(data).w
+    DateTime date = DateTime.now();
 
-                                    print('on booking page');
+    var lastTuesday = date
+        .subtract(Duration(days: date.weekday - DateTime.tuesday))
+        .toString()
+        .substring(0, 10);
+    int lengthOfSlots;
 
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => Checkout(
-                                                id: widget.Id,
-                                                bookSub: widget.bookSub,
-                                                bookgrd: widget.bookgrd,
-                                                techname: widget.techname,
-                                                date: docReference['Date'],
-                                                day: 'Tuesday')));
-                                  },
-                                )
+    return Column(
+      children: [
+        Text(lastTuesday),
+
+        StreamBuilder(
+            stream: FirebaseFirestore.instance
+                .collection('Teacher')
+                .doc(widget.Id)
+                .collection('ClassTimes')
+                .doc('Tuesday')
+                .collection('Time Slot')
+                .snapshots(),
+            builder:
+                (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+              if (!snapshot.hasData) {
+                return SizedBox(
+                  child: Center(
+                      child: SpinKitRing(
+                    color: Colors.blue,
+                  )),
+                );
+                //  Center(child: LoadingFilling.square());
+              }
+
+              lengthOfSlots = snapshot.data.docs.length ?? 0;
+              print('------in Tuesdays  -slots ' + lengthOfSlots.toString());
+
+              return ListView(
+                  scrollDirection: Axis.vertical,
+                  shrinkWrap: true,
+                  physics: ScrollPhysics(),
+                  children: snapshot.data.docs.map((docReference) {
+                    return Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              if (docReference['Booked'] == true) {
+                                slotBooked = true;
+                              }
+                              tappedSlot = docReference['Time'] +
+                                  docReference['Duration'];
+                              selectedTime = docReference['Time'];
+                              selectedDuration = docReference['Duration'];
+                              print(docReference['Time'] +
+                                  '     ' +
+                                  docReference['Duration']);
+                            });
+                          },
+                          child: Container(
+                            margin: EdgeInsets.symmetric(horizontal: 70),
+                            width: 200,
+                            height: 35,
+                            child: Center(
+                                child: Text(docReference['Time'] +
+                                    " (" +
+                                    docReference['Duration'] +
+                                    ")")),
+                            decoration: BoxDecoration(
+                                color: findSlotColor(
+                                    docReference['Time'] +
+                                        docReference['Duration'],
+                                    docReference['Booked']),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10))),
+                          ),
+                        ),
+                      ),
+                    );
+                  }).toList());
+
+              // } else
+              //   return Padding(
+              //     padding: const EdgeInsets.all(8.0),
+              //     child: Text('No Time Slots'),
+              //   );
+            }),
+
+        SizedBox(
+          height: 5.0,
+        ),
+
+        //confirm button
+        Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: Color(0xff00007c),
+            ),
+            child: FlatButton(
+              child: Text(
+                'Confirm',
+                style: TextStyle(color: Colors.white),
+              ),
+              onPressed: () {
+                print('---on press');
+
+                print(slotBooked.toString());
+
+                //if slot is booked
+                if (slotBooked == true) {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text(
+                          "Slot Booked",
+                          style: TextStyle(color: Colors.red),
+                        ),
+                        content: Text(
+                            "Slot is already Booked. Please select another slot"),
+                        actions: [
+                          TextButton(
+                            child: Text("OK"),
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                } else {
+                  AlertDialog alert = AlertDialog(
+                    title:
+                        Text("You Selected     " + "Tuesday - " + selectedTime),
+                    actions: [
+                      FlatButton(
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Text("Back"),
                               ],
-                            );
-                            showDialog(
-                                context: context,
-                                builder: (BuildContext) {
-                                  return alert;
-                                },
-                                barrierDismissible: true);
-                          } else {}
-                          ;
-                        },
-                        child: Text(
-                          'Confirm',
-                          style: TextStyle(color: Colors.white),
+                            ),
+                          ],
                         ),
-                        shape: StadiumBorder(),
-                        color: Color(0xff00007c),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                      ),
+                      FlatButton(
+                        child: Row(
+                          children: [
+                            Text("ok"),
+                          ],
+                        ),
+                        onPressed: () {
+                          print('on booking page');
+
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Checkout(
+                                      id: widget.Id,
+                                      bookSub: widget.bookSub,
+                                      bookgrd: widget.bookgrd,
+                                      techname: widget.techname,
+                                      date: lastTuesday,
+                                      day: 'Tuesday')));
+
+                          // Navigator.pop(context);
+                        },
                       )
                     ],
-                  )),
-                ),
-              );
-            }).toList()),
-          );
-        });
+                  );
+
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext) {
+                        return alert;
+                      },
+                      barrierDismissible: true);
+                }
+
+                // displayNotificationwed();
+              },
+            )),
+      ],
+    );
   }
 
   Widget Wednesday() {
-    return StreamBuilder(
-        stream: FirebaseFirestore.instance
-            .collection("Teacher")
-            .doc(widget.Id)
-            .collection("ClassTimes")
-            .where('id', isEqualTo: 'Wednesday')
-            .snapshots(),
-        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-          if (!snapshot.hasData) {
-            return Center(
-              child: Text("No Data"),
-            );
-            //  Center(child: LoadingFilling.square());
-          }
-          return SizedBox(
-            height: 320,
-            child: ListView(
-                children: snapshot.data.docs.map((docReference) {
-              String id = docReference.id;
-              return Center(
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-                  child: Container(
-                      child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                          height: 20,
-                          width: 300,
-                          decoration: BoxDecoration(
-                              color: Color(0xff00007c),
-                              borderRadius: BorderRadius.only(
-                                  bottomLeft: Radius.circular(20),
-                                  bottomRight: Radius.circular(20))),
-                          child: Center(
-                              child: Text(docReference['Date'],
-                                  style: TextStyle(color: Colors.white)))),
-                      if (docReference['Time'] != 'Not set')
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              Field = 'Time';
-                              Selected = docReference['Time'];
-                              conttColor = Colors.green;
-                              conttColor1 = Colors.grey;
-                              conttColor2 = Colors.grey;
-                              conttColor3 = Colors.grey;
-                              conttColor4 = Colors.grey;
-                            });
-                            print(Selected);
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              width: 200,
-                              height: 35,
-                              child: Center(child: Text(docReference['Time'])),
-                              decoration: BoxDecoration(
-                                  color: conttColor,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                            ),
-                          ),
-                        ),
-                      if (docReference['Time1'] != 'Not set')
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              Field = 'Time1';
-                              Selected = docReference['Time1'];
-                              conttColor = Colors.grey;
-                              conttColor1 = Colors.green;
-                              conttColor2 = Colors.grey;
-                              conttColor3 = Colors.grey;
-                              conttColor4 = Colors.grey;
-                            });
-                            print(Selected);
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              width: 200,
-                              height: 35,
-                              child: Center(child: Text(docReference['Time1'])),
-                              decoration: BoxDecoration(
-                                  color: conttColor1,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                            ),
-                          ),
-                        ),
-                      if (docReference['Time2'] != 'Not set')
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              Field = 'Time2';
-                              Selected = docReference['Time2'];
-                              conttColor = Colors.grey;
-                              conttColor1 = Colors.grey;
-                              conttColor2 = Colors.green;
-                              conttColor3 = Colors.grey;
-                              conttColor4 = Colors.grey;
-                            });
-                            print(Selected);
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              width: 200,
-                              height: 35,
-                              child: Center(child: Text(docReference['Time2'])),
-                              decoration: BoxDecoration(
-                                  color: conttColor2,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                            ),
-                          ),
-                        ),
-                      if (docReference['Time3'] != 'Not set')
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              Field = 'Time3';
-                              Selected = docReference['Time3'];
-                              conttColor = Colors.grey;
-                              conttColor1 = Colors.grey;
-                              conttColor2 = Colors.grey;
-                              conttColor3 = Colors.green;
-                              conttColor4 = Colors.grey;
-                            });
-                            print(Selected);
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              width: 200,
-                              height: 35,
-                              child: Center(child: Text(docReference['Time3'])),
-                              decoration: BoxDecoration(
-                                  color: conttColor3,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                            ),
-                          ),
-                        ),
-                      if (docReference['Time4'] != 'Not set')
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              Field = 'Time4';
-                              Selected = docReference['Time4'];
-                              conttColor = Colors.grey;
-                              conttColor1 = Colors.grey;
-                              conttColor2 = Colors.grey;
-                              conttColor3 = Colors.grey;
-                              conttColor4 = Colors.green;
-                            });
-                            print(Selected);
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              width: 200,
-                              height: 35,
-                              child: Center(child: Text(docReference['Time4'])),
-                              decoration: BoxDecoration(
-                                  color: conttColor4,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                            ),
-                          ),
-                        ),
-                      RaisedButton(
-                        onPressed: () {
-                          if (Selected != 'Booked') {
-                            AlertDialog alert = AlertDialog(
-                              title: Text("You Selected     " +
-                                  "Wednesday  " +
-                                  Selected),
-                              actions: [
-                                FlatButton(
-                                  child: Column(
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Text("Back"),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                ),
-                                FlatButton(
-                                  child: Row(
-                                    children: [
-                                      Text("ok"),
-                                    ],
-                                  ),
-                                  onPressed: () {
-                                    //////////////////////////////
-                                    //  FirebaseFirestore.instance
-                                    //    .collection('Teacher')
-                                    //  .doc(widget.Id)
-                                    //.collection('ClassTimes').doc().update(data).w
+    DateTime date = DateTime.now();
 
-                                    print('on booking page');
+    var lastWednesday = date
+        .subtract(Duration(days: date.weekday - DateTime.wednesday))
+        .toString()
+        .substring(0, 10);
+    int lengthOfSlots;
 
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => Checkout(
-                                                id: widget.Id,
-                                                bookSub: widget.bookSub,
-                                                bookgrd: widget.bookgrd,
-                                                techname: widget.techname,
-                                                date: docReference['Date'],
-                                                day: 'Wednesday')));
-                                  },
-                                )
+    return Column(
+      children: [
+        Text(lastWednesday),
+
+        StreamBuilder(
+            stream: FirebaseFirestore.instance
+                .collection('Teacher')
+                .doc(widget.Id)
+                .collection('ClassTimes')
+                .doc('Wednesday')
+                .collection('Time Slot')
+                .snapshots(),
+            builder:
+                (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+              if (!snapshot.hasData) {
+                return SizedBox(
+                  child: Center(
+                      child: SpinKitRing(
+                    color: Colors.blue,
+                  )),
+                );
+                //  Center(child: LoadingFilling.square());
+              }
+
+              lengthOfSlots = snapshot.data.docs.length ?? 0;
+              print('------in wednesdays  -slots ' + lengthOfSlots.toString());
+
+              return ListView(
+                  scrollDirection: Axis.vertical,
+                  shrinkWrap: true,
+                  physics: ScrollPhysics(),
+                  children: snapshot.data.docs.map((docReference) {
+                    return Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              if (docReference['Booked'] == true) {
+                                slotBooked = true;
+                              }
+                              tappedSlot = docReference['Time'] +
+                                  docReference['Duration'];
+                              selectedTime = docReference['Time'];
+                              selectedDuration = docReference['Duration'];
+                              print(docReference['Time'] +
+                                  '     ' +
+                                  docReference['Duration']);
+                            });
+                          },
+                          child: Container(
+                            margin: EdgeInsets.symmetric(horizontal: 70),
+                            width: 200,
+                            height: 35,
+                            child: Center(
+                                child: Text(docReference['Time'] +
+                                    " (" +
+                                    docReference['Duration'] +
+                                    ")")),
+                            decoration: BoxDecoration(
+                                color: findSlotColor(
+                                    docReference['Time'] +
+                                        docReference['Duration'],
+                                    docReference['Booked']),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10))),
+                          ),
+                        ),
+                      ),
+                    );
+                  }).toList());
+
+              // } else
+              //   return Padding(
+              //     padding: const EdgeInsets.all(8.0),
+              //     child: Text('No Time Slots'),
+              //   );
+            }),
+
+        SizedBox(
+          height: 5.0,
+        ),
+
+        //confirm button
+        Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: Color(0xff00007c),
+            ),
+            child: FlatButton(
+              child: Text(
+                'Confirm',
+                style: TextStyle(color: Colors.white),
+              ),
+              onPressed: () {
+                print('---on press');
+                print(slotBooked);
+
+                //if slot is booked
+                if (slotBooked == true) {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text(
+                          "Slot Booked",
+                          style: TextStyle(color: Colors.red),
+                        ),
+                        content: Text(
+                            "Slot is already Booked. Please select another slot"),
+                        actions: [
+                          TextButton(
+                            child: Text("OK"),
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                } else {
+                  AlertDialog alert = AlertDialog(
+                    title: Text(
+                        "You Selected     " + "Wednesday - " + selectedTime),
+                    actions: [
+                      FlatButton(
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Text("Back"),
                               ],
-                            );
-                            showDialog(
-                                context: context,
-                                builder: (BuildContext) {
-                                  return alert;
-                                },
-                                barrierDismissible: true);
-                          } else {}
-                          ;
-                        },
-                        child: Text(
-                          'Confirm',
-                          style: TextStyle(color: Colors.white),
+                            ),
+                          ],
                         ),
-                        shape: StadiumBorder(),
-                        color: Color(0xff00007c),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                      ),
+                      FlatButton(
+                        child: Row(
+                          children: [
+                            Text("ok"),
+                          ],
+                        ),
+                        onPressed: () {
+                          print('on booking page');
+
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Checkout(
+                                      id: widget.Id,
+                                      bookSub: widget.bookSub,
+                                      bookgrd: widget.bookgrd,
+                                      techname: widget.techname,
+                                      date: lastWednesday,
+                                      day: 'Wednesday')));
+
+                          // Navigator.pop(context);
+                        },
                       )
                     ],
-                  )),
-                ),
-              );
-            }).toList()),
-          );
-        });
+                  );
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext) {
+                        return alert;
+                      },
+                      barrierDismissible: true);
+                }
+
+                // displayNotificationwed();
+              },
+            )),
+      ],
+    );
   }
 
   Widget Thursday() {
-    return StreamBuilder(
-        stream: FirebaseFirestore.instance
-            .collection("Teacher")
-            .doc(widget.Id)
-            .collection("ClassTimes")
-            .where('id', isEqualTo: 'Thursday')
-            .snapshots(),
-        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-          if (!snapshot.hasData) {
-            return Center(
-              child: Text("No Data"),
-            );
-            //  Center(child: LoadingFilling.square());
-          }
-          return SizedBox(
-            height: 320,
-            child: ListView(
-                children: snapshot.data.docs.map((docReference) {
-              String id = docReference.id;
-              return Center(
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-                  child: Container(
-                      child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                          height: 20,
-                          width: 300,
-                          decoration: BoxDecoration(
-                              color: Color(0xff00007c),
-                              borderRadius: BorderRadius.only(
-                                  bottomLeft: Radius.circular(20),
-                                  bottomRight: Radius.circular(20))),
-                          child: Center(
-                              child: Text(docReference['Date'],
-                                  style: TextStyle(color: Colors.white)))),
-                      if (docReference['Time'] != 'Not set')
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              Field = 'Time';
-                              Selected = docReference['Time'];
-                              conttColor = Colors.green;
-                              conttColor1 = Colors.grey;
-                              conttColor2 = Colors.grey;
-                              conttColor3 = Colors.grey;
-                              conttColor4 = Colors.grey;
-                            });
-                            print(Selected);
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              width: 200,
-                              height: 35,
-                              child: Center(child: Text(docReference['Time'])),
-                              decoration: BoxDecoration(
-                                  color: conttColor,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                            ),
-                          ),
-                        ),
-                      if (docReference['Time1'] != 'Not set')
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              Field = 'Time1';
-                              Selected = docReference['Time1'];
-                              conttColor = Colors.grey;
-                              conttColor1 = Colors.green;
-                              conttColor2 = Colors.grey;
-                              conttColor3 = Colors.grey;
-                              conttColor4 = Colors.grey;
-                            });
-                            print(Selected);
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              width: 200,
-                              height: 35,
-                              child: Center(child: Text(docReference['Time1'])),
-                              decoration: BoxDecoration(
-                                  color: conttColor1,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                            ),
-                          ),
-                        ),
-                      if (docReference['Time2'] != 'Not set')
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              Selected = docReference['Time2'];
-                              Field = 'Time2';
-                              conttColor = Colors.grey;
-                              conttColor1 = Colors.grey;
-                              conttColor2 = Colors.green;
-                              conttColor3 = Colors.grey;
-                              conttColor4 = Colors.grey;
-                            });
-                            print(Selected);
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              width: 200,
-                              height: 35,
-                              child: Center(child: Text(docReference['Time2'])),
-                              decoration: BoxDecoration(
-                                  color: conttColor2,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                            ),
-                          ),
-                        ),
-                      if (docReference['Time3'] != 'Not set')
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              Field = 'Time3';
-                              Selected = docReference['Time3'];
-                              conttColor = Colors.grey;
-                              conttColor1 = Colors.grey;
-                              conttColor2 = Colors.green;
-                              conttColor3 = Colors.grey;
-                              conttColor4 = Colors.grey;
-                            });
-                            print(Selected);
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              width: 200,
-                              height: 35,
-                              child: Center(child: Text(docReference['Time3'])),
-                              decoration: BoxDecoration(
-                                  color: conttColor3,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                            ),
-                          ),
-                        ),
-                      if (docReference['Time4'] != 'Not set')
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              Field = 'Time4';
-                              Selected = docReference['Time4'];
-                              conttColor = Colors.grey;
-                              conttColor1 = Colors.grey;
-                              conttColor2 = Colors.grey;
-                              conttColor3 = Colors.grey;
-                              conttColor4 = Colors.green;
-                            });
-                            print(Selected);
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              width: 200,
-                              height: 35,
-                              child: Center(child: Text(docReference['Time4'])),
-                              decoration: BoxDecoration(
-                                  color: conttColor4,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                            ),
-                          ),
-                        ),
-                      RaisedButton(
-                        onPressed: () {
-                          if (Selected != 'Booked') {
-                            AlertDialog alert = AlertDialog(
-                              title: Text("You Selected     " +
-                                  "Thursday  " +
-                                  Selected),
-                              actions: [
-                                FlatButton(
-                                  child: Column(
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Text("Back"),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                ),
-                                FlatButton(
-                                  child: Row(
-                                    children: [
-                                      Text("ok"),
-                                    ],
-                                  ),
-                                  onPressed: () {
-                                    //////////////////////////////
-                                    //  FirebaseFirestore.instance
-                                    //    .collection('Teacher')
-                                    //  .doc(widget.Id)
-                                    //.collection('ClassTimes').doc().update(data).w
+    DateTime date = DateTime.now();
 
-                                    print('on booking page');
+    var lastThursday = date
+        .subtract(Duration(days: date.weekday - DateTime.thursday))
+        .toString()
+        .substring(0, 10);
+    int lengthOfSlots;
 
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => Checkout(
-                                                id: widget.Id,
-                                                bookSub: widget.bookSub,
-                                                bookgrd: widget.bookgrd,
-                                                techname: widget.techname,
-                                                date: docReference['Date'],
-                                                day: 'Thursday')));
-                                  },
-                                )
+    return Column(
+      children: [
+        Text(lastThursday),
+
+        StreamBuilder(
+            stream: FirebaseFirestore.instance
+                .collection('Teacher')
+                .doc(widget.Id)
+                .collection('ClassTimes')
+                .doc('Thursday')
+                .collection('Time Slot')
+                .snapshots(),
+            builder:
+                (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+              if (!snapshot.hasData) {
+                return SizedBox(
+                  child: Center(
+                      child: SpinKitRing(
+                    color: Colors.blue,
+                  )),
+                );
+                //  Center(child: LoadingFilling.square());
+              }
+
+              lengthOfSlots = snapshot.data.docs.length ?? 0;
+              print('------in Thursday  -slots ' + lengthOfSlots.toString());
+
+              return ListView(
+                  scrollDirection: Axis.vertical,
+                  shrinkWrap: true,
+                  physics: ScrollPhysics(),
+                  children: snapshot.data.docs.map((docReference) {
+                    return Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              if (docReference['Booked'] == true) {
+                                slotBooked = true;
+                              }
+                              tappedSlot = docReference['Time'] +
+                                  docReference['Duration'];
+                              selectedTime = docReference['Time'];
+                              selectedDuration = docReference['Duration'];
+                              print(docReference['Time'] +
+                                  '     ' +
+                                  docReference['Duration']);
+                            });
+                          },
+                          child: Container(
+                            margin: EdgeInsets.symmetric(horizontal: 70),
+                            width: 200,
+                            height: 35,
+                            child: Center(
+                                child: Text(docReference['Time'] +
+                                    " (" +
+                                    docReference['Duration'] +
+                                    ")")),
+                            decoration: BoxDecoration(
+                                color: findSlotColor(
+                                    docReference['Time'] +
+                                        docReference['Duration'],
+                                    docReference['Booked']),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10))),
+                          ),
+                        ),
+                      ),
+                    );
+                  }).toList());
+
+              // } else
+              //   return Padding(
+              //     padding: const EdgeInsets.all(8.0),
+              //     child: Text('No Time Slots'),
+              //   );
+            }),
+
+        SizedBox(
+          height: 5.0,
+        ),
+
+        //confirm button
+        Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: Color(0xff00007c),
+            ),
+            child: FlatButton(
+              child: Text(
+                'Confirm',
+                style: TextStyle(color: Colors.white),
+              ),
+              onPressed: () {
+                print('---on press');
+
+                print(slotBooked.toString());
+
+                //if slot is booked
+                if (slotBooked == true) {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text(
+                          "Slot Booked",
+                          style: TextStyle(color: Colors.red),
+                        ),
+                        content: Text(
+                            "Slot is already Booked. Please select another slot"),
+                        actions: [
+                          TextButton(
+                            child: Text("OK"),
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                } else {
+                  AlertDialog alert = AlertDialog(
+                    title: Text(
+                        "You Selected     " + "Thursday - " + selectedTime),
+                    actions: [
+                      FlatButton(
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Text("Back"),
                               ],
-                            );
-                            showDialog(
-                                context: context,
-                                builder: (BuildContext) {
-                                  return alert;
-                                },
-                                barrierDismissible: true);
-                          } else {}
-                          ;
-                        },
-                        child: Text(
-                          'Confirm',
-                          style: TextStyle(color: Colors.white),
+                            ),
+                          ],
                         ),
-                        shape: StadiumBorder(),
-                        color: Color(0xff00007c),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                      ),
+                      FlatButton(
+                        child: Row(
+                          children: [
+                            Text("ok"),
+                          ],
+                        ),
+                        onPressed: () {
+                          print('on booking page');
+
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Checkout(
+                                      id: widget.Id,
+                                      bookSub: widget.bookSub,
+                                      bookgrd: widget.bookgrd,
+                                      techname: widget.techname,
+                                      date: lastThursday,
+                                      day: 'Thursday')));
+
+                          // Navigator.pop(context);
+                        },
                       )
                     ],
-                  )),
-                ),
-              );
-            }).toList()),
-          );
-        });
+                  );
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext) {
+                        return alert;
+                      },
+                      barrierDismissible: true);
+                }
+
+                // displayNotificationwed();
+              },
+            )),
+      ],
+    );
   }
 
   Widget Friday() {
-    return StreamBuilder(
-        stream: FirebaseFirestore.instance
-            .collection("Teacher")
-            .doc(widget.Id)
-            .collection("ClassTimes")
-            .where('id', isEqualTo: 'Friday')
-            .snapshots(),
-        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-          if (!snapshot.hasData) {
-            return Center(
-              child: Text("No Data"),
-            );
-            //  Center(child: LoadingFilling.square());
-          }
-          return SizedBox(
-            height: 320,
-            child: ListView(
-                children: snapshot.data.docs.map((docReference) {
-              String id = docReference.id;
-              return Center(
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-                  child: Container(
-                      child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                          height: 20,
-                          width: 300,
-                          decoration: BoxDecoration(
-                              color: Color(0xff00007c),
-                              borderRadius: BorderRadius.only(
-                                  bottomLeft: Radius.circular(20),
-                                  bottomRight: Radius.circular(20))),
-                          child: Center(
-                              child: Text(docReference['Date'],
-                                  style: TextStyle(color: Colors.white)))),
-                      if (docReference['Time'] != 'Not set')
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              Field = 'Time';
-                              Selected = docReference['Time'];
-                              conttColor = Colors.green;
-                              conttColor1 = Colors.grey;
-                              conttColor2 = Colors.grey;
-                              conttColor3 = Colors.grey;
-                              conttColor4 = Colors.grey;
-                            });
-                            print(Selected);
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              width: 200,
-                              height: 35,
-                              child: Center(child: Text(docReference['Time'])),
-                              decoration: BoxDecoration(
-                                  color: conttColor,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                            ),
-                          ),
-                        ),
-                      if (docReference['Time1'] != 'Not set')
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              Field = 'Time1';
-                              Selected = docReference['Time1'];
-                              conttColor = Colors.grey;
-                              conttColor1 = Colors.green;
-                              conttColor2 = Colors.grey;
-                              conttColor3 = Colors.grey;
-                              conttColor4 = Colors.grey;
-                            });
-                            print(Selected);
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              width: 200,
-                              height: 35,
-                              child: Center(child: Text(docReference['Time1'])),
-                              decoration: BoxDecoration(
-                                  color: conttColor1,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                            ),
-                          ),
-                        ),
-                      if (docReference['Time2'] != 'Not set')
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              Field = 'Time2';
-                              Selected = docReference['Time2'];
-                              conttColor = Colors.grey;
-                              conttColor1 = Colors.grey;
-                              conttColor2 = Colors.green;
-                              conttColor3 = Colors.grey;
-                              conttColor4 = Colors.grey;
-                            });
-                            print(Selected);
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              width: 200,
-                              height: 35,
-                              child: Center(child: Text(docReference['Time2'])),
-                              decoration: BoxDecoration(
-                                  color: conttColor2,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                            ),
-                          ),
-                        ),
-                      if (docReference['Time3'] != 'Not set')
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              Field = 'Time3';
-                              Selected = docReference['Time3'];
-                              conttColor = Colors.grey;
-                              conttColor1 = Colors.grey;
-                              conttColor2 = Colors.grey;
-                              conttColor3 = Colors.green;
-                              conttColor4 = Colors.grey;
-                            });
-                            print(Selected);
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              width: 200,
-                              height: 35,
-                              child: Center(child: Text(docReference['Time3'])),
-                              decoration: BoxDecoration(
-                                  color: conttColor3,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                            ),
-                          ),
-                        ),
-                      if (docReference['Time4'] != 'Not set')
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              Selected = docReference['Time4'];
-                              Field = 'Time4';
-                              conttColor = Colors.grey;
-                              conttColor1 = Colors.grey;
-                              conttColor2 = Colors.grey;
-                              conttColor3 = Colors.grey;
-                              conttColor4 = Colors.green;
-                            });
-                            print(Selected);
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              width: 200,
-                              height: 35,
-                              child: Center(child: Text(docReference['Time4'])),
-                              decoration: BoxDecoration(
-                                  color: conttColor4,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                            ),
-                          ),
-                        ),
-                      RaisedButton(
-                        onPressed: () {
-                          if (Selected != 'Booked') {
-                            AlertDialog alert = AlertDialog(
-                              title: Text(
-                                  "You Selected     " + "Friday  " + Selected),
-                              actions: [
-                                FlatButton(
-                                  child: Column(
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Text("Back"),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                ),
-                                FlatButton(
-                                  child: Row(
-                                    children: [
-                                      Text("ok"),
-                                    ],
-                                  ),
-                                  onPressed: () {
-                                    //////////////////////////////
-                                    //  FirebaseFirestore.instance
-                                    //    .collection('Teacher')
-                                    //  .doc(widget.Id)
-                                    //.collection('ClassTimes').doc().update(data).w
+    DateTime date = DateTime.now();
 
-                                    print('on booking page');
+    var lastFriday = date
+        .subtract(Duration(days: date.weekday - DateTime.friday))
+        .toString()
+        .substring(0, 10);
+    int lengthOfSlots;
 
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => Checkout(
-                                                id: widget.Id,
-                                                bookSub: widget.bookSub,
-                                                bookgrd: widget.bookgrd,
-                                                techname: widget.techname,
-                                                date: docReference['Date'],
-                                                day: 'Friday')));
-                                  },
-                                )
+    return Column(
+      children: [
+        Text(lastFriday),
+
+        StreamBuilder(
+            stream: FirebaseFirestore.instance
+                .collection('Teacher')
+                .doc(widget.Id)
+                .collection('ClassTimes')
+                .doc('Friday')
+                .collection('Time Slot')
+                .snapshots(),
+            builder:
+                (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+              if (!snapshot.hasData) {
+                return SizedBox(
+                  child: Center(
+                      child: SpinKitRing(
+                    color: Colors.blue,
+                  )),
+                );
+                //  Center(child: LoadingFilling.square());
+              }
+
+              lengthOfSlots = snapshot.data.docs.length ?? 0;
+              print('------in friday  -slots ' + lengthOfSlots.toString());
+
+              return ListView(
+                  scrollDirection: Axis.vertical,
+                  shrinkWrap: true,
+                  physics: ScrollPhysics(),
+                  children: snapshot.data.docs.map((docReference) {
+                    return Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              if (docReference['Booked'] == true) {
+                                slotBooked = true;
+                              }
+                              tappedSlot = docReference['Time'] +
+                                  docReference['Duration'];
+                              selectedTime = docReference['Time'];
+                              selectedDuration = docReference['Duration'];
+                              print(docReference['Time'] +
+                                  '     ' +
+                                  docReference['Duration']);
+                            });
+                          },
+                          child: Container(
+                            margin: EdgeInsets.symmetric(horizontal: 70),
+                            width: 200,
+                            height: 35,
+                            child: Center(
+                                child: Text(docReference['Time'] +
+                                    " (" +
+                                    docReference['Duration'] +
+                                    ")")),
+                            decoration: BoxDecoration(
+                                color: findSlotColor(
+                                    docReference['Time'] +
+                                        docReference['Duration'],
+                                    docReference['Booked']),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10))),
+                          ),
+                        ),
+                      ),
+                    );
+                  }).toList());
+
+              // } else
+              //   return Padding(
+              //     padding: const EdgeInsets.all(8.0),
+              //     child: Text('No Time Slots'),
+              //   );
+            }),
+
+        SizedBox(
+          height: 5.0,
+        ),
+
+        //confirm button
+        Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: Color(0xff00007c),
+            ),
+            child: FlatButton(
+              child: Text(
+                'Confirm',
+                style: TextStyle(color: Colors.white),
+              ),
+              onPressed: () {
+                print('---on press');
+                print(slotBooked.toString());
+
+                //if slot is booked
+                if (slotBooked == true) {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text(
+                          "Slot Booked",
+                          style: TextStyle(color: Colors.red),
+                        ),
+                        content: Text(
+                            "Slot is already Booked. Please select another slot"),
+                        actions: [
+                          TextButton(
+                            child: Text("OK"),
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                } else {
+                  AlertDialog alert = AlertDialog(
+                    title:
+                        Text("You Selected     " + "Friday - " + selectedTime),
+                    actions: [
+                      FlatButton(
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Text("Back"),
                               ],
-                            );
-                            showDialog(
-                                context: context,
-                                builder: (BuildContext) {
-                                  return alert;
-                                },
-                                barrierDismissible: true);
-                          } else {}
-                          ;
-                        },
-                        child: Text(
-                          'Confirm',
-                          style: TextStyle(color: Colors.white),
+                            ),
+                          ],
                         ),
-                        shape: StadiumBorder(),
-                        color: Color(0xff00007c),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                      ),
+                      FlatButton(
+                        child: Row(
+                          children: [
+                            Text("ok"),
+                          ],
+                        ),
+                        onPressed: () {
+                          print('on booking page');
+
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Checkout(
+                                      id: widget.Id,
+                                      bookSub: widget.bookSub,
+                                      bookgrd: widget.bookgrd,
+                                      techname: widget.techname,
+                                      date: lastFriday,
+                                      day: 'Friday')));
+
+                          // Navigator.pop(context);
+                        },
                       )
                     ],
-                  )),
-                ),
-              );
-            }).toList()),
-          );
-        });
+                  );
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext) {
+                        return alert;
+                      },
+                      barrierDismissible: true);
+                }
+
+                // displayNotificationwed();
+              },
+            )),
+      ],
+    );
   }
 
   Widget Saturday() {
-    return StreamBuilder(
-        stream: FirebaseFirestore.instance
-            .collection("Teacher")
-            .doc(widget.Id)
-            .collection("ClassTimes")
-            .where('id', isEqualTo: 'Saturday')
-            .snapshots(),
-        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-          if (!snapshot.hasData) {
-            return Center(
-              child: Text("No Data"),
-            );
-            //  Center(child: LoadingFilling.square());
-          }
-          return SizedBox(
-            height: 320,
-            child: ListView(
-                children: snapshot.data.docs.map((docReference) {
-              String id = docReference.id;
-              return Center(
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-                  child: Container(
-                      child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                          height: 20,
-                          width: 300,
-                          decoration: BoxDecoration(
-                              color: Color(0xff00007c),
-                              borderRadius: BorderRadius.only(
-                                  bottomLeft: Radius.circular(20),
-                                  bottomRight: Radius.circular(20))),
-                          child: Center(
-                              child: Text(docReference['Date'],
-                                  style: TextStyle(color: Colors.white)))),
-                      if (docReference['Time'] != 'Not set')
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              conttColor = Colors.green;
-                              conttColor1 = Colors.grey;
-                              conttColor2 = Colors.grey;
-                              conttColor3 = Colors.grey;
-                              conttColor4 = Colors.grey;
-                              Field = 'Time';
-                              Selected = docReference['Time'];
-                            });
-                            print(Selected);
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              width: 200,
-                              height: 35,
-                              child: Center(child: Text(docReference['Time'])),
-                              decoration: BoxDecoration(
-                                  color: conttColor,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                            ),
-                          ),
-                        ),
-                      if (docReference['Time1'] != 'Not set')
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              Field = 'Time1';
-                              Selected = docReference['Time1'];
-                              conttColor = Colors.grey;
-                              conttColor1 = Colors.green;
-                              conttColor2 = Colors.grey;
-                              conttColor3 = Colors.grey;
-                              conttColor4 = Colors.grey;
-                            });
-                            print(Selected);
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              width: 200,
-                              height: 35,
-                              child: Center(child: Text(docReference['Time1'])),
-                              decoration: BoxDecoration(
-                                  color: conttColor1,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                            ),
-                          ),
-                        ),
-                      if (docReference['Time2'] != 'Not set')
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              Field = 'Time2';
-                              Selected = docReference['Time2'];
-                              conttColor = Colors.grey;
-                              conttColor1 = Colors.grey;
-                              conttColor2 = Colors.green;
-                              conttColor3 = Colors.grey;
-                              conttColor4 = Colors.grey;
-                            });
-                            print(Selected);
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              width: 200,
-                              height: 35,
-                              child: Center(child: Text(docReference['Time2'])),
-                              decoration: BoxDecoration(
-                                  color: conttColor2,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                            ),
-                          ),
-                        ),
-                      if (docReference['Time3'] != 'Not set')
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              Selected = docReference['Time3'];
-                              Field = 'Time3';
-                              conttColor = Colors.grey;
-                              conttColor1 = Colors.grey;
-                              conttColor2 = Colors.grey;
-                              conttColor3 = Colors.green;
-                              conttColor4 = Colors.grey;
-                            });
-                            print(Selected);
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              width: 200,
-                              height: 35,
-                              child: Center(child: Text(docReference['Time3'])),
-                              decoration: BoxDecoration(
-                                  color: conttColor3,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                            ),
-                          ),
-                        ),
-                      if (docReference['Time4'] != 'Not set')
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              Selected = docReference['Time4'];
-                              Field = 'Time4';
-                              conttColor = Colors.grey;
-                              conttColor1 = Colors.grey;
-                              conttColor2 = Colors.grey;
-                              conttColor3 = Colors.grey;
-                              conttColor4 = Colors.green;
-                            });
-                            print(Selected);
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              width: 200,
-                              height: 35,
-                              child: Center(child: Text(docReference['Time4'])),
-                              decoration: BoxDecoration(
-                                  color: conttColor4,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                            ),
-                          ),
-                        ),
-                      RaisedButton(
-                        onPressed: () {
-                          if (Selected != 'Booked') {
-                            AlertDialog alert = AlertDialog(
-                              title: Text("You Selected     " +
-                                  "Saturday  " +
-                                  Selected),
-                              actions: [
-                                FlatButton(
-                                  child: Column(
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Text("Back"),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                ),
-                                FlatButton(
-                                  child: Row(
-                                    children: [
-                                      Text("ok"),
-                                    ],
-                                  ),
-                                  onPressed: () {
-                                    //////////////////////////////
-                                    //  FirebaseFirestore.instance
-                                    //    .collection('Teacher')
-                                    //  .doc(widget.Id)
-                                    //.collection('ClassTimes').doc().update(data).w
+    DateTime date = DateTime.now();
 
-                                    print('on booking page');
+    var lastSaturday = date
+        .subtract(Duration(days: date.weekday - DateTime.saturday))
+        .toString()
+        .substring(0, 10);
+    int lengthOfSlots;
 
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => Checkout(
-                                                id: widget.Id,
-                                                bookSub: widget.bookSub,
-                                                bookgrd: widget.bookgrd,
-                                                techname: widget.techname,
-                                                date: docReference['Date'],
-                                                day: 'Saturday')));
-                                  },
-                                )
+    return Column(
+      children: [
+        Text(lastSaturday),
+
+        StreamBuilder(
+            stream: FirebaseFirestore.instance
+                .collection('Teacher')
+                .doc(widget.Id)
+                .collection('ClassTimes')
+                .doc('Saturday')
+                .collection('Time Slot')
+                .snapshots(),
+            builder:
+                (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+              if (!snapshot.hasData) {
+                return SizedBox(
+                  child: Center(
+                      child: SpinKitRing(
+                    color: Colors.blue,
+                  )),
+                );
+                //  Center(child: LoadingFilling.square());
+              }
+
+              lengthOfSlots = snapshot.data.docs.length ?? 0;
+              print('------in saturday  -slots ' + lengthOfSlots.toString());
+
+              return ListView(
+                  scrollDirection: Axis.vertical,
+                  shrinkWrap: true,
+                  physics: ScrollPhysics(),
+                  children: snapshot.data.docs.map((docReference) {
+                    return Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              if (docReference['Booked'] == true) {
+                                slotBooked = true;
+                              }
+                              tappedSlot = docReference['Time'] +
+                                  docReference['Duration'];
+                              selectedTime = docReference['Time'];
+                              selectedDuration = docReference['Duration'];
+                              print(docReference['Time'] +
+                                  '     ' +
+                                  docReference['Duration']);
+                            });
+                          },
+                          child: Container(
+                            margin: EdgeInsets.symmetric(horizontal: 70),
+                            width: 200,
+                            height: 35,
+                            child: Center(
+                                child: Text(docReference['Time'] +
+                                    " (" +
+                                    docReference['Duration'] +
+                                    ")")),
+                            decoration: BoxDecoration(
+                                color: findSlotColor(
+                                    docReference['Time'] +
+                                        docReference['Duration'],
+                                    docReference['Booked']),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10))),
+                          ),
+                        ),
+                      ),
+                    );
+                  }).toList());
+
+              // } else
+              //   return Padding(
+              //     padding: const EdgeInsets.all(8.0),
+              //     child: Text('No Time Slots'),
+              //   );
+            }),
+
+        SizedBox(
+          height: 5.0,
+        ),
+
+        //confirm button
+        Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: Color(0xff00007c),
+            ),
+            child: FlatButton(
+              child: Text(
+                'Confirm',
+                style: TextStyle(color: Colors.white),
+              ),
+              onPressed: () {
+                print('---on press');
+                print(slotBooked.toString());
+
+                //if slot is booked
+                if (slotBooked == true) {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text(
+                          "Slot Booked",
+                          style: TextStyle(color: Colors.red),
+                        ),
+                        content: Text(
+                            "Slot is already Booked. Please select another slot"),
+                        actions: [
+                          TextButton(
+                            child: Text("OK"),
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                } else {
+                  AlertDialog alert = AlertDialog(
+                    title: Text(
+                        "You Selected     " + "Saturday - " + selectedTime),
+                    actions: [
+                      FlatButton(
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Text("Back"),
                               ],
-                            );
-                            showDialog(
-                                context: context,
-                                builder: (BuildContext) {
-                                  return alert;
-                                },
-                                barrierDismissible: true);
-                          } else {}
-                          ;
-                        },
-                        child: Text(
-                          'Confirm',
-                          style: TextStyle(color: Colors.white),
+                            ),
+                          ],
                         ),
-                        shape: StadiumBorder(),
-                        color: Color(0xff00007c),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                      ),
+                      FlatButton(
+                        child: Row(
+                          children: [
+                            Text("ok"),
+                          ],
+                        ),
+                        onPressed: () {
+                          print('on booking page');
+
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Checkout(
+                                      id: widget.Id,
+                                      bookSub: widget.bookSub,
+                                      bookgrd: widget.bookgrd,
+                                      techname: widget.techname,
+                                      date: lastSaturday,
+                                      day: 'Saturday')));
+
+                          // Navigator.pop(context);
+                        },
                       )
                     ],
-                  )),
-                ),
-              );
-            }).toList()),
-          );
-        });
+                  );
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext) {
+                        return alert;
+                      },
+                      barrierDismissible: true);
+                }
+
+                // displayNotificationwed();
+              },
+            )),
+      ],
+    );
   }
 
   Widget Sunday() {
-    return StreamBuilder(
-        stream: FirebaseFirestore.instance
-            .collection("Teacher")
-            .doc(widget.Id)
-            .collection("ClassTimes")
-            .where('id', isEqualTo: 'Sunday')
-            .snapshots(),
-        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-          if (!snapshot.hasData) {
-            return Center(
-              child: Text("No Data"),
-            );
-            //  Center(child: LoadingFilling.square());
-          }
-          return SizedBox(
-            height: 320,
-            child: ListView(
-                children: snapshot.data.docs.map((docReference) {
-              String id = docReference.id;
-              return Center(
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-                  child: Container(
-                      child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                          height: 20,
-                          width: 300,
-                          decoration: BoxDecoration(
-                              color: Color(0xff00007c),
-                              borderRadius: BorderRadius.only(
-                                  bottomLeft: Radius.circular(20),
-                                  bottomRight: Radius.circular(20))),
-                          child: Center(
-                              child: Text(docReference['Date'],
-                                  style: TextStyle(color: Colors.white)))),
-                      if (docReference['Time'] != 'Not set')
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              Field = 'Time';
-                              Selected = docReference['Time'];
-                              conttColor = Colors.green;
-                              conttColor1 = Colors.grey;
-                              conttColor2 = Colors.grey;
-                              conttColor3 = Colors.grey;
-                              conttColor4 = Colors.grey;
-                            });
-                            print(Selected);
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              width: 200,
-                              height: 35,
-                              child: Center(child: Text(docReference['Time'])),
-                              decoration: BoxDecoration(
-                                  color: conttColor,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                            ),
-                          ),
-                        ),
-                      if (docReference['Time1'] != 'Not set')
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              Field = 'Time1';
-                              Selected = docReference['Time1'];
-                              conttColor = Colors.grey;
-                              conttColor1 = Colors.green;
-                              conttColor2 = Colors.grey;
-                              conttColor3 = Colors.grey;
-                              conttColor4 = Colors.grey;
-                            });
-                            print(Selected);
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              width: 200,
-                              height: 35,
-                              child: Center(child: Text(docReference['Time1'])),
-                              decoration: BoxDecoration(
-                                  color: conttColor1,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                            ),
-                          ),
-                        ),
-                      if (docReference['Time2'] != 'Not set')
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              Selected = docReference['Time2'];
-                              Field = 'Time2';
-                              conttColor = Colors.grey;
-                              conttColor1 = Colors.grey;
-                              conttColor2 = Colors.green;
-                              conttColor3 = Colors.grey;
-                              conttColor4 = Colors.grey;
-                            });
-                            print(Selected);
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              width: 200,
-                              height: 35,
-                              child: Center(child: Text(docReference['Time2'])),
-                              decoration: BoxDecoration(
-                                  color: conttColor2,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                            ),
-                          ),
-                        ),
-                      if (docReference['Time3'] != 'Not set')
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              Field = 'Time3';
-                              Selected = docReference['Time3'];
-                              conttColor = Colors.grey;
-                              conttColor1 = Colors.grey;
-                              conttColor2 = Colors.grey;
-                              conttColor3 = Colors.green;
-                              conttColor4 = Colors.grey;
-                            });
-                            print(Selected);
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              width: 200,
-                              height: 35,
-                              child: Center(child: Text(docReference['Time3'])),
-                              decoration: BoxDecoration(
-                                  color: conttColor3,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                            ),
-                          ),
-                        ),
-                      if (docReference['Time4'] != 'Not set')
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              Selected = docReference['Time4'];
-                              Field = 'Time4';
-                              conttColor = Colors.grey;
-                              conttColor1 = Colors.grey;
-                              conttColor2 = Colors.grey;
-                              conttColor3 = Colors.grey;
-                              conttColor4 = Colors.green;
-                            });
-                            print(Selected);
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              width: 200,
-                              height: 35,
-                              child: Center(child: Text(docReference['Time4'])),
-                              decoration: BoxDecoration(
-                                  color: conttColor4,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                            ),
-                          ),
-                        ),
-                      RaisedButton(
-                        onPressed: () {
-                          if (Selected != 'Booked') {
-                            AlertDialog alert = AlertDialog(
-                              title: Text(
-                                  "You Selected     " + "Sunday  " + Selected),
-                              actions: [
-                                FlatButton(
-                                  child: Column(
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Text("Back"),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                ),
-                                FlatButton(
-                                  child: Row(
-                                    children: [
-                                      Text("ok"),
-                                    ],
-                                  ),
-                                  onPressed: () {
-                                    //////////////////////////////
-                                    //  FirebaseFirestore.instance
-                                    //    .collection('Teacher')
-                                    //  .doc(widget.Id)
-                                    //.collection('ClassTimes').doc().update(data).w
+    DateTime date = DateTime.now();
 
-                                    print('on booking page');
+    var lastSunday = date
+        .subtract(Duration(days: date.weekday - DateTime.sunday))
+        .toString()
+        .substring(0, 10);
+    int lengthOfSlots;
 
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => Checkout(
-                                                id: widget.Id,
-                                                bookSub: widget.bookSub,
-                                                bookgrd: widget.bookgrd,
-                                                techname: widget.techname,
-                                                date: docReference['Date'],
-                                                day: 'Sunday')));
-                                  },
-                                )
+    return Column(
+      children: [
+        Text(lastSunday),
+
+        StreamBuilder(
+            stream: FirebaseFirestore.instance
+                .collection('Teacher')
+                .doc(widget.Id)
+                .collection('ClassTimes')
+                .doc('Sunday')
+                .collection('Time Slot')
+                .snapshots(),
+            builder:
+                (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+              if (!snapshot.hasData) {
+                return SizedBox(
+                  child: Center(
+                      child: SpinKitRing(
+                    color: Colors.blue,
+                  )),
+                );
+                //  Center(child: LoadingFilling.square());
+              }
+
+              lengthOfSlots = snapshot.data.docs.length ?? 0;
+              print('------in sundays  -slots ' + lengthOfSlots.toString());
+
+              return ListView(
+                  scrollDirection: Axis.vertical,
+                  shrinkWrap: true,
+                  physics: ScrollPhysics(),
+                  children: snapshot.data.docs.map((docReference) {
+                    return Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              if (docReference['Booked'] == true) {
+                                slotBooked = true;
+                              }
+                              tappedSlot = docReference['Time'] +
+                                  docReference['Duration'];
+                              selectedTime = docReference['Time'];
+                              selectedDuration = docReference['Duration'];
+                              print(docReference['Time'] +
+                                  '     ' +
+                                  docReference['Duration']);
+                            });
+                          },
+                          child: Container(
+                            margin: EdgeInsets.symmetric(horizontal: 70),
+                            width: 200,
+                            height: 35,
+                            child: Center(
+                                child: Text(docReference['Time'] +
+                                    " (" +
+                                    docReference['Duration'] +
+                                    ")")),
+                            decoration: BoxDecoration(
+                                color: findSlotColor(
+                                    docReference['Time'] +
+                                        docReference['Duration'],
+                                    docReference['Booked']),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10))),
+                          ),
+                        ),
+                      ),
+                    );
+                  }).toList());
+
+              // } else
+              //   return Padding(
+              //     padding: const EdgeInsets.all(8.0),
+              //     child: Text('No Time Slots'),
+              //   );
+            }),
+
+        SizedBox(
+          height: 5.0,
+        ),
+
+        //confirm button
+        Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: Color(0xff00007c),
+            ),
+            child: FlatButton(
+              child: Text(
+                'Confirm',
+                style: TextStyle(color: Colors.white),
+              ),
+              onPressed: () {
+                print('---on press');
+                print(slotBooked.toString());
+
+                //if slot is booked
+                if (slotBooked == true) {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text(
+                          "Slot Booked",
+                          style: TextStyle(color: Colors.red),
+                        ),
+                        content: Text(
+                            "Slot is already Booked. Please select another slot"),
+                        actions: [
+                          TextButton(
+                            child: Text("OK"),
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                } else {
+                  AlertDialog alert = AlertDialog(
+                    title:
+                        Text("You Selected     " + "Sunday - " + selectedTime),
+                    actions: [
+                      FlatButton(
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Text("Back"),
                               ],
-                            );
-                            showDialog(
-                                context: context,
-                                builder: (BuildContext) {
-                                  return alert;
-                                },
-                                barrierDismissible: true);
-                          } else {}
-                          ;
-                        },
-                        child: Text(
-                          'Confirm',
-                          style: TextStyle(color: Colors.white),
+                            ),
+                          ],
                         ),
-                        shape: StadiumBorder(),
-                        color: Color(0xff00007c),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                      ),
+                      FlatButton(
+                        child: Row(
+                          children: [
+                            Text("ok"),
+                          ],
+                        ),
+                        onPressed: () {
+                          print('on booking page');
+
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Checkout(
+                                      id: widget.Id,
+                                      bookSub: widget.bookSub,
+                                      bookgrd: widget.bookgrd,
+                                      techname: widget.techname,
+                                      date: lastSunday,
+                                      day: 'Sunday')));
+
+                          // Navigator.pop(context);
+                        },
                       )
                     ],
-                  )),
-                ),
-              );
-            }).toList()),
-          );
-        });
+                  );
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext) {
+                        return alert;
+                      },
+                      barrierDismissible: true);
+                }
+
+                // displayNotificationwed();
+              },
+            )),
+      ],
+    );
+  }
+
+  Color findSlotColor(timeAndDuration, booked) {
+    if (booked == true) {
+      return Colors.grey;
+    } else if (timeAndDuration == tappedSlot)
+      return Colors.green.shade400;
+    else
+      return Colors.blue.shade300;
   }
 }

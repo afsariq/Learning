@@ -197,10 +197,6 @@ class _profileScreenState extends State<profileScreen> {
                           padding: const EdgeInsets.all(20.0),
                           child: Text(docReference['About'])),
 
-                      ///////////////////////////////////////////////////////////////////////////////////////////////////
-                      //////////////////////////
-                      //////////////////////////////////////////
-                      ///
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [

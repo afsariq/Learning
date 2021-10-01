@@ -98,7 +98,7 @@ class _SearchTeacherState extends State<SearchTeacher> {
                                   '6-9',
                                   'A/L',
                                   'Scholorship',
-                                  '10'
+                                  '10-11'
                                 ].map<DropdownMenuItem<String>>((String value) {
                                   return DropdownMenuItem<String>(
                                     value: value,
@@ -161,26 +161,21 @@ class _SearchTeacherState extends State<SearchTeacher> {
                                       grade +
                                       "    subject: " +
                                       subject);
-                                  // search(grade, subject);
+                                  search(grade, subject);
                                 });
                               }),
                         ),
                       )
                     ],
                   ),
-                ), //,m,m,m,
+                ),
               ],
             ),
           ),
         ),
       ),
       body: StreamBuilder(
-          stream: FirebaseFirestore.instance
-              // .collection("Teacher")
-              // .where('Class', isEqualTo: grade)
-              // .where('Subject', arrayContainsAny: [subject]).snapshots(),
-              .collection("Teacher")
-              .snapshots(),
+          stream: FirebaseFirestore.instance.collection("Teacher").snapshots(),
           builder:
               (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
             if (!snapshot.hasData) {
@@ -201,6 +196,7 @@ class _SearchTeacherState extends State<SearchTeacher> {
               List<String> Subject = List.from(docReference['Subject']);
               print('subject  ' + Subject.first + "   " + Subject.last);
               int subjectCount = Subject.length;
+
               return Center(
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -299,22 +295,7 @@ class _SearchTeacherState extends State<SearchTeacher> {
                                         );
                                       },
                                     ),
-                                    // //here stop
-
-                                    /*   Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          docReference['Subject'],
-                                          style: TextStyle(fontSize: 15),
-                                        ),
-                                        Text(" , "),
-                                        Text(
-                                          docReference['Subject2'],
-                                          style: TextStyle(fontSize: 15),
-                                        ),
-                                      ],
-                                    ),*/
+                                  
                                     Row(
                                       children: [
                                         Expanded(
@@ -517,160 +498,162 @@ class _SearchTeacherState extends State<SearchTeacher> {
         ));
   } */
 
-// Widget search(String grade, String subject) {
-//   return SizedBox(
-//     height: 2500,
-//     child: Scaffold(
-//       body: StreamBuilder(
-//           stream: FirebaseFirestore.instance
-//               .collection("Teacher")
-//               .where('Class', isEqualTo: grade)
-//               .where('Subject', isEqualTo: subject)
-//               .snapshots(),
-//           builder:
-//               (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-//             if (!snapshot.hasData) {
-//               return SizedBox(
-//                 child: Center(
-//                     child: SpinKitRing(
-//                   color: Colors.blue,
-//                 )),
-//               );
-//               //  Center(child: LoadingFilling.square());
-//             }
-//             return ListView(
-//                 children: snapshot.data.docs.map((docReference) {
-//               String id = docReference.id;
-//               return Center(
-//                 child: Padding(
-//                   padding: const EdgeInsets.all(8.0),
-//                   child: GestureDetector(
-//                     onTap: () {},
-//                     child: Container(
-//                       child: Column(children: [
-//                         Container(
-//                           decoration: BoxDecoration(
-//                               color: Colors.blue[200],
-//                               borderRadius:
-//                                   BorderRadius.all(Radius.circular(20))),
-//                           child: Row(children: [
-//                             Expanded(
-//                               flex: 1,
-//                               child: CircleAvatar(
-//                                 //  width: 110,
-//                                 backgroundImage: NetworkImage(
-//                                   docReference['Image'],
-//                                 ),
-//                                 radius: 60,
-//                                 /*child: Image.network(
-//                                       docReference['Image'],
-//                                       width: 100,
-//                                       height: 100,
-//                                     ),*/
-//                               ),
-//                             ),
-//                             Expanded(
-//                               flex: 2,
-//                               child: Column(
-//                                 mainAxisAlignment: MainAxisAlignment.center,
-//                                 crossAxisAlignment: CrossAxisAlignment.center,
-//                                 children: [
-//                                   Text(
-//                                     docReference['Name'],
-//                                     style: TextStyle(fontSize: 20),
-//                                   ),
-//                                   Row(
-//                                     mainAxisAlignment: MainAxisAlignment.center,
-//                                     children: [
-//                                       Text("5"),
-//                                       Icon(
-//                                         Icons.star,
-//                                         color: Colors.amber,
-//                                       )
-//                                     ],
-//                                   ),
-//                                   Row(
-//                                     mainAxisAlignment: MainAxisAlignment.center,
-//                                     children: [
-//                                       Text(
-//                                         docReference['Medium'],
-//                                         style: TextStyle(fontSize: 15),
-//                                       ),
-//                                       Text(
-//                                         ' Medium',
-//                                         style: TextStyle(fontSize: 15),
-//                                       ),
-//                                     ],
-//                                   ),
-//                                   Text(
-//                                     docReference['Subject'],
-//                                     style: TextStyle(fontSize: 15),
-//                                   ),
-//                                   Row(
-//                                     children: [
-//                                       Expanded(
-//                                         child: RaisedButton(
-//                                           onPressed: () {
-//                                             Navigator.push(
-//                                                 context,
-//                                                 MaterialPageRoute(
-//                                                     builder: (context) =>
-//                                                         profileScreen(
-//                                                           PId: id,
-//                                                           img: docReference[
-//                                                               'Image'],
-//                                                           tname: docReference[
-//                                                               'Name'],
-//                                                           // Subject: docReference[
-//                                                           //     'Subject'],
-//                                                         )));
-//                                           },
-//                                           child: Text(
-//                                             "Select",
-//                                             style:
-//                                                 TextStyle(color: Colors.white),
-//                                           ),
-//                                           shape: StadiumBorder(),
-//                                           color: Color(0xff00007c),
-//                                         ),
-//                                       ),
-//                                       SizedBox(
-//                                         width: 10,
-//                                       ),
-//                                       Expanded(
-//                                         child: RaisedButton(
-//                                           onPressed: () {
-//                                             // Navigator.push(
-//                                             //     context,
-//                                             //     MaterialPageRoute(
-//                                             //         builder: (context) =>
-//                                             //             FreeClassesByt(
-//                                             //               TechId: id,
-//                                             //             )));
-//                                           },
-//                                           child: Text(
-//                                             "Video",
-//                                             style:
-//                                                 TextStyle(color: Colors.white),
-//                                           ),
-//                                           shape: StadiumBorder(),
-//                                           color: Color(0xff00007c),
-//                                         ),
-//                                       ),
-//                                     ],
-//                                   ),
-//                                 ],
-//                               ),
-//                             )
-//                           ]),
-//                         ),
-//                       ]),
-//                     ),
-//                   ),
-//                 ),
-//               );
-//             }).toList());
-//           }),
-//     ),
-//   );
-// }
+Widget search(String grade, String subject) {
+   print('---inside search');
+  return SizedBox(
+    height: 2500,
+    child: Scaffold(
+      body: StreamBuilder(
+          stream: FirebaseFirestore.instance
+              .collection("Teacher")
+              .where('Class', isEqualTo: grade)
+              // .where('Subject', arrayContains: subject)
+              .snapshots(),
+          builder:
+              (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+            print('---in search');
+            if (!snapshot.hasData) {
+              return SizedBox(
+                child: Center(
+                    child: SpinKitRing(
+                  color: Colors.blue,
+                )),
+              );
+              //  Center(child: LoadingFilling.square());
+            }
+            return ListView(
+                children: snapshot.data.docs.map((docReference) {
+              String id = docReference.id;
+              return Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      child: Column(children: [
+                        Container(
+                          decoration: BoxDecoration(
+                              color: Colors.blue[200],
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20))),
+                          child: Row(children: [
+                            Expanded(
+                              flex: 1,
+                              child: CircleAvatar(
+                                //  width: 110,
+                                backgroundImage: NetworkImage(
+                                  docReference['Image'],
+                                ),
+                                radius: 60,
+                                /*child: Image.network(
+                                      docReference['Image'],
+                                      width: 100,
+                                      height: 100,
+                                    ),*/
+                              ),
+                            ),
+                            Expanded(
+                              flex: 2,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    docReference['Name'],
+                                    style: TextStyle(fontSize: 20),
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text("5"),
+                                      Icon(
+                                        Icons.star,
+                                        color: Colors.amber,
+                                      )
+                                    ],
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        docReference['Medium'],
+                                        style: TextStyle(fontSize: 15),
+                                      ),
+                                      Text(
+                                        ' Medium',
+                                        style: TextStyle(fontSize: 15),
+                                      ),
+                                    ],
+                                  ),
+                                  // Text(
+                                  //   docReference['Subject'],
+                                  //   style: TextStyle(fontSize: 15),
+                                  // ),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: RaisedButton(
+                                          onPressed: () {
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        profileScreen(
+                                                          PId: id,
+                                                          img: docReference[
+                                                              'Image'],
+                                                          tname: docReference[
+                                                              'Name'],
+                                                          // Subject: docReference[
+                                                          //     'Subject'],
+                                                        )));
+                                          },
+                                          child: Text(
+                                            "Select",
+                                            style:
+                                                TextStyle(color: Colors.white),
+                                          ),
+                                          shape: StadiumBorder(),
+                                          color: Color(0xff00007c),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Expanded(
+                                        child: RaisedButton(
+                                          onPressed: () {
+                                            // Navigator.push(
+                                            //     context,
+                                            //     MaterialPageRoute(
+                                            //         builder: (context) =>
+                                            //             FreeClassesByt(
+                                            //               TechId: id,
+                                            //             )));
+                                          },
+                                          child: Text(
+                                            "Video",
+                                            style:
+                                                TextStyle(color: Colors.white),
+                                          ),
+                                          shape: StadiumBorder(),
+                                          color: Color(0xff00007c),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            )
+                          ]),
+                        ),
+                      ]),
+                    ),
+                  ),
+                ),
+              );
+            }).toList());
+          }),
+    ),
+  );
+}

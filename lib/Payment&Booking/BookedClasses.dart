@@ -108,7 +108,7 @@ class _BookedClassState extends State<BookedClass> {
                             radius: 8,
                             child: GestureDetector(
                               child: Container(
-                                height: 170,
+                                height: 200,
                                 decoration: BoxDecoration(
                                     color: Colors.blue[900],
                                     borderRadius:
