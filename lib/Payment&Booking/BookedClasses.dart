@@ -3,10 +3,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:clippy_flutter/clippy_flutter.dart';
+import 'package:jitsist/GroupClass/BookedGroupClasses.dart';
 import 'package:jitsist/HomeScreen/ClipPath.dart';
 import 'package:jitsist/HomeScreen/navBar.dart';
 import 'package:jitsist/Payment&Booking/Booking.dart';
-import 'package:jitsist/Special/BookedSpClasses.dart';
 import 'package:jitsist/VideoCall/Video.dart' hide ClipPath;
 
 class BookedClass extends StatefulWidget {
@@ -23,8 +23,10 @@ class _BookedClassState extends State<BookedClass> {
           floatingActionButton: new FloatingActionButton(
               backgroundColor: Color(0xff00007c),
               onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => BookedSpClass()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => BookedGroupClass()));
               },
               child: Text(
                 'Booked Special Classes',

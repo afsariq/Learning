@@ -787,6 +787,7 @@ class _BookClassState extends State<BookClass> {
                                       bookgrd: widget.bookgrd,
                                       techname: widget.techname,
                                       date: lastMonday,
+                                      classType: 'individual class',
                                       day: 'Monday')));
 
                           // Navigator.pop(context);
@@ -978,6 +979,7 @@ class _BookClassState extends State<BookClass> {
                                       bookgrd: widget.bookgrd,
                                       techname: widget.techname,
                                       date: lastTuesday,
+                                      classType: 'individual class',
                                       day: 'Tuesday')));
 
                           // Navigator.pop(context);
@@ -1169,6 +1171,7 @@ class _BookClassState extends State<BookClass> {
                                       bookgrd: widget.bookgrd,
                                       techname: widget.techname,
                                       date: lastWednesday,
+                                      classType: 'individual class',
                                       day: 'Wednesday')));
 
                           // Navigator.pop(context);
@@ -1360,6 +1363,7 @@ class _BookClassState extends State<BookClass> {
                                       bookgrd: widget.bookgrd,
                                       techname: widget.techname,
                                       date: lastThursday,
+                                      classType: 'individual class',
                                       day: 'Thursday')));
 
                           // Navigator.pop(context);
@@ -1550,6 +1554,7 @@ class _BookClassState extends State<BookClass> {
                                       bookgrd: widget.bookgrd,
                                       techname: widget.techname,
                                       date: lastFriday,
+                                      classType: 'individual class',
                                       day: 'Friday')));
 
                           // Navigator.pop(context);
@@ -1740,6 +1745,7 @@ class _BookClassState extends State<BookClass> {
                                       bookgrd: widget.bookgrd,
                                       techname: widget.techname,
                                       date: lastSaturday,
+                                      classType: 'individual class',
                                       day: 'Saturday')));
 
                           // Navigator.pop(context);
@@ -1930,6 +1936,7 @@ class _BookClassState extends State<BookClass> {
                                       bookgrd: widget.bookgrd,
                                       techname: widget.techname,
                                       date: lastSunday,
+                                      classType: 'individual class',
                                       day: 'Sunday')));
 
                           // Navigator.pop(context);

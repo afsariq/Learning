@@ -12,7 +12,7 @@ class SearchTeacher extends StatefulWidget {
 }
 
 class _SearchTeacherState extends State<SearchTeacher> {
-  String grade = '6-9';
+  String grade;
   String subject = 'History';
   String _chosenValue;
   final TextEditingController searchCont = TextEditingController();
@@ -70,105 +70,107 @@ class _SearchTeacherState extends State<SearchTeacher> {
               children: [
                 Padding(
                   padding: const EdgeInsets.all(12.0),
-                  child: Text('Search Here',
+                  child: Text(
+                      // 'Search Here',
+                      'Teachers',
                       style: TextStyle(
                           fontSize: 35,
                           color: Colors.white,
                           fontWeight: FontWeight.bold)),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        flex: 3,
-                        child: Container(
-                          height: 40,
-                          decoration: BoxDecoration(
-                              color: Colors.white70,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10))),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: DropdownButton<String>(
-                                value: _chosenValue,
-                                hint: Text(" Grade"),
-                                items: <String>[
-                                  '6-9',
-                                  'A/L',
-                                  'Scholorship',
-                                  '10-11'
-                                ].map<DropdownMenuItem<String>>((String value) {
-                                  return DropdownMenuItem<String>(
-                                    value: value,
-                                    child: Text(value),
-                                  );
-                                }).toList(),
-                                onChanged: (String value) {
-                                  setState(() {
-                                    _chosenValue = value;
-                                    grade = _chosenValue;
-                                  });
-                                }),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Expanded(
-                        flex: 3,
-                        child: SizedBox(
-                          height: 40,
-                          child: Container(
-                            decoration: BoxDecoration(
-                                color: Colors.white70,
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10))),
-                            child: TextField(
-                              decoration: InputDecoration(
-                                border: InputBorder.none,
-                                hintText: "    Subject",
-                                hintStyle: TextStyle(color: Colors.black),
-                              ),
-                              controller: _searchSubjectController,
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: Container(
-                          height: 40,
-                          decoration: BoxDecoration(
-                              color: Colors.white70,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(35))),
-                          child: IconButton(
-                              icon: Icon(
-                                Icons.search_sharp,
-                                color: Colors.white70,
-                              ),
-                              onPressed: () {
-                                setState(() {
-                                  grade = _chosenValue;
-                                  subject = _searchSubjectController.text;
-                                  print('grade: ' +
-                                      grade +
-                                      "    subject: " +
-                                      subject);
-                                  search(grade, subject);
-                                });
-                              }),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
+                // Padding(
+                //   padding: const EdgeInsets.all(8.0),
+                //   child: Row(
+                //     mainAxisAlignment: MainAxisAlignment.center,
+                //     children: [
+                //       Expanded(
+                //         flex: 3,
+                //         child: Container(
+                //           height: 40,
+                //           decoration: BoxDecoration(
+                //               color: Colors.white70,
+                //               borderRadius:
+                //                   BorderRadius.all(Radius.circular(10))),
+                //           child: Padding(
+                //             padding: const EdgeInsets.all(8.0),
+                //             child: DropdownButton<String>(
+                //                 value: _chosenValue,
+                //                 hint: Text(" Grade"),
+                //                 items: <String>[
+                //                   '6-9',
+                //                   'A/L',
+                //                   'Scholorship',
+                //                   '10-11'
+                //                 ].map<DropdownMenuItem<String>>((String value) {
+                //                   return DropdownMenuItem<String>(
+                //                     value: value,
+                //                     child: Text(value),
+                //                   );
+                //                 }).toList(),
+                //                 onChanged: (String value) {
+                //                   setState(() {
+                //                     _chosenValue = value;
+                //                     grade = _chosenValue;
+                //                   });
+                //                 }),
+                //           ),
+                //         ),
+                //       ),
+                //       SizedBox(
+                //         width: 10,
+                //       ),
+                //       Expanded(
+                //         flex: 3,
+                //         child: SizedBox(
+                //           height: 40,
+                //           child: Container(
+                //             decoration: BoxDecoration(
+                //                 color: Colors.white70,
+                //                 borderRadius:
+                //                     BorderRadius.all(Radius.circular(10))),
+                //             child: TextField(
+                //               decoration: InputDecoration(
+                //                 border: InputBorder.none,
+                //                 hintText: "    Subject",
+                //                 hintStyle: TextStyle(color: Colors.black),
+                //               ),
+                //               controller: _searchSubjectController,
+                //             ),
+                //           ),
+                //         ),
+                //       ),
+                //       SizedBox(
+                //         width: 10,
+                //       ),
+                //       Expanded(
+                //         flex: 1,
+                //         child: Container(
+                //           height: 40,
+                //           decoration: BoxDecoration(
+                //               color: Colors.white70,
+                //               borderRadius:
+                //                   BorderRadius.all(Radius.circular(35))),
+                //           child: IconButton(
+                //               icon: Icon(
+                //                 Icons.search_sharp,
+                //                 color: Colors.white70,
+                //               ),
+                //               onPressed: () {
+                //                 setState(() {
+                //                   grade = _chosenValue;
+                //                   subject = _searchSubjectController.text;
+                //                   debugPrint('grade: ' +
+                //                       grade +
+                //                       "    subject: " +
+                //                       subject);
+                //                   search(grade, subject);
+                //                 });
+                //               }),
+                //         ),
+                //       )
+                //     ],
+                //   ),
+                // ),
               ],
             ),
           ),
@@ -240,17 +242,17 @@ class _SearchTeacherState extends State<SearchTeacher> {
                                       docReference['Name'],
                                       style: TextStyle(fontSize: 20),
                                     ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text("5"),
-                                        Icon(
-                                          Icons.star,
-                                          color: Colors.amber,
-                                        )
-                                      ],
-                                    ),
+                                    // Row(
+                                    //   mainAxisAlignment:
+                                    //       MainAxisAlignment.center,
+                                    //   children: [
+                                    //     Text("5"),
+                                    //     Icon(
+                                    //       Icons.star,
+                                    //       color: Colors.amber,
+                                    //     )
+                                    //   ],
+                                    // ),
                                     Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
@@ -295,7 +297,6 @@ class _SearchTeacherState extends State<SearchTeacher> {
                                         );
                                       },
                                     ),
-                                  
                                     Row(
                                       children: [
                                         Expanded(
@@ -499,9 +500,9 @@ class _SearchTeacherState extends State<SearchTeacher> {
   } */
 
 Widget search(String grade, String subject) {
-   print('---inside search');
-  return SizedBox(
-    height: 2500,
+  print('---inside search');
+  return Center(
+    // height: 2500,
     child: Scaffold(
       body: StreamBuilder(
           stream: FirebaseFirestore.instance
@@ -511,7 +512,6 @@ Widget search(String grade, String subject) {
               .snapshots(),
           builder:
               (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-            print('---in search');
             if (!snapshot.hasData) {
               return SizedBox(
                 child: Center(
@@ -562,16 +562,16 @@ Widget search(String grade, String subject) {
                                     docReference['Name'],
                                     style: TextStyle(fontSize: 20),
                                   ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text("5"),
-                                      Icon(
-                                        Icons.star,
-                                        color: Colors.amber,
-                                      )
-                                    ],
-                                  ),
+                                  // Row(
+                                  //   mainAxisAlignment: MainAxisAlignment.center,
+                                  //   children: [
+                                  //     Text("5"),
+                                  //     Icon(
+                                  //       Icons.star,
+                                  //       color: Colors.amber,
+                                  //     )
+                                  //   ],
+                                  // ),
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
@@ -585,10 +585,6 @@ Widget search(String grade, String subject) {
                                       ),
                                     ],
                                   ),
-                                  // Text(
-                                  //   docReference['Subject'],
-                                  //   style: TextStyle(fontSize: 15),
-                                  // ),
                                   Row(
                                     children: [
                                       Expanded(

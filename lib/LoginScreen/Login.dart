@@ -84,11 +84,17 @@ class _LoginPageState extends State<LoginPage> {
                               validator: MultiValidator([
                                 RequiredValidator(errorText: "* Required"),
                                 EmailValidator(
-                                    errorText: "Enter valid email id"),
+                                    errorText:
+                                        "Enter valid email id. Don't add spaces"),
                               ])),
                         ),
                         Padding(
-                          padding: const EdgeInsets.all(12),
+                          // padding: const EdgeInsets.all(12),
+                          padding: EdgeInsets.only(
+                              bottom: MediaQuery.of(context).viewInsets.bottom,
+                              left: 8,
+                              right: 8,
+                              top: 8),
                           child: TextFormField(
                             controller: _password,
                             obscureText: true,

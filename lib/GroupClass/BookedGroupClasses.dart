@@ -8,12 +8,12 @@ import 'package:jitsist/HomeScreen/navBar.dart';
 import 'package:jitsist/Payment&Booking/Booking.dart';
 import 'package:jitsist/VideoCall/Video.dart' hide ClipPath;
 
-class BookedSpClass extends StatefulWidget {
+class BookedGroupClass extends StatefulWidget {
   @override
-  _BookedSpClassState createState() => _BookedSpClassState();
+  _BookedGroupClassState createState() => _BookedGroupClassState();
 }
 
-class _BookedSpClassState extends State<BookedSpClass> {
+class _BookedGroupClassState extends State<BookedGroupClass> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -72,7 +72,7 @@ class _BookedSpClassState extends State<BookedSpClass> {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Center(
-                            child: Text("Special Classes",
+                            child: Text("Group Classes",
                                 style: TextStyle(
                                     fontSize: 25,
                                     color: Colors.white,
@@ -91,7 +91,7 @@ class _BookedSpClassState extends State<BookedSpClass> {
               stream: FirebaseFirestore.instance
                   .collection("Students")
                   .doc(FirebaseAuth.instance.currentUser.uid)
-                  .collection('Special Classes')
+                  .collection('Group Class')
                   .orderBy('Date', descending: true)
                   .snapshots(),
               builder: (BuildContext context,

@@ -9,35 +9,34 @@ import 'package:nanoid/nanoid.dart';
 
 import 'BookingNew.dart';
 
-class Checkout extends StatefulWidget {
-  String id;
-  String bookSub;
-  String bookgrd;
-  String techname;
-  String date;
-  String classType;
-  String day; // eg: Monday, Tuesday
-
+class CheckoutGroupClass extends StatefulWidget {
+  String joinedStudents;
+  String teacherId;
+  String groupClassId;
+  String startTime, link, chapter, subject, date, teacherName, classFee;
   var docId;
 
-  Checkout({
-    @required this.id,
-    @required this.bookSub,
-    @required this.bookgrd,
-    @required this.techname,
+  CheckoutGroupClass({
+    @required this.joinedStudents,
+    @required this.teacherId,
+    @required this.groupClassId,
+    @required this.startTime,
+    @required this.link,
+    @required this.chapter,
+    @required this.subject,
     @required this.date,
-    @required this.classType,
-    @required this.day,
+    @required this.teacherName,
+    @required this.classFee,
   });
 
   @override
-  _CheckoutState createState() => _CheckoutState();
+  _CheckoutGroupClassState createState() => _CheckoutGroupClassState();
 }
 
-class _CheckoutState extends State<Checkout> {
+class _CheckoutGroupClassState extends State<CheckoutGroupClass> {
   var teacherDocument;
-  String classFee;
   String docId;
+  String classType = 'group class';
 
   var student = FirebaseFirestore.instance
       .collection('Student')
@@ -49,7 +48,7 @@ class _CheckoutState extends State<Checkout> {
     super.initState();
   }
 
-  void showAlert(BuildContext context, String title, String msg) {
+  showAlert(BuildContext context, String title, String msg) {
     // set up the button
     Widget okButton = TextButton(
       child: Text("OK"),
@@ -77,49 +76,32 @@ class _CheckoutState extends State<Checkout> {
   }
 
   void inputData() {
-    String link = 'join' +
-        FirebaseAuth.instance.currentUser.uid.substring(12) +
-        nanoid(10);
-    debugPrint(link);
+    int no = int.parse(widget.joinedStudents.toString());
+    int num = (no + 1);
+    String numf = num.toString();
 
     FirebaseFirestore.instance
         .collection('Teacher')
-        .doc(widget.id)
-        .collection('ClassTimes')
-        .doc(widget.day) 
-        .update({Field: 'Booked'});
-
-    FirebaseFirestore.instance
-        .collection('Teacher')
-        .doc(widget.id)
-        .collection('Booked Classes')
-        .doc()
-        .set({
-      'Time': widget.day + selectedTime,
-      'User': FirebaseAuth.instance.currentUser.uid,
-      'Link': link,
-      'Date': widget.date,
-      'Subject': widget.bookSub,
-      'Grade': widget.bookgrd,
-      'ClassType': widget.classType,
-    });
+        .doc(widget.teacherId)
+        .collection('Group Class')
+        .doc(widget.groupClassId)
+        .update({'JoinedStudents': numf});
 
     FirebaseFirestore.instance
         .collection('Students')
         .doc(
           FirebaseAuth.instance.currentUser.uid,
         )
-        .collection('Booked Classes')
-        .doc(docId)
+        .collection('Group Class')
+        .doc()
         .set({
-      'Time': 'Monday' + selectedTime,
-      'Link': link,
-      'Teacher': widget.techname,
-      'subject': widget.bookSub,
+      'Time': widget.startTime,
+      'Link': widget.link,
+      'Chapter': widget.chapter,
+      'subject': widget.subject,
       'Date': widget.date,
-      'Grade': widget.bookgrd,
-      'ClassType': widget.classType,
-    });
+    }).whenComplete(showAlert(
+            context, "You have joined the Group Class Sucessfully!", ""));
 
     FirebaseFirestore.instance
         .collection('Students')
@@ -127,11 +109,11 @@ class _CheckoutState extends State<Checkout> {
         .collection('Payment')
         .doc()
         .set({
-      'Amount': classFee,
-      'ClassType': widget.classType,
+      'Amount': widget.classFee,
+      'ClassType': classType,
       'Date': widget.date,
-      'Subject': widget.bookSub,
-      'TeacherName': widget.techname,
+      'Subject': widget.subject,
+      'TeacherName': widget.teacherName,
       'Time': selectedTime
     });
 
@@ -159,8 +141,9 @@ class _CheckoutState extends State<Checkout> {
       "merchant_secret": "8VyoXGh6g8D8glsS0OzeCP8m4OJEs9epb8MSNX6vn9jY",
       "notify_url": "https://ent13zfovoz7d.x.pipedream.net/",
       "order_id": randomString(15),
-      "items": widget.techname, // doc id of booked class in students collection
-      "amount": classFee,
+      "items":
+          widget.teacherName, // doc id of booked class in students collection
+      "amount": widget.classFee,
       "currency": "LKR",
       "first_name": username,
       "last_name": " ",
@@ -266,7 +249,7 @@ class _CheckoutState extends State<Checkout> {
     return new StreamBuilder(
         stream: FirebaseFirestore.instance
             .collection("Teacher")
-            .doc(widget.id)
+            .doc(widget.teacherId)
             .snapshots(),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
@@ -333,7 +316,7 @@ class _CheckoutState extends State<Checkout> {
                                 width: 10,
                               ),
                               Text(
-                                widget.day + '  ' + widget.date,
+                                widget.date,
                                 style: TextStyle(
                                     color: Colors.black54, fontSize: 16),
                               )
@@ -350,7 +333,7 @@ class _CheckoutState extends State<Checkout> {
                                 width: 10,
                               ),
                               Text(
-                                selectedTime,
+                                widget.startTime,
                                 style: TextStyle(
                                     color: Colors.black54, fontSize: 16),
                               )
@@ -367,7 +350,7 @@ class _CheckoutState extends State<Checkout> {
                                 width: 10,
                               ),
                               Text(
-                                widget.bookSub,
+                                widget.subject,
                                 style: TextStyle(
                                     color: Colors.black54, fontSize: 16),
                               )
@@ -409,7 +392,7 @@ class _CheckoutState extends State<Checkout> {
                                 width: 10,
                               ),
                               Text(
-                                calculateClassFee(),
+                                widget.classFee,
                                 style: TextStyle(
                                     color: Colors.black,
                                     fontSize: 26,
@@ -446,31 +429,5 @@ class _CheckoutState extends State<Checkout> {
             ),
           );
         });
-  }
-
-  String calculateClassFee() {
-    String feePerHour = teacherDocument['ClassFee'];
-    double duration;
-
-    switch (selectedDuration) {
-      case '1 hr':
-        duration = 1;
-        break;
-      case '1 hr 30 min':
-        duration = 1.5;
-        break;
-      case '2 hr':
-        duration = 2;
-        break;
-      case '2 hr 30 min':
-        duration = 2.5;
-        break;
-      case '3 hr':
-        duration = 3;
-        break;
-    }
-
-    classFee = (duration * double.parse(feePerHour)).toString();
-    return classFee.toString();
   }
 }

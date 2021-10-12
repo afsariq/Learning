@@ -1,12 +1,17 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:jitsist/GroupClass/BookedGroupClasses.dart';
 import 'package:jitsist/HomeScreen/ClipPath.dart';
+import 'package:jitsist/HomeScreen/Home.dart';
+import 'package:jitsist/HomeScreen/navBar.dart';
+import 'package:jitsist/Payment&Booking/Checkout.dart';
+import 'package:jitsist/Payment&Booking/CheckoutGroupClass.dart';
 import 'package:jitsist/Payment&Booking/Profile.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:jitsist/Payment&Booking/VdoByT.dart';
 
-class Special extends StatefulWidget {
+class GroupClass extends StatefulWidget {
   //String cls;
   //String sub;
   //Subject({
@@ -15,10 +20,11 @@ class Special extends StatefulWidget {
   // });
 
   @override
-  _SpecialState createState() => _SpecialState();
+  _GroupState createState() => _GroupState();
 }
 
-class _SpecialState extends State<Special> with SingleTickerProviderStateMixin {
+class _GroupState extends State<GroupClass>
+    with SingleTickerProviderStateMixin {
   final TextEditingController searchCont = TextEditingController();
   String clsno;
   @override
@@ -149,7 +155,7 @@ class _SpecialState extends State<Special> with SingleTickerProviderStateMixin {
                 return StreamBuilder(
                   // get snapshots of sales collection of each user
                   stream: docReference.reference
-                      .collection('SpecialClass')
+                      .collection('Group Class')
                       .where('ClassNo', isEqualTo: clsno)
                       // .orderBy("Date", descending: true)
                       .snapshots(),
@@ -158,8 +164,9 @@ class _SpecialState extends State<Special> with SingleTickerProviderStateMixin {
                     return collectionSnap.hasData
                         ? Column(
                             children: collectionSnap.data.docs
-                                .map((documentSnap) =>
-                                    _TukDataWidget(document: documentSnap))
+                                .map((documentSnap) => _TukDataWidget(
+                                    document: documentSnap,
+                                    teacherName: docReference['Name']))
                                 .toList(),
                           )
                         : Center(); //Text('Loading...');
@@ -191,9 +198,11 @@ class _TukDataWidget extends StatelessWidget {
   const _TukDataWidget({
     Key key,
     @required this.document,
+    @required this.teacherName,
   }) : super(key: key);
 
   final QueryDocumentSnapshot document;
+  final String teacherName;
 
   @override
   Widget build(BuildContext context) {
@@ -250,8 +259,10 @@ class _TukDataWidget extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
                         children: [
-                          Expanded(child: Text("Joined Student : ")),
-                          Expanded(child: Text(document['NoOfStudents'])),
+                          Expanded(child: Text("Joined Students : ")),
+                          Expanded(
+                              child:
+                                  Text(document['JoinedStudents'].toString())),
                         ],
                       ),
                     ),
@@ -301,38 +312,61 @@ class _TukDataWidget extends StatelessWidget {
                               // shape: StadiumBorder(),
                               child: Text("Book",
                                   style: TextStyle(color: Colors.white)),
-                              onPressed: () {
-                                if (document['JoinedStudents'] !=
-                                    document['MaxStudents']) {
-                                  int no = int.parse(document['NoOfStudents']);
-                                  int num = (no + 1);
-                                  String numf = num.toString();
-                                  print(num);
-                                  print("Done");
-                                  FirebaseFirestore.instance
-                                      .collection('Teacher')
-                                      .doc(document['TeacherId'])
-                                      .collection('SpecialClass')
-                                      .doc(document.id)
-                                      .update({'NoOfStudents': numf});
 
-                                  FirebaseFirestore.instance
-                                      .collection('Students')
-                                      .doc(
-                                        FirebaseAuth.instance.currentUser.uid,
-                                      )
-                                      .collection('Special Classes')
-                                      .doc()
-                                      .set({
-                                    'Time': document['StartTime'],
-                                    'Link': document['RoomId'],
-                                    'Chapter': document['Chapter'],
-                                    'subject': document['Subject'],
-                                    'Date': document['Date'],
-                                  });
-                                } else {
-                                  print(".....");
-                                }
+                              onPressed: () async {
+                                //check if student has already booked class
+
+                                await FirebaseFirestore.instance
+                                    .collection('Students')
+                                    .doc(
+                                      FirebaseAuth.instance.currentUser.uid,
+                                    )
+                                    .collection('Group Class')
+                                    .where('Link', isEqualTo: document['Link'])
+                                    .get()
+                                    .then((event) {
+                                  if (event.docs.isEmpty) {
+                                    //can book class
+
+                                    if (document['JoinedStudents'] !=
+                                        document['MaxStudents']) {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  CheckoutGroupClass(
+                                                    joinedStudents: document[
+                                                        'JoinedStudents'],
+                                                    teacherId:
+                                                        document['TeacherId'],
+                                                    groupClassId: document.id,
+                                                    startTime:
+                                                        document['StartTime'],
+                                                    link: document['Link'],
+                                                    chapter:
+                                                        document['Chapter'],
+                                                    subject:
+                                                        document['Subject'],
+                                                    date: document['Date'],
+                                                    teacherName: teacherName,
+                                                    classFee: document['Fee'],
+                                                  )));
+                                    } else {
+                                      showAlertDialog(
+                                          context,
+                                          "Max no of students reached. Please try another class",
+                                          "sameScreen");
+                                    }
+                                  } else {
+                                    //cant book class more than once
+
+                                    showAlertDialog(
+                                        context,
+                                        "You can book the class only once",
+                                        "BookedGroupClassScreen");
+                                    debugPrint('error');
+                                  }
+                                });
                               },
                             ),
                           )),
@@ -371,8 +405,8 @@ class _TukDataWidget extends StatelessWidget {
                       return Column(
                         children: [
                           Container(
-                            width: 160,
-                            height: 160,
+                            width: 120,
+                            height: 120,
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                   image: NetworkImage(docReference['Image']),
@@ -383,14 +417,55 @@ class _TukDataWidget extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Text(
-                            docReference['Name'],
-                            style: TextStyle(fontSize: 25),
-                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 12),
+                            child: Container(
+                              child: Text(
+                                docReference['Name'],
+                                style: TextStyle(fontSize: 25),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          )
                         ],
                       );
                     }).toList());
                   }))),
+    );
+  }
+
+  showAlertDialog(BuildContext context, String message, String screen) {
+    // set up the button
+    Widget okButton = TextButton(
+      child: Text("OK"),
+      onPressed: () {
+        if (screen == 'homeScreen') {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => MyNavigationBar()));
+        } else if (screen == "sameScreen") {
+          Navigator.pop(context);
+        } else if (screen == "BookedGroupClassScreen") {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => BookedGroupClass()));
+        }
+      },
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text("Group Class"),
+      content: Text(message),
+      actions: [
+        okButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
     );
   }
 }

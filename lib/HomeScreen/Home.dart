@@ -5,20 +5,21 @@ import 'package:flutter/material.dart';
 import 'package:jitsist/Courses/CourseList.dart';
 import 'package:jitsist/Courses/FreeClasses.dart';
 import 'package:jitsist/Courses/FreeCourses.dart';
+import 'package:jitsist/GroupClass/BookedGroupClasses.dart';
+import 'package:jitsist/GroupClass/GroupClass.dart';
 import 'package:jitsist/HomeScreen/ComingSoon.dart';
 
 import 'package:jitsist/LoginScreen/Login.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:jitsist/PastPapers/PastPaperList.dart';
 import 'package:jitsist/PastPapers/PastPapers.dart';
-import 'package:jitsist/Special/BookedSpClasses.dart';
 import 'package:jitsist/Feedback/Feedback.dart' as f;
+import 'package:jitsist/Payment&Booking/PaymentHistory.dart';
 import 'package:jitsist/Profile/ProfileScreen.dart';
 import 'package:jitsist/Quizz/home.dart';
 import 'package:jitsist/Subjects/LondonAl.dart';
 import 'package:jitsist/Subjects/LondonOl.dart';
 import 'package:jitsist/Search/Search.dart';
-import 'package:jitsist/Special/Special.dart';
 import 'package:jitsist/Subjects/AL.dart';
 import 'package:jitsist/Courses/Courses.dart';
 import 'package:jitsist/Courses/FreeClassesList.dart';
@@ -98,16 +99,27 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 ListTile(
                   title: Text(
-                    "Booked Sheduled Classes",
+                    "Booked Group Classes",
                     style: TextStyle(fontSize: 18),
                   ),
                   onTap: () {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => BookedSpClass()));
+                            builder: (context) => BookedGroupClass()));
                   },
                 ),
+                ListTile(
+                    title: Text(
+                      "Payment History",
+                      style: TextStyle(fontSize: 18),
+                    ),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => PaymentHistory()));
+                    }),
                 ListTile(
                     title: Text(
                       "Complaints & Feedback",
@@ -180,7 +192,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       // width: double.infinity,
                       decoration: BoxDecoration(
                         image: DecorationImage(
-                          alignment: Alignment.topCenter,
+                            alignment: Alignment.topCenter,
                             image: AssetImage('Assets/Images/Header.png'),
                             fit: BoxFit.cover),
                         color: Color(0xff00007c),
@@ -527,7 +539,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => Special()));
+                                      builder: (context) => GroupClass()));
                             },
                             child: Container(
                               height: 140,
