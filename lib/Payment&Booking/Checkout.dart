@@ -76,18 +76,33 @@ class _CheckoutState extends State<Checkout> {
     );
   }
 
-  void inputData() {
+  Future<void> inputData() async {
     String link = 'join' +
         FirebaseAuth.instance.currentUser.uid.substring(12) +
         nanoid(10);
     debugPrint(link);
 
-    FirebaseFirestore.instance
+    var querySnapshot = await FirebaseFirestore.instance
         .collection('Teacher')
         .doc(widget.id)
         .collection('ClassTimes')
-        .doc(widget.day) 
-        .update({Field: 'Booked'});
+        .doc(widget.day)
+        .collection('Time Slot')
+        .where('Time', isEqualTo: selectedTime)
+        .get();
+
+    for (var snapshot in querySnapshot.docs) {
+      // Map<String, dynamic> data = snapshot.data();
+
+      FirebaseFirestore.instance
+          .collection('Teacher')
+          .doc(widget.id)
+          .collection('ClassTimes')
+          .doc(widget.day)
+          .collection('Time Slot')
+          .doc(snapshot.id)
+          .update({'Booked': true});
+    }
 
     FirebaseFirestore.instance
         .collection('Teacher')

@@ -72,7 +72,7 @@ class _SearchTeacherState extends State<SearchTeacher> {
                   padding: const EdgeInsets.all(12.0),
                   child: Text(
                       // 'Search Here',
-                      'Teachers',
+                      'All Teachers',
                       style: TextStyle(
                           fontSize: 35,
                           color: Colors.white,

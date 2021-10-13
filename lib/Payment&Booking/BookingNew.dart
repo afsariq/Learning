@@ -1214,6 +1214,7 @@ class _BookClassState extends State<BookClass> {
                 .collection('ClassTimes')
                 .doc('Thursday')
                 .collection('Time Slot')
+                .where('Booked', isEqualTo: false)
                 .snapshots(),
             builder:
                 (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
