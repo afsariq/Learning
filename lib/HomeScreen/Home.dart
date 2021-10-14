@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:jitsist/ContactUs/ContactUs.dart';
 import 'package:jitsist/Courses/CourseList.dart';
 import 'package:jitsist/Courses/FreeClasses.dart';
 import 'package:jitsist/Courses/FreeCourses.dart';
@@ -15,6 +16,7 @@ import 'package:jitsist/PastPapers/PastPaperList.dart';
 import 'package:jitsist/PastPapers/PastPapers.dart';
 import 'package:jitsist/Feedback/Feedback.dart' as f;
 import 'package:jitsist/Payment&Booking/PaymentHistory.dart';
+import 'package:jitsist/PrivacyPolicy/PrivacyPolicy.dart';
 import 'package:jitsist/Profile/ProfileScreen.dart';
 import 'package:jitsist/Quizz/home.dart';
 import 'package:jitsist/Subjects/LondonAl.dart';
@@ -130,6 +132,26 @@ class _HomeScreenState extends State<HomeScreen> {
                           context,
                           MaterialPageRoute(
                               builder: (context) => f.Feedback()));
+                    }),
+                ListTile(
+                    title: Text(
+                      "Contact Us",
+                      style: TextStyle(fontSize: 18),
+                    ),
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => ContactUs()));
+                    }),
+                ListTile(
+                    title: Text(
+                      "Privacy Policy",
+                      style: TextStyle(fontSize: 18),
+                    ),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => PrivacyPolicy()));
                     }),
                 ListTile(
                     title: Text(

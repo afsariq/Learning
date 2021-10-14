@@ -10,7 +10,7 @@
         tools:replace="android:label"
         android:usesCleartextTraffic="true"
         android:name="io.flutter.app.FlutterApplication"
-        android:label="e-Vidhuhala"
+        android:label="E-Vidhuhala"
         android:icon="@mipmap/vidhu">
         <activity
             android:name=".MainActivity"

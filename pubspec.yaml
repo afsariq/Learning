@@ -45,6 +45,7 @@ dependencies:
   flutter_email_sender: ^5.0.2
   nanoid: ^1.0.0
   webview_flutter: 
+  url_launcher: ^6.0.10
   intl:
   syncfusion_flutter_pdfviewer:
 dev_dependencies:

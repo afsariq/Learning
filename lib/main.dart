@@ -24,6 +24,9 @@ Future<void> main() async {
 
   var email = prefs.getString('email');
   runApp(MaterialApp(
+    theme: ThemeData(
+      primarySwatch: Colors.blue,
+    ),
     home: email == null ? Splash() : SplashScreen(),
     debugShowCheckedModeBanner: false,
   ));
