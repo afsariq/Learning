@@ -36,12 +36,49 @@
     },
     {
       "client_info": {
+        "mobilesdk_app_id": "1:324884857955:android:11b121b91406568a88e456",
+        "android_client_info": {
+          "package_name": "com.eviduhala.eviduhala"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "324884857955-fg7ij7se1r0te2qekpf9jbqn9jmod0dk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWl1HLrIXH9EuIlBOzh5Pc5JMa8XLGmDM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "324884857955-fg7ij7se1r0te2qekpf9jbqn9jmod0dk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:324884857955:android:71bdc9be2dd1d8bd88e456",
         "android_client_info": {
           "package_name": "com.example.jitsi"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "324884857955-7pjlhlkgihnvultd28knehpa6g1quin1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.jitsi",
+            "certificate_hash": "19f2cbe499471f6fe84ff14f1220635871265102"
+          }
+        },
         {
           "client_id": "324884857955-fg7ij7se1r0te2qekpf9jbqn9jmod0dk.apps.googleusercontent.com",
           "client_type": 3
@@ -71,6 +108,51 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "324884857955-phjioaifbt9175uc34tn8cutfds8ncjj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.learningStudent",
+            "certificate_hash": "19f2cbe499471f6fe84ff14f1220635871265102"
+          }
+        },
+        {
+          "client_id": "324884857955-fg7ij7se1r0te2qekpf9jbqn9jmod0dk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWl1HLrIXH9EuIlBOzh5Pc5JMa8XLGmDM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "324884857955-fg7ij7se1r0te2qekpf9jbqn9jmod0dk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:324884857955:android:b64d2928b33ca06288e456",
+        "android_client_info": {
+          "package_name": "com.example.learningTeacher"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "324884857955-vs633moavh9hamak43sk016vu56okj4o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.learningTeacher",
+            "certificate_hash": "19f2cbe499471f6fe84ff14f1220635871265102"
+          }
+        },
         {
           "client_id": "324884857955-fg7ij7se1r0te2qekpf9jbqn9jmod0dk.apps.googleusercontent.com",
           "client_type": 3

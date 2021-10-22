@@ -171,7 +171,7 @@ class _CheckoutState extends State<Checkout> {
     Map paymentObject = {
       "sandbox": true, // true if using Sandbox Merchant ID
       "merchant_id": "1218302", // Replace your Merchant ID
-      "merchant_secret": "8VyoXGh6g8D8glsS0OzeCP8m4OJEs9epb8MSNX6vn9jY",
+      "merchant_secret": "4KEPE9YeVSo4JEVRbnNBwq8QjwyoqoOIw8MQsF5Df5lM",
       "notify_url": "https://ent13zfovoz7d.x.pipedream.net/",
       "order_id": randomString(15),
       "items": widget.techname, // doc id of booked class in students collection
