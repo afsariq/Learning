@@ -20,7 +20,7 @@ class _PaperListState extends State<PaperList> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(kToolbarHeight + 90),
+          preferredSize: Size.fromHeight(kToolbarHeight + 100),
           child: ClipPath(
             clipper: CustomClipPath(),
             child: Container(
@@ -64,7 +64,7 @@ class _PaperListState extends State<PaperList> {
                         child: Center(
                           child: Text("Past Papers",
                               style: TextStyle(
-                                  fontSize: 25,
+                                  fontSize: 35,
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold)),
                         ),

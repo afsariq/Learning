@@ -66,57 +66,7 @@ class _LondonAlState extends State<LondonAl> {
                                 fontWeight: FontWeight.bold)),
                       ),
                     ),
-                    // Row(
-                    //   mainAxisAlignment: MainAxisAlignment.center,
-                    //   children: [
-                    //     SizedBox(
-                    //       width: 10,
-                    //     ),
-                    //     Expanded(
-                    //       flex: 3,
-                    //       child: SizedBox(
-                    //         height: 40,
-                    //         child: Container(
-                    //           decoration: BoxDecoration(
-                    //               color: Colors.white70,
-                    //               borderRadius:
-                    //                   BorderRadius.all(Radius.circular(10))),
-                    //           child: TextField(
-                    //             decoration: InputDecoration(
-                    //               border: InputBorder.none,
-                    //               hintText: "Subject",
-                    //               hintStyle: TextStyle(color: Colors.black),
-                    //             ),
-                    //             controller: searchCont,
-                    //           ),
-                    //         ),
-                    //       ),
-                    //     ),
-                    //     SizedBox(
-                    //       width: 10,
-                    //     ),
-                    //     Expanded(
-                    //       flex: 1,
-                    //       child: Container(
-                    //         height: 40,
-                    //         decoration: BoxDecoration(
-                    //             color: Colors.white70,
-                    //             borderRadius:
-                    //                 BorderRadius.all(Radius.circular(35))),
-                    //         child: IconButton(
-                    //             icon: Icon(
-                    //               Icons.search_sharp,
-                    //               color: Colors.white70,
-                    //             ),
-                    //             onPressed: () {
-                    //               setState(() {
-                    //                 clsno = searchCont.text;
-                    //               });
-                    //             }),
-                    //       ),
-                    //     )
-                    //   ],
-                    // ),
+                    // 
                     SizedBox(height: 15),
                   ],
                 ),

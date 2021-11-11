@@ -8,7 +8,7 @@ class sixtoeleven extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(kToolbarHeight + 80),
+        preferredSize: Size.fromHeight(kToolbarHeight + 100),
         child: ClipPath(
           clipper: CustomClipPath(),
           child: Container(

@@ -28,6 +28,7 @@ import 'package:jitsist/Courses/FreeClassesList.dart';
 import 'package:jitsist/Subjects/6-9.dart';
 import 'package:jitsist/Subjects/10-11.dart';
 import 'package:jitsist/Subjects/Subjects.dart';
+import 'package:jitsist/Subjects/languages.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:jitsist/Payment&Booking/BookedClasses.dart';
 import 'package:flutter/services.dart';
@@ -90,6 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 ListTile(
+                  leading: Icon(Icons.person),
                   title: Text(
                     "Profile",
                     style: TextStyle(fontSize: 18),
@@ -100,6 +102,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   },
                 ),
                 ListTile(
+                  leading: Icon(Icons.group),
                   title: Text(
                     "Booked Group Classes",
                     style: TextStyle(fontSize: 18),
@@ -112,6 +115,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   },
                 ),
                 ListTile(
+                    leading: Icon(Icons.payment),
                     title: Text(
                       "Payment History",
                       style: TextStyle(fontSize: 18),
@@ -123,6 +127,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               builder: (context) => PaymentHistory()));
                     }),
                 ListTile(
+                    leading: Icon(Icons.feedback),
                     title: Text(
                       "Complaints & Feedback",
                       style: TextStyle(fontSize: 18),
@@ -134,6 +139,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               builder: (context) => f.Feedback()));
                     }),
                 ListTile(
+                    leading: Icon(Icons.call),
                     title: Text(
                       "Contact Us",
                       style: TextStyle(fontSize: 18),
@@ -143,6 +149,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           MaterialPageRoute(builder: (context) => ContactUs()));
                     }),
                 ListTile(
+                    leading: Icon(Icons.privacy_tip),
                     title: Text(
                       "Privacy Policy",
                       style: TextStyle(fontSize: 18),
@@ -154,6 +161,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               builder: (context) => PrivacyPolicy()));
                     }),
                 ListTile(
+                    leading: Icon(Icons.logout),
                     title: Text(
                       "Logout",
                       style: TextStyle(fontSize: 18),
@@ -284,11 +292,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                       children: [
                                         GestureDetector(
                                           onTap: () {
-                                            /* Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        Test()));*/
                                             Navigator.push(
                                                 context,
                                                 MaterialPageRoute(
@@ -514,17 +517,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                       children: [
                                         GestureDetector(
                                           onTap: () {
-                                            // Navigator.push(
-                                            //   context,
-                                            // MaterialPageRoute(
-                                            //   builder: (context) =>
-                                            //     PastPapers()));
-
                                             Navigator.push(
                                                 context,
                                                 MaterialPageRoute(
                                                     builder: (context) =>
-                                                        ComingSoon()));
+                                                        languages()));
                                           },
                                           child: CircleAvatar(
                                             backgroundImage: AssetImage(
@@ -536,13 +533,49 @@ class _HomeScreenState extends State<HomeScreen> {
                                           height: 5,
                                         ),
                                         Text(
-                                          "Free Classes",
+                                          "Languages",
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold),
                                         )
                                       ],
                                     ),
                                   ),
+                                  //free classes icon
+                                  // Expanded(
+                                  //   flex: 1,
+                                  //   child: Column(
+                                  //     children: [
+                                  //       GestureDetector(
+                                  //         onTap: () {
+                                  //           // Navigator.push(
+                                  //           //   context,
+                                  //           // MaterialPageRoute(
+                                  //           //   builder: (context) =>
+                                  //           //     PastPapers()));
+
+                                  //           Navigator.push(
+                                  //               context,
+                                  //               MaterialPageRoute(
+                                  //                   builder: (context) =>
+                                  //                       ComingSoon()));
+                                  //         },
+                                  //         child: CircleAvatar(
+                                  //           backgroundImage: AssetImage(
+                                  //               "Assets/Images/sciencef.png"),
+                                  //           radius: 30,
+                                  //         ),
+                                  //       ),
+                                  //       SizedBox(
+                                  //         height: 5,
+                                  //       ),
+                                  //       Text(
+                                  //         "Free Classes",
+                                  //         style: TextStyle(
+                                  //             fontWeight: FontWeight.bold),
+                                  //       )
+                                  //     ],
+                                  //   ),
+                                  // ),
                                 ],
                               ),
                             ),
